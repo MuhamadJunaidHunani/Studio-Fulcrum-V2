@@ -3025,7 +3025,7 @@ blockquote {
 .home_services {
   background-color: var(--white);
   border-radius: 3em;
-  height: 40em;
+  height: 24em !important;
   margin-top: 6.5em;
   margin-bottom: 6.5em;
   display: flex;
