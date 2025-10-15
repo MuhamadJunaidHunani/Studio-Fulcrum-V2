@@ -2696,14 +2696,14 @@ blockquote {
 }
 
 .home_hero-vid {
-  background-color: #05070f80;
+  /* background-color: #05070f80; */
   height: auto;
   position: absolute;
   inset: 0%;
 }
 
 .home_hero-vid-width {
-  cursor: pointer;
+  /* cursor: pointer; */
   border-radius: 100vw;
   flex-direction: column;
   justify-content: center;
