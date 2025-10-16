@@ -1,4 +1,3 @@
-
 /*!
  * Webflow: Front-end site library
  * @license MIT
@@ -7,25 +6,10619 @@
  *   Webflow.push(readyFunction);
  */
 
-(()=>{var qE=Object.create;var xn=Object.defineProperty;var GE=Object.getOwnPropertyDescriptor;var XE=Object.getOwnPropertyNames;var VE=Object.getPrototypeOf,UE=Object.prototype.hasOwnProperty;var fe=(e,t)=>()=>(e&&(t=e(e=0)),t);var f=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports),xe=(e,t)=>{for(var n in t)xn(e,n,{get:t[n],enumerable:!0})},sa=(e,t,n,r)=>{if(t&&typeof t=="object"||typeof t=="function")for(let i of XE(t))!UE.call(e,i)&&i!==n&&xn(e,i,{get:()=>t[i],enumerable:!(r=GE(t,i))||r.enumerable});return e};var ae=(e,t,n)=>(n=e!=null?qE(VE(e)):{},sa(t||!e||!e.__esModule?xn(n,"default",{value:e,enumerable:!0}):n,e)),He=e=>sa(xn({},"__esModule",{value:!0}),e);var ua=f(()=>{"use strict";(function(){if(typeof window>"u")return;let e=window.navigator.userAgent.match(/Edge\/(\d{2})\./),t=e?parseInt(e[1],10)>=16:!1;if("objectFit"in document.documentElement.style&&!t){window.objectFitPolyfill=function(){return!1};return}let r=function(a){let u=window.getComputedStyle(a,null),c=u.getPropertyValue("position"),g=u.getPropertyValue("overflow"),p=u.getPropertyValue("display");(!c||c==="static")&&(a.style.position="relative"),g!=="hidden"&&(a.style.overflow="hidden"),(!p||p==="inline")&&(a.style.display="block"),a.clientHeight===0&&(a.style.height="100%"),a.className.indexOf("object-fit-polyfill")===-1&&(a.className+=" object-fit-polyfill")},i=function(a){let u=window.getComputedStyle(a,null),c={"max-width":"none","max-height":"none","min-width":"0px","min-height":"0px",top:"auto",right:"auto",bottom:"auto",left:"auto","margin-top":"0px","margin-right":"0px","margin-bottom":"0px","margin-left":"0px"};for(let g in c)u.getPropertyValue(g)!==c[g]&&(a.style[g]=c[g])},o=function(a){let u=a.parentNode;r(u),i(a),a.style.position="absolute",a.style.height="100%",a.style.width="auto",a.clientWidth>u.clientWidth?(a.style.top="0",a.style.marginTop="0",a.style.left="50%",a.style.marginLeft=a.clientWidth/-2+"px"):(a.style.width="100%",a.style.height="auto",a.style.left="0",a.style.marginLeft="0",a.style.top="50%",a.style.marginTop=a.clientHeight/-2+"px")},s=function(a){if(typeof a>"u"||a instanceof Event)a=document.querySelectorAll("[data-object-fit]");else if(a&&a.nodeName)a=[a];else if(typeof a=="object"&&a.length&&a[0].nodeName)a=a;else return!1;for(let u=0;u<a.length;u++){if(!a[u].nodeName)continue;let c=a[u].nodeName.toLowerCase();if(c==="img"){if(t)continue;a[u].complete?o(a[u]):a[u].addEventListener("load",function(){o(this)})}else c==="video"?a[u].readyState>0?o(a[u]):a[u].addEventListener("loadedmetadata",function(){o(this)}):o(a[u])}return!0};document.readyState==="loading"?document.addEventListener("DOMContentLoaded",s):s(),window.addEventListener("resize",s),window.objectFitPolyfill=s})()});var ca=f(()=>{"use strict";(function(){if(typeof window>"u")return;function e(r){Webflow.env("design")||($("video").each(function(){r&&$(this).prop("autoplay")?this.play():this.pause()}),$(".w-background-video--control").each(function(){r?n($(this)):t($(this))}))}function t(r){r.find("> span").each(function(i){$(this).prop("hidden",()=>i===0)})}function n(r){r.find("> span").each(function(i){$(this).prop("hidden",()=>i===1)})}$(document).ready(()=>{let r=window.matchMedia("(prefers-reduced-motion: reduce)");r.addEventListener("change",i=>{e(!i.matches)}),r.matches&&e(!1),$("video:not([autoplay])").each(function(){$(this).parent().find(".w-background-video--control").each(function(){t($(this))})}),$(document).on("click",".w-background-video--control",function(i){if(Webflow.env("design"))return;let o=$(i.currentTarget),s=$(`video#${o.attr("aria-controls")}`).get(0);if(s)if(s.paused){let a=s.play();n(o),a&&typeof a.catch=="function"&&a.catch(()=>{t(o)})}else s.pause(),t(o)})})})()});var Br=f(()=>{"use strict";window.tram=function(e){function t(l,E){var _=new me.Bare;return _.init(l,E)}function n(l){return l.replace(/[A-Z]/g,function(E){return"-"+E.toLowerCase()})}function r(l){var E=parseInt(l.slice(1),16),_=E>>16&255,b=E>>8&255,C=255&E;return[_,b,C]}function i(l,E,_){return"#"+(1<<24|l<<16|E<<8|_).toString(16).slice(1)}function o(){}function s(l,E){c("Type warning: Expected: ["+l+"] Got: ["+typeof E+"] "+E)}function a(l,E,_){c("Units do not match ["+l+"]: "+E+", "+_)}function u(l,E,_){if(E!==void 0&&(_=E),l===void 0)return _;var b=_;return wn.test(l)||!Yt.test(l)?b=parseInt(l,10):Yt.test(l)&&(b=1e3*parseFloat(l)),0>b&&(b=0),b===b?b:_}function c(l){j.debug&&window&&window.console.warn(l)}function g(l){for(var E=-1,_=l?l.length:0,b=[];++E<_;){var C=l[E];C&&b.push(C)}return b}var p=function(l,E,_){function b(Q){return typeof Q=="object"}function C(Q){return typeof Q=="function"}function w(){}function B(Q,H){function M(){var Te=new J;return C(Te.init)&&Te.init.apply(Te,arguments),Te}function J(){}H===_&&(H=Q,Q=Object),M.Bare=J;var re,he=w[l]=Q[l],Le=J[l]=M[l]=new w;return Le.constructor=M,M.mixin=function(Te){return J[l]=M[l]=B(M,Te)[l],M},M.open=function(Te){if(re={},C(Te)?re=Te.call(M,Le,he,M,Q):b(Te)&&(re=Te),b(re))for(var $t in re)E.call(re,$t)&&(Le[$t]=re[$t]);return C(Le.init)||(Le.init=Q),M},M.open(H)}return B}("prototype",{}.hasOwnProperty),d={ease:["ease",function(l,E,_,b){var C=(l/=b)*l,w=C*l;return E+_*(-2.75*w*C+11*C*C+-15.5*w+8*C+.25*l)}],"ease-in":["ease-in",function(l,E,_,b){var C=(l/=b)*l,w=C*l;return E+_*(-1*w*C+3*C*C+-3*w+2*C)}],"ease-out":["ease-out",function(l,E,_,b){var C=(l/=b)*l,w=C*l;return E+_*(.3*w*C+-1.6*C*C+2.2*w+-1.8*C+1.9*l)}],"ease-in-out":["ease-in-out",function(l,E,_,b){var C=(l/=b)*l,w=C*l;return E+_*(2*w*C+-5*C*C+2*w+2*C)}],linear:["linear",function(l,E,_,b){return _*l/b+E}],"ease-in-quad":["cubic-bezier(0.550, 0.085, 0.680, 0.530)",function(l,E,_,b){return _*(l/=b)*l+E}],"ease-out-quad":["cubic-bezier(0.250, 0.460, 0.450, 0.940)",function(l,E,_,b){return-_*(l/=b)*(l-2)+E}],"ease-in-out-quad":["cubic-bezier(0.455, 0.030, 0.515, 0.955)",function(l,E,_,b){return(l/=b/2)<1?_/2*l*l+E:-_/2*(--l*(l-2)-1)+E}],"ease-in-cubic":["cubic-bezier(0.550, 0.055, 0.675, 0.190)",function(l,E,_,b){return _*(l/=b)*l*l+E}],"ease-out-cubic":["cubic-bezier(0.215, 0.610, 0.355, 1)",function(l,E,_,b){return _*((l=l/b-1)*l*l+1)+E}],"ease-in-out-cubic":["cubic-bezier(0.645, 0.045, 0.355, 1)",function(l,E,_,b){return(l/=b/2)<1?_/2*l*l*l+E:_/2*((l-=2)*l*l+2)+E}],"ease-in-quart":["cubic-bezier(0.895, 0.030, 0.685, 0.220)",function(l,E,_,b){return _*(l/=b)*l*l*l+E}],"ease-out-quart":["cubic-bezier(0.165, 0.840, 0.440, 1)",function(l,E,_,b){return-_*((l=l/b-1)*l*l*l-1)+E}],"ease-in-out-quart":["cubic-bezier(0.770, 0, 0.175, 1)",function(l,E,_,b){return(l/=b/2)<1?_/2*l*l*l*l+E:-_/2*((l-=2)*l*l*l-2)+E}],"ease-in-quint":["cubic-bezier(0.755, 0.050, 0.855, 0.060)",function(l,E,_,b){return _*(l/=b)*l*l*l*l+E}],"ease-out-quint":["cubic-bezier(0.230, 1, 0.320, 1)",function(l,E,_,b){return _*((l=l/b-1)*l*l*l*l+1)+E}],"ease-in-out-quint":["cubic-bezier(0.860, 0, 0.070, 1)",function(l,E,_,b){return(l/=b/2)<1?_/2*l*l*l*l*l+E:_/2*((l-=2)*l*l*l*l+2)+E}],"ease-in-sine":["cubic-bezier(0.470, 0, 0.745, 0.715)",function(l,E,_,b){return-_*Math.cos(l/b*(Math.PI/2))+_+E}],"ease-out-sine":["cubic-bezier(0.390, 0.575, 0.565, 1)",function(l,E,_,b){return _*Math.sin(l/b*(Math.PI/2))+E}],"ease-in-out-sine":["cubic-bezier(0.445, 0.050, 0.550, 0.950)",function(l,E,_,b){return-_/2*(Math.cos(Math.PI*l/b)-1)+E}],"ease-in-expo":["cubic-bezier(0.950, 0.050, 0.795, 0.035)",function(l,E,_,b){return l===0?E:_*Math.pow(2,10*(l/b-1))+E}],"ease-out-expo":["cubic-bezier(0.190, 1, 0.220, 1)",function(l,E,_,b){return l===b?E+_:_*(-Math.pow(2,-10*l/b)+1)+E}],"ease-in-out-expo":["cubic-bezier(1, 0, 0, 1)",function(l,E,_,b){return l===0?E:l===b?E+_:(l/=b/2)<1?_/2*Math.pow(2,10*(l-1))+E:_/2*(-Math.pow(2,-10*--l)+2)+E}],"ease-in-circ":["cubic-bezier(0.600, 0.040, 0.980, 0.335)",function(l,E,_,b){return-_*(Math.sqrt(1-(l/=b)*l)-1)+E}],"ease-out-circ":["cubic-bezier(0.075, 0.820, 0.165, 1)",function(l,E,_,b){return _*Math.sqrt(1-(l=l/b-1)*l)+E}],"ease-in-out-circ":["cubic-bezier(0.785, 0.135, 0.150, 0.860)",function(l,E,_,b){return(l/=b/2)<1?-_/2*(Math.sqrt(1-l*l)-1)+E:_/2*(Math.sqrt(1-(l-=2)*l)+1)+E}],"ease-in-back":["cubic-bezier(0.600, -0.280, 0.735, 0.045)",function(l,E,_,b,C){return C===void 0&&(C=1.70158),_*(l/=b)*l*((C+1)*l-C)+E}],"ease-out-back":["cubic-bezier(0.175, 0.885, 0.320, 1.275)",function(l,E,_,b,C){return C===void 0&&(C=1.70158),_*((l=l/b-1)*l*((C+1)*l+C)+1)+E}],"ease-in-out-back":["cubic-bezier(0.680, -0.550, 0.265, 1.550)",function(l,E,_,b,C){return C===void 0&&(C=1.70158),(l/=b/2)<1?_/2*l*l*(((C*=1.525)+1)*l-C)+E:_/2*((l-=2)*l*(((C*=1.525)+1)*l+C)+2)+E}]},h={"ease-in-back":"cubic-bezier(0.600, 0, 0.735, 0.045)","ease-out-back":"cubic-bezier(0.175, 0.885, 0.320, 1)","ease-in-out-back":"cubic-bezier(0.680, 0, 0.265, 1)"},v=document,m=window,T="bkwld-tram",y=/[\-\.0-9]/g,S=/[A-Z]/,A="number",R=/^(rgb|#)/,P=/(em|cm|mm|in|pt|pc|px)$/,O=/(em|cm|mm|in|pt|pc|px|%)$/,F=/(deg|rad|turn)$/,X="unitless",V=/(all|none) 0s ease 0s/,k=/^(width|height)$/,Z=" ",N=v.createElement("a"),I=["Webkit","Moz","O","ms"],L=["-webkit-","-moz-","-o-","-ms-"],U=function(l){if(l in N.style)return{dom:l,css:l};var E,_,b="",C=l.split("-");for(E=0;E<C.length;E++)b+=C[E].charAt(0).toUpperCase()+C[E].slice(1);for(E=0;E<I.length;E++)if(_=I[E]+b,_ in N.style)return{dom:_,css:L[E]+l}},q=t.support={bind:Function.prototype.bind,transform:U("transform"),transition:U("transition"),backface:U("backface-visibility"),timing:U("transition-timing-function")};if(q.transition){var te=q.timing.dom;if(N.style[te]=d["ease-in-back"][0],!N.style[te])for(var Y in h)d[Y][0]=h[Y]}var se=t.frame=function(){var l=m.requestAnimationFrame||m.webkitRequestAnimationFrame||m.mozRequestAnimationFrame||m.oRequestAnimationFrame||m.msRequestAnimationFrame;return l&&q.bind?l.bind(m):function(E){m.setTimeout(E,16)}}(),Ie=t.now=function(){var l=m.performance,E=l&&(l.now||l.webkitNow||l.msNow||l.mozNow);return E&&q.bind?E.bind(l):Date.now||function(){return+new Date}}(),ke=p(function(l){function E(z,oe){var de=g((""+z).split(Z)),ue=de[0];oe=oe||{};var be=it[ue];if(!be)return c("Unsupported property: "+ue);if(!oe.weak||!this.props[ue]){var De=be[0],Oe=this.props[ue];return Oe||(Oe=this.props[ue]=new De.Bare),Oe.init(this.$el,de,be,oe),Oe}}function _(z,oe,de){if(z){var ue=typeof z;if(oe||(this.timer&&this.timer.destroy(),this.queue=[],this.active=!1),ue=="number"&&oe)return this.timer=new ne({duration:z,context:this,complete:w}),void(this.active=!0);if(ue=="string"&&oe){switch(z){case"hide":M.call(this);break;case"stop":B.call(this);break;case"redraw":J.call(this);break;default:E.call(this,z,de&&de[1])}return w.call(this)}if(ue=="function")return void z.call(this,this);if(ue=="object"){var be=0;Le.call(this,z,function(Ee,FE){Ee.span>be&&(be=Ee.span),Ee.stop(),Ee.animate(FE)},function(Ee){"wait"in Ee&&(be=u(Ee.wait,0))}),he.call(this),be>0&&(this.timer=new ne({duration:be,context:this}),this.active=!0,oe&&(this.timer.complete=w));var De=this,Oe=!1,On={};se(function(){Le.call(De,z,function(Ee){Ee.active&&(Oe=!0,On[Ee.name]=Ee.nextStyle)}),Oe&&De.$el.css(On)})}}}function b(z){z=u(z,0),this.active?this.queue.push({options:z}):(this.timer=new ne({duration:z,context:this,complete:w}),this.active=!0)}function C(z){return this.active?(this.queue.push({options:z,args:arguments}),void(this.timer.complete=w)):c("No active transition timer. Use start() or wait() before then().")}function w(){if(this.timer&&this.timer.destroy(),this.active=!1,this.queue.length){var z=this.queue.shift();_.call(this,z.options,!0,z.args)}}function B(z){this.timer&&this.timer.destroy(),this.queue=[],this.active=!1;var oe;typeof z=="string"?(oe={},oe[z]=1):oe=typeof z=="object"&&z!=null?z:this.props,Le.call(this,oe,Te),he.call(this)}function Q(z){B.call(this,z),Le.call(this,z,$t,ME)}function H(z){typeof z!="string"&&(z="block"),this.el.style.display=z}function M(){B.call(this),this.el.style.display="none"}function J(){this.el.offsetHeight}function re(){B.call(this),e.removeData(this.el,T),this.$el=this.el=null}function he(){var z,oe,de=[];this.upstream&&de.push(this.upstream);for(z in this.props)oe=this.props[z],oe.active&&de.push(oe.string);de=de.join(","),this.style!==de&&(this.style=de,this.el.style[q.transition.dom]=de)}function Le(z,oe,de){var ue,be,De,Oe,On=oe!==Te,Ee={};for(ue in z)De=z[ue],ue in Be?(Ee.transform||(Ee.transform={}),Ee.transform[ue]=De):(S.test(ue)&&(ue=n(ue)),ue in it?Ee[ue]=De:(Oe||(Oe={}),Oe[ue]=De));for(ue in Ee){if(De=Ee[ue],be=this.props[ue],!be){if(!On)continue;be=E.call(this,ue)}oe.call(this,be,De)}de&&Oe&&de.call(this,Oe)}function Te(z){z.stop()}function $t(z,oe){z.set(oe)}function ME(z){this.$el.css(z)}function Me(z,oe){l[z]=function(){return this.children?DE.call(this,oe,arguments):(this.el&&oe.apply(this,arguments),this)}}function DE(z,oe){var de,ue=this.children.length;for(de=0;ue>de;de++)z.apply(this.children[de],oe);return this}l.init=function(z){if(this.$el=e(z),this.el=this.$el[0],this.props={},this.queue=[],this.style="",this.active=!1,j.keepInherited&&!j.fallback){var oe=ge(this.el,"transition");oe&&!V.test(oe)&&(this.upstream=oe)}q.backface&&j.hideBackface&&K(this.el,q.backface.css,"hidden")},Me("add",E),Me("start",_),Me("wait",b),Me("then",C),Me("next",w),Me("stop",B),Me("set",Q),Me("show",H),Me("hide",M),Me("redraw",J),Me("destroy",re)}),me=p(ke,function(l){function E(_,b){var C=e.data(_,T)||e.data(_,T,new ke.Bare);return C.el||C.init(_),b?C.start(b):C}l.init=function(_,b){var C=e(_);if(!C.length)return this;if(C.length===1)return E(C[0],b);var w=[];return C.each(function(B,Q){w.push(E(Q,b))}),this.children=w,this}}),x=p(function(l){function E(){var w=this.get();this.update("auto");var B=this.get();return this.update(w),B}function _(w,B,Q){return B!==void 0&&(Q=B),w in d?w:Q}function b(w){var B=/rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(w);return(B?i(B[1],B[2],B[3]):w).replace(/#(\w)(\w)(\w)$/,"#$1$1$2$2$3$3")}var C={duration:500,ease:"ease",delay:0};l.init=function(w,B,Q,H){this.$el=w,this.el=w[0];var M=B[0];Q[2]&&(M=Q[2]),vt[M]&&(M=vt[M]),this.name=M,this.type=Q[1],this.duration=u(B[1],this.duration,C.duration),this.ease=_(B[2],this.ease,C.ease),this.delay=u(B[3],this.delay,C.delay),this.span=this.duration+this.delay,this.active=!1,this.nextStyle=null,this.auto=k.test(this.name),this.unit=H.unit||this.unit||j.defaultUnit,this.angle=H.angle||this.angle||j.defaultAngle,j.fallback||H.fallback?this.animate=this.fallback:(this.animate=this.transition,this.string=this.name+Z+this.duration+"ms"+(this.ease!="ease"?Z+d[this.ease][0]:"")+(this.delay?Z+this.delay+"ms":""))},l.set=function(w){w=this.convert(w,this.type),this.update(w),this.redraw()},l.transition=function(w){this.active=!0,w=this.convert(w,this.type),this.auto&&(this.el.style[this.name]=="auto"&&(this.update(this.get()),this.redraw()),w=="auto"&&(w=E.call(this))),this.nextStyle=w},l.fallback=function(w){var B=this.el.style[this.name]||this.convert(this.get(),this.type);w=this.convert(w,this.type),this.auto&&(B=="auto"&&(B=this.convert(this.get(),this.type)),w=="auto"&&(w=E.call(this))),this.tween=new ee({from:B,to:w,duration:this.duration,delay:this.delay,ease:this.ease,update:this.update,context:this})},l.get=function(){return ge(this.el,this.name)},l.update=function(w){K(this.el,this.name,w)},l.stop=function(){(this.active||this.nextStyle)&&(this.active=!1,this.nextStyle=null,K(this.el,this.name,this.get()));var w=this.tween;w&&w.context&&w.destroy()},l.convert=function(w,B){if(w=="auto"&&this.auto)return w;var Q,H=typeof w=="number",M=typeof w=="string";switch(B){case A:if(H)return w;if(M&&w.replace(y,"")==="")return+w;Q="number(unitless)";break;case R:if(M){if(w===""&&this.original)return this.original;if(B.test(w))return w.charAt(0)=="#"&&w.length==7?w:b(w)}Q="hex or rgb string";break;case P:if(H)return w+this.unit;if(M&&B.test(w))return w;Q="number(px) or string(unit)";break;case O:if(H)return w+this.unit;if(M&&B.test(w))return w;Q="number(px) or string(unit or %)";break;case F:if(H)return w+this.angle;if(M&&B.test(w))return w;Q="number(deg) or string(angle)";break;case X:if(H||M&&O.test(w))return w;Q="number(unitless) or string(unit or %)"}return s(Q,w),w},l.redraw=function(){this.el.offsetHeight}}),G=p(x,function(l,E){l.init=function(){E.init.apply(this,arguments),this.original||(this.original=this.convert(this.get(),R))}}),W=p(x,function(l,E){l.init=function(){E.init.apply(this,arguments),this.animate=this.fallback},l.get=function(){return this.$el[this.name]()},l.update=function(_){this.$el[this.name](_)}}),D=p(x,function(l,E){function _(b,C){var w,B,Q,H,M;for(w in b)H=Be[w],Q=H[0],B=H[1]||w,M=this.convert(b[w],Q),C.call(this,B,M,Q)}l.init=function(){E.init.apply(this,arguments),this.current||(this.current={},Be.perspective&&j.perspective&&(this.current.perspective=j.perspective,K(this.el,this.name,this.style(this.current)),this.redraw()))},l.set=function(b){_.call(this,b,function(C,w){this.current[C]=w}),K(this.el,this.name,this.style(this.current)),this.redraw()},l.transition=function(b){var C=this.values(b);this.tween=new ie({current:this.current,values:C,duration:this.duration,delay:this.delay,ease:this.ease});var w,B={};for(w in this.current)B[w]=w in C?C[w]:this.current[w];this.active=!0,this.nextStyle=this.style(B)},l.fallback=function(b){var C=this.values(b);this.tween=new ie({current:this.current,values:C,duration:this.duration,delay:this.delay,ease:this.ease,update:this.update,context:this})},l.update=function(){K(this.el,this.name,this.style(this.current))},l.style=function(b){var C,w="";for(C in b)w+=C+"("+b[C]+") ";return w},l.values=function(b){var C,w={};return _.call(this,b,function(B,Q,H){w[B]=Q,this.current[B]===void 0&&(C=0,~B.indexOf("scale")&&(C=1),this.current[B]=this.convert(C,H))}),w}}),ee=p(function(l){function E(M){Q.push(M)===1&&se(_)}function _(){var M,J,re,he=Q.length;if(he)for(se(_),J=Ie(),M=he;M--;)re=Q[M],re&&re.render(J)}function b(M){var J,re=e.inArray(M,Q);re>=0&&(J=Q.slice(re+1),Q.length=re,J.length&&(Q=Q.concat(J)))}function C(M){return Math.round(M*H)/H}function w(M,J,re){return i(M[0]+re*(J[0]-M[0]),M[1]+re*(J[1]-M[1]),M[2]+re*(J[2]-M[2]))}var B={ease:d.ease[1],from:0,to:1};l.init=function(M){this.duration=M.duration||0,this.delay=M.delay||0;var J=M.ease||B.ease;d[J]&&(J=d[J][1]),typeof J!="function"&&(J=B.ease),this.ease=J,this.update=M.update||o,this.complete=M.complete||o,this.context=M.context||this,this.name=M.name;var re=M.from,he=M.to;re===void 0&&(re=B.from),he===void 0&&(he=B.to),this.unit=M.unit||"",typeof re=="number"&&typeof he=="number"?(this.begin=re,this.change=he-re):this.format(he,re),this.value=this.begin+this.unit,this.start=Ie(),M.autoplay!==!1&&this.play()},l.play=function(){this.active||(this.start||(this.start=Ie()),this.active=!0,E(this))},l.stop=function(){this.active&&(this.active=!1,b(this))},l.render=function(M){var J,re=M-this.start;if(this.delay){if(re<=this.delay)return;re-=this.delay}if(re<this.duration){var he=this.ease(re,0,1,this.duration);return J=this.startRGB?w(this.startRGB,this.endRGB,he):C(this.begin+he*this.change),this.value=J+this.unit,void this.update.call(this.context,this.value)}J=this.endHex||this.begin+this.change,this.value=J+this.unit,this.update.call(this.context,this.value),this.complete.call(this.context),this.destroy()},l.format=function(M,J){if(J+="",M+="",M.charAt(0)=="#")return this.startRGB=r(J),this.endRGB=r(M),this.endHex=M,this.begin=0,void(this.change=1);if(!this.unit){var re=J.replace(y,""),he=M.replace(y,"");re!==he&&a("tween",J,M),this.unit=re}J=parseFloat(J),M=parseFloat(M),this.begin=this.value=J,this.change=M-J},l.destroy=function(){this.stop(),this.context=null,this.ease=this.update=this.complete=o};var Q=[],H=1e3}),ne=p(ee,function(l){l.init=function(E){this.duration=E.duration||0,this.complete=E.complete||o,this.context=E.context,this.play()},l.render=function(E){var _=E-this.start;_<this.duration||(this.complete.call(this.context),this.destroy())}}),ie=p(ee,function(l,E){l.init=function(_){this.context=_.context,this.update=_.update,this.tweens=[],this.current=_.current;var b,C;for(b in _.values)C=_.values[b],this.current[b]!==C&&this.tweens.push(new ee({name:b,from:this.current[b],to:C,duration:_.duration,delay:_.delay,ease:_.ease,autoplay:!1}));this.play()},l.render=function(_){var b,C,w=this.tweens.length,B=!1;for(b=w;b--;)C=this.tweens[b],C.context&&(C.render(_),this.current[C.name]=C.value,B=!0);return B?void(this.update&&this.update.call(this.context)):this.destroy()},l.destroy=function(){if(E.destroy.call(this),this.tweens){var _,b=this.tweens.length;for(_=b;_--;)this.tweens[_].destroy();this.tweens=null,this.current=null}}}),j=t.config={debug:!1,defaultUnit:"px",defaultAngle:"deg",keepInherited:!1,hideBackface:!1,perspective:"",fallback:!q.transition,agentTests:[]};t.fallback=function(l){if(!q.transition)return j.fallback=!0;j.agentTests.push("("+l+")");var E=new RegExp(j.agentTests.join("|"),"i");j.fallback=E.test(navigator.userAgent)},t.fallback("6.0.[2-5] Safari"),t.tween=function(l){return new ee(l)},t.delay=function(l,E,_){return new ne({complete:E,duration:l,context:_})},e.fn.tram=function(l){return t.call(null,this,l)};var K=e.style,ge=e.css,vt={transform:q.transform&&q.transform.css},it={color:[G,R],background:[G,R,"background-color"],"outline-color":[G,R],"border-color":[G,R],"border-top-color":[G,R],"border-right-color":[G,R],"border-bottom-color":[G,R],"border-left-color":[G,R],"border-width":[x,P],"border-top-width":[x,P],"border-right-width":[x,P],"border-bottom-width":[x,P],"border-left-width":[x,P],"border-spacing":[x,P],"letter-spacing":[x,P],margin:[x,P],"margin-top":[x,P],"margin-right":[x,P],"margin-bottom":[x,P],"margin-left":[x,P],padding:[x,P],"padding-top":[x,P],"padding-right":[x,P],"padding-bottom":[x,P],"padding-left":[x,P],"outline-width":[x,P],opacity:[x,A],top:[x,O],right:[x,O],bottom:[x,O],left:[x,O],"font-size":[x,O],"text-indent":[x,O],"word-spacing":[x,O],width:[x,O],"min-width":[x,O],"max-width":[x,O],height:[x,O],"min-height":[x,O],"max-height":[x,O],"line-height":[x,X],"scroll-top":[W,A,"scrollTop"],"scroll-left":[W,A,"scrollLeft"]},Be={};q.transform&&(it.transform=[D],Be={x:[O,"translateX"],y:[O,"translateY"],rotate:[F],rotateX:[F],rotateY:[F],scale:[A],scaleX:[A],scaleY:[A],skew:[F],skewX:[F],skewY:[F]}),q.transform&&q.backface&&(Be.z=[O,"translateZ"],Be.rotateZ=[F],Be.scaleZ=[A],Be.perspective=[P]);var wn=/ms/,Yt=/s|\./;return e.tram=t}(window.jQuery)});var fa=f((AF,la)=>{"use strict";var kE=window.$,BE=Br()&&kE.tram;la.exports=function(){var e={};e.VERSION="1.6.0-Webflow";var t={},n=Array.prototype,r=Object.prototype,i=Function.prototype,o=n.push,s=n.slice,a=n.concat,u=r.toString,c=r.hasOwnProperty,g=n.forEach,p=n.map,d=n.reduce,h=n.reduceRight,v=n.filter,m=n.every,T=n.some,y=n.indexOf,S=n.lastIndexOf,A=Array.isArray,R=Object.keys,P=i.bind,O=e.each=e.forEach=function(I,L,U){if(I==null)return I;if(g&&I.forEach===g)I.forEach(L,U);else if(I.length===+I.length){for(var q=0,te=I.length;q<te;q++)if(L.call(U,I[q],q,I)===t)return}else for(var Y=e.keys(I),q=0,te=Y.length;q<te;q++)if(L.call(U,I[Y[q]],Y[q],I)===t)return;return I};e.map=e.collect=function(I,L,U){var q=[];return I==null?q:p&&I.map===p?I.map(L,U):(O(I,function(te,Y,se){q.push(L.call(U,te,Y,se))}),q)},e.find=e.detect=function(I,L,U){var q;return F(I,function(te,Y,se){if(L.call(U,te,Y,se))return q=te,!0}),q},e.filter=e.select=function(I,L,U){var q=[];return I==null?q:v&&I.filter===v?I.filter(L,U):(O(I,function(te,Y,se){L.call(U,te,Y,se)&&q.push(te)}),q)};var F=e.some=e.any=function(I,L,U){L||(L=e.identity);var q=!1;return I==null?q:T&&I.some===T?I.some(L,U):(O(I,function(te,Y,se){if(q||(q=L.call(U,te,Y,se)))return t}),!!q)};e.contains=e.include=function(I,L){return I==null?!1:y&&I.indexOf===y?I.indexOf(L)!=-1:F(I,function(U){return U===L})},e.delay=function(I,L){var U=s.call(arguments,2);return setTimeout(function(){return I.apply(null,U)},L)},e.defer=function(I){return e.delay.apply(e,[I,1].concat(s.call(arguments,1)))},e.throttle=function(I){var L,U,q;return function(){L||(L=!0,U=arguments,q=this,BE.frame(function(){L=!1,I.apply(q,U)}))}},e.debounce=function(I,L,U){var q,te,Y,se,Ie,ke=function(){var me=e.now()-se;me<L?q=setTimeout(ke,L-me):(q=null,U||(Ie=I.apply(Y,te),Y=te=null))};return function(){Y=this,te=arguments,se=e.now();var me=U&&!q;return q||(q=setTimeout(ke,L)),me&&(Ie=I.apply(Y,te),Y=te=null),Ie}},e.defaults=function(I){if(!e.isObject(I))return I;for(var L=1,U=arguments.length;L<U;L++){var q=arguments[L];for(var te in q)I[te]===void 0&&(I[te]=q[te])}return I},e.keys=function(I){if(!e.isObject(I))return[];if(R)return R(I);var L=[];for(var U in I)e.has(I,U)&&L.push(U);return L},e.has=function(I,L){return c.call(I,L)},e.isObject=function(I){return I===Object(I)},e.now=Date.now||function(){return new Date().getTime()},e.templateSettings={evaluate:/<%([\s\S]+?)%>/g,interpolate:/<%=([\s\S]+?)%>/g,escape:/<%-([\s\S]+?)%>/g};var X=/(.)^/,V={"'":"'","\\":"\\","\r":"r","\n":"n","\u2028":"u2028","\u2029":"u2029"},k=/\\|'|\r|\n|\u2028|\u2029/g,Z=function(I){return"\\"+V[I]},N=/^\s*(\w|\$)+\s*$/;return e.template=function(I,L,U){!L&&U&&(L=U),L=e.defaults({},L,e.templateSettings);var q=RegExp([(L.escape||X).source,(L.interpolate||X).source,(L.evaluate||X).source].join("|")+"|$","g"),te=0,Y="__p+='";I.replace(q,function(me,x,G,W,D){return Y+=I.slice(te,D).replace(k,Z),te=D+me.length,x?Y+=`'+
-((__t=(`+x+`))==null?'':_.escape(__t))+
-'`:G?Y+=`'+
-((__t=(`+G+`))==null?'':__t)+
-'`:W&&(Y+=`';
-`+W+`
-__p+='`),me}),Y+=`';
-`;var se=L.variable;if(se){if(!N.test(se))throw new Error("variable is not a bare identifier: "+se)}else Y=`with(obj||{}){
-`+Y+`}
-`,se="obj";Y=`var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
-`+Y+`return __p;
-`;var Ie;try{Ie=new Function(L.variable||"obj","_",Y)}catch(me){throw me.source=Y,me}var ke=function(me){return Ie.call(this,me,e)};return ke.source="function("+se+`){
-`+Y+"}",ke},e}()});var ze=f((SF,va)=>{"use strict";var ce={},_t={},It=[],Wr=window.Webflow||[],ot=window.jQuery,qe=ot(window),HE=ot(document),We=ot.isFunction,Fe=ce._=fa(),pa=ce.tram=Br()&&ot.tram,Cn=!1,zr=!1;pa.config.hideBackface=!1;pa.config.keepInherited=!0;ce.define=function(e,t,n){_t[e]&&ha(_t[e]);var r=_t[e]=t(ot,Fe,n)||{};return ga(r),r};ce.require=function(e){return _t[e]};function ga(e){ce.env()&&(We(e.design)&&qe.on("__wf_design",e.design),We(e.preview)&&qe.on("__wf_preview",e.preview)),We(e.destroy)&&qe.on("__wf_destroy",e.destroy),e.ready&&We(e.ready)&&WE(e)}function WE(e){if(Cn){e.ready();return}Fe.contains(It,e.ready)||It.push(e.ready)}function ha(e){We(e.design)&&qe.off("__wf_design",e.design),We(e.preview)&&qe.off("__wf_preview",e.preview),We(e.destroy)&&qe.off("__wf_destroy",e.destroy),e.ready&&We(e.ready)&&zE(e)}function zE(e){It=Fe.filter(It,function(t){return t!==e.ready})}ce.push=function(e){if(Cn){We(e)&&e();return}Wr.push(e)};ce.env=function(e){var t=window.__wf_design,n=typeof t<"u";if(!e)return n;if(e==="design")return n&&t;if(e==="preview")return n&&!t;if(e==="slug")return n&&window.__wf_slug;if(e==="editor")return window.WebflowEditor;if(e==="test")return window.__wf_test;if(e==="frame")return window!==window.top};var Rn=navigator.userAgent.toLowerCase(),Ea=ce.env.touch="ontouchstart"in window||window.DocumentTouch&&document instanceof window.DocumentTouch,jE=ce.env.chrome=/chrome/.test(Rn)&&/Google/.test(navigator.vendor)&&parseInt(Rn.match(/chrome\/(\d+)\./)[1],10),KE=ce.env.ios=/(ipod|iphone|ipad)/.test(Rn);ce.env.safari=/safari/.test(Rn)&&!jE&&!KE;var Hr;Ea&&HE.on("touchstart mousedown",function(e){Hr=e.target});ce.validClick=Ea?function(e){return e===Hr||ot.contains(e,Hr)}:function(){return!0};var ya="resize.webflow orientationchange.webflow load.webflow",YE="scroll.webflow "+ya;ce.resize=jr(qe,ya);ce.scroll=jr(qe,YE);ce.redraw=jr();function jr(e,t){var n=[],r={};return r.up=Fe.throttle(function(i){Fe.each(n,function(o){o(i)})}),e&&t&&e.on(t,r.up),r.on=function(i){typeof i=="function"&&(Fe.contains(n,i)||n.push(i))},r.off=function(i){if(!arguments.length){n=[];return}n=Fe.filter(n,function(o){return o!==i})},r}ce.location=function(e){window.location=e};ce.env()&&(ce.location=function(){});ce.ready=function(){Cn=!0,zr?$E():Fe.each(It,da),Fe.each(Wr,da),ce.resize.up()};function da(e){We(e)&&e()}function $E(){zr=!1,Fe.each(_t,ga)}var ft;ce.load=function(e){ft.then(e)};function ma(){ft&&(ft.reject(),qe.off("load",ft.resolve)),ft=new ot.Deferred,qe.on("load",ft.resolve)}ce.destroy=function(e){e=e||{},zr=!0,qe.triggerHandler("__wf_destroy"),e.domready!=null&&(Cn=e.domready),Fe.each(_t,ha),ce.resize.off(),ce.scroll.off(),ce.redraw.off(),It=[],Wr=[],ft.state()==="pending"&&ma()};ot(ce.ready);ma();va.exports=window.Webflow=ce});var Ta=f((wF,Ia)=>{"use strict";var _a=ze();_a.define("brand",Ia.exports=function(e){var t={},n=document,r=e("html"),i=e("body"),o=".w-webflow-badge",s=window.location,a=/PhantomJS/i.test(navigator.userAgent),u="fullscreenchange webkitfullscreenchange mozfullscreenchange msfullscreenchange",c;t.ready=function(){var h=r.attr("data-wf-status"),v=r.attr("data-wf-domain")||"";/\.webflow\.io$/i.test(v)&&s.hostname!==v&&(h=!0),h&&!a&&(c=c||p(),d(),setTimeout(d,500),e(n).off(u,g).on(u,g))};function g(){var h=n.fullScreen||n.mozFullScreen||n.webkitIsFullScreen||n.msFullscreenElement||!!n.webkitFullscreenElement;e(c).attr("style",h?"display: none !important;":"")}function p(){var h=e('<a class="w-webflow-badge"></a>').attr("href","https://webflow.com?utm_campaign=brandjs"),v=e("<img>").attr("src","https://d3e54v103j8qbb.cloudfront.net/img/webflow-badge-icon-d2.89e12c322e.svg").attr("alt","").css({marginRight:"4px",width:"26px"}),m=e("<img>").attr("src","https://d3e54v103j8qbb.cloudfront.net/img/webflow-badge-text-d2.c82cec3b78.svg").attr("alt","Made in Webflow");return h.append(v,m),h[0]}function d(){var h=i.children(o),v=h.length&&h.get(0)===c,m=_a.env("editor");if(v){m&&h.remove();return}h.length&&h.remove(),m||i.append(c)}return t})});var Aa=f((OF,ba)=>{"use strict";var Kr=ze();Kr.define("edit",ba.exports=function(e,t,n){if(n=n||{},(Kr.env("test")||Kr.env("frame"))&&!n.fixture&&!QE())return{exit:1};var r={},i=e(window),o=e(document.documentElement),s=document.location,a="hashchange",u,c=n.load||d,g=!1;try{g=localStorage&&localStorage.getItem&&localStorage.getItem("WebflowEditor")}catch{}g?c():s.search?(/[?&](edit)(?:[=&?]|$)/.test(s.search)||/\?edit$/.test(s.href))&&c():i.on(a,p).triggerHandler(a);function p(){u||/\?edit/.test(s.hash)&&c()}function d(){u=!0,window.WebflowEditor=!0,i.off(a,p),S(function(R){e.ajax({url:y("https://editor-api.webflow.com/api/editor/view"),data:{siteId:o.attr("data-wf-site")},xhrFields:{withCredentials:!0},dataType:"json",crossDomain:!0,success:h(R)})})}function h(R){return function(P){if(!P){console.error("Could not load editor data");return}P.thirdPartyCookiesSupported=R,v(T(P.scriptPath),function(){window.WebflowEditor(P)})}}function v(R,P){e.ajax({type:"GET",url:R,dataType:"script",cache:!0}).then(P,m)}function m(R,P,O){throw console.error("Could not load editor script: "+P),O}function T(R){return R.indexOf("//")>=0?R:y("https://editor-api.webflow.com"+R)}function y(R){return R.replace(/([^:])\/\//g,"$1/")}function S(R){var P=window.document.createElement("iframe");P.src="https://webflow.com/site/third-party-cookie-check.html",P.style.display="none",P.sandbox="allow-scripts allow-same-origin";var O=function(F){F.data==="WF_third_party_cookies_unsupported"?(A(P,O),R(!1)):F.data==="WF_third_party_cookies_supported"&&(A(P,O),R(!0))};P.onerror=function(){A(P,O),R(!1)},window.addEventListener("message",O,!1),window.document.body.appendChild(P)}function A(R,P){window.removeEventListener("message",P,!1),R.remove()}return r});function QE(){try{return window.top.__Cypress__}catch{return!1}}});var wa=f((xF,Sa)=>{"use strict";var ZE=ze();ZE.define("focus-visible",Sa.exports=function(){function e(n){var r=!0,i=!1,o=null,s={text:!0,search:!0,url:!0,tel:!0,email:!0,password:!0,number:!0,date:!0,month:!0,week:!0,time:!0,datetime:!0,"datetime-local":!0};function a(A){return!!(A&&A!==document&&A.nodeName!=="HTML"&&A.nodeName!=="BODY"&&"classList"in A&&"contains"in A.classList)}function u(A){var R=A.type,P=A.tagName;return!!(P==="INPUT"&&s[R]&&!A.readOnly||P==="TEXTAREA"&&!A.readOnly||A.isContentEditable)}function c(A){A.getAttribute("data-wf-focus-visible")||A.setAttribute("data-wf-focus-visible","true")}function g(A){A.getAttribute("data-wf-focus-visible")&&A.removeAttribute("data-wf-focus-visible")}function p(A){A.metaKey||A.altKey||A.ctrlKey||(a(n.activeElement)&&c(n.activeElement),r=!0)}function d(){r=!1}function h(A){a(A.target)&&(r||u(A.target))&&c(A.target)}function v(A){a(A.target)&&A.target.hasAttribute("data-wf-focus-visible")&&(i=!0,window.clearTimeout(o),o=window.setTimeout(function(){i=!1},100),g(A.target))}function m(){document.visibilityState==="hidden"&&(i&&(r=!0),T())}function T(){document.addEventListener("mousemove",S),document.addEventListener("mousedown",S),document.addEventListener("mouseup",S),document.addEventListener("pointermove",S),document.addEventListener("pointerdown",S),document.addEventListener("pointerup",S),document.addEventListener("touchmove",S),document.addEventListener("touchstart",S),document.addEventListener("touchend",S)}function y(){document.removeEventListener("mousemove",S),document.removeEventListener("mousedown",S),document.removeEventListener("mouseup",S),document.removeEventListener("pointermove",S),document.removeEventListener("pointerdown",S),document.removeEventListener("pointerup",S),document.removeEventListener("touchmove",S),document.removeEventListener("touchstart",S),document.removeEventListener("touchend",S)}function S(A){A.target.nodeName&&A.target.nodeName.toLowerCase()==="html"||(r=!1,y())}document.addEventListener("keydown",p,!0),document.addEventListener("mousedown",d,!0),document.addEventListener("pointerdown",d,!0),document.addEventListener("touchstart",d,!0),document.addEventListener("visibilitychange",m,!0),T(),n.addEventListener("focus",h,!0),n.addEventListener("blur",v,!0)}function t(){if(typeof document<"u")try{document.querySelector(":focus-visible")}catch{e(document)}}return{ready:t}})});var Ra=f((RF,xa)=>{"use strict";var Oa=ze();Oa.define("focus",xa.exports=function(){var e=[],t=!1;function n(s){t&&(s.preventDefault(),s.stopPropagation(),s.stopImmediatePropagation(),e.unshift(s))}function r(s){var a=s.target,u=a.tagName;return/^a$/i.test(u)&&a.href!=null||/^(button|textarea)$/i.test(u)&&a.disabled!==!0||/^input$/i.test(u)&&/^(button|reset|submit|radio|checkbox)$/i.test(a.type)&&!a.disabled||!/^(button|input|textarea|select|a)$/i.test(u)&&!Number.isNaN(Number.parseFloat(a.tabIndex))||/^audio$/i.test(u)||/^video$/i.test(u)&&a.controls===!0}function i(s){r(s)&&(t=!0,setTimeout(()=>{for(t=!1,s.target.focus();e.length>0;){var a=e.pop();a.target.dispatchEvent(new MouseEvent(a.type,a))}},0))}function o(){typeof document<"u"&&document.body.hasAttribute("data-wf-focus-within")&&Oa.env.safari&&(document.addEventListener("mousedown",i,!0),document.addEventListener("mouseup",n,!0),document.addEventListener("click",n,!0))}return{ready:o}})});var La=f((CF,Pa)=>{"use strict";var Yr=window.jQuery,je={},Pn=[],Ca=".w-ix",Ln={reset:function(e,t){t.__wf_intro=null},intro:function(e,t){t.__wf_intro||(t.__wf_intro=!0,Yr(t).triggerHandler(je.types.INTRO))},outro:function(e,t){t.__wf_intro&&(t.__wf_intro=null,Yr(t).triggerHandler(je.types.OUTRO))}};je.triggers={};je.types={INTRO:"w-ix-intro"+Ca,OUTRO:"w-ix-outro"+Ca};je.init=function(){for(var e=Pn.length,t=0;t<e;t++){var n=Pn[t];n[0](0,n[1])}Pn=[],Yr.extend(je.triggers,Ln)};je.async=function(){for(var e in Ln){var t=Ln[e];Ln.hasOwnProperty(e)&&(je.triggers[e]=function(n,r){Pn.push([t,r])})}};je.async();Pa.exports=je});var Fa=f((PF,Da)=>{"use strict";var $r=La();function Na(e,t){var n=document.createEvent("CustomEvent");n.initCustomEvent(t,!0,!0,null),e.dispatchEvent(n)}var JE=window.jQuery,Nn={},Ma=".w-ix",ey={reset:function(e,t){$r.triggers.reset(e,t)},intro:function(e,t){$r.triggers.intro(e,t),Na(t,"COMPONENT_ACTIVE")},outro:function(e,t){$r.triggers.outro(e,t),Na(t,"COMPONENT_INACTIVE")}};Nn.triggers={};Nn.types={INTRO:"w-ix-intro"+Ma,OUTRO:"w-ix-outro"+Ma};JE.extend(Nn.triggers,ey);Da.exports=Nn});var Qr=f((LF,qa)=>{var ty=typeof global=="object"&&global&&global.Object===Object&&global;qa.exports=ty});var Ge=f((NF,Ga)=>{var ny=Qr(),ry=typeof self=="object"&&self&&self.Object===Object&&self,iy=ny||ry||Function("return this")();Ga.exports=iy});var Tt=f((MF,Xa)=>{var oy=Ge(),ay=oy.Symbol;Xa.exports=ay});var Ba=f((DF,ka)=>{var Va=Tt(),Ua=Object.prototype,sy=Ua.hasOwnProperty,uy=Ua.toString,Qt=Va?Va.toStringTag:void 0;function cy(e){var t=sy.call(e,Qt),n=e[Qt];try{e[Qt]=void 0;var r=!0}catch{}var i=uy.call(e);return r&&(t?e[Qt]=n:delete e[Qt]),i}ka.exports=cy});var Wa=f((FF,Ha)=>{var ly=Object.prototype,fy=ly.toString;function dy(e){return fy.call(e)}Ha.exports=dy});var at=f((qF,Ka)=>{var za=Tt(),py=Ba(),gy=Wa(),hy="[object Null]",Ey="[object Undefined]",ja=za?za.toStringTag:void 0;function yy(e){return e==null?e===void 0?Ey:hy:ja&&ja in Object(e)?py(e):gy(e)}Ka.exports=yy});var Zr=f((GF,Ya)=>{function my(e,t){return function(n){return e(t(n))}}Ya.exports=my});var Jr=f((XF,$a)=>{var vy=Zr(),_y=vy(Object.getPrototypeOf,Object);$a.exports=_y});var Je=f((VF,Qa)=>{function Iy(e){return e!=null&&typeof e=="object"}Qa.exports=Iy});var ei=f((UF,Ja)=>{var Ty=at(),by=Jr(),Ay=Je(),Sy="[object Object]",wy=Function.prototype,Oy=Object.prototype,Za=wy.toString,xy=Oy.hasOwnProperty,Ry=Za.call(Object);function Cy(e){if(!Ay(e)||Ty(e)!=Sy)return!1;var t=by(e);if(t===null)return!0;var n=xy.call(t,"constructor")&&t.constructor;return typeof n=="function"&&n instanceof n&&Za.call(n)==Ry}Ja.exports=Cy});var es=f(ti=>{"use strict";Object.defineProperty(ti,"__esModule",{value:!0});ti.default=Py;function Py(e){var t,n=e.Symbol;return typeof n=="function"?n.observable?t=n.observable:(t=n("observable"),n.observable=t):t="@@observable",t}});var ts=f((ri,ni)=>{"use strict";Object.defineProperty(ri,"__esModule",{value:!0});var Ly=es(),Ny=My(Ly);function My(e){return e&&e.__esModule?e:{default:e}}var bt;typeof self<"u"?bt=self:typeof window<"u"?bt=window:typeof global<"u"?bt=global:typeof ni<"u"?bt=ni:bt=Function("return this")();var Dy=(0,Ny.default)(bt);ri.default=Dy});var ii=f(Zt=>{"use strict";Zt.__esModule=!0;Zt.ActionTypes=void 0;Zt.default=os;var Fy=ei(),qy=is(Fy),Gy=ts(),ns=is(Gy);function is(e){return e&&e.__esModule?e:{default:e}}var rs=Zt.ActionTypes={INIT:"@@redux/INIT"};function os(e,t,n){var r;if(typeof t=="function"&&typeof n>"u"&&(n=t,t=void 0),typeof n<"u"){if(typeof n!="function")throw new Error("Expected the enhancer to be a function.");return n(os)(e,t)}if(typeof e!="function")throw new Error("Expected the reducer to be a function.");var i=e,o=t,s=[],a=s,u=!1;function c(){a===s&&(a=s.slice())}function g(){return o}function p(m){if(typeof m!="function")throw new Error("Expected listener to be a function.");var T=!0;return c(),a.push(m),function(){if(T){T=!1,c();var S=a.indexOf(m);a.splice(S,1)}}}function d(m){if(!(0,qy.default)(m))throw new Error("Actions must be plain objects. Use custom middleware for async actions.");if(typeof m.type>"u")throw new Error('Actions may not have an undefined "type" property. Have you misspelled a constant?');if(u)throw new Error("Reducers may not dispatch actions.");try{u=!0,o=i(o,m)}finally{u=!1}for(var T=s=a,y=0;y<T.length;y++)T[y]();return m}function h(m){if(typeof m!="function")throw new Error("Expected the nextReducer to be a function.");i=m,d({type:rs.INIT})}function v(){var m,T=p;return m={subscribe:function(S){if(typeof S!="object")throw new TypeError("Expected the observer to be an object.");function A(){S.next&&S.next(g())}A();var R=T(A);return{unsubscribe:R}}},m[ns.default]=function(){return this},m}return d({type:rs.INIT}),r={dispatch:d,subscribe:p,getState:g,replaceReducer:h},r[ns.default]=v,r}});var ai=f(oi=>{"use strict";oi.__esModule=!0;oi.default=Xy;function Xy(e){typeof console<"u"&&typeof console.error=="function"&&console.error(e);try{throw new Error(e)}catch{}}});var us=f(si=>{"use strict";si.__esModule=!0;si.default=Hy;var as=ii(),Vy=ei(),WF=ss(Vy),Uy=ai(),zF=ss(Uy);function ss(e){return e&&e.__esModule?e:{default:e}}function ky(e,t){var n=t&&t.type,r=n&&'"'+n.toString()+'"'||"an action";return"Given action "+r+', reducer "'+e+'" returned undefined. To ignore an action, you must explicitly return the previous state.'}function By(e){Object.keys(e).forEach(function(t){var n=e[t],r=n(void 0,{type:as.ActionTypes.INIT});if(typeof r>"u")throw new Error('Reducer "'+t+'" returned undefined during initialization. If the state passed to the reducer is undefined, you must explicitly return the initial state. The initial state may not be undefined.');var i="@@redux/PROBE_UNKNOWN_ACTION_"+Math.random().toString(36).substring(7).split("").join(".");if(typeof n(void 0,{type:i})>"u")throw new Error('Reducer "'+t+'" returned undefined when probed with a random type. '+("Don't try to handle "+as.ActionTypes.INIT+' or other actions in "redux/*" ')+"namespace. They are considered private. Instead, you must return the current state for any unknown actions, unless it is undefined, in which case you must return the initial state, regardless of the action type. The initial state may not be undefined.")})}function Hy(e){for(var t=Object.keys(e),n={},r=0;r<t.length;r++){var i=t[r];typeof e[i]=="function"&&(n[i]=e[i])}var o=Object.keys(n);if(!1)var s;var a;try{By(n)}catch(u){a=u}return function(){var c=arguments.length<=0||arguments[0]===void 0?{}:arguments[0],g=arguments[1];if(a)throw a;if(!1)var p;for(var d=!1,h={},v=0;v<o.length;v++){var m=o[v],T=n[m],y=c[m],S=T(y,g);if(typeof S>"u"){var A=ky(m,g);throw new Error(A)}h[m]=S,d=d||S!==y}return d?h:c}}});var ls=f(ui=>{"use strict";ui.__esModule=!0;ui.default=Wy;function cs(e,t){return function(){return t(e.apply(void 0,arguments))}}function Wy(e,t){if(typeof e=="function")return cs(e,t);if(typeof e!="object"||e===null)throw new Error("bindActionCreators expected an object or a function, instead received "+(e===null?"null":typeof e)+'. Did you write "import ActionCreators from" instead of "import * as ActionCreators from"?');for(var n=Object.keys(e),r={},i=0;i<n.length;i++){var o=n[i],s=e[o];typeof s=="function"&&(r[o]=cs(s,t))}return r}});var li=f(ci=>{"use strict";ci.__esModule=!0;ci.default=zy;function zy(){for(var e=arguments.length,t=Array(e),n=0;n<e;n++)t[n]=arguments[n];if(t.length===0)return function(o){return o};if(t.length===1)return t[0];var r=t[t.length-1],i=t.slice(0,-1);return function(){return i.reduceRight(function(o,s){return s(o)},r.apply(void 0,arguments))}}});var fs=f(fi=>{"use strict";fi.__esModule=!0;var jy=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e};fi.default=Qy;var Ky=li(),Yy=$y(Ky);function $y(e){return e&&e.__esModule?e:{default:e}}function Qy(){for(var e=arguments.length,t=Array(e),n=0;n<e;n++)t[n]=arguments[n];return function(r){return function(i,o,s){var a=r(i,o,s),u=a.dispatch,c=[],g={getState:a.getState,dispatch:function(d){return u(d)}};return c=t.map(function(p){return p(g)}),u=Yy.default.apply(void 0,c)(a.dispatch),jy({},a,{dispatch:u})}}}});var di=f(Ne=>{"use strict";Ne.__esModule=!0;Ne.compose=Ne.applyMiddleware=Ne.bindActionCreators=Ne.combineReducers=Ne.createStore=void 0;var Zy=ii(),Jy=At(Zy),em=us(),tm=At(em),nm=ls(),rm=At(nm),im=fs(),om=At(im),am=li(),sm=At(am),um=ai(),QF=At(um);function At(e){return e&&e.__esModule?e:{default:e}}Ne.createStore=Jy.default;Ne.combineReducers=tm.default;Ne.bindActionCreators=rm.default;Ne.applyMiddleware=om.default;Ne.compose=sm.default});var Xe,pi,Ke,cm,lm,Mn,fm,gi=fe(()=>{"use strict";Xe={NAVBAR_OPEN:"NAVBAR_OPEN",NAVBAR_CLOSE:"NAVBAR_CLOSE",TAB_ACTIVE:"TAB_ACTIVE",TAB_INACTIVE:"TAB_INACTIVE",SLIDER_ACTIVE:"SLIDER_ACTIVE",SLIDER_INACTIVE:"SLIDER_INACTIVE",DROPDOWN_OPEN:"DROPDOWN_OPEN",DROPDOWN_CLOSE:"DROPDOWN_CLOSE",MOUSE_CLICK:"MOUSE_CLICK",MOUSE_SECOND_CLICK:"MOUSE_SECOND_CLICK",MOUSE_DOWN:"MOUSE_DOWN",MOUSE_UP:"MOUSE_UP",MOUSE_OVER:"MOUSE_OVER",MOUSE_OUT:"MOUSE_OUT",MOUSE_MOVE:"MOUSE_MOVE",MOUSE_MOVE_IN_VIEWPORT:"MOUSE_MOVE_IN_VIEWPORT",SCROLL_INTO_VIEW:"SCROLL_INTO_VIEW",SCROLL_OUT_OF_VIEW:"SCROLL_OUT_OF_VIEW",SCROLLING_IN_VIEW:"SCROLLING_IN_VIEW",ECOMMERCE_CART_OPEN:"ECOMMERCE_CART_OPEN",ECOMMERCE_CART_CLOSE:"ECOMMERCE_CART_CLOSE",PAGE_START:"PAGE_START",PAGE_FINISH:"PAGE_FINISH",PAGE_SCROLL_UP:"PAGE_SCROLL_UP",PAGE_SCROLL_DOWN:"PAGE_SCROLL_DOWN",PAGE_SCROLL:"PAGE_SCROLL"},pi={ELEMENT:"ELEMENT",CLASS:"CLASS",PAGE:"PAGE"},Ke={ELEMENT:"ELEMENT",VIEWPORT:"VIEWPORT"},cm={X_AXIS:"X_AXIS",Y_AXIS:"Y_AXIS"},lm={CHILDREN:"CHILDREN",SIBLINGS:"SIBLINGS",IMMEDIATE_CHILDREN:"IMMEDIATE_CHILDREN"},Mn={FADE_EFFECT:"FADE_EFFECT",SLIDE_EFFECT:"SLIDE_EFFECT",GROW_EFFECT:"GROW_EFFECT",SHRINK_EFFECT:"SHRINK_EFFECT",SPIN_EFFECT:"SPIN_EFFECT",FLY_EFFECT:"FLY_EFFECT",POP_EFFECT:"POP_EFFECT",FLIP_EFFECT:"FLIP_EFFECT",JIGGLE_EFFECT:"JIGGLE_EFFECT",PULSE_EFFECT:"PULSE_EFFECT",DROP_EFFECT:"DROP_EFFECT",BLINK_EFFECT:"BLINK_EFFECT",BOUNCE_EFFECT:"BOUNCE_EFFECT",FLIP_LEFT_TO_RIGHT_EFFECT:"FLIP_LEFT_TO_RIGHT_EFFECT",FLIP_RIGHT_TO_LEFT_EFFECT:"FLIP_RIGHT_TO_LEFT_EFFECT",RUBBER_BAND_EFFECT:"RUBBER_BAND_EFFECT",JELLO_EFFECT:"JELLO_EFFECT",GROW_BIG_EFFECT:"GROW_BIG_EFFECT",SHRINK_BIG_EFFECT:"SHRINK_BIG_EFFECT",PLUGIN_LOTTIE_EFFECT:"PLUGIN_LOTTIE_EFFECT"},fm={LEFT:"LEFT",RIGHT:"RIGHT",BOTTOM:"BOTTOM",TOP:"TOP",BOTTOM_LEFT:"BOTTOM_LEFT",BOTTOM_RIGHT:"BOTTOM_RIGHT",TOP_RIGHT:"TOP_RIGHT",TOP_LEFT:"TOP_LEFT",CLOCKWISE:"CLOCKWISE",COUNTER_CLOCKWISE:"COUNTER_CLOCKWISE"}});var Ae,dm,Dn=fe(()=>{"use strict";Ae={TRANSFORM_MOVE:"TRANSFORM_MOVE",TRANSFORM_SCALE:"TRANSFORM_SCALE",TRANSFORM_ROTATE:"TRANSFORM_ROTATE",TRANSFORM_SKEW:"TRANSFORM_SKEW",STYLE_OPACITY:"STYLE_OPACITY",STYLE_SIZE:"STYLE_SIZE",STYLE_FILTER:"STYLE_FILTER",STYLE_FONT_VARIATION:"STYLE_FONT_VARIATION",STYLE_BACKGROUND_COLOR:"STYLE_BACKGROUND_COLOR",STYLE_BORDER:"STYLE_BORDER",STYLE_TEXT_COLOR:"STYLE_TEXT_COLOR",OBJECT_VALUE:"OBJECT_VALUE",PLUGIN_LOTTIE:"PLUGIN_LOTTIE",PLUGIN_SPLINE:"PLUGIN_SPLINE",PLUGIN_RIVE:"PLUGIN_RIVE",PLUGIN_VARIABLE:"PLUGIN_VARIABLE",GENERAL_DISPLAY:"GENERAL_DISPLAY",GENERAL_START_ACTION:"GENERAL_START_ACTION",GENERAL_CONTINUOUS_ACTION:"GENERAL_CONTINUOUS_ACTION",GENERAL_COMBO_CLASS:"GENERAL_COMBO_CLASS",GENERAL_STOP_ACTION:"GENERAL_STOP_ACTION",GENERAL_LOOP:"GENERAL_LOOP",STYLE_BOX_SHADOW:"STYLE_BOX_SHADOW"},dm={ELEMENT:"ELEMENT",ELEMENT_CLASS:"ELEMENT_CLASS",TRIGGER_ELEMENT:"TRIGGER_ELEMENT"}});var pm,ds=fe(()=>{"use strict";pm={MOUSE_CLICK_INTERACTION:"MOUSE_CLICK_INTERACTION",MOUSE_HOVER_INTERACTION:"MOUSE_HOVER_INTERACTION",MOUSE_MOVE_INTERACTION:"MOUSE_MOVE_INTERACTION",SCROLL_INTO_VIEW_INTERACTION:"SCROLL_INTO_VIEW_INTERACTION",SCROLLING_IN_VIEW_INTERACTION:"SCROLLING_IN_VIEW_INTERACTION",MOUSE_MOVE_IN_VIEWPORT_INTERACTION:"MOUSE_MOVE_IN_VIEWPORT_INTERACTION",PAGE_IS_SCROLLING_INTERACTION:"PAGE_IS_SCROLLING_INTERACTION",PAGE_LOAD_INTERACTION:"PAGE_LOAD_INTERACTION",PAGE_SCROLLED_INTERACTION:"PAGE_SCROLLED_INTERACTION",NAVBAR_INTERACTION:"NAVBAR_INTERACTION",DROPDOWN_INTERACTION:"DROPDOWN_INTERACTION",ECOMMERCE_CART_INTERACTION:"ECOMMERCE_CART_INTERACTION",TAB_INTERACTION:"TAB_INTERACTION",SLIDER_INTERACTION:"SLIDER_INTERACTION"}});var gm,hm,Em,ym,mm,vm,_m,hi,ps=fe(()=>{"use strict";Dn();({TRANSFORM_MOVE:gm,TRANSFORM_SCALE:hm,TRANSFORM_ROTATE:Em,TRANSFORM_SKEW:ym,STYLE_SIZE:mm,STYLE_FILTER:vm,STYLE_FONT_VARIATION:_m}=Ae),hi={[gm]:!0,[hm]:!0,[Em]:!0,[ym]:!0,[mm]:!0,[vm]:!0,[_m]:!0}});var ye={};xe(ye,{IX2_ACTION_LIST_PLAYBACK_CHANGED:()=>qm,IX2_ANIMATION_FRAME_CHANGED:()=>Pm,IX2_CLEAR_REQUESTED:()=>xm,IX2_ELEMENT_STATE_CHANGED:()=>Fm,IX2_EVENT_LISTENER_ADDED:()=>Rm,IX2_EVENT_STATE_CHANGED:()=>Cm,IX2_INSTANCE_ADDED:()=>Nm,IX2_INSTANCE_REMOVED:()=>Dm,IX2_INSTANCE_STARTED:()=>Mm,IX2_MEDIA_QUERIES_DEFINED:()=>Xm,IX2_PARAMETER_CHANGED:()=>Lm,IX2_PLAYBACK_REQUESTED:()=>wm,IX2_PREVIEW_REQUESTED:()=>Sm,IX2_RAW_DATA_IMPORTED:()=>Im,IX2_SESSION_INITIALIZED:()=>Tm,IX2_SESSION_STARTED:()=>bm,IX2_SESSION_STOPPED:()=>Am,IX2_STOP_REQUESTED:()=>Om,IX2_TEST_FRAME_RENDERED:()=>Vm,IX2_VIEWPORT_WIDTH_CHANGED:()=>Gm});var Im,Tm,bm,Am,Sm,wm,Om,xm,Rm,Cm,Pm,Lm,Nm,Mm,Dm,Fm,qm,Gm,Xm,Vm,gs=fe(()=>{"use strict";Im="IX2_RAW_DATA_IMPORTED",Tm="IX2_SESSION_INITIALIZED",bm="IX2_SESSION_STARTED",Am="IX2_SESSION_STOPPED",Sm="IX2_PREVIEW_REQUESTED",wm="IX2_PLAYBACK_REQUESTED",Om="IX2_STOP_REQUESTED",xm="IX2_CLEAR_REQUESTED",Rm="IX2_EVENT_LISTENER_ADDED",Cm="IX2_EVENT_STATE_CHANGED",Pm="IX2_ANIMATION_FRAME_CHANGED",Lm="IX2_PARAMETER_CHANGED",Nm="IX2_INSTANCE_ADDED",Mm="IX2_INSTANCE_STARTED",Dm="IX2_INSTANCE_REMOVED",Fm="IX2_ELEMENT_STATE_CHANGED",qm="IX2_ACTION_LIST_PLAYBACK_CHANGED",Gm="IX2_VIEWPORT_WIDTH_CHANGED",Xm="IX2_MEDIA_QUERIES_DEFINED",Vm="IX2_TEST_FRAME_RENDERED"});var _e={};xe(_e,{ABSTRACT_NODE:()=>Gv,AUTO:()=>Ov,BACKGROUND:()=>Iv,BACKGROUND_COLOR:()=>_v,BAR_DELIMITER:()=>Cv,BORDER_COLOR:()=>Tv,BOUNDARY_SELECTOR:()=>Wm,CHILDREN:()=>Pv,COLON_DELIMITER:()=>Rv,COLOR:()=>bv,COMMA_DELIMITER:()=>xv,CONFIG_UNIT:()=>Jm,CONFIG_VALUE:()=>Ym,CONFIG_X_UNIT:()=>$m,CONFIG_X_VALUE:()=>zm,CONFIG_Y_UNIT:()=>Qm,CONFIG_Y_VALUE:()=>jm,CONFIG_Z_UNIT:()=>Zm,CONFIG_Z_VALUE:()=>Km,DISPLAY:()=>Av,FILTER:()=>Ev,FLEX:()=>Sv,FONT_VARIATION_SETTINGS:()=>yv,HEIGHT:()=>vv,HTML_ELEMENT:()=>Fv,IMMEDIATE_CHILDREN:()=>Lv,IX2_ID_DELIMITER:()=>Um,OPACITY:()=>hv,PARENT:()=>Mv,PLAIN_OBJECT:()=>qv,PRESERVE_3D:()=>Dv,RENDER_GENERAL:()=>Vv,RENDER_PLUGIN:()=>kv,RENDER_STYLE:()=>Uv,RENDER_TRANSFORM:()=>Xv,ROTATE_X:()=>cv,ROTATE_Y:()=>lv,ROTATE_Z:()=>fv,SCALE_3D:()=>uv,SCALE_X:()=>ov,SCALE_Y:()=>av,SCALE_Z:()=>sv,SIBLINGS:()=>Nv,SKEW:()=>dv,SKEW_X:()=>pv,SKEW_Y:()=>gv,TRANSFORM:()=>ev,TRANSLATE_3D:()=>iv,TRANSLATE_X:()=>tv,TRANSLATE_Y:()=>nv,TRANSLATE_Z:()=>rv,WF_PAGE:()=>km,WIDTH:()=>mv,WILL_CHANGE:()=>wv,W_MOD_IX:()=>Hm,W_MOD_JS:()=>Bm});var Um,km,Bm,Hm,Wm,zm,jm,Km,Ym,$m,Qm,Zm,Jm,ev,tv,nv,rv,iv,ov,av,sv,uv,cv,lv,fv,dv,pv,gv,hv,Ev,yv,mv,vv,_v,Iv,Tv,bv,Av,Sv,wv,Ov,xv,Rv,Cv,Pv,Lv,Nv,Mv,Dv,Fv,qv,Gv,Xv,Vv,Uv,kv,hs=fe(()=>{"use strict";Um="|",km="data-wf-page",Bm="w-mod-js",Hm="w-mod-ix",Wm=".w-dyn-item",zm="xValue",jm="yValue",Km="zValue",Ym="value",$m="xUnit",Qm="yUnit",Zm="zUnit",Jm="unit",ev="transform",tv="translateX",nv="translateY",rv="translateZ",iv="translate3d",ov="scaleX",av="scaleY",sv="scaleZ",uv="scale3d",cv="rotateX",lv="rotateY",fv="rotateZ",dv="skew",pv="skewX",gv="skewY",hv="opacity",Ev="filter",yv="font-variation-settings",mv="width",vv="height",_v="backgroundColor",Iv="background",Tv="borderColor",bv="color",Av="display",Sv="flex",wv="willChange",Ov="AUTO",xv=",",Rv=":",Cv="|",Pv="CHILDREN",Lv="IMMEDIATE_CHILDREN",Nv="SIBLINGS",Mv="PARENT",Dv="preserve-3d",Fv="HTML_ELEMENT",qv="PLAIN_OBJECT",Gv="ABSTRACT_NODE",Xv="RENDER_TRANSFORM",Vv="RENDER_GENERAL",Uv="RENDER_STYLE",kv="RENDER_PLUGIN"});var Es={};xe(Es,{ActionAppliesTo:()=>dm,ActionTypeConsts:()=>Ae,EventAppliesTo:()=>pi,EventBasedOn:()=>Ke,EventContinuousMouseAxes:()=>cm,EventLimitAffectedElements:()=>lm,EventTypeConsts:()=>Xe,IX2EngineActionTypes:()=>ye,IX2EngineConstants:()=>_e,InteractionTypeConsts:()=>pm,QuickEffectDirectionConsts:()=>fm,QuickEffectIds:()=>Mn,ReducedMotionTypes:()=>hi});var Re=fe(()=>{"use strict";gi();Dn();ds();ps();gs();hs();Dn();gi()});var Bv,ys,ms=fe(()=>{"use strict";Re();({IX2_RAW_DATA_IMPORTED:Bv}=ye),ys=(e=Object.freeze({}),t)=>{switch(t.type){case Bv:return t.payload.ixData||Object.freeze({});default:return e}}});var St=f(pe=>{"use strict";Object.defineProperty(pe,"__esModule",{value:!0});var Hv=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(e){return typeof e}:function(e){return e&&typeof Symbol=="function"&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};pe.clone=qn;pe.addLast=Is;pe.addFirst=Ts;pe.removeLast=bs;pe.removeFirst=As;pe.insert=Ss;pe.removeAt=ws;pe.replaceAt=Os;pe.getIn=Gn;pe.set=Xn;pe.setIn=Vn;pe.update=Rs;pe.updateIn=Cs;pe.merge=Ps;pe.mergeDeep=Ls;pe.mergeIn=Ns;pe.omit=Ms;pe.addDefaults=Ds;var vs="INVALID_ARGS";function _s(e){throw new Error(e)}function Ei(e){var t=Object.keys(e);return Object.getOwnPropertySymbols?t.concat(Object.getOwnPropertySymbols(e)):t}var Wv={}.hasOwnProperty;function qn(e){if(Array.isArray(e))return e.slice();for(var t=Ei(e),n={},r=0;r<t.length;r++){var i=t[r];n[i]=e[i]}return n}function Ce(e,t,n){var r=n;r==null&&_s(vs);for(var i=!1,o=arguments.length,s=Array(o>3?o-3:0),a=3;a<o;a++)s[a-3]=arguments[a];for(var u=0;u<s.length;u++){var c=s[u];if(c!=null){var g=Ei(c);if(g.length)for(var p=0;p<=g.length;p++){var d=g[p];if(!(e&&r[d]!==void 0)){var h=c[d];t&&Fn(r[d])&&Fn(h)&&(h=Ce(e,t,r[d],h)),!(h===void 0||h===r[d])&&(i||(i=!0,r=qn(r)),r[d]=h)}}}}return r}function Fn(e){var t=typeof e>"u"?"undefined":Hv(e);return e!=null&&(t==="object"||t==="function")}function Is(e,t){return Array.isArray(t)?e.concat(t):e.concat([t])}function Ts(e,t){return Array.isArray(t)?t.concat(e):[t].concat(e)}function bs(e){return e.length?e.slice(0,e.length-1):e}function As(e){return e.length?e.slice(1):e}function Ss(e,t,n){return e.slice(0,t).concat(Array.isArray(n)?n:[n]).concat(e.slice(t))}function ws(e,t){return t>=e.length||t<0?e:e.slice(0,t).concat(e.slice(t+1))}function Os(e,t,n){if(e[t]===n)return e;for(var r=e.length,i=Array(r),o=0;o<r;o++)i[o]=e[o];return i[t]=n,i}function Gn(e,t){if(!Array.isArray(t)&&_s(vs),e!=null){for(var n=e,r=0;r<t.length;r++){var i=t[r];if(n=n?.[i],n===void 0)return n}return n}}function Xn(e,t,n){var r=typeof t=="number"?[]:{},i=e??r;if(i[t]===n)return i;var o=qn(i);return o[t]=n,o}function xs(e,t,n,r){var i=void 0,o=t[r];if(r===t.length-1)i=n;else{var s=Fn(e)&&Fn(e[o])?e[o]:typeof t[r+1]=="number"?[]:{};i=xs(s,t,n,r+1)}return Xn(e,o,i)}function Vn(e,t,n){return t.length?xs(e,t,n,0):n}function Rs(e,t,n){var r=e?.[t],i=n(r);return Xn(e,t,i)}function Cs(e,t,n){var r=Gn(e,t),i=n(r);return Vn(e,t,i)}function Ps(e,t,n,r,i,o){for(var s=arguments.length,a=Array(s>6?s-6:0),u=6;u<s;u++)a[u-6]=arguments[u];return a.length?Ce.call.apply(Ce,[null,!1,!1,e,t,n,r,i,o].concat(a)):Ce(!1,!1,e,t,n,r,i,o)}function Ls(e,t,n,r,i,o){for(var s=arguments.length,a=Array(s>6?s-6:0),u=6;u<s;u++)a[u-6]=arguments[u];return a.length?Ce.call.apply(Ce,[null,!1,!0,e,t,n,r,i,o].concat(a)):Ce(!1,!0,e,t,n,r,i,o)}function Ns(e,t,n,r,i,o,s){var a=Gn(e,t);a==null&&(a={});for(var u=void 0,c=arguments.length,g=Array(c>7?c-7:0),p=7;p<c;p++)g[p-7]=arguments[p];return g.length?u=Ce.call.apply(Ce,[null,!1,!1,a,n,r,i,o,s].concat(g)):u=Ce(!1,!1,a,n,r,i,o,s),Vn(e,t,u)}function Ms(e,t){for(var n=Array.isArray(t)?t:[t],r=!1,i=0;i<n.length;i++)if(Wv.call(e,n[i])){r=!0;break}if(!r)return e;for(var o={},s=Ei(e),a=0;a<s.length;a++){var u=s[a];n.indexOf(u)>=0||(o[u]=e[u])}return o}function Ds(e,t,n,r,i,o){for(var s=arguments.length,a=Array(s>6?s-6:0),u=6;u<s;u++)a[u-6]=arguments[u];return a.length?Ce.call.apply(Ce,[null,!0,!1,e,t,n,r,i,o].concat(a)):Ce(!0,!1,e,t,n,r,i,o)}var zv={clone:qn,addLast:Is,addFirst:Ts,removeLast:bs,removeFirst:As,insert:Ss,removeAt:ws,replaceAt:Os,getIn:Gn,set:Xn,setIn:Vn,update:Rs,updateIn:Cs,merge:Ps,mergeDeep:Ls,mergeIn:Ns,omit:Ms,addDefaults:Ds};pe.default=zv});var qs,jv,Kv,Yv,$v,Qv,Fs,Gs,Xs=fe(()=>{"use strict";Re();qs=ae(St()),{IX2_PREVIEW_REQUESTED:jv,IX2_PLAYBACK_REQUESTED:Kv,IX2_STOP_REQUESTED:Yv,IX2_CLEAR_REQUESTED:$v}=ye,Qv={preview:{},playback:{},stop:{},clear:{}},Fs=Object.create(null,{[jv]:{value:"preview"},[Kv]:{value:"playback"},[Yv]:{value:"stop"},[$v]:{value:"clear"}}),Gs=(e=Qv,t)=>{if(t.type in Fs){let n=[Fs[t.type]];return(0,qs.setIn)(e,[n],{...t.payload})}return e}});var Se,Zv,Jv,e_,t_,n_,r_,i_,o_,a_,s_,Vs,u_,Us,ks=fe(()=>{"use strict";Re();Se=ae(St()),{IX2_SESSION_INITIALIZED:Zv,IX2_SESSION_STARTED:Jv,IX2_TEST_FRAME_RENDERED:e_,IX2_SESSION_STOPPED:t_,IX2_EVENT_LISTENER_ADDED:n_,IX2_EVENT_STATE_CHANGED:r_,IX2_ANIMATION_FRAME_CHANGED:i_,IX2_ACTION_LIST_PLAYBACK_CHANGED:o_,IX2_VIEWPORT_WIDTH_CHANGED:a_,IX2_MEDIA_QUERIES_DEFINED:s_}=ye,Vs={active:!1,tick:0,eventListeners:[],eventState:{},playbackState:{},viewportWidth:0,mediaQueryKey:null,hasBoundaryNodes:!1,hasDefinedMediaQueries:!1,reducedMotion:!1},u_=20,Us=(e=Vs,t)=>{switch(t.type){case Zv:{let{hasBoundaryNodes:n,reducedMotion:r}=t.payload;return(0,Se.merge)(e,{hasBoundaryNodes:n,reducedMotion:r})}case Jv:return(0,Se.set)(e,"active",!0);case e_:{let{payload:{step:n=u_}}=t;return(0,Se.set)(e,"tick",e.tick+n)}case t_:return Vs;case i_:{let{payload:{now:n}}=t;return(0,Se.set)(e,"tick",n)}case n_:{let n=(0,Se.addLast)(e.eventListeners,t.payload);return(0,Se.set)(e,"eventListeners",n)}case r_:{let{stateKey:n,newState:r}=t.payload;return(0,Se.setIn)(e,["eventState",n],r)}case o_:{let{actionListId:n,isPlaying:r}=t.payload;return(0,Se.setIn)(e,["playbackState",n],r)}case a_:{let{width:n,mediaQueries:r}=t.payload,i=r.length,o=null;for(let s=0;s<i;s++){let{key:a,min:u,max:c}=r[s];if(n>=u&&n<=c){o=a;break}}return(0,Se.merge)(e,{viewportWidth:n,mediaQueryKey:o})}case s_:return(0,Se.set)(e,"hasDefinedMediaQueries",!0);default:return e}}});var Hs=f((y2,Bs)=>{function c_(){this.__data__=[],this.size=0}Bs.exports=c_});var Un=f((m2,Ws)=>{function l_(e,t){return e===t||e!==e&&t!==t}Ws.exports=l_});var Jt=f((v2,zs)=>{var f_=Un();function d_(e,t){for(var n=e.length;n--;)if(f_(e[n][0],t))return n;return-1}zs.exports=d_});var Ks=f((_2,js)=>{var p_=Jt(),g_=Array.prototype,h_=g_.splice;function E_(e){var t=this.__data__,n=p_(t,e);if(n<0)return!1;var r=t.length-1;return n==r?t.pop():h_.call(t,n,1),--this.size,!0}js.exports=E_});var $s=f((I2,Ys)=>{var y_=Jt();function m_(e){var t=this.__data__,n=y_(t,e);return n<0?void 0:t[n][1]}Ys.exports=m_});var Zs=f((T2,Qs)=>{var v_=Jt();function __(e){return v_(this.__data__,e)>-1}Qs.exports=__});var eu=f((b2,Js)=>{var I_=Jt();function T_(e,t){var n=this.__data__,r=I_(n,e);return r<0?(++this.size,n.push([e,t])):n[r][1]=t,this}Js.exports=T_});var en=f((A2,tu)=>{var b_=Hs(),A_=Ks(),S_=$s(),w_=Zs(),O_=eu();function wt(e){var t=-1,n=e==null?0:e.length;for(this.clear();++t<n;){var r=e[t];this.set(r[0],r[1])}}wt.prototype.clear=b_;wt.prototype.delete=A_;wt.prototype.get=S_;wt.prototype.has=w_;wt.prototype.set=O_;tu.exports=wt});var ru=f((S2,nu)=>{var x_=en();function R_(){this.__data__=new x_,this.size=0}nu.exports=R_});var ou=f((w2,iu)=>{function C_(e){var t=this.__data__,n=t.delete(e);return this.size=t.size,n}iu.exports=C_});var su=f((O2,au)=>{function P_(e){return this.__data__.get(e)}au.exports=P_});var cu=f((x2,uu)=>{function L_(e){return this.__data__.has(e)}uu.exports=L_});var Ye=f((R2,lu)=>{function N_(e){var t=typeof e;return e!=null&&(t=="object"||t=="function")}lu.exports=N_});var yi=f((C2,fu)=>{var M_=at(),D_=Ye(),F_="[object AsyncFunction]",q_="[object Function]",G_="[object GeneratorFunction]",X_="[object Proxy]";function V_(e){if(!D_(e))return!1;var t=M_(e);return t==q_||t==G_||t==F_||t==X_}fu.exports=V_});var pu=f((P2,du)=>{var U_=Ge(),k_=U_["__core-js_shared__"];du.exports=k_});var Eu=f((L2,hu)=>{var mi=pu(),gu=function(){var e=/[^.]+$/.exec(mi&&mi.keys&&mi.keys.IE_PROTO||"");return e?"Symbol(src)_1."+e:""}();function B_(e){return!!gu&&gu in e}hu.exports=B_});var vi=f((N2,yu)=>{var H_=Function.prototype,W_=H_.toString;function z_(e){if(e!=null){try{return W_.call(e)}catch{}try{return e+""}catch{}}return""}yu.exports=z_});var vu=f((M2,mu)=>{var j_=yi(),K_=Eu(),Y_=Ye(),$_=vi(),Q_=/[\\^$.*+?()[\]{}|]/g,Z_=/^\[object .+?Constructor\]$/,J_=Function.prototype,eI=Object.prototype,tI=J_.toString,nI=eI.hasOwnProperty,rI=RegExp("^"+tI.call(nI).replace(Q_,"\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,"$1.*?")+"$");function iI(e){if(!Y_(e)||K_(e))return!1;var t=j_(e)?rI:Z_;return t.test($_(e))}mu.exports=iI});var Iu=f((D2,_u)=>{function oI(e,t){return e?.[t]}_u.exports=oI});var st=f((F2,Tu)=>{var aI=vu(),sI=Iu();function uI(e,t){var n=sI(e,t);return aI(n)?n:void 0}Tu.exports=uI});var kn=f((q2,bu)=>{var cI=st(),lI=Ge(),fI=cI(lI,"Map");bu.exports=fI});var tn=f((G2,Au)=>{var dI=st(),pI=dI(Object,"create");Au.exports=pI});var Ou=f((X2,wu)=>{var Su=tn();function gI(){this.__data__=Su?Su(null):{},this.size=0}wu.exports=gI});var Ru=f((V2,xu)=>{function hI(e){var t=this.has(e)&&delete this.__data__[e];return this.size-=t?1:0,t}xu.exports=hI});var Pu=f((U2,Cu)=>{var EI=tn(),yI="__lodash_hash_undefined__",mI=Object.prototype,vI=mI.hasOwnProperty;function _I(e){var t=this.__data__;if(EI){var n=t[e];return n===yI?void 0:n}return vI.call(t,e)?t[e]:void 0}Cu.exports=_I});var Nu=f((k2,Lu)=>{var II=tn(),TI=Object.prototype,bI=TI.hasOwnProperty;function AI(e){var t=this.__data__;return II?t[e]!==void 0:bI.call(t,e)}Lu.exports=AI});var Du=f((B2,Mu)=>{var SI=tn(),wI="__lodash_hash_undefined__";function OI(e,t){var n=this.__data__;return this.size+=this.has(e)?0:1,n[e]=SI&&t===void 0?wI:t,this}Mu.exports=OI});var qu=f((H2,Fu)=>{var xI=Ou(),RI=Ru(),CI=Pu(),PI=Nu(),LI=Du();function Ot(e){var t=-1,n=e==null?0:e.length;for(this.clear();++t<n;){var r=e[t];this.set(r[0],r[1])}}Ot.prototype.clear=xI;Ot.prototype.delete=RI;Ot.prototype.get=CI;Ot.prototype.has=PI;Ot.prototype.set=LI;Fu.exports=Ot});var Vu=f((W2,Xu)=>{var Gu=qu(),NI=en(),MI=kn();function DI(){this.size=0,this.__data__={hash:new Gu,map:new(MI||NI),string:new Gu}}Xu.exports=DI});var ku=f((z2,Uu)=>{function FI(e){var t=typeof e;return t=="string"||t=="number"||t=="symbol"||t=="boolean"?e!=="__proto__":e===null}Uu.exports=FI});var nn=f((j2,Bu)=>{var qI=ku();function GI(e,t){var n=e.__data__;return qI(t)?n[typeof t=="string"?"string":"hash"]:n.map}Bu.exports=GI});var Wu=f((K2,Hu)=>{var XI=nn();function VI(e){var t=XI(this,e).delete(e);return this.size-=t?1:0,t}Hu.exports=VI});var ju=f((Y2,zu)=>{var UI=nn();function kI(e){return UI(this,e).get(e)}zu.exports=kI});var Yu=f(($2,Ku)=>{var BI=nn();function HI(e){return BI(this,e).has(e)}Ku.exports=HI});var Qu=f((Q2,$u)=>{var WI=nn();function zI(e,t){var n=WI(this,e),r=n.size;return n.set(e,t),this.size+=n.size==r?0:1,this}$u.exports=zI});var Bn=f((Z2,Zu)=>{var jI=Vu(),KI=Wu(),YI=ju(),$I=Yu(),QI=Qu();function xt(e){var t=-1,n=e==null?0:e.length;for(this.clear();++t<n;){var r=e[t];this.set(r[0],r[1])}}xt.prototype.clear=jI;xt.prototype.delete=KI;xt.prototype.get=YI;xt.prototype.has=$I;xt.prototype.set=QI;Zu.exports=xt});var ec=f((J2,Ju)=>{var ZI=en(),JI=kn(),eT=Bn(),tT=200;function nT(e,t){var n=this.__data__;if(n instanceof ZI){var r=n.__data__;if(!JI||r.length<tT-1)return r.push([e,t]),this.size=++n.size,this;n=this.__data__=new eT(r)}return n.set(e,t),this.size=n.size,this}Ju.exports=nT});var _i=f((eq,tc)=>{var rT=en(),iT=ru(),oT=ou(),aT=su(),sT=cu(),uT=ec();function Rt(e){var t=this.__data__=new rT(e);this.size=t.size}Rt.prototype.clear=iT;Rt.prototype.delete=oT;Rt.prototype.get=aT;Rt.prototype.has=sT;Rt.prototype.set=uT;tc.exports=Rt});var rc=f((tq,nc)=>{var cT="__lodash_hash_undefined__";function lT(e){return this.__data__.set(e,cT),this}nc.exports=lT});var oc=f((nq,ic)=>{function fT(e){return this.__data__.has(e)}ic.exports=fT});var sc=f((rq,ac)=>{var dT=Bn(),pT=rc(),gT=oc();function Hn(e){var t=-1,n=e==null?0:e.length;for(this.__data__=new dT;++t<n;)this.add(e[t])}Hn.prototype.add=Hn.prototype.push=pT;Hn.prototype.has=gT;ac.exports=Hn});var cc=f((iq,uc)=>{function hT(e,t){for(var n=-1,r=e==null?0:e.length;++n<r;)if(t(e[n],n,e))return!0;return!1}uc.exports=hT});var fc=f((oq,lc)=>{function ET(e,t){return e.has(t)}lc.exports=ET});var Ii=f((aq,dc)=>{var yT=sc(),mT=cc(),vT=fc(),_T=1,IT=2;function TT(e,t,n,r,i,o){var s=n&_T,a=e.length,u=t.length;if(a!=u&&!(s&&u>a))return!1;var c=o.get(e),g=o.get(t);if(c&&g)return c==t&&g==e;var p=-1,d=!0,h=n&IT?new yT:void 0;for(o.set(e,t),o.set(t,e);++p<a;){var v=e[p],m=t[p];if(r)var T=s?r(m,v,p,t,e,o):r(v,m,p,e,t,o);if(T!==void 0){if(T)continue;d=!1;break}if(h){if(!mT(t,function(y,S){if(!vT(h,S)&&(v===y||i(v,y,n,r,o)))return h.push(S)})){d=!1;break}}else if(!(v===m||i(v,m,n,r,o))){d=!1;break}}return o.delete(e),o.delete(t),d}dc.exports=TT});var gc=f((sq,pc)=>{var bT=Ge(),AT=bT.Uint8Array;pc.exports=AT});var Ec=f((uq,hc)=>{function ST(e){var t=-1,n=Array(e.size);return e.forEach(function(r,i){n[++t]=[i,r]}),n}hc.exports=ST});var mc=f((cq,yc)=>{function wT(e){var t=-1,n=Array(e.size);return e.forEach(function(r){n[++t]=r}),n}yc.exports=wT});var bc=f((lq,Tc)=>{var vc=Tt(),_c=gc(),OT=Un(),xT=Ii(),RT=Ec(),CT=mc(),PT=1,LT=2,NT="[object Boolean]",MT="[object Date]",DT="[object Error]",FT="[object Map]",qT="[object Number]",GT="[object RegExp]",XT="[object Set]",VT="[object String]",UT="[object Symbol]",kT="[object ArrayBuffer]",BT="[object DataView]",Ic=vc?vc.prototype:void 0,Ti=Ic?Ic.valueOf:void 0;function HT(e,t,n,r,i,o,s){switch(n){case BT:if(e.byteLength!=t.byteLength||e.byteOffset!=t.byteOffset)return!1;e=e.buffer,t=t.buffer;case kT:return!(e.byteLength!=t.byteLength||!o(new _c(e),new _c(t)));case NT:case MT:case qT:return OT(+e,+t);case DT:return e.name==t.name&&e.message==t.message;case GT:case VT:return e==t+"";case FT:var a=RT;case XT:var u=r&PT;if(a||(a=CT),e.size!=t.size&&!u)return!1;var c=s.get(e);if(c)return c==t;r|=LT,s.set(e,t);var g=xT(a(e),a(t),r,i,o,s);return s.delete(e),g;case UT:if(Ti)return Ti.call(e)==Ti.call(t)}return!1}Tc.exports=HT});var Wn=f((fq,Ac)=>{function WT(e,t){for(var n=-1,r=t.length,i=e.length;++n<r;)e[i+n]=t[n];return e}Ac.exports=WT});var ve=f((dq,Sc)=>{var zT=Array.isArray;Sc.exports=zT});var bi=f((pq,wc)=>{var jT=Wn(),KT=ve();function YT(e,t,n){var r=t(e);return KT(e)?r:jT(r,n(e))}wc.exports=YT});var xc=f((gq,Oc)=>{function $T(e,t){for(var n=-1,r=e==null?0:e.length,i=0,o=[];++n<r;){var s=e[n];t(s,n,e)&&(o[i++]=s)}return o}Oc.exports=$T});var Ai=f((hq,Rc)=>{function QT(){return[]}Rc.exports=QT});var Si=f((Eq,Pc)=>{var ZT=xc(),JT=Ai(),eb=Object.prototype,tb=eb.propertyIsEnumerable,Cc=Object.getOwnPropertySymbols,nb=Cc?function(e){return e==null?[]:(e=Object(e),ZT(Cc(e),function(t){return tb.call(e,t)}))}:JT;Pc.exports=nb});var Nc=f((yq,Lc)=>{function rb(e,t){for(var n=-1,r=Array(e);++n<e;)r[n]=t(n);return r}Lc.exports=rb});var Dc=f((mq,Mc)=>{var ib=at(),ob=Je(),ab="[object Arguments]";function sb(e){return ob(e)&&ib(e)==ab}Mc.exports=sb});var rn=f((vq,Gc)=>{var Fc=Dc(),ub=Je(),qc=Object.prototype,cb=qc.hasOwnProperty,lb=qc.propertyIsEnumerable,fb=Fc(function(){return arguments}())?Fc:function(e){return ub(e)&&cb.call(e,"callee")&&!lb.call(e,"callee")};Gc.exports=fb});var Vc=f((_q,Xc)=>{function db(){return!1}Xc.exports=db});var zn=f((on,Ct)=>{var pb=Ge(),gb=Vc(),Bc=typeof on=="object"&&on&&!on.nodeType&&on,Uc=Bc&&typeof Ct=="object"&&Ct&&!Ct.nodeType&&Ct,hb=Uc&&Uc.exports===Bc,kc=hb?pb.Buffer:void 0,Eb=kc?kc.isBuffer:void 0,yb=Eb||gb;Ct.exports=yb});var jn=f((Iq,Hc)=>{var mb=9007199254740991,vb=/^(?:0|[1-9]\d*)$/;function _b(e,t){var n=typeof e;return t=t??mb,!!t&&(n=="number"||n!="symbol"&&vb.test(e))&&e>-1&&e%1==0&&e<t}Hc.exports=_b});var Kn=f((Tq,Wc)=>{var Ib=9007199254740991;function Tb(e){return typeof e=="number"&&e>-1&&e%1==0&&e<=Ib}Wc.exports=Tb});var jc=f((bq,zc)=>{var bb=at(),Ab=Kn(),Sb=Je(),wb="[object Arguments]",Ob="[object Array]",xb="[object Boolean]",Rb="[object Date]",Cb="[object Error]",Pb="[object Function]",Lb="[object Map]",Nb="[object Number]",Mb="[object Object]",Db="[object RegExp]",Fb="[object Set]",qb="[object String]",Gb="[object WeakMap]",Xb="[object ArrayBuffer]",Vb="[object DataView]",Ub="[object Float32Array]",kb="[object Float64Array]",Bb="[object Int8Array]",Hb="[object Int16Array]",Wb="[object Int32Array]",zb="[object Uint8Array]",jb="[object Uint8ClampedArray]",Kb="[object Uint16Array]",Yb="[object Uint32Array]",le={};le[Ub]=le[kb]=le[Bb]=le[Hb]=le[Wb]=le[zb]=le[jb]=le[Kb]=le[Yb]=!0;le[wb]=le[Ob]=le[Xb]=le[xb]=le[Vb]=le[Rb]=le[Cb]=le[Pb]=le[Lb]=le[Nb]=le[Mb]=le[Db]=le[Fb]=le[qb]=le[Gb]=!1;function $b(e){return Sb(e)&&Ab(e.length)&&!!le[bb(e)]}zc.exports=$b});var Yc=f((Aq,Kc)=>{function Qb(e){return function(t){return e(t)}}Kc.exports=Qb});var Qc=f((an,Pt)=>{var Zb=Qr(),$c=typeof an=="object"&&an&&!an.nodeType&&an,sn=$c&&typeof Pt=="object"&&Pt&&!Pt.nodeType&&Pt,Jb=sn&&sn.exports===$c,wi=Jb&&Zb.process,eA=function(){try{var e=sn&&sn.require&&sn.require("util").types;return e||wi&&wi.binding&&wi.binding("util")}catch{}}();Pt.exports=eA});var Yn=f((Sq,el)=>{var tA=jc(),nA=Yc(),Zc=Qc(),Jc=Zc&&Zc.isTypedArray,rA=Jc?nA(Jc):tA;el.exports=rA});var Oi=f((wq,tl)=>{var iA=Nc(),oA=rn(),aA=ve(),sA=zn(),uA=jn(),cA=Yn(),lA=Object.prototype,fA=lA.hasOwnProperty;function dA(e,t){var n=aA(e),r=!n&&oA(e),i=!n&&!r&&sA(e),o=!n&&!r&&!i&&cA(e),s=n||r||i||o,a=s?iA(e.length,String):[],u=a.length;for(var c in e)(t||fA.call(e,c))&&!(s&&(c=="length"||i&&(c=="offset"||c=="parent")||o&&(c=="buffer"||c=="byteLength"||c=="byteOffset")||uA(c,u)))&&a.push(c);return a}tl.exports=dA});var $n=f((Oq,nl)=>{var pA=Object.prototype;function gA(e){var t=e&&e.constructor,n=typeof t=="function"&&t.prototype||pA;return e===n}nl.exports=gA});var il=f((xq,rl)=>{var hA=Zr(),EA=hA(Object.keys,Object);rl.exports=EA});var Qn=f((Rq,ol)=>{var yA=$n(),mA=il(),vA=Object.prototype,_A=vA.hasOwnProperty;function IA(e){if(!yA(e))return mA(e);var t=[];for(var n in Object(e))_A.call(e,n)&&n!="constructor"&&t.push(n);return t}ol.exports=IA});var dt=f((Cq,al)=>{var TA=yi(),bA=Kn();function AA(e){return e!=null&&bA(e.length)&&!TA(e)}al.exports=AA});var un=f((Pq,sl)=>{var SA=Oi(),wA=Qn(),OA=dt();function xA(e){return OA(e)?SA(e):wA(e)}sl.exports=xA});var cl=f((Lq,ul)=>{var RA=bi(),CA=Si(),PA=un();function LA(e){return RA(e,PA,CA)}ul.exports=LA});var dl=f((Nq,fl)=>{var ll=cl(),NA=1,MA=Object.prototype,DA=MA.hasOwnProperty;function FA(e,t,n,r,i,o){var s=n&NA,a=ll(e),u=a.length,c=ll(t),g=c.length;if(u!=g&&!s)return!1;for(var p=u;p--;){var d=a[p];if(!(s?d in t:DA.call(t,d)))return!1}var h=o.get(e),v=o.get(t);if(h&&v)return h==t&&v==e;var m=!0;o.set(e,t),o.set(t,e);for(var T=s;++p<u;){d=a[p];var y=e[d],S=t[d];if(r)var A=s?r(S,y,d,t,e,o):r(y,S,d,e,t,o);if(!(A===void 0?y===S||i(y,S,n,r,o):A)){m=!1;break}T||(T=d=="constructor")}if(m&&!T){var R=e.constructor,P=t.constructor;R!=P&&"constructor"in e&&"constructor"in t&&!(typeof R=="function"&&R instanceof R&&typeof P=="function"&&P instanceof P)&&(m=!1)}return o.delete(e),o.delete(t),m}fl.exports=FA});var gl=f((Mq,pl)=>{var qA=st(),GA=Ge(),XA=qA(GA,"DataView");pl.exports=XA});var El=f((Dq,hl)=>{var VA=st(),UA=Ge(),kA=VA(UA,"Promise");hl.exports=kA});var ml=f((Fq,yl)=>{var BA=st(),HA=Ge(),WA=BA(HA,"Set");yl.exports=WA});var xi=f((qq,vl)=>{var zA=st(),jA=Ge(),KA=zA(jA,"WeakMap");vl.exports=KA});var Zn=f((Gq,wl)=>{var Ri=gl(),Ci=kn(),Pi=El(),Li=ml(),Ni=xi(),Sl=at(),Lt=vi(),_l="[object Map]",YA="[object Object]",Il="[object Promise]",Tl="[object Set]",bl="[object WeakMap]",Al="[object DataView]",$A=Lt(Ri),QA=Lt(Ci),ZA=Lt(Pi),JA=Lt(Li),e0=Lt(Ni),pt=Sl;(Ri&&pt(new Ri(new ArrayBuffer(1)))!=Al||Ci&&pt(new Ci)!=_l||Pi&&pt(Pi.resolve())!=Il||Li&&pt(new Li)!=Tl||Ni&&pt(new Ni)!=bl)&&(pt=function(e){var t=Sl(e),n=t==YA?e.constructor:void 0,r=n?Lt(n):"";if(r)switch(r){case $A:return Al;case QA:return _l;case ZA:return Il;case JA:return Tl;case e0:return bl}return t});wl.exports=pt});var Ml=f((Xq,Nl)=>{var Mi=_i(),t0=Ii(),n0=bc(),r0=dl(),Ol=Zn(),xl=ve(),Rl=zn(),i0=Yn(),o0=1,Cl="[object Arguments]",Pl="[object Array]",Jn="[object Object]",a0=Object.prototype,Ll=a0.hasOwnProperty;function s0(e,t,n,r,i,o){var s=xl(e),a=xl(t),u=s?Pl:Ol(e),c=a?Pl:Ol(t);u=u==Cl?Jn:u,c=c==Cl?Jn:c;var g=u==Jn,p=c==Jn,d=u==c;if(d&&Rl(e)){if(!Rl(t))return!1;s=!0,g=!1}if(d&&!g)return o||(o=new Mi),s||i0(e)?t0(e,t,n,r,i,o):n0(e,t,u,n,r,i,o);if(!(n&o0)){var h=g&&Ll.call(e,"__wrapped__"),v=p&&Ll.call(t,"__wrapped__");if(h||v){var m=h?e.value():e,T=v?t.value():t;return o||(o=new Mi),i(m,T,n,r,o)}}return d?(o||(o=new Mi),r0(e,t,n,r,i,o)):!1}Nl.exports=s0});var Di=f((Vq,ql)=>{var u0=Ml(),Dl=Je();function Fl(e,t,n,r,i){return e===t?!0:e==null||t==null||!Dl(e)&&!Dl(t)?e!==e&&t!==t:u0(e,t,n,r,Fl,i)}ql.exports=Fl});var Xl=f((Uq,Gl)=>{var c0=_i(),l0=Di(),f0=1,d0=2;function p0(e,t,n,r){var i=n.length,o=i,s=!r;if(e==null)return!o;for(e=Object(e);i--;){var a=n[i];if(s&&a[2]?a[1]!==e[a[0]]:!(a[0]in e))return!1}for(;++i<o;){a=n[i];var u=a[0],c=e[u],g=a[1];if(s&&a[2]){if(c===void 0&&!(u in e))return!1}else{var p=new c0;if(r)var d=r(c,g,u,e,t,p);if(!(d===void 0?l0(g,c,f0|d0,r,p):d))return!1}}return!0}Gl.exports=p0});var Fi=f((kq,Vl)=>{var g0=Ye();function h0(e){return e===e&&!g0(e)}Vl.exports=h0});var kl=f((Bq,Ul)=>{var E0=Fi(),y0=un();function m0(e){for(var t=y0(e),n=t.length;n--;){var r=t[n],i=e[r];t[n]=[r,i,E0(i)]}return t}Ul.exports=m0});var qi=f((Hq,Bl)=>{function v0(e,t){return function(n){return n==null?!1:n[e]===t&&(t!==void 0||e in Object(n))}}Bl.exports=v0});var Wl=f((Wq,Hl)=>{var _0=Xl(),I0=kl(),T0=qi();function b0(e){var t=I0(e);return t.length==1&&t[0][2]?T0(t[0][0],t[0][1]):function(n){return n===e||_0(n,e,t)}}Hl.exports=b0});var cn=f((zq,zl)=>{var A0=at(),S0=Je(),w0="[object Symbol]";function O0(e){return typeof e=="symbol"||S0(e)&&A0(e)==w0}zl.exports=O0});var er=f((jq,jl)=>{var x0=ve(),R0=cn(),C0=/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,P0=/^\w*$/;function L0(e,t){if(x0(e))return!1;var n=typeof e;return n=="number"||n=="symbol"||n=="boolean"||e==null||R0(e)?!0:P0.test(e)||!C0.test(e)||t!=null&&e in Object(t)}jl.exports=L0});var $l=f((Kq,Yl)=>{var Kl=Bn(),N0="Expected a function";function Gi(e,t){if(typeof e!="function"||t!=null&&typeof t!="function")throw new TypeError(N0);var n=function(){var r=arguments,i=t?t.apply(this,r):r[0],o=n.cache;if(o.has(i))return o.get(i);var s=e.apply(this,r);return n.cache=o.set(i,s)||o,s};return n.cache=new(Gi.Cache||Kl),n}Gi.Cache=Kl;Yl.exports=Gi});var Zl=f((Yq,Ql)=>{var M0=$l(),D0=500;function F0(e){var t=M0(e,function(r){return n.size===D0&&n.clear(),r}),n=t.cache;return t}Ql.exports=F0});var ef=f(($q,Jl)=>{var q0=Zl(),G0=/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g,X0=/\\(\\)?/g,V0=q0(function(e){var t=[];return e.charCodeAt(0)===46&&t.push(""),e.replace(G0,function(n,r,i,o){t.push(i?o.replace(X0,"$1"):r||n)}),t});Jl.exports=V0});var Xi=f((Qq,tf)=>{function U0(e,t){for(var n=-1,r=e==null?0:e.length,i=Array(r);++n<r;)i[n]=t(e[n],n,e);return i}tf.exports=U0});var uf=f((Zq,sf)=>{var nf=Tt(),k0=Xi(),B0=ve(),H0=cn(),W0=1/0,rf=nf?nf.prototype:void 0,of=rf?rf.toString:void 0;function af(e){if(typeof e=="string")return e;if(B0(e))return k0(e,af)+"";if(H0(e))return of?of.call(e):"";var t=e+"";return t=="0"&&1/e==-W0?"-0":t}sf.exports=af});var lf=f((Jq,cf)=>{var z0=uf();function j0(e){return e==null?"":z0(e)}cf.exports=j0});var ln=f((e1,ff)=>{var K0=ve(),Y0=er(),$0=ef(),Q0=lf();function Z0(e,t){return K0(e)?e:Y0(e,t)?[e]:$0(Q0(e))}ff.exports=Z0});var Nt=f((t1,df)=>{var J0=cn(),eS=1/0;function tS(e){if(typeof e=="string"||J0(e))return e;var t=e+"";return t=="0"&&1/e==-eS?"-0":t}df.exports=tS});var tr=f((n1,pf)=>{var nS=ln(),rS=Nt();function iS(e,t){t=nS(t,e);for(var n=0,r=t.length;e!=null&&n<r;)e=e[rS(t[n++])];return n&&n==r?e:void 0}pf.exports=iS});var nr=f((r1,gf)=>{var oS=tr();function aS(e,t,n){var r=e==null?void 0:oS(e,t);return r===void 0?n:r}gf.exports=aS});var Ef=f((i1,hf)=>{function sS(e,t){return e!=null&&t in Object(e)}hf.exports=sS});var mf=f((o1,yf)=>{var uS=ln(),cS=rn(),lS=ve(),fS=jn(),dS=Kn(),pS=Nt();function gS(e,t,n){t=uS(t,e);for(var r=-1,i=t.length,o=!1;++r<i;){var s=pS(t[r]);if(!(o=e!=null&&n(e,s)))break;e=e[s]}return o||++r!=i?o:(i=e==null?0:e.length,!!i&&dS(i)&&fS(s,i)&&(lS(e)||cS(e)))}yf.exports=gS});var _f=f((a1,vf)=>{var hS=Ef(),ES=mf();function yS(e,t){return e!=null&&ES(e,t,hS)}vf.exports=yS});var Tf=f((s1,If)=>{var mS=Di(),vS=nr(),_S=_f(),IS=er(),TS=Fi(),bS=qi(),AS=Nt(),SS=1,wS=2;function OS(e,t){return IS(e)&&TS(t)?bS(AS(e),t):function(n){var r=vS(n,e);return r===void 0&&r===t?_S(n,e):mS(t,r,SS|wS)}}If.exports=OS});var rr=f((u1,bf)=>{function xS(e){return e}bf.exports=xS});var Vi=f((c1,Af)=>{function RS(e){return function(t){return t?.[e]}}Af.exports=RS});var wf=f((l1,Sf)=>{var CS=tr();function PS(e){return function(t){return CS(t,e)}}Sf.exports=PS});var xf=f((f1,Of)=>{var LS=Vi(),NS=wf(),MS=er(),DS=Nt();function FS(e){return MS(e)?LS(DS(e)):NS(e)}Of.exports=FS});var ut=f((d1,Rf)=>{var qS=Wl(),GS=Tf(),XS=rr(),VS=ve(),US=xf();function kS(e){return typeof e=="function"?e:e==null?XS:typeof e=="object"?VS(e)?GS(e[0],e[1]):qS(e):US(e)}Rf.exports=kS});var Ui=f((p1,Cf)=>{var BS=ut(),HS=dt(),WS=un();function zS(e){return function(t,n,r){var i=Object(t);if(!HS(t)){var o=BS(n,3);t=WS(t),n=function(a){return o(i[a],a,i)}}var s=e(t,n,r);return s>-1?i[o?t[s]:s]:void 0}}Cf.exports=zS});var ki=f((g1,Pf)=>{function jS(e,t,n,r){for(var i=e.length,o=n+(r?1:-1);r?o--:++o<i;)if(t(e[o],o,e))return o;return-1}Pf.exports=jS});var Nf=f((h1,Lf)=>{var KS=/\s/;function YS(e){for(var t=e.length;t--&&KS.test(e.charAt(t)););return t}Lf.exports=YS});var Df=f((E1,Mf)=>{var $S=Nf(),QS=/^\s+/;function ZS(e){return e&&e.slice(0,$S(e)+1).replace(QS,"")}Mf.exports=ZS});var ir=f((y1,Gf)=>{var JS=Df(),Ff=Ye(),ew=cn(),qf=0/0,tw=/^[-+]0x[0-9a-f]+$/i,nw=/^0b[01]+$/i,rw=/^0o[0-7]+$/i,iw=parseInt;function ow(e){if(typeof e=="number")return e;if(ew(e))return qf;if(Ff(e)){var t=typeof e.valueOf=="function"?e.valueOf():e;e=Ff(t)?t+"":t}if(typeof e!="string")return e===0?e:+e;e=JS(e);var n=nw.test(e);return n||rw.test(e)?iw(e.slice(2),n?2:8):tw.test(e)?qf:+e}Gf.exports=ow});var Uf=f((m1,Vf)=>{var aw=ir(),Xf=1/0,sw=17976931348623157e292;function uw(e){if(!e)return e===0?e:0;if(e=aw(e),e===Xf||e===-Xf){var t=e<0?-1:1;return t*sw}return e===e?e:0}Vf.exports=uw});var Bi=f((v1,kf)=>{var cw=Uf();function lw(e){var t=cw(e),n=t%1;return t===t?n?t-n:t:0}kf.exports=lw});var Hf=f((_1,Bf)=>{var fw=ki(),dw=ut(),pw=Bi(),gw=Math.max;function hw(e,t,n){var r=e==null?0:e.length;if(!r)return-1;var i=n==null?0:pw(n);return i<0&&(i=gw(r+i,0)),fw(e,dw(t,3),i)}Bf.exports=hw});var Hi=f((I1,Wf)=>{var Ew=Ui(),yw=Hf(),mw=Ew(yw);Wf.exports=mw});var Kf={};xe(Kf,{ELEMENT_MATCHES:()=>vw,FLEX_PREFIXED:()=>Wi,IS_BROWSER_ENV:()=>Ve,TRANSFORM_PREFIXED:()=>ct,TRANSFORM_STYLE_PREFIXED:()=>ar,withBrowser:()=>or});var jf,Ve,or,vw,Wi,ct,zf,ar,sr=fe(()=>{"use strict";jf=ae(Hi()),Ve=typeof window<"u",or=(e,t)=>Ve?e():t,vw=or(()=>(0,jf.default)(["matches","matchesSelector","mozMatchesSelector","msMatchesSelector","oMatchesSelector","webkitMatchesSelector"],e=>e in Element.prototype)),Wi=or(()=>{let e=document.createElement("i"),t=["flex","-webkit-flex","-ms-flexbox","-moz-box","-webkit-box"],n="";try{let{length:r}=t;for(let i=0;i<r;i++){let o=t[i];if(e.style.display=o,e.style.display===o)return o}return n}catch{return n}},"flex"),ct=or(()=>{let e=document.createElement("i");if(e.style.transform==null){let t=["Webkit","Moz","ms"],n="Transform",{length:r}=t;for(let i=0;i<r;i++){let o=t[i]+n;if(e.style[o]!==void 0)return o}}return"transform"},"transform"),zf=ct.split("transform")[0],ar=zf?zf+"TransformStyle":"transformStyle"});var zi=f((T1,Jf)=>{var _w=4,Iw=.001,Tw=1e-7,bw=10,fn=11,ur=1/(fn-1),Aw=typeof Float32Array=="function";function Yf(e,t){return 1-3*t+3*e}function $f(e,t){return 3*t-6*e}function Qf(e){return 3*e}function cr(e,t,n){return((Yf(t,n)*e+$f(t,n))*e+Qf(t))*e}function Zf(e,t,n){return 3*Yf(t,n)*e*e+2*$f(t,n)*e+Qf(t)}function Sw(e,t,n,r,i){var o,s,a=0;do s=t+(n-t)/2,o=cr(s,r,i)-e,o>0?n=s:t=s;while(Math.abs(o)>Tw&&++a<bw);return s}function ww(e,t,n,r){for(var i=0;i<_w;++i){var o=Zf(t,n,r);if(o===0)return t;var s=cr(t,n,r)-e;t-=s/o}return t}Jf.exports=function(t,n,r,i){if(!(0<=t&&t<=1&&0<=r&&r<=1))throw new Error("bezier x values must be in [0, 1] range");var o=Aw?new Float32Array(fn):new Array(fn);if(t!==n||r!==i)for(var s=0;s<fn;++s)o[s]=cr(s*ur,t,r);function a(u){for(var c=0,g=1,p=fn-1;g!==p&&o[g]<=u;++g)c+=ur;--g;var d=(u-o[g])/(o[g+1]-o[g]),h=c+d*ur,v=Zf(h,t,r);return v>=Iw?ww(u,h,t,r):v===0?h:Sw(u,c,c+ur,t,r)}return function(c){return t===n&&r===i?c:c===0?0:c===1?1:cr(a(c),n,i)}}});var pn={};xe(pn,{bounce:()=>uO,bouncePast:()=>cO,ease:()=>Ow,easeIn:()=>xw,easeInOut:()=>Cw,easeOut:()=>Rw,inBack:()=>Jw,inCirc:()=>Yw,inCubic:()=>Mw,inElastic:()=>nO,inExpo:()=>zw,inOutBack:()=>tO,inOutCirc:()=>Qw,inOutCubic:()=>Fw,inOutElastic:()=>iO,inOutExpo:()=>Kw,inOutQuad:()=>Nw,inOutQuart:()=>Xw,inOutQuint:()=>kw,inOutSine:()=>Ww,inQuad:()=>Pw,inQuart:()=>qw,inQuint:()=>Vw,inSine:()=>Bw,outBack:()=>eO,outBounce:()=>Zw,outCirc:()=>$w,outCubic:()=>Dw,outElastic:()=>rO,outExpo:()=>jw,outQuad:()=>Lw,outQuart:()=>Gw,outQuint:()=>Uw,outSine:()=>Hw,swingFrom:()=>aO,swingFromTo:()=>oO,swingTo:()=>sO});function Pw(e){return Math.pow(e,2)}function Lw(e){return-(Math.pow(e-1,2)-1)}function Nw(e){return(e/=.5)<1?.5*Math.pow(e,2):-.5*((e-=2)*e-2)}function Mw(e){return Math.pow(e,3)}function Dw(e){return Math.pow(e-1,3)+1}function Fw(e){return(e/=.5)<1?.5*Math.pow(e,3):.5*(Math.pow(e-2,3)+2)}function qw(e){return Math.pow(e,4)}function Gw(e){return-(Math.pow(e-1,4)-1)}function Xw(e){return(e/=.5)<1?.5*Math.pow(e,4):-.5*((e-=2)*Math.pow(e,3)-2)}function Vw(e){return Math.pow(e,5)}function Uw(e){return Math.pow(e-1,5)+1}function kw(e){return(e/=.5)<1?.5*Math.pow(e,5):.5*(Math.pow(e-2,5)+2)}function Bw(e){return-Math.cos(e*(Math.PI/2))+1}function Hw(e){return Math.sin(e*(Math.PI/2))}function Ww(e){return-.5*(Math.cos(Math.PI*e)-1)}function zw(e){return e===0?0:Math.pow(2,10*(e-1))}function jw(e){return e===1?1:-Math.pow(2,-10*e)+1}function Kw(e){return e===0?0:e===1?1:(e/=.5)<1?.5*Math.pow(2,10*(e-1)):.5*(-Math.pow(2,-10*--e)+2)}function Yw(e){return-(Math.sqrt(1-e*e)-1)}function $w(e){return Math.sqrt(1-Math.pow(e-1,2))}function Qw(e){return(e/=.5)<1?-.5*(Math.sqrt(1-e*e)-1):.5*(Math.sqrt(1-(e-=2)*e)+1)}function Zw(e){return e<1/2.75?7.5625*e*e:e<2/2.75?7.5625*(e-=1.5/2.75)*e+.75:e<2.5/2.75?7.5625*(e-=2.25/2.75)*e+.9375:7.5625*(e-=2.625/2.75)*e+.984375}function Jw(e){let t=et;return e*e*((t+1)*e-t)}function eO(e){let t=et;return(e-=1)*e*((t+1)*e+t)+1}function tO(e){let t=et;return(e/=.5)<1?.5*(e*e*(((t*=1.525)+1)*e-t)):.5*((e-=2)*e*(((t*=1.525)+1)*e+t)+2)}function nO(e){let t=et,n=0,r=1;return e===0?0:e===1?1:(n||(n=.3),r<1?(r=1,t=n/4):t=n/(2*Math.PI)*Math.asin(1/r),-(r*Math.pow(2,10*(e-=1))*Math.sin((e-t)*(2*Math.PI)/n)))}function rO(e){let t=et,n=0,r=1;return e===0?0:e===1?1:(n||(n=.3),r<1?(r=1,t=n/4):t=n/(2*Math.PI)*Math.asin(1/r),r*Math.pow(2,-10*e)*Math.sin((e-t)*(2*Math.PI)/n)+1)}function iO(e){let t=et,n=0,r=1;return e===0?0:(e/=1/2)===2?1:(n||(n=.3*1.5),r<1?(r=1,t=n/4):t=n/(2*Math.PI)*Math.asin(1/r),e<1?-.5*(r*Math.pow(2,10*(e-=1))*Math.sin((e-t)*(2*Math.PI)/n)):r*Math.pow(2,-10*(e-=1))*Math.sin((e-t)*(2*Math.PI)/n)*.5+1)}function oO(e){let t=et;return(e/=.5)<1?.5*(e*e*(((t*=1.525)+1)*e-t)):.5*((e-=2)*e*(((t*=1.525)+1)*e+t)+2)}function aO(e){let t=et;return e*e*((t+1)*e-t)}function sO(e){let t=et;return(e-=1)*e*((t+1)*e+t)+1}function uO(e){return e<1/2.75?7.5625*e*e:e<2/2.75?7.5625*(e-=1.5/2.75)*e+.75:e<2.5/2.75?7.5625*(e-=2.25/2.75)*e+.9375:7.5625*(e-=2.625/2.75)*e+.984375}function cO(e){return e<1/2.75?7.5625*e*e:e<2/2.75?2-(7.5625*(e-=1.5/2.75)*e+.75):e<2.5/2.75?2-(7.5625*(e-=2.25/2.75)*e+.9375):2-(7.5625*(e-=2.625/2.75)*e+.984375)}var dn,et,Ow,xw,Rw,Cw,ji=fe(()=>{"use strict";dn=ae(zi()),et=1.70158,Ow=(0,dn.default)(.25,.1,.25,1),xw=(0,dn.default)(.42,0,1,1),Rw=(0,dn.default)(0,0,.58,1),Cw=(0,dn.default)(.42,0,.58,1)});var td={};xe(td,{applyEasing:()=>fO,createBezierEasing:()=>lO,optimizeFloat:()=>gn});function gn(e,t=5,n=10){let r=Math.pow(n,t),i=Number(Math.round(e*r)/r);return Math.abs(i)>1e-4?i:0}function lO(e){return(0,ed.default)(...e)}function fO(e,t,n){return t===0?0:t===1?1:gn(n?t>0?n(t):t:t>0&&e&&pn[e]?pn[e](t):t)}var ed,Ki=fe(()=>{"use strict";ji();ed=ae(zi())});var id={};xe(id,{createElementState:()=>rd,ixElements:()=>SO,mergeActionState:()=>Yi});function rd(e,t,n,r,i){let o=n===dO?(0,Mt.getIn)(i,["config","target","objectId"]):null;return(0,Mt.mergeIn)(e,[r],{id:r,ref:t,refId:o,refType:n})}function Yi(e,t,n,r,i){let o=OO(i);return(0,Mt.mergeIn)(e,[t,AO,n],r,o)}function OO(e){let{config:t}=e;return wO.reduce((n,r)=>{let i=r[0],o=r[1],s=t[i],a=t[o];return s!=null&&a!=null&&(n[o]=a),n},{})}var Mt,A1,dO,S1,pO,gO,hO,EO,yO,mO,vO,_O,IO,TO,bO,nd,AO,SO,wO,od=fe(()=>{"use strict";Mt=ae(St());Re();({HTML_ELEMENT:A1,PLAIN_OBJECT:dO,ABSTRACT_NODE:S1,CONFIG_X_VALUE:pO,CONFIG_Y_VALUE:gO,CONFIG_Z_VALUE:hO,CONFIG_VALUE:EO,CONFIG_X_UNIT:yO,CONFIG_Y_UNIT:mO,CONFIG_Z_UNIT:vO,CONFIG_UNIT:_O}=_e),{IX2_SESSION_STOPPED:IO,IX2_INSTANCE_ADDED:TO,IX2_ELEMENT_STATE_CHANGED:bO}=ye,nd={},AO="refState",SO=(e=nd,t={})=>{switch(t.type){case IO:return nd;case TO:{let{elementId:n,element:r,origin:i,actionItem:o,refType:s}=t.payload,{actionTypeId:a}=o,u=e;return(0,Mt.getIn)(u,[n,r])!==r&&(u=rd(u,r,s,n,o)),Yi(u,n,a,i,o)}case bO:{let{elementId:n,actionTypeId:r,current:i,actionItem:o}=t.payload;return Yi(e,n,r,i,o)}default:return e}};wO=[[pO,yO],[gO,mO],[hO,vO],[EO,_O]]});var ad=f($i=>{"use strict";Object.defineProperty($i,"__esModule",{value:!0});function xO(e,t){for(var n in t)Object.defineProperty(e,n,{enumerable:!0,get:t[n]})}xO($i,{clearPlugin:function(){return DO},createPluginInstance:function(){return NO},getPluginConfig:function(){return RO},getPluginDestination:function(){return LO},getPluginDuration:function(){return CO},getPluginOrigin:function(){return PO},renderPlugin:function(){return MO}});var RO=e=>e.value,CO=(e,t)=>{if(t.config.duration!=="auto")return null;let n=parseFloat(e.getAttribute("data-duration"));return n>0?n*1e3:parseFloat(e.getAttribute("data-default-duration"))*1e3},PO=e=>e||{value:0},LO=e=>({value:e.value}),NO=e=>{let t=window.Webflow.require("lottie").createInstance(e);return t.stop(),t.setSubframe(!0),t},MO=(e,t,n)=>{if(!e)return;let r=t[n.actionTypeId].value/100;e.goToFrame(e.frames*r)},DO=e=>{window.Webflow.require("lottie").createInstance(e).stop()}});var ud=f(Qi=>{"use strict";Object.defineProperty(Qi,"__esModule",{value:!0});function FO(e,t){for(var n in t)Object.defineProperty(e,n,{enumerable:!0,get:t[n]})}FO(Qi,{clearPlugin:function(){return zO},createPluginInstance:function(){return HO},getPluginConfig:function(){return VO},getPluginDestination:function(){return BO},getPluginDuration:function(){return UO},getPluginOrigin:function(){return kO},renderPlugin:function(){return WO}});var qO=e=>document.querySelector(`[data-w-id="${e}"]`),GO=()=>window.Webflow.require("spline"),XO=(e,t)=>e.filter(n=>!t.includes(n)),VO=(e,t)=>e.value[t],UO=()=>null,sd=Object.freeze({positionX:0,positionY:0,positionZ:0,rotationX:0,rotationY:0,rotationZ:0,scaleX:1,scaleY:1,scaleZ:1}),kO=(e,t)=>{let n=t.config.value,r=Object.keys(n);if(e){let o=Object.keys(e),s=XO(r,o);return s.length?s.reduce((u,c)=>(u[c]=sd[c],u),e):e}return r.reduce((o,s)=>(o[s]=sd[s],o),{})},BO=e=>e.value,HO=(e,t)=>{let n=t?.config?.target?.pluginElement;return n?qO(n):null},WO=(e,t,n)=>{let r=GO(),i=r.getInstance(e),o=n.config.target.objectId,s=a=>{if(!a)throw new Error("Invalid spline app passed to renderSpline");let u=o&&a.findObjectById(o);if(!u)return;let{PLUGIN_SPLINE:c}=t;c.positionX!=null&&(u.position.x=c.positionX),c.positionY!=null&&(u.position.y=c.positionY),c.positionZ!=null&&(u.position.z=c.positionZ),c.rotationX!=null&&(u.rotation.x=c.rotationX),c.rotationY!=null&&(u.rotation.y=c.rotationY),c.rotationZ!=null&&(u.rotation.z=c.rotationZ),c.scaleX!=null&&(u.scale.x=c.scaleX),c.scaleY!=null&&(u.scale.y=c.scaleY),c.scaleZ!=null&&(u.scale.z=c.scaleZ)};i?s(i.spline):r.setLoadHandler(e,s)},zO=()=>null});var cd=f(eo=>{"use strict";Object.defineProperty(eo,"__esModule",{value:!0});function jO(e,t){for(var n in t)Object.defineProperty(e,n,{enumerable:!0,get:t[n]})}jO(eo,{clearPlugin:function(){return nx},createPluginInstance:function(){return ex},getPluginConfig:function(){return $O},getPluginDestination:function(){return JO},getPluginDuration:function(){return QO},getPluginOrigin:function(){return ZO},renderPlugin:function(){return tx}});var Zi="--wf-rive-fit",Ji="--wf-rive-alignment",KO=e=>document.querySelector(`[data-w-id="${e}"]`),YO=()=>window.Webflow.require("rive"),$O=(e,t)=>e.value.inputs[t],QO=()=>null,ZO=(e,t)=>{if(e)return e;let n={},{inputs:r={}}=t.config.value;for(let i in r)r[i]==null&&(n[i]=0);return n},JO=e=>e.value.inputs??{},ex=(e,t)=>{if((t.config?.target?.selectorGuids||[]).length>0)return e;let r=t?.config?.target?.pluginElement;return r?KO(r):null},tx=(e,{PLUGIN_RIVE:t},n)=>{let r=YO(),i=r.getInstance(e),o=r.rive.StateMachineInputType,{name:s,inputs:a={}}=n.config.value||{};function u(c){if(c.loaded)g();else{let p=()=>{g(),c?.off("load",p)};c?.on("load",p)}function g(){let p=c.stateMachineInputs(s);if(p!=null){if(c.isPlaying||c.play(s,!1),Zi in a||Ji in a){let d=c.layout,h=a[Zi]??d.fit,v=a[Ji]??d.alignment;(h!==d.fit||v!==d.alignment)&&(c.layout=d.copyWith({fit:h,alignment:v}))}for(let d in a){if(d===Zi||d===Ji)continue;let h=p.find(v=>v.name===d);if(h!=null)switch(h.type){case o.Boolean:{if(a[d]!=null){let v=!!a[d];h.value=v}break}case o.Number:{let v=t[d];v!=null&&(h.value=v);break}case o.Trigger:{a[d]&&h.fire();break}}}}}}i?.rive?u(i.rive):r.setLoadHandler(e,u)},nx=(e,t)=>null});var no=f(to=>{"use strict";Object.defineProperty(to,"__esModule",{value:!0});Object.defineProperty(to,"normalizeColor",{enumerable:!0,get:function(){return rx}});var ld={aliceblue:"#F0F8FF",antiquewhite:"#FAEBD7",aqua:"#00FFFF",aquamarine:"#7FFFD4",azure:"#F0FFFF",beige:"#F5F5DC",bisque:"#FFE4C4",black:"#000000",blanchedalmond:"#FFEBCD",blue:"#0000FF",blueviolet:"#8A2BE2",brown:"#A52A2A",burlywood:"#DEB887",cadetblue:"#5F9EA0",chartreuse:"#7FFF00",chocolate:"#D2691E",coral:"#FF7F50",cornflowerblue:"#6495ED",cornsilk:"#FFF8DC",crimson:"#DC143C",cyan:"#00FFFF",darkblue:"#00008B",darkcyan:"#008B8B",darkgoldenrod:"#B8860B",darkgray:"#A9A9A9",darkgreen:"#006400",darkgrey:"#A9A9A9",darkkhaki:"#BDB76B",darkmagenta:"#8B008B",darkolivegreen:"#556B2F",darkorange:"#FF8C00",darkorchid:"#9932CC",darkred:"#8B0000",darksalmon:"#E9967A",darkseagreen:"#8FBC8F",darkslateblue:"#483D8B",darkslategray:"#2F4F4F",darkslategrey:"#2F4F4F",darkturquoise:"#00CED1",darkviolet:"#9400D3",deeppink:"#FF1493",deepskyblue:"#00BFFF",dimgray:"#696969",dimgrey:"#696969",dodgerblue:"#1E90FF",firebrick:"#B22222",floralwhite:"#FFFAF0",forestgreen:"#228B22",fuchsia:"#FF00FF",gainsboro:"#DCDCDC",ghostwhite:"#F8F8FF",gold:"#FFD700",goldenrod:"#DAA520",gray:"#808080",green:"#008000",greenyellow:"#ADFF2F",grey:"#808080",honeydew:"#F0FFF0",hotpink:"#FF69B4",indianred:"#CD5C5C",indigo:"#4B0082",ivory:"#FFFFF0",khaki:"#F0E68C",lavender:"#E6E6FA",lavenderblush:"#FFF0F5",lawngreen:"#7CFC00",lemonchiffon:"#FFFACD",lightblue:"#ADD8E6",lightcoral:"#F08080",lightcyan:"#E0FFFF",lightgoldenrodyellow:"#FAFAD2",lightgray:"#D3D3D3",lightgreen:"#90EE90",lightgrey:"#D3D3D3",lightpink:"#FFB6C1",lightsalmon:"#FFA07A",lightseagreen:"#20B2AA",lightskyblue:"#87CEFA",lightslategray:"#778899",lightslategrey:"#778899",lightsteelblue:"#B0C4DE",lightyellow:"#FFFFE0",lime:"#00FF00",limegreen:"#32CD32",linen:"#FAF0E6",magenta:"#FF00FF",maroon:"#800000",mediumaquamarine:"#66CDAA",mediumblue:"#0000CD",mediumorchid:"#BA55D3",mediumpurple:"#9370DB",mediumseagreen:"#3CB371",mediumslateblue:"#7B68EE",mediumspringgreen:"#00FA9A",mediumturquoise:"#48D1CC",mediumvioletred:"#C71585",midnightblue:"#191970",mintcream:"#F5FFFA",mistyrose:"#FFE4E1",moccasin:"#FFE4B5",navajowhite:"#FFDEAD",navy:"#000080",oldlace:"#FDF5E6",olive:"#808000",olivedrab:"#6B8E23",orange:"#FFA500",orangered:"#FF4500",orchid:"#DA70D6",palegoldenrod:"#EEE8AA",palegreen:"#98FB98",paleturquoise:"#AFEEEE",palevioletred:"#DB7093",papayawhip:"#FFEFD5",peachpuff:"#FFDAB9",peru:"#CD853F",pink:"#FFC0CB",plum:"#DDA0DD",powderblue:"#B0E0E6",purple:"#800080",rebeccapurple:"#663399",red:"#FF0000",rosybrown:"#BC8F8F",royalblue:"#4169E1",saddlebrown:"#8B4513",salmon:"#FA8072",sandybrown:"#F4A460",seagreen:"#2E8B57",seashell:"#FFF5EE",sienna:"#A0522D",silver:"#C0C0C0",skyblue:"#87CEEB",slateblue:"#6A5ACD",slategray:"#708090",slategrey:"#708090",snow:"#FFFAFA",springgreen:"#00FF7F",steelblue:"#4682B4",tan:"#D2B48C",teal:"#008080",thistle:"#D8BFD8",tomato:"#FF6347",turquoise:"#40E0D0",violet:"#EE82EE",wheat:"#F5DEB3",white:"#FFFFFF",whitesmoke:"#F5F5F5",yellow:"#FFFF00",yellowgreen:"#9ACD32"};function rx(e){let t,n,r,i=1,o=e.replace(/\s/g,"").toLowerCase(),a=(typeof ld[o]=="string"?ld[o].toLowerCase():null)||o;if(a.startsWith("#")){let u=a.substring(1);u.length===3||u.length===4?(t=parseInt(u[0]+u[0],16),n=parseInt(u[1]+u[1],16),r=parseInt(u[2]+u[2],16),u.length===4&&(i=parseInt(u[3]+u[3],16)/255)):(u.length===6||u.length===8)&&(t=parseInt(u.substring(0,2),16),n=parseInt(u.substring(2,4),16),r=parseInt(u.substring(4,6),16),u.length===8&&(i=parseInt(u.substring(6,8),16)/255))}else if(a.startsWith("rgba")){let u=a.match(/rgba\(([^)]+)\)/)[1].split(",");t=parseInt(u[0],10),n=parseInt(u[1],10),r=parseInt(u[2],10),i=parseFloat(u[3])}else if(a.startsWith("rgb")){let u=a.match(/rgb\(([^)]+)\)/)[1].split(",");t=parseInt(u[0],10),n=parseInt(u[1],10),r=parseInt(u[2],10)}else if(a.startsWith("hsla")){let u=a.match(/hsla\(([^)]+)\)/)[1].split(","),c=parseFloat(u[0]),g=parseFloat(u[1].replace("%",""))/100,p=parseFloat(u[2].replace("%",""))/100;i=parseFloat(u[3]);let d=(1-Math.abs(2*p-1))*g,h=d*(1-Math.abs(c/60%2-1)),v=p-d/2,m,T,y;c>=0&&c<60?(m=d,T=h,y=0):c>=60&&c<120?(m=h,T=d,y=0):c>=120&&c<180?(m=0,T=d,y=h):c>=180&&c<240?(m=0,T=h,y=d):c>=240&&c<300?(m=h,T=0,y=d):(m=d,T=0,y=h),t=Math.round((m+v)*255),n=Math.round((T+v)*255),r=Math.round((y+v)*255)}else if(a.startsWith("hsl")){let u=a.match(/hsl\(([^)]+)\)/)[1].split(","),c=parseFloat(u[0]),g=parseFloat(u[1].replace("%",""))/100,p=parseFloat(u[2].replace("%",""))/100,d=(1-Math.abs(2*p-1))*g,h=d*(1-Math.abs(c/60%2-1)),v=p-d/2,m,T,y;c>=0&&c<60?(m=d,T=h,y=0):c>=60&&c<120?(m=h,T=d,y=0):c>=120&&c<180?(m=0,T=d,y=h):c>=180&&c<240?(m=0,T=h,y=d):c>=240&&c<300?(m=h,T=0,y=d):(m=d,T=0,y=h),t=Math.round((m+v)*255),n=Math.round((T+v)*255),r=Math.round((y+v)*255)}if(Number.isNaN(t)||Number.isNaN(n)||Number.isNaN(r))throw new Error(`Invalid color in [ix2/shared/utils/normalizeColor.js] '${e}'`);return{red:t,green:n,blue:r,alpha:i}}});var fd=f(ro=>{"use strict";Object.defineProperty(ro,"__esModule",{value:!0});function ix(e,t){for(var n in t)Object.defineProperty(e,n,{enumerable:!0,get:t[n]})}ix(ro,{clearPlugin:function(){return dx},createPluginInstance:function(){return lx},getPluginConfig:function(){return ax},getPluginDestination:function(){return cx},getPluginDuration:function(){return sx},getPluginOrigin:function(){return ux},renderPlugin:function(){return fx}});var ox=no(),ax=(e,t)=>e.value[t],sx=()=>null,ux=(e,t)=>{if(e)return e;let n=t.config.value,r=t.config.target.objectId,i=getComputedStyle(document.documentElement).getPropertyValue(r);if(n.size!=null)return{size:parseInt(i,10)};if(n.red!=null&&n.green!=null&&n.blue!=null)return(0,ox.normalizeColor)(i)},cx=e=>e.value,lx=()=>null,fx=(e,t,n)=>{let r=n.config.target.objectId,i=n.config.value.unit,{PLUGIN_VARIABLE:o}=t,{size:s,red:a,green:u,blue:c,alpha:g}=o,p;s!=null&&(p=s+i),a!=null&&c!=null&&u!=null&&g!=null&&(p=`rgba(${a}, ${u}, ${c}, ${g})`),p!=null&&document.documentElement.style.setProperty(r,p)},dx=(e,t)=>{let n=t.config.target.objectId;document.documentElement.style.removeProperty(n)}});var pd=f(io=>{"use strict";Object.defineProperty(io,"__esModule",{value:!0});Object.defineProperty(io,"pluginMethodMap",{enumerable:!0,get:function(){return yx}});var lr=(Re(),He(Es)),px=fr(ad()),gx=fr(ud()),hx=fr(cd()),Ex=fr(fd());function dd(e){if(typeof WeakMap!="function")return null;var t=new WeakMap,n=new WeakMap;return(dd=function(r){return r?n:t})(e)}function fr(e,t){if(!t&&e&&e.__esModule)return e;if(e===null||typeof e!="object"&&typeof e!="function")return{default:e};var n=dd(t);if(n&&n.has(e))return n.get(e);var r={__proto__:null},i=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var o in e)if(o!=="default"&&Object.prototype.hasOwnProperty.call(e,o)){var s=i?Object.getOwnPropertyDescriptor(e,o):null;s&&(s.get||s.set)?Object.defineProperty(r,o,s):r[o]=e[o]}return r.default=e,n&&n.set(e,r),r}var yx=new Map([[lr.ActionTypeConsts.PLUGIN_LOTTIE,{...px}],[lr.ActionTypeConsts.PLUGIN_SPLINE,{...gx}],[lr.ActionTypeConsts.PLUGIN_RIVE,{...hx}],[lr.ActionTypeConsts.PLUGIN_VARIABLE,{...Ex}]])});var gd={};xe(gd,{clearPlugin:()=>lo,createPluginInstance:()=>vx,getPluginConfig:()=>ao,getPluginDestination:()=>uo,getPluginDuration:()=>mx,getPluginOrigin:()=>so,isPluginType:()=>gt,renderPlugin:()=>co});function gt(e){return oo.pluginMethodMap.has(e)}var oo,ht,ao,so,mx,uo,vx,co,lo,fo=fe(()=>{"use strict";sr();oo=ae(pd());ht=e=>t=>{if(!Ve)return()=>null;let n=oo.pluginMethodMap.get(t);if(!n)throw new Error(`IX2 no plugin configured for: ${t}`);let r=n[e];if(!r)throw new Error(`IX2 invalid plugin method: ${e}`);return r},ao=ht("getPluginConfig"),so=ht("getPluginOrigin"),mx=ht("getPluginDuration"),uo=ht("getPluginDestination"),vx=ht("createPluginInstance"),co=ht("renderPlugin"),lo=ht("clearPlugin")});var Ed=f((N1,hd)=>{function _x(e,t){return e==null||e!==e?t:e}hd.exports=_x});var md=f((M1,yd)=>{function Ix(e,t,n,r){var i=-1,o=e==null?0:e.length;for(r&&o&&(n=e[++i]);++i<o;)n=t(n,e[i],i,e);return n}yd.exports=Ix});var _d=f((D1,vd)=>{function Tx(e){return function(t,n,r){for(var i=-1,o=Object(t),s=r(t),a=s.length;a--;){var u=s[e?a:++i];if(n(o[u],u,o)===!1)break}return t}}vd.exports=Tx});var Td=f((F1,Id)=>{var bx=_d(),Ax=bx();Id.exports=Ax});var po=f((q1,bd)=>{var Sx=Td(),wx=un();function Ox(e,t){return e&&Sx(e,t,wx)}bd.exports=Ox});var Sd=f((G1,Ad)=>{var xx=dt();function Rx(e,t){return function(n,r){if(n==null)return n;if(!xx(n))return e(n,r);for(var i=n.length,o=t?i:-1,s=Object(n);(t?o--:++o<i)&&r(s[o],o,s)!==!1;);return n}}Ad.exports=Rx});var go=f((X1,wd)=>{var Cx=po(),Px=Sd(),Lx=Px(Cx);wd.exports=Lx});var xd=f((V1,Od)=>{function Nx(e,t,n,r,i){return i(e,function(o,s,a){n=r?(r=!1,o):t(n,o,s,a)}),n}Od.exports=Nx});var Cd=f((U1,Rd)=>{var Mx=md(),Dx=go(),Fx=ut(),qx=xd(),Gx=ve();function Xx(e,t,n){var r=Gx(e)?Mx:qx,i=arguments.length<3;return r(e,Fx(t,4),n,i,Dx)}Rd.exports=Xx});var Ld=f((k1,Pd)=>{var Vx=ki(),Ux=ut(),kx=Bi(),Bx=Math.max,Hx=Math.min;function Wx(e,t,n){var r=e==null?0:e.length;if(!r)return-1;var i=r-1;return n!==void 0&&(i=kx(n),i=n<0?Bx(r+i,0):Hx(i,r-1)),Vx(e,Ux(t,3),i,!0)}Pd.exports=Wx});var Md=f((B1,Nd)=>{var zx=Ui(),jx=Ld(),Kx=zx(jx);Nd.exports=Kx});function Dd(e,t){return e===t?e!==0||t!==0||1/e===1/t:e!==e&&t!==t}function Yx(e,t){if(Dd(e,t))return!0;if(typeof e!="object"||e===null||typeof t!="object"||t===null)return!1;let n=Object.keys(e),r=Object.keys(t);if(n.length!==r.length)return!1;for(let i=0;i<n.length;i++)if(!Object.hasOwn(t,n[i])||!Dd(e[n[i]],t[n[i]]))return!1;return!0}var ho,Fd=fe(()=>{"use strict";ho=Yx});var ep={};xe(ep,{cleanupHTMLElement:()=>zR,clearAllStyles:()=>WR,clearObjectCache:()=>dR,getActionListProgress:()=>KR,getAffectedElements:()=>_o,getComputedStyle:()=>_R,getDestinationValues:()=>OR,getElementId:()=>ER,getInstanceId:()=>gR,getInstanceOrigin:()=>bR,getItemConfigByKey:()=>wR,getMaxDurationItemIndex:()=>Jd,getNamespacedParameterId:()=>QR,getRenderType:()=>$d,getStyleProp:()=>xR,mediaQueriesEqual:()=>JR,observeStore:()=>vR,reduceListToGroup:()=>YR,reifyState:()=>yR,renderHTMLElement:()=>RR,shallowEqual:()=>ho,shouldAllowMediaQuery:()=>ZR,shouldNamespaceEventParameter:()=>$R,stringifyTarget:()=>eC});function dR(){dr.clear()}function gR(){return"i"+pR++}function ER(e,t){for(let n in e){let r=e[n];if(r&&r.ref===t)return r.id}return"e"+hR++}function yR({events:e,actionLists:t,site:n}={}){let r=(0,Er.default)(e,(s,a)=>{let{eventTypeId:u}=a;return s[u]||(s[u]={}),s[u][a.id]=a,s},{}),i=n&&n.mediaQueries,o=[];return i?o=i.map(s=>s.key):(i=[],console.warn("IX2 missing mediaQueries in site data")),{ixData:{events:e,actionLists:t,eventTypeMap:r,mediaQueries:i,mediaQueryKeys:o}}}function vR({store:e,select:t,onChange:n,comparator:r=mR}){let{getState:i,subscribe:o}=e,s=o(u),a=t(i());function u(){let c=t(i());if(c==null){s();return}r(c,a)||(a=c,n(a,e))}return s}function Xd(e){let t=typeof e;if(t==="string")return{id:e};if(e!=null&&t==="object"){let{id:n,objectId:r,selector:i,selectorGuids:o,appliesTo:s,useEventTarget:a}=e;return{id:n,objectId:r,selector:i,selectorGuids:o,appliesTo:s,useEventTarget:a}}return{}}function _o({config:e,event:t,eventTarget:n,elementRoot:r,elementApi:i}){if(!i)throw new Error("IX2 missing elementApi");let{targets:o}=e;if(Array.isArray(o)&&o.length>0)return o.reduce((N,I)=>N.concat(_o({config:{target:I},event:t,eventTarget:n,elementRoot:r,elementApi:i})),[]);let{getValidDocument:s,getQuerySelector:a,queryDocument:u,getChildElements:c,getSiblingElements:g,matchSelector:p,elementContains:d,isSiblingNode:h}=i,{target:v}=e;if(!v)return[];let{id:m,objectId:T,selector:y,selectorGuids:S,appliesTo:A,useEventTarget:R}=Xd(v);if(T)return[dr.has(T)?dr.get(T):dr.set(T,{}).get(T)];if(A===pi.PAGE){let N=s(m);return N?[N]:[]}let O=(t?.action?.config?.affectedElements??{})[m||y]||{},F=!!(O.id||O.selector),X,V,k,Z=t&&a(Xd(t.target));if(F?(X=O.limitAffectedElements,V=Z,k=a(O)):V=k=a({id:m,selector:y,selectorGuids:S}),t&&R){let N=n&&(k||R===!0)?[n]:u(Z);if(k){if(R===cR)return u(k).filter(I=>N.some(L=>d(I,L)));if(R===qd)return u(k).filter(I=>N.some(L=>d(L,I)));if(R===Gd)return u(k).filter(I=>N.some(L=>h(L,I)))}return N}return V==null||k==null?[]:Ve&&r?u(k).filter(N=>r.contains(N)):X===qd?u(V,k):X===uR?c(u(V)).filter(p(k)):X===Gd?g(u(V)).filter(p(k)):u(k)}function _R({element:e,actionItem:t}){if(!Ve)return{};let{actionTypeId:n}=t;switch(n){case Xt:case Vt:case Ut:case kt:case mr:return window.getComputedStyle(e);default:return{}}}function bR(e,t={},n={},r,i){let{getStyle:o}=i,{actionTypeId:s}=r;if(gt(s))return so(s)(t[s],r);switch(r.actionTypeId){case Ft:case qt:case Gt:case mn:return t[r.actionTypeId]||Io[r.actionTypeId];case vn:return IR(t[r.actionTypeId],r.config.filters);case _n:return TR(t[r.actionTypeId],r.config.fontVariations);case jd:return{value:(0,tt.default)(parseFloat(o(e,gr)),1)};case Xt:{let a=o(e,$e),u=o(e,Qe),c,g;return r.config.widthUnit===lt?c=Vd.test(a)?parseFloat(a):parseFloat(n.width):c=(0,tt.default)(parseFloat(a),parseFloat(n.width)),r.config.heightUnit===lt?g=Vd.test(u)?parseFloat(u):parseFloat(n.height):g=(0,tt.default)(parseFloat(u),parseFloat(n.height)),{widthValue:c,heightValue:g}}case Vt:case Ut:case kt:return kR({element:e,actionTypeId:r.actionTypeId,computedStyle:n,getStyle:o});case mr:return{value:(0,tt.default)(o(e,hr),n.display)};case fR:return t[r.actionTypeId]||{value:0};default:return}}function OR({element:e,actionItem:t,elementApi:n}){if(gt(t.actionTypeId))return uo(t.actionTypeId)(t.config);switch(t.actionTypeId){case Ft:case qt:case Gt:case mn:{let{xValue:r,yValue:i,zValue:o}=t.config;return{xValue:r,yValue:i,zValue:o}}case Xt:{let{getStyle:r,setStyle:i,getProperty:o}=n,{widthUnit:s,heightUnit:a}=t.config,{widthValue:u,heightValue:c}=t.config;if(!Ve)return{widthValue:u,heightValue:c};if(s===lt){let g=r(e,$e);i(e,$e,""),u=o(e,"offsetWidth"),i(e,$e,g)}if(a===lt){let g=r(e,Qe);i(e,Qe,""),c=o(e,"offsetHeight"),i(e,Qe,g)}return{widthValue:u,heightValue:c}}case Vt:case Ut:case kt:{let{rValue:r,gValue:i,bValue:o,aValue:s,globalSwatchId:a}=t.config;if(a&&a.startsWith("--")){let{getStyle:u}=n,c=u(e,a),g=(0,Bd.normalizeColor)(c);return{rValue:g.red,gValue:g.green,bValue:g.blue,aValue:g.alpha}}return{rValue:r,gValue:i,bValue:o,aValue:s}}case vn:return t.config.filters.reduce(AR,{});case _n:return t.config.fontVariations.reduce(SR,{});default:{let{value:r}=t.config;return{value:r}}}}function $d(e){if(/^TRANSFORM_/.test(e))return Wd;if(/^STYLE_/.test(e))return mo;if(/^GENERAL_/.test(e))return yo;if(/^PLUGIN_/.test(e))return zd}function xR(e,t){return e===mo?t.replace("STYLE_","").toLowerCase():null}function RR(e,t,n,r,i,o,s,a,u){switch(a){case Wd:return MR(e,t,n,i,s);case mo:return BR(e,t,n,i,o,s);case yo:return HR(e,i,s);case zd:{let{actionTypeId:c}=i;if(gt(c))return co(c)(u,t,i)}}}function MR(e,t,n,r,i){let o=NR.map(a=>{let u=Io[a],{xValue:c=u.xValue,yValue:g=u.yValue,zValue:p=u.zValue,xUnit:d="",yUnit:h="",zUnit:v=""}=t[a]||{};switch(a){case Ft:return`${Zx}(${c}${d}, ${g}${h}, ${p}${v})`;case qt:return`${Jx}(${c}${d}, ${g}${h}, ${p}${v})`;case Gt:return`${eR}(${c}${d}) ${tR}(${g}${h}) ${nR}(${p}${v})`;case mn:return`${rR}(${c}${d}, ${g}${h})`;default:return""}}).join(" "),{setStyle:s}=i;Et(e,ct,i),s(e,ct,o),qR(r,n)&&s(e,ar,iR)}function DR(e,t,n,r){let i=(0,Er.default)(t,(s,a,u)=>`${s} ${u}(${a}${LR(u,n)})`,""),{setStyle:o}=r;Et(e,hn,r),o(e,hn,i)}function FR(e,t,n,r){let i=(0,Er.default)(t,(s,a,u)=>(s.push(`"${u}" ${a}`),s),[]).join(", "),{setStyle:o}=r;Et(e,En,r),o(e,En,i)}function qR({actionTypeId:e},{xValue:t,yValue:n,zValue:r}){return e===Ft&&r!==void 0||e===qt&&r!==void 0||e===Gt&&(t!==void 0||n!==void 0)}function UR(e,t){let n=e.exec(t);return n?n[1]:""}function kR({element:e,actionTypeId:t,computedStyle:n,getStyle:r}){let i=vo[t],o=r(e,i),s=XR.test(o)?o:n[i],a=UR(VR,s).split(yn);return{rValue:(0,tt.default)(parseInt(a[0],10),255),gValue:(0,tt.default)(parseInt(a[1],10),255),bValue:(0,tt.default)(parseInt(a[2],10),255),aValue:(0,tt.default)(parseFloat(a[3]),1)}}function BR(e,t,n,r,i,o){let{setStyle:s}=o;switch(r.actionTypeId){case Xt:{let{widthUnit:a="",heightUnit:u=""}=r.config,{widthValue:c,heightValue:g}=n;c!==void 0&&(a===lt&&(a="px"),Et(e,$e,o),s(e,$e,c+a)),g!==void 0&&(u===lt&&(u="px"),Et(e,Qe,o),s(e,Qe,g+u));break}case vn:{DR(e,n,r.config,o);break}case _n:{FR(e,n,r.config,o);break}case Vt:case Ut:case kt:{let a=vo[r.actionTypeId],u=Math.round(n.rValue),c=Math.round(n.gValue),g=Math.round(n.bValue),p=n.aValue;Et(e,a,o),s(e,a,p>=1?`rgb(${u},${c},${g})`:`rgba(${u},${c},${g},${p})`);break}default:{let{unit:a=""}=r.config;Et(e,i,o),s(e,i,n.value+a);break}}}function HR(e,t,n){let{setStyle:r}=n;switch(t.actionTypeId){case mr:{let{value:i}=t.config;i===oR&&Ve?r(e,hr,Wi):r(e,hr,i);return}}}function Et(e,t,n){if(!Ve)return;let r=Yd[t];if(!r)return;let{getStyle:i,setStyle:o}=n,s=i(e,Dt);if(!s){o(e,Dt,r);return}let a=s.split(yn).map(Kd);a.indexOf(r)===-1&&o(e,Dt,a.concat(r).join(yn))}function Qd(e,t,n){if(!Ve)return;let r=Yd[t];if(!r)return;let{getStyle:i,setStyle:o}=n,s=i(e,Dt);!s||s.indexOf(r)===-1||o(e,Dt,s.split(yn).map(Kd).filter(a=>a!==r).join(yn))}function WR({store:e,elementApi:t}){let{ixData:n}=e.getState(),{events:r={},actionLists:i={}}=n;Object.keys(r).forEach(o=>{let s=r[o],{config:a}=s.action,{actionListId:u}=a,c=i[u];c&&Ud({actionList:c,event:s,elementApi:t})}),Object.keys(i).forEach(o=>{Ud({actionList:i[o],elementApi:t})})}function Ud({actionList:e={},event:t,elementApi:n}){let{actionItemGroups:r,continuousParameterGroups:i}=e;r&&r.forEach(o=>{kd({actionGroup:o,event:t,elementApi:n})}),i&&i.forEach(o=>{let{continuousActionGroups:s}=o;s.forEach(a=>{kd({actionGroup:a,event:t,elementApi:n})})})}function kd({actionGroup:e,event:t,elementApi:n}){let{actionItems:r}=e;r.forEach(i=>{let{actionTypeId:o,config:s}=i,a;gt(o)?a=u=>lo(o)(u,i):a=Zd({effect:jR,actionTypeId:o,elementApi:n}),_o({config:s,event:t,elementApi:n}).forEach(a)})}function zR(e,t,n){let{setStyle:r,getStyle:i}=n,{actionTypeId:o}=t;if(o===Xt){let{config:s}=t;s.widthUnit===lt&&r(e,$e,""),s.heightUnit===lt&&r(e,Qe,"")}i(e,Dt)&&Zd({effect:Qd,actionTypeId:o,elementApi:n})(e)}function jR(e,t,n){let{setStyle:r}=n;Qd(e,t,n),r(e,t,""),t===ct&&r(e,ar,"")}function Jd(e){let t=0,n=0;return e.forEach((r,i)=>{let{config:o}=r,s=o.delay+o.duration;s>=t&&(t=s,n=i)}),n}function KR(e,t){let{actionItemGroups:n,useFirstGroupAsInitialState:r}=e,{actionItem:i,verboseTimeElapsed:o=0}=t,s=0,a=0;return n.forEach((u,c)=>{if(r&&c===0)return;let{actionItems:g}=u,p=g[Jd(g)],{config:d,actionTypeId:h}=p;i.id===p.id&&(a=s+o);let v=$d(h)===yo?0:d.duration;s+=d.delay+v}),s>0?gn(a/s):0}function YR({actionList:e,actionItemId:t,rawData:n}){let{actionItemGroups:r,continuousParameterGroups:i}=e,o=[],s=a=>(o.push((0,yr.mergeIn)(a,["config"],{delay:0,duration:0})),a.id===t);return r&&r.some(({actionItems:a})=>a.some(s)),i&&i.some(a=>{let{continuousActionGroups:u}=a;return u.some(({actionItems:c})=>c.some(s))}),(0,yr.setIn)(n,["actionLists"],{[e.id]:{id:e.id,actionItemGroups:[{actionItems:o}]}})}function $R(e,{basedOn:t}){return e===Xe.SCROLLING_IN_VIEW&&(t===Ke.ELEMENT||t==null)||e===Xe.MOUSE_MOVE&&t===Ke.ELEMENT}function QR(e,t){return e+lR+t}function ZR(e,t){return t==null?!0:e.indexOf(t)!==-1}function JR(e,t){return ho(e&&e.sort(),t&&t.sort())}function eC(e){if(typeof e=="string")return e;if(e.pluginElement&&e.objectId)return e.pluginElement+Eo+e.objectId;if(e.objectId)return e.objectId;let{id:t="",selector:n="",useEventTarget:r=""}=e;return t+Eo+n+Eo+r}var tt,Er,pr,yr,Bd,$x,Qx,Zx,Jx,eR,tR,nR,rR,iR,oR,gr,hn,En,$e,Qe,Hd,aR,sR,qd,uR,Gd,cR,hr,Dt,lt,yn,lR,Eo,Wd,yo,mo,zd,Ft,qt,Gt,mn,jd,vn,_n,Xt,Vt,Ut,kt,mr,fR,Kd,vo,Yd,dr,pR,hR,mR,Vd,IR,TR,AR,SR,wR,Io,CR,PR,LR,NR,GR,XR,VR,Zd,tp=fe(()=>{"use strict";tt=ae(Ed()),Er=ae(Cd()),pr=ae(Md()),yr=ae(St());Re();Fd();Ki();Bd=ae(no());fo();sr();({BACKGROUND:$x,TRANSFORM:Qx,TRANSLATE_3D:Zx,SCALE_3D:Jx,ROTATE_X:eR,ROTATE_Y:tR,ROTATE_Z:nR,SKEW:rR,PRESERVE_3D:iR,FLEX:oR,OPACITY:gr,FILTER:hn,FONT_VARIATION_SETTINGS:En,WIDTH:$e,HEIGHT:Qe,BACKGROUND_COLOR:Hd,BORDER_COLOR:aR,COLOR:sR,CHILDREN:qd,IMMEDIATE_CHILDREN:uR,SIBLINGS:Gd,PARENT:cR,DISPLAY:hr,WILL_CHANGE:Dt,AUTO:lt,COMMA_DELIMITER:yn,COLON_DELIMITER:lR,BAR_DELIMITER:Eo,RENDER_TRANSFORM:Wd,RENDER_GENERAL:yo,RENDER_STYLE:mo,RENDER_PLUGIN:zd}=_e),{TRANSFORM_MOVE:Ft,TRANSFORM_SCALE:qt,TRANSFORM_ROTATE:Gt,TRANSFORM_SKEW:mn,STYLE_OPACITY:jd,STYLE_FILTER:vn,STYLE_FONT_VARIATION:_n,STYLE_SIZE:Xt,STYLE_BACKGROUND_COLOR:Vt,STYLE_BORDER:Ut,STYLE_TEXT_COLOR:kt,GENERAL_DISPLAY:mr,OBJECT_VALUE:fR}=Ae,Kd=e=>e.trim(),vo=Object.freeze({[Vt]:Hd,[Ut]:aR,[kt]:sR}),Yd=Object.freeze({[ct]:Qx,[Hd]:$x,[gr]:gr,[hn]:hn,[$e]:$e,[Qe]:Qe,[En]:En}),dr=new Map;pR=1;hR=1;mR=(e,t)=>e===t;Vd=/px/,IR=(e,t)=>t.reduce((n,r)=>(n[r.type]==null&&(n[r.type]=CR[r.type]),n),e||{}),TR=(e,t)=>t.reduce((n,r)=>(n[r.type]==null&&(n[r.type]=PR[r.type]||r.defaultValue||0),n),e||{});AR=(e,t)=>(t&&(e[t.type]=t.value||0),e),SR=(e,t)=>(t&&(e[t.type]=t.value||0),e),wR=(e,t,n)=>{if(gt(e))return ao(e)(n,t);switch(e){case vn:{let r=(0,pr.default)(n.filters,({type:i})=>i===t);return r?r.value:0}case _n:{let r=(0,pr.default)(n.fontVariations,({type:i})=>i===t);return r?r.value:0}default:return n[t]}};Io={[Ft]:Object.freeze({xValue:0,yValue:0,zValue:0}),[qt]:Object.freeze({xValue:1,yValue:1,zValue:1}),[Gt]:Object.freeze({xValue:0,yValue:0,zValue:0}),[mn]:Object.freeze({xValue:0,yValue:0})},CR=Object.freeze({blur:0,"hue-rotate":0,invert:0,grayscale:0,saturate:100,sepia:0,contrast:100,brightness:100}),PR=Object.freeze({wght:0,opsz:0,wdth:0,slnt:0}),LR=(e,t)=>{let n=(0,pr.default)(t.filters,({type:r})=>r===e);if(n&&n.unit)return n.unit;switch(e){case"blur":return"px";case"hue-rotate":return"deg";default:return"%"}},NR=Object.keys(Io);GR="\\(([^)]+)\\)",XR=/^rgb/,VR=RegExp(`rgba?${GR}`);Zd=({effect:e,actionTypeId:t,elementApi:n})=>r=>{switch(t){case Ft:case qt:case Gt:case mn:e(r,ct,n);break;case vn:e(r,hn,n);break;case _n:e(r,En,n);break;case jd:e(r,gr,n);break;case Xt:e(r,$e,n),e(r,Qe,n);break;case Vt:case Ut:case kt:e(r,vo[t],n);break;case mr:e(r,hr,n);break}}});var yt=f(To=>{"use strict";Object.defineProperty(To,"__esModule",{value:!0});function tC(e,t){for(var n in t)Object.defineProperty(e,n,{enumerable:!0,get:t[n]})}tC(To,{IX2BrowserSupport:function(){return nC},IX2EasingUtils:function(){return iC},IX2Easings:function(){return rC},IX2ElementsReducer:function(){return oC},IX2VanillaPlugins:function(){return aC},IX2VanillaUtils:function(){return sC}});var nC=Bt((sr(),He(Kf))),rC=Bt((ji(),He(pn))),iC=Bt((Ki(),He(td))),oC=Bt((od(),He(id))),aC=Bt((fo(),He(gd))),sC=Bt((tp(),He(ep)));function np(e){if(typeof WeakMap!="function")return null;var t=new WeakMap,n=new WeakMap;return(np=function(r){return r?n:t})(e)}function Bt(e,t){if(!t&&e&&e.__esModule)return e;if(e===null||typeof e!="object"&&typeof e!="function")return{default:e};var n=np(t);if(n&&n.has(e))return n.get(e);var r={__proto__:null},i=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var o in e)if(o!=="default"&&Object.prototype.hasOwnProperty.call(e,o)){var s=i?Object.getOwnPropertyDescriptor(e,o):null;s&&(s.get||s.set)?Object.defineProperty(r,o,s):r[o]=e[o]}return r.default=e,n&&n.set(e,r),r}});var _r,nt,uC,cC,lC,fC,dC,pC,vr,rp,gC,hC,bo,EC,yC,mC,vC,ip,op=fe(()=>{"use strict";Re();_r=ae(yt()),nt=ae(St()),{IX2_RAW_DATA_IMPORTED:uC,IX2_SESSION_STOPPED:cC,IX2_INSTANCE_ADDED:lC,IX2_INSTANCE_STARTED:fC,IX2_INSTANCE_REMOVED:dC,IX2_ANIMATION_FRAME_CHANGED:pC}=ye,{optimizeFloat:vr,applyEasing:rp,createBezierEasing:gC}=_r.IX2EasingUtils,{RENDER_GENERAL:hC}=_e,{getItemConfigByKey:bo,getRenderType:EC,getStyleProp:yC}=_r.IX2VanillaUtils,mC=(e,t)=>{let{position:n,parameterId:r,actionGroups:i,destinationKeys:o,smoothing:s,restingValue:a,actionTypeId:u,customEasingFn:c,skipMotion:g,skipToValue:p}=e,{parameters:d}=t.payload,h=Math.max(1-s,.01),v=d[r];v==null&&(h=1,v=a);let m=Math.max(v,0)||0,T=vr(m-n),y=g?p:vr(n+T*h),S=y*100;if(y===n&&e.current)return e;let A,R,P,O;for(let X=0,{length:V}=i;X<V;X++){let{keyframe:k,actionItems:Z}=i[X];if(X===0&&(A=Z[0]),S>=k){A=Z[0];let N=i[X+1],I=N&&S!==k;R=I?N.actionItems[0]:null,I&&(P=k/100,O=(N.keyframe-k)/100)}}let F={};if(A&&!R)for(let X=0,{length:V}=o;X<V;X++){let k=o[X];F[k]=bo(u,k,A.config)}else if(A&&R&&P!==void 0&&O!==void 0){let X=(y-P)/O,V=A.config.easing,k=rp(V,X,c);for(let Z=0,{length:N}=o;Z<N;Z++){let I=o[Z],L=bo(u,I,A.config),te=(bo(u,I,R.config)-L)*k+L;F[I]=te}}return(0,nt.merge)(e,{position:y,current:F})},vC=(e,t)=>{let{active:n,origin:r,start:i,immediate:o,renderType:s,verbose:a,actionItem:u,destination:c,destinationKeys:g,pluginDuration:p,instanceDelay:d,customEasingFn:h,skipMotion:v}=e,m=u.config.easing,{duration:T,delay:y}=u.config;p!=null&&(T=p),y=d??y,s===hC?T=0:(o||v)&&(T=y=0);let{now:S}=t.payload;if(n&&r){let A=S-(i+y);if(a){let X=S-i,V=T+y,k=vr(Math.min(Math.max(0,X/V),1));e=(0,nt.set)(e,"verboseTimeElapsed",V*k)}if(A<0)return e;let R=vr(Math.min(Math.max(0,A/T),1)),P=rp(m,R,h),O={},F=null;return g.length&&(F=g.reduce((X,V)=>{let k=c[V],Z=parseFloat(r[V])||0,I=(parseFloat(k)-Z)*P+Z;return X[V]=I,X},{})),O.current=F,O.position=R,R===1&&(O.active=!1,O.complete=!0),(0,nt.merge)(e,O)}return e},ip=(e=Object.freeze({}),t)=>{switch(t.type){case uC:return t.payload.ixInstances||Object.freeze({});case cC:return Object.freeze({});case lC:{let{instanceId:n,elementId:r,actionItem:i,eventId:o,eventTarget:s,eventStateKey:a,actionListId:u,groupIndex:c,isCarrier:g,origin:p,destination:d,immediate:h,verbose:v,continuous:m,parameterId:T,actionGroups:y,smoothing:S,restingValue:A,pluginInstance:R,pluginDuration:P,instanceDelay:O,skipMotion:F,skipToValue:X}=t.payload,{actionTypeId:V}=i,k=EC(V),Z=yC(k,V),N=Object.keys(d).filter(L=>d[L]!=null&&typeof d[L]!="string"),{easing:I}=i.config;return(0,nt.set)(e,n,{id:n,elementId:r,active:!1,position:0,start:0,origin:p,destination:d,destinationKeys:N,immediate:h,verbose:v,current:null,actionItem:i,actionTypeId:V,eventId:o,eventTarget:s,eventStateKey:a,actionListId:u,groupIndex:c,renderType:k,isCarrier:g,styleProp:Z,continuous:m,parameterId:T,actionGroups:y,smoothing:S,restingValue:A,pluginInstance:R,pluginDuration:P,instanceDelay:O,skipMotion:F,skipToValue:X,customEasingFn:Array.isArray(I)&&I.length===4?gC(I):void 0})}case fC:{let{instanceId:n,time:r}=t.payload;return(0,nt.mergeIn)(e,[n],{active:!0,complete:!1,start:r})}case dC:{let{instanceId:n}=t.payload;if(!e[n])return e;let r={},i=Object.keys(e),{length:o}=i;for(let s=0;s<o;s++){let a=i[s];a!==n&&(r[a]=e[a])}return r}case pC:{let n=e,r=Object.keys(e),{length:i}=r;for(let o=0;o<i;o++){let s=r[o],a=e[s],u=a.continuous?mC:vC;n=(0,nt.set)(n,s,u(a,t))}return n}default:return e}}});var _C,IC,TC,ap,sp=fe(()=>{"use strict";Re();({IX2_RAW_DATA_IMPORTED:_C,IX2_SESSION_STOPPED:IC,IX2_PARAMETER_CHANGED:TC}=ye),ap=(e={},t)=>{switch(t.type){case _C:return t.payload.ixParameters||{};case IC:return{};case TC:{let{key:n,value:r}=t.payload;return e[n]=r,e}default:return e}}});var lp={};xe(lp,{default:()=>AC});var up,cp,bC,AC,fp=fe(()=>{"use strict";up=ae(di());ms();Xs();ks();cp=ae(yt());op();sp();({ixElements:bC}=cp.IX2ElementsReducer),AC=(0,up.combineReducers)({ixData:ys,ixRequest:Gs,ixSession:Us,ixElements:bC,ixInstances:ip,ixParameters:ap})});var pp=f((sG,dp)=>{var SC=at(),wC=ve(),OC=Je(),xC="[object String]";function RC(e){return typeof e=="string"||!wC(e)&&OC(e)&&SC(e)==xC}dp.exports=RC});var hp=f((uG,gp)=>{var CC=Vi(),PC=CC("length");gp.exports=PC});var yp=f((cG,Ep)=>{var LC="\\ud800-\\udfff",NC="\\u0300-\\u036f",MC="\\ufe20-\\ufe2f",DC="\\u20d0-\\u20ff",FC=NC+MC+DC,qC="\\ufe0e\\ufe0f",GC="\\u200d",XC=RegExp("["+GC+LC+FC+qC+"]");function VC(e){return XC.test(e)}Ep.exports=VC});var wp=f((lG,Sp)=>{var vp="\\ud800-\\udfff",UC="\\u0300-\\u036f",kC="\\ufe20-\\ufe2f",BC="\\u20d0-\\u20ff",HC=UC+kC+BC,WC="\\ufe0e\\ufe0f",zC="["+vp+"]",Ao="["+HC+"]",So="\\ud83c[\\udffb-\\udfff]",jC="(?:"+Ao+"|"+So+")",_p="[^"+vp+"]",Ip="(?:\\ud83c[\\udde6-\\uddff]){2}",Tp="[\\ud800-\\udbff][\\udc00-\\udfff]",KC="\\u200d",bp=jC+"?",Ap="["+WC+"]?",YC="(?:"+KC+"(?:"+[_p,Ip,Tp].join("|")+")"+Ap+bp+")*",$C=Ap+bp+YC,QC="(?:"+[_p+Ao+"?",Ao,Ip,Tp,zC].join("|")+")",mp=RegExp(So+"(?="+So+")|"+QC+$C,"g");function ZC(e){for(var t=mp.lastIndex=0;mp.test(e);)++t;return t}Sp.exports=ZC});var xp=f((fG,Op)=>{var JC=hp(),eP=yp(),tP=wp();function nP(e){return eP(e)?tP(e):JC(e)}Op.exports=nP});var Cp=f((dG,Rp)=>{var rP=Qn(),iP=Zn(),oP=dt(),aP=pp(),sP=xp(),uP="[object Map]",cP="[object Set]";function lP(e){if(e==null)return 0;if(oP(e))return aP(e)?sP(e):e.length;var t=iP(e);return t==uP||t==cP?e.size:rP(e).length}Rp.exports=lP});var Lp=f((pG,Pp)=>{var fP="Expected a function";function dP(e){if(typeof e!="function")throw new TypeError(fP);return function(){var t=arguments;switch(t.length){case 0:return!e.call(this);case 1:return!e.call(this,t[0]);case 2:return!e.call(this,t[0],t[1]);case 3:return!e.call(this,t[0],t[1],t[2])}return!e.apply(this,t)}}Pp.exports=dP});var wo=f((gG,Np)=>{var pP=st(),gP=function(){try{var e=pP(Object,"defineProperty");return e({},"",{}),e}catch{}}();Np.exports=gP});var Oo=f((hG,Dp)=>{var Mp=wo();function hP(e,t,n){t=="__proto__"&&Mp?Mp(e,t,{configurable:!0,enumerable:!0,value:n,writable:!0}):e[t]=n}Dp.exports=hP});var qp=f((EG,Fp)=>{var EP=Oo(),yP=Un(),mP=Object.prototype,vP=mP.hasOwnProperty;function _P(e,t,n){var r=e[t];(!(vP.call(e,t)&&yP(r,n))||n===void 0&&!(t in e))&&EP(e,t,n)}Fp.exports=_P});var Vp=f((yG,Xp)=>{var IP=qp(),TP=ln(),bP=jn(),Gp=Ye(),AP=Nt();function SP(e,t,n,r){if(!Gp(e))return e;t=TP(t,e);for(var i=-1,o=t.length,s=o-1,a=e;a!=null&&++i<o;){var u=AP(t[i]),c=n;if(u==="__proto__"||u==="constructor"||u==="prototype")return e;if(i!=s){var g=a[u];c=r?r(g,u,a):void 0,c===void 0&&(c=Gp(g)?g:bP(t[i+1])?[]:{})}IP(a,u,c),a=a[u]}return e}Xp.exports=SP});var kp=f((mG,Up)=>{var wP=tr(),OP=Vp(),xP=ln();function RP(e,t,n){for(var r=-1,i=t.length,o={};++r<i;){var s=t[r],a=wP(e,s);n(a,s)&&OP(o,xP(s,e),a)}return o}Up.exports=RP});var Hp=f((vG,Bp)=>{var CP=Wn(),PP=Jr(),LP=Si(),NP=Ai(),MP=Object.getOwnPropertySymbols,DP=MP?function(e){for(var t=[];e;)CP(t,LP(e)),e=PP(e);return t}:NP;Bp.exports=DP});var zp=f((_G,Wp)=>{function FP(e){var t=[];if(e!=null)for(var n in Object(e))t.push(n);return t}Wp.exports=FP});var Kp=f((IG,jp)=>{var qP=Ye(),GP=$n(),XP=zp(),VP=Object.prototype,UP=VP.hasOwnProperty;function kP(e){if(!qP(e))return XP(e);var t=GP(e),n=[];for(var r in e)r=="constructor"&&(t||!UP.call(e,r))||n.push(r);return n}jp.exports=kP});var $p=f((TG,Yp)=>{var BP=Oi(),HP=Kp(),WP=dt();function zP(e){return WP(e)?BP(e,!0):HP(e)}Yp.exports=zP});var Zp=f((bG,Qp)=>{var jP=bi(),KP=Hp(),YP=$p();function $P(e){return jP(e,YP,KP)}Qp.exports=$P});var eg=f((AG,Jp)=>{var QP=Xi(),ZP=ut(),JP=kp(),eL=Zp();function tL(e,t){if(e==null)return{};var n=QP(eL(e),function(r){return[r]});return t=ZP(t),JP(e,n,function(r,i){return t(r,i[0])})}Jp.exports=tL});var ng=f((SG,tg)=>{var nL=ut(),rL=Lp(),iL=eg();function oL(e,t){return iL(e,rL(nL(t)))}tg.exports=oL});var ig=f((wG,rg)=>{var aL=Qn(),sL=Zn(),uL=rn(),cL=ve(),lL=dt(),fL=zn(),dL=$n(),pL=Yn(),gL="[object Map]",hL="[object Set]",EL=Object.prototype,yL=EL.hasOwnProperty;function mL(e){if(e==null)return!0;if(lL(e)&&(cL(e)||typeof e=="string"||typeof e.splice=="function"||fL(e)||pL(e)||uL(e)))return!e.length;var t=sL(e);if(t==gL||t==hL)return!e.size;if(dL(e))return!aL(e).length;for(var n in e)if(yL.call(e,n))return!1;return!0}rg.exports=mL});var ag=f((OG,og)=>{var vL=Oo(),_L=po(),IL=ut();function TL(e,t){var n={};return t=IL(t,3),_L(e,function(r,i,o){vL(n,i,t(r,i,o))}),n}og.exports=TL});var ug=f((xG,sg)=>{function bL(e,t){for(var n=-1,r=e==null?0:e.length;++n<r&&t(e[n],n,e)!==!1;);return e}sg.exports=bL});var lg=f((RG,cg)=>{var AL=rr();function SL(e){return typeof e=="function"?e:AL}cg.exports=SL});var dg=f((CG,fg)=>{var wL=ug(),OL=go(),xL=lg(),RL=ve();function CL(e,t){var n=RL(e)?wL:OL;return n(e,xL(t))}fg.exports=CL});var gg=f((PG,pg)=>{var PL=Ge(),LL=function(){return PL.Date.now()};pg.exports=LL});var yg=f((LG,Eg)=>{var NL=Ye(),xo=gg(),hg=ir(),ML="Expected a function",DL=Math.max,FL=Math.min;function qL(e,t,n){var r,i,o,s,a,u,c=0,g=!1,p=!1,d=!0;if(typeof e!="function")throw new TypeError(ML);t=hg(t)||0,NL(n)&&(g=!!n.leading,p="maxWait"in n,o=p?DL(hg(n.maxWait)||0,t):o,d="trailing"in n?!!n.trailing:d);function h(O){var F=r,X=i;return r=i=void 0,c=O,s=e.apply(X,F),s}function v(O){return c=O,a=setTimeout(y,t),g?h(O):s}function m(O){var F=O-u,X=O-c,V=t-F;return p?FL(V,o-X):V}function T(O){var F=O-u,X=O-c;return u===void 0||F>=t||F<0||p&&X>=o}function y(){var O=xo();if(T(O))return S(O);a=setTimeout(y,m(O))}function S(O){return a=void 0,d&&r?h(O):(r=i=void 0,s)}function A(){a!==void 0&&clearTimeout(a),c=0,r=u=i=a=void 0}function R(){return a===void 0?s:S(xo())}function P(){var O=xo(),F=T(O);if(r=arguments,i=this,u=O,F){if(a===void 0)return v(u);if(p)return clearTimeout(a),a=setTimeout(y,t),h(u)}return a===void 0&&(a=setTimeout(y,t)),s}return P.cancel=A,P.flush=R,P}Eg.exports=qL});var vg=f((NG,mg)=>{var GL=yg(),XL=Ye(),VL="Expected a function";function UL(e,t,n){var r=!0,i=!0;if(typeof e!="function")throw new TypeError(VL);return XL(n)&&(r="leading"in n?!!n.leading:r,i="trailing"in n?!!n.trailing:i),GL(e,t,{leading:r,maxWait:t,trailing:i})}mg.exports=UL});var Ig={};xe(Ig,{actionListPlaybackChanged:()=>Wt,animationFrameChanged:()=>Tr,clearRequested:()=>dN,elementStateChanged:()=>Fo,eventListenerAdded:()=>Ir,eventStateChanged:()=>No,instanceAdded:()=>Mo,instanceRemoved:()=>Do,instanceStarted:()=>br,mediaQueriesDefined:()=>Go,parameterChanged:()=>Ht,playbackRequested:()=>lN,previewRequested:()=>cN,rawDataImported:()=>Ro,sessionInitialized:()=>Co,sessionStarted:()=>Po,sessionStopped:()=>Lo,stopRequested:()=>fN,testFrameRendered:()=>pN,viewportWidthChanged:()=>qo});var _g,kL,BL,HL,WL,zL,jL,KL,YL,$L,QL,ZL,JL,eN,tN,nN,rN,iN,oN,aN,sN,uN,Ro,Co,Po,Lo,cN,lN,fN,dN,Ir,pN,No,Tr,Ht,Mo,br,Do,Fo,Wt,qo,Go,Ar=fe(()=>{"use strict";Re();_g=ae(yt()),{IX2_RAW_DATA_IMPORTED:kL,IX2_SESSION_INITIALIZED:BL,IX2_SESSION_STARTED:HL,IX2_SESSION_STOPPED:WL,IX2_PREVIEW_REQUESTED:zL,IX2_PLAYBACK_REQUESTED:jL,IX2_STOP_REQUESTED:KL,IX2_CLEAR_REQUESTED:YL,IX2_EVENT_LISTENER_ADDED:$L,IX2_TEST_FRAME_RENDERED:QL,IX2_EVENT_STATE_CHANGED:ZL,IX2_ANIMATION_FRAME_CHANGED:JL,IX2_PARAMETER_CHANGED:eN,IX2_INSTANCE_ADDED:tN,IX2_INSTANCE_STARTED:nN,IX2_INSTANCE_REMOVED:rN,IX2_ELEMENT_STATE_CHANGED:iN,IX2_ACTION_LIST_PLAYBACK_CHANGED:oN,IX2_VIEWPORT_WIDTH_CHANGED:aN,IX2_MEDIA_QUERIES_DEFINED:sN}=ye,{reifyState:uN}=_g.IX2VanillaUtils,Ro=e=>({type:kL,payload:{...uN(e)}}),Co=({hasBoundaryNodes:e,reducedMotion:t})=>({type:BL,payload:{hasBoundaryNodes:e,reducedMotion:t}}),Po=()=>({type:HL}),Lo=()=>({type:WL}),cN=({rawData:e,defer:t})=>({type:zL,payload:{defer:t,rawData:e}}),lN=({actionTypeId:e=Ae.GENERAL_START_ACTION,actionListId:t,actionItemId:n,eventId:r,allowEvents:i,immediate:o,testManual:s,verbose:a,rawData:u})=>({type:jL,payload:{actionTypeId:e,actionListId:t,actionItemId:n,testManual:s,eventId:r,allowEvents:i,immediate:o,verbose:a,rawData:u}}),fN=e=>({type:KL,payload:{actionListId:e}}),dN=()=>({type:YL}),Ir=(e,t)=>({type:$L,payload:{target:e,listenerParams:t}}),pN=(e=1)=>({type:QL,payload:{step:e}}),No=(e,t)=>({type:ZL,payload:{stateKey:e,newState:t}}),Tr=(e,t)=>({type:JL,payload:{now:e,parameters:t}}),Ht=(e,t)=>({type:eN,payload:{key:e,value:t}}),Mo=e=>({type:tN,payload:{...e}}),br=(e,t)=>({type:nN,payload:{instanceId:e,time:t}}),Do=e=>({type:rN,payload:{instanceId:e}}),Fo=(e,t,n,r)=>({type:iN,payload:{elementId:e,actionTypeId:t,current:n,actionItem:r}}),Wt=({actionListId:e,isPlaying:t})=>({type:oN,payload:{actionListId:e,isPlaying:t}}),qo=({width:e,mediaQueries:t})=>({type:aN,payload:{width:e,mediaQueries:t}}),Go=()=>({type:sN})});var we={};xe(we,{elementContains:()=>Uo,getChildElements:()=>bN,getClosestElement:()=>In,getProperty:()=>mN,getQuerySelector:()=>Vo,getRefType:()=>ko,getSiblingElements:()=>AN,getStyle:()=>yN,getValidDocument:()=>_N,isSiblingNode:()=>TN,matchSelector:()=>vN,queryDocument:()=>IN,setStyle:()=>EN});function EN(e,t,n){e.style[t]=n}function yN(e,t){return t.startsWith("--")?window.getComputedStyle(document.documentElement).getPropertyValue(t):e.style[t]}function mN(e,t){return e[t]}function vN(e){return t=>t[Xo](e)}function Vo({id:e,selector:t}){if(e){let n=e;if(e.indexOf(Tg)!==-1){let r=e.split(Tg),i=r[0];if(n=r[1],i!==document.documentElement.getAttribute(Ag))return null}return`[data-w-id="${n}"], [data-w-id^="${n}_instance"]`}return t}function _N(e){return e==null||e===document.documentElement.getAttribute(Ag)?document:null}function IN(e,t){return Array.prototype.slice.call(document.querySelectorAll(t?e+" "+t:e))}function Uo(e,t){return e.contains(t)}function TN(e,t){return e!==t&&e.parentNode===t.parentNode}function bN(e){let t=[];for(let n=0,{length:r}=e||[];n<r;n++){let{children:i}=e[n],{length:o}=i;if(o)for(let s=0;s<o;s++)t.push(i[s])}return t}function AN(e=[]){let t=[],n=[];for(let r=0,{length:i}=e;r<i;r++){let{parentNode:o}=e[r];if(!o||!o.children||!o.children.length||n.indexOf(o)!==-1)continue;n.push(o);let s=o.firstElementChild;for(;s!=null;)e.indexOf(s)===-1&&t.push(s),s=s.nextElementSibling}return t}function ko(e){return e!=null&&typeof e=="object"?e instanceof Element?gN:hN:null}var bg,Xo,Tg,gN,hN,Ag,In,Sg=fe(()=>{"use strict";bg=ae(yt());Re();({ELEMENT_MATCHES:Xo}=bg.IX2BrowserSupport),{IX2_ID_DELIMITER:Tg,HTML_ELEMENT:gN,PLAIN_OBJECT:hN,WF_PAGE:Ag}=_e;In=Element.prototype.closest?(e,t)=>document.documentElement.contains(e)?e.closest(t):null:(e,t)=>{if(!document.documentElement.contains(e))return null;let n=e;do{if(n[Xo]&&n[Xo](t))return n;n=n.parentNode}while(n!=null);return null}});var Bo=f((FG,Og)=>{var SN=Ye(),wg=Object.create,wN=function(){function e(){}return function(t){if(!SN(t))return{};if(wg)return wg(t);e.prototype=t;var n=new e;return e.prototype=void 0,n}}();Og.exports=wN});var Sr=f((qG,xg)=>{function ON(){}xg.exports=ON});var Or=f((GG,Rg)=>{var xN=Bo(),RN=Sr();function wr(e,t){this.__wrapped__=e,this.__actions__=[],this.__chain__=!!t,this.__index__=0,this.__values__=void 0}wr.prototype=xN(RN.prototype);wr.prototype.constructor=wr;Rg.exports=wr});var Ng=f((XG,Lg)=>{var Cg=Tt(),CN=rn(),PN=ve(),Pg=Cg?Cg.isConcatSpreadable:void 0;function LN(e){return PN(e)||CN(e)||!!(Pg&&e&&e[Pg])}Lg.exports=LN});var Fg=f((VG,Dg)=>{var NN=Wn(),MN=Ng();function Mg(e,t,n,r,i){var o=-1,s=e.length;for(n||(n=MN),i||(i=[]);++o<s;){var a=e[o];t>0&&n(a)?t>1?Mg(a,t-1,n,r,i):NN(i,a):r||(i[i.length]=a)}return i}Dg.exports=Mg});var Gg=f((UG,qg)=>{var DN=Fg();function FN(e){var t=e==null?0:e.length;return t?DN(e,1):[]}qg.exports=FN});var Vg=f((kG,Xg)=>{function qN(e,t,n){switch(n.length){case 0:return e.call(t);case 1:return e.call(t,n[0]);case 2:return e.call(t,n[0],n[1]);case 3:return e.call(t,n[0],n[1],n[2])}return e.apply(t,n)}Xg.exports=qN});var Bg=f((BG,kg)=>{var GN=Vg(),Ug=Math.max;function XN(e,t,n){return t=Ug(t===void 0?e.length-1:t,0),function(){for(var r=arguments,i=-1,o=Ug(r.length-t,0),s=Array(o);++i<o;)s[i]=r[t+i];i=-1;for(var a=Array(t+1);++i<t;)a[i]=r[i];return a[t]=n(s),GN(e,this,a)}}kg.exports=XN});var Wg=f((HG,Hg)=>{function VN(e){return function(){return e}}Hg.exports=VN});var Kg=f((WG,jg)=>{var UN=Wg(),zg=wo(),kN=rr(),BN=zg?function(e,t){return zg(e,"toString",{configurable:!0,enumerable:!1,value:UN(t),writable:!0})}:kN;jg.exports=BN});var $g=f((zG,Yg)=>{var HN=800,WN=16,zN=Date.now;function jN(e){var t=0,n=0;return function(){var r=zN(),i=WN-(r-n);if(n=r,i>0){if(++t>=HN)return arguments[0]}else t=0;return e.apply(void 0,arguments)}}Yg.exports=jN});var Zg=f((jG,Qg)=>{var KN=Kg(),YN=$g(),$N=YN(KN);Qg.exports=$N});var eh=f((KG,Jg)=>{var QN=Gg(),ZN=Bg(),JN=Zg();function eM(e){return JN(ZN(e,void 0,QN),e+"")}Jg.exports=eM});var rh=f((YG,nh)=>{var th=xi(),tM=th&&new th;nh.exports=tM});var oh=f(($G,ih)=>{function nM(){}ih.exports=nM});var Ho=f((QG,sh)=>{var ah=rh(),rM=oh(),iM=ah?function(e){return ah.get(e)}:rM;sh.exports=iM});var ch=f((ZG,uh)=>{var oM={};uh.exports=oM});var Wo=f((JG,fh)=>{var lh=ch(),aM=Object.prototype,sM=aM.hasOwnProperty;function uM(e){for(var t=e.name+"",n=lh[t],r=sM.call(lh,t)?n.length:0;r--;){var i=n[r],o=i.func;if(o==null||o==e)return i.name}return t}fh.exports=uM});var Rr=f((eX,dh)=>{var cM=Bo(),lM=Sr(),fM=4294967295;function xr(e){this.__wrapped__=e,this.__actions__=[],this.__dir__=1,this.__filtered__=!1,this.__iteratees__=[],this.__takeCount__=fM,this.__views__=[]}xr.prototype=cM(lM.prototype);xr.prototype.constructor=xr;dh.exports=xr});var gh=f((tX,ph)=>{function dM(e,t){var n=-1,r=e.length;for(t||(t=Array(r));++n<r;)t[n]=e[n];return t}ph.exports=dM});var Eh=f((nX,hh)=>{var pM=Rr(),gM=Or(),hM=gh();function EM(e){if(e instanceof pM)return e.clone();var t=new gM(e.__wrapped__,e.__chain__);return t.__actions__=hM(e.__actions__),t.__index__=e.__index__,t.__values__=e.__values__,t}hh.exports=EM});var vh=f((rX,mh)=>{var yM=Rr(),yh=Or(),mM=Sr(),vM=ve(),_M=Je(),IM=Eh(),TM=Object.prototype,bM=TM.hasOwnProperty;function Cr(e){if(_M(e)&&!vM(e)&&!(e instanceof yM)){if(e instanceof yh)return e;if(bM.call(e,"__wrapped__"))return IM(e)}return new yh(e)}Cr.prototype=mM.prototype;Cr.prototype.constructor=Cr;mh.exports=Cr});var Ih=f((iX,_h)=>{var AM=Rr(),SM=Ho(),wM=Wo(),OM=vh();function xM(e){var t=wM(e),n=OM[t];if(typeof n!="function"||!(t in AM.prototype))return!1;if(e===n)return!0;var r=SM(n);return!!r&&e===r[0]}_h.exports=xM});var Sh=f((oX,Ah)=>{var Th=Or(),RM=eh(),CM=Ho(),zo=Wo(),PM=ve(),bh=Ih(),LM="Expected a function",NM=8,MM=32,DM=128,FM=256;function qM(e){return RM(function(t){var n=t.length,r=n,i=Th.prototype.thru;for(e&&t.reverse();r--;){var o=t[r];if(typeof o!="function")throw new TypeError(LM);if(i&&!s&&zo(o)=="wrapper")var s=new Th([],!0)}for(r=s?r:n;++r<n;){o=t[r];var a=zo(o),u=a=="wrapper"?CM(o):void 0;u&&bh(u[0])&&u[1]==(DM|NM|MM|FM)&&!u[4].length&&u[9]==1?s=s[zo(u[0])].apply(s,u[3]):s=o.length==1&&bh(o)?s[a]():s.thru(o)}return function(){var c=arguments,g=c[0];if(s&&c.length==1&&PM(g))return s.plant(g).value();for(var p=0,d=n?t[p].apply(this,c):g;++p<n;)d=t[p].call(this,d);return d}})}Ah.exports=qM});var Oh=f((aX,wh)=>{var GM=Sh(),XM=GM();wh.exports=XM});var Rh=f((sX,xh)=>{function VM(e,t,n){return e===e&&(n!==void 0&&(e=e<=n?e:n),t!==void 0&&(e=e>=t?e:t)),e}xh.exports=VM});var Ph=f((uX,Ch)=>{var UM=Rh(),jo=ir();function kM(e,t,n){return n===void 0&&(n=t,t=void 0),n!==void 0&&(n=jo(n),n=n===n?n:0),t!==void 0&&(t=jo(t),t=t===t?t:0),UM(jo(e),t,n)}Ch.exports=kM});var Vh,Uh,kh,Bh,BM,HM,WM,zM,jM,KM,YM,$M,QM,ZM,JM,eD,tD,nD,rD,Hh,Wh,iD,oD,aD,zh,sD,uD,jh,cD,Ko,Kh,Lh,Nh,Yh,bn,lD,Ze,$h,fD,Pe,Ue,An,Qh,Yo,Mh,$o,dD,Tn,pD,gD,hD,Zh,Dh,ED,Fh,yD,mD,vD,qh,Pr,Lr,Gh,Xh,Jh,eE=fe(()=>{"use strict";Vh=ae(Oh()),Uh=ae(nr()),kh=ae(Ph());Re();Qo();Ar();Bh=ae(yt()),{MOUSE_CLICK:BM,MOUSE_SECOND_CLICK:HM,MOUSE_DOWN:WM,MOUSE_UP:zM,MOUSE_OVER:jM,MOUSE_OUT:KM,DROPDOWN_CLOSE:YM,DROPDOWN_OPEN:$M,SLIDER_ACTIVE:QM,SLIDER_INACTIVE:ZM,TAB_ACTIVE:JM,TAB_INACTIVE:eD,NAVBAR_CLOSE:tD,NAVBAR_OPEN:nD,MOUSE_MOVE:rD,PAGE_SCROLL_DOWN:Hh,SCROLL_INTO_VIEW:Wh,SCROLL_OUT_OF_VIEW:iD,PAGE_SCROLL_UP:oD,SCROLLING_IN_VIEW:aD,PAGE_FINISH:zh,ECOMMERCE_CART_CLOSE:sD,ECOMMERCE_CART_OPEN:uD,PAGE_START:jh,PAGE_SCROLL:cD}=Xe,Ko="COMPONENT_ACTIVE",Kh="COMPONENT_INACTIVE",{COLON_DELIMITER:Lh}=_e,{getNamespacedParameterId:Nh}=Bh.IX2VanillaUtils,Yh=e=>t=>typeof t=="object"&&e(t)?!0:t,bn=Yh(({element:e,nativeEvent:t})=>e===t.target),lD=Yh(({element:e,nativeEvent:t})=>e.contains(t.target)),Ze=(0,Vh.default)([bn,lD]),$h=(e,t)=>{if(t){let{ixData:n}=e.getState(),{events:r}=n,i=r[t];if(i&&!dD[i.eventTypeId])return i}return null},fD=({store:e,event:t})=>{let{action:n}=t,{autoStopEventId:r}=n.config;return!!$h(e,r)},Pe=({store:e,event:t,element:n,eventStateKey:r},i)=>{let{action:o,id:s}=t,{actionListId:a,autoStopEventId:u}=o.config,c=$h(e,u);return c&&zt({store:e,eventId:u,eventTarget:n,eventStateKey:u+Lh+r.split(Lh)[1],actionListId:(0,Uh.default)(c,"action.config.actionListId")}),zt({store:e,eventId:s,eventTarget:n,eventStateKey:r,actionListId:a}),Sn({store:e,eventId:s,eventTarget:n,eventStateKey:r,actionListId:a}),i},Ue=(e,t)=>(n,r)=>e(n,r)===!0?t(n,r):r,An={handler:Ue(Ze,Pe)},Qh={...An,types:[Ko,Kh].join(" ")},Yo=[{target:window,types:"resize orientationchange",throttle:!0},{target:document,types:"scroll wheel readystatechange IX2_PAGE_UPDATE",throttle:!0}],Mh="mouseover mouseout",$o={types:Yo},dD={PAGE_START:jh,PAGE_FINISH:zh},Tn=(()=>{let e=window.pageXOffset!==void 0,n=document.compatMode==="CSS1Compat"?document.documentElement:document.body;return()=>({scrollLeft:e?window.pageXOffset:n.scrollLeft,scrollTop:e?window.pageYOffset:n.scrollTop,stiffScrollTop:(0,kh.default)(e?window.pageYOffset:n.scrollTop,0,n.scrollHeight-window.innerHeight),scrollWidth:n.scrollWidth,scrollHeight:n.scrollHeight,clientWidth:n.clientWidth,clientHeight:n.clientHeight,innerWidth:window.innerWidth,innerHeight:window.innerHeight})})(),pD=(e,t)=>!(e.left>t.right||e.right<t.left||e.top>t.bottom||e.bottom<t.top),gD=({element:e,nativeEvent:t})=>{let{type:n,target:r,relatedTarget:i}=t,o=e.contains(r);if(n==="mouseover"&&o)return!0;let s=e.contains(i);return!!(n==="mouseout"&&o&&s)},hD=e=>{let{element:t,event:{config:n}}=e,{clientWidth:r,clientHeight:i}=Tn(),o=n.scrollOffsetValue,u=n.scrollOffsetUnit==="PX"?o:i*(o||0)/100;return pD(t.getBoundingClientRect(),{left:0,top:u,right:r,bottom:i-u})},Zh=e=>(t,n)=>{let{type:r}=t.nativeEvent,i=[Ko,Kh].indexOf(r)!==-1?r===Ko:n.isActive,o={...n,isActive:i};return(!n||o.isActive!==n.isActive)&&e(t,o)||o},Dh=e=>(t,n)=>{let r={elementHovered:gD(t)};return(n?r.elementHovered!==n.elementHovered:r.elementHovered)&&e(t,r)||r},ED=e=>(t,n)=>{let r={...n,elementVisible:hD(t)};return(n?r.elementVisible!==n.elementVisible:r.elementVisible)&&e(t,r)||r},Fh=e=>(t,n={})=>{let{stiffScrollTop:r,scrollHeight:i,innerHeight:o}=Tn(),{event:{config:s,eventTypeId:a}}=t,{scrollOffsetValue:u,scrollOffsetUnit:c}=s,g=c==="PX",p=i-o,d=Number((r/p).toFixed(2));if(n&&n.percentTop===d)return n;let h=(g?u:o*(u||0)/100)/p,v,m,T=0;n&&(v=d>n.percentTop,m=n.scrollingDown!==v,T=m?d:n.anchorTop);let y=a===Hh?d>=T+h:d<=T-h,S={...n,percentTop:d,inBounds:y,anchorTop:T,scrollingDown:v};return n&&y&&(m||S.inBounds!==n.inBounds)&&e(t,S)||S},yD=(e,t)=>e.left>t.left&&e.left<t.right&&e.top>t.top&&e.top<t.bottom,mD=e=>(t,n)=>{let r={finished:document.readyState==="complete"};return r.finished&&!(n&&n.finshed)&&e(t),r},vD=e=>(t,n)=>{let r={started:!0};return n||e(t),r},qh=e=>(t,n={clickCount:0})=>{let r={clickCount:n.clickCount%2+1};return r.clickCount!==n.clickCount&&e(t,r)||r},Pr=(e=!0)=>({...Qh,handler:Ue(e?Ze:bn,Zh((t,n)=>n.isActive?An.handler(t,n):n))}),Lr=(e=!0)=>({...Qh,handler:Ue(e?Ze:bn,Zh((t,n)=>n.isActive?n:An.handler(t,n)))}),Gh={...$o,handler:ED((e,t)=>{let{elementVisible:n}=t,{event:r,store:i}=e,{ixData:o}=i.getState(),{events:s}=o;return!s[r.action.config.autoStopEventId]&&t.triggered?t:r.eventTypeId===Wh===n?(Pe(e),{...t,triggered:!0}):t})},Xh=.05,Jh={[QM]:Pr(),[ZM]:Lr(),[$M]:Pr(),[YM]:Lr(),[nD]:Pr(!1),[tD]:Lr(!1),[JM]:Pr(),[eD]:Lr(),[uD]:{types:"ecommerce-cart-open",handler:Ue(Ze,Pe)},[sD]:{types:"ecommerce-cart-close",handler:Ue(Ze,Pe)},[BM]:{types:"click",handler:Ue(Ze,qh((e,{clickCount:t})=>{fD(e)?t===1&&Pe(e):Pe(e)}))},[HM]:{types:"click",handler:Ue(Ze,qh((e,{clickCount:t})=>{t===2&&Pe(e)}))},[WM]:{...An,types:"mousedown"},[zM]:{...An,types:"mouseup"},[jM]:{types:Mh,handler:Ue(Ze,Dh((e,t)=>{t.elementHovered&&Pe(e)}))},[KM]:{types:Mh,handler:Ue(Ze,Dh((e,t)=>{t.elementHovered||Pe(e)}))},[rD]:{types:"mousemove mouseout scroll",handler:({store:e,element:t,eventConfig:n,nativeEvent:r,eventStateKey:i},o={clientX:0,clientY:0,pageX:0,pageY:0})=>{let{basedOn:s,selectedAxis:a,continuousParameterGroupId:u,reverse:c,restingState:g=0}=n,{clientX:p=o.clientX,clientY:d=o.clientY,pageX:h=o.pageX,pageY:v=o.pageY}=r,m=a==="X_AXIS",T=r.type==="mouseout",y=g/100,S=u,A=!1;switch(s){case Ke.VIEWPORT:{y=m?Math.min(p,window.innerWidth)/window.innerWidth:Math.min(d,window.innerHeight)/window.innerHeight;break}case Ke.PAGE:{let{scrollLeft:R,scrollTop:P,scrollWidth:O,scrollHeight:F}=Tn();y=m?Math.min(R+h,O)/O:Math.min(P+v,F)/F;break}case Ke.ELEMENT:default:{S=Nh(i,u);let R=r.type.indexOf("mouse")===0;if(R&&Ze({element:t,nativeEvent:r})!==!0)break;let P=t.getBoundingClientRect(),{left:O,top:F,width:X,height:V}=P;if(!R&&!yD({left:p,top:d},P))break;A=!0,y=m?(p-O)/X:(d-F)/V;break}}return T&&(y>1-Xh||y<Xh)&&(y=Math.round(y)),(s!==Ke.ELEMENT||A||A!==o.elementHovered)&&(y=c?1-y:y,e.dispatch(Ht(S,y))),{elementHovered:A,clientX:p,clientY:d,pageX:h,pageY:v}}},[cD]:{types:Yo,handler:({store:e,eventConfig:t})=>{let{continuousParameterGroupId:n,reverse:r}=t,{scrollTop:i,scrollHeight:o,clientHeight:s}=Tn(),a=i/(o-s);a=r?1-a:a,e.dispatch(Ht(n,a))}},[aD]:{types:Yo,handler:({element:e,store:t,eventConfig:n,eventStateKey:r},i={scrollPercent:0})=>{let{scrollLeft:o,scrollTop:s,scrollWidth:a,scrollHeight:u,clientHeight:c}=Tn(),{basedOn:g,selectedAxis:p,continuousParameterGroupId:d,startsEntering:h,startsExiting:v,addEndOffset:m,addStartOffset:T,addOffsetValue:y=0,endOffsetValue:S=0}=n,A=p==="X_AXIS";if(g===Ke.VIEWPORT){let R=A?o/a:s/u;return R!==i.scrollPercent&&t.dispatch(Ht(d,R)),{scrollPercent:R}}else{let R=Nh(r,d),P=e.getBoundingClientRect(),O=(T?y:0)/100,F=(m?S:0)/100;O=h?O:1-O,F=v?F:1-F;let X=P.top+Math.min(P.height*O,c),k=P.top+P.height*F-X,Z=Math.min(c+k,u),I=Math.min(Math.max(0,c-X),Z)/Z;return I!==i.scrollPercent&&t.dispatch(Ht(R,I)),{scrollPercent:I}}}},[Wh]:Gh,[iD]:Gh,[Hh]:{...$o,handler:Fh((e,t)=>{t.scrollingDown&&Pe(e)})},[oD]:{...$o,handler:Fh((e,t)=>{t.scrollingDown||Pe(e)})},[zh]:{types:"readystatechange IX2_PAGE_UPDATE",handler:Ue(bn,mD(Pe))},[jh]:{types:"readystatechange IX2_PAGE_UPDATE",handler:Ue(bn,vD(Pe))}}});var yE={};xe(yE,{observeRequests:()=>XD,startActionGroup:()=>Sn,startEngine:()=>Gr,stopActionGroup:()=>zt,stopAllActionGroups:()=>gE,stopEngine:()=>Xr});function XD(e){mt({store:e,select:({ixRequest:t})=>t.preview,onChange:kD}),mt({store:e,select:({ixRequest:t})=>t.playback,onChange:BD}),mt({store:e,select:({ixRequest:t})=>t.stop,onChange:HD}),mt({store:e,select:({ixRequest:t})=>t.clear,onChange:WD})}function VD(e){mt({store:e,select:({ixSession:t})=>t.mediaQueryKey,onChange:()=>{Xr(e),lE({store:e,elementApi:we}),Gr({store:e,allowEvents:!0}),fE()}})}function UD(e,t){let n=mt({store:e,select:({ixSession:r})=>r.tick,onChange:r=>{t(r),n()}})}function kD({rawData:e,defer:t},n){let r=()=>{Gr({store:n,rawData:e,allowEvents:!0}),fE()};t?setTimeout(r,0):r()}function fE(){document.dispatchEvent(new CustomEvent("IX2_PAGE_UPDATE"))}function BD(e,t){let{actionTypeId:n,actionListId:r,actionItemId:i,eventId:o,allowEvents:s,immediate:a,testManual:u,verbose:c=!0}=e,{rawData:g}=e;if(r&&i&&g&&a){let p=g.actionLists[r];p&&(g=xD({actionList:p,actionItemId:i,rawData:g}))}if(Gr({store:t,rawData:g,allowEvents:s,testManual:u}),r&&n===Ae.GENERAL_START_ACTION||Zo(n)){zt({store:t,actionListId:r}),pE({store:t,actionListId:r,eventId:o});let p=Sn({store:t,eventId:o,actionListId:r,immediate:a,verbose:c});c&&p&&t.dispatch(Wt({actionListId:r,isPlaying:!a}))}}function HD({actionListId:e},t){e?zt({store:t,actionListId:e}):gE({store:t}),Xr(t)}function WD(e,t){Xr(t),lE({store:t,elementApi:we})}function Gr({store:e,rawData:t,allowEvents:n,testManual:r}){let{ixSession:i}=e.getState();t&&e.dispatch(Ro(t)),i.active||(e.dispatch(Co({hasBoundaryNodes:!!document.querySelector(Mr),reducedMotion:document.body.hasAttribute("data-wf-ix-vacation")&&window.matchMedia("(prefers-reduced-motion)").matches})),n&&(QD(e),zD(),e.getState().ixSession.hasDefinedMediaQueries&&VD(e)),e.dispatch(Po()),jD(e,r))}function zD(){let{documentElement:e}=document;e.className.indexOf(tE)===-1&&(e.className+=` ${tE}`)}function jD(e,t){let n=r=>{let{ixSession:i,ixParameters:o}=e.getState();i.active&&(e.dispatch(Tr(r,o)),t?UD(e,n):requestAnimationFrame(n))};n(window.performance.now())}function Xr(e){let{ixSession:t}=e.getState();if(t.active){let{eventListeners:n}=t;n.forEach(KD),LD(),e.dispatch(Lo())}}function KD({target:e,listenerParams:t}){e.removeEventListener.apply(e,t)}function YD({store:e,eventStateKey:t,eventTarget:n,eventId:r,eventConfig:i,actionListId:o,parameterGroup:s,smoothing:a,restingValue:u}){let{ixData:c,ixSession:g}=e.getState(),{events:p}=c,d=p[r],{eventTypeId:h}=d,v={},m={},T=[],{continuousActionGroups:y}=s,{id:S}=s;RD(h,i)&&(S=CD(t,S));let A=g.hasBoundaryNodes&&n?In(n,Mr):null;y.forEach(R=>{let{keyframe:P,actionItems:O}=R;O.forEach(F=>{let{actionTypeId:X}=F,{target:V}=F.config;if(!V)return;let k=V.boundaryMode?A:null,Z=ND(V)+Jo+X;if(m[Z]=$D(m[Z],P,F),!v[Z]){v[Z]=!0;let{config:N}=F;Dr({config:N,event:d,eventTarget:n,elementRoot:k,elementApi:we}).forEach(I=>{T.push({element:I,key:Z})})}})}),T.forEach(({element:R,key:P})=>{let O=m[P],F=(0,rt.default)(O,"[0].actionItems[0]",{}),{actionTypeId:X}=F,k=(X===Ae.PLUGIN_RIVE?(F.config?.target?.selectorGuids||[]).length===0:qr(X))?ta(X)(R,F):null,Z=ea({element:R,actionItem:F,elementApi:we},k);na({store:e,element:R,eventId:r,actionListId:o,actionItem:F,destination:Z,continuous:!0,parameterId:S,actionGroups:O,smoothing:a,restingValue:u,pluginInstance:k})})}function $D(e=[],t,n){let r=[...e],i;return r.some((o,s)=>o.keyframe===t?(i=s,!0):!1),i==null&&(i=r.length,r.push({keyframe:t,actionItems:[]})),r[i].actionItems.push(n),r}function QD(e){let{ixData:t}=e.getState(),{eventTypeMap:n}=t;dE(e),(0,jt.default)(n,(i,o)=>{let s=Jh[o];if(!s){console.warn(`IX2 event type not configured: ${o}`);return}rF({logic:s,store:e,events:i})});let{ixSession:r}=e.getState();r.eventListeners.length&&JD(e)}function JD(e){let t=()=>{dE(e)};ZD.forEach(n=>{window.addEventListener(n,t),e.dispatch(Ir(window,[n,t]))}),t()}function dE(e){let{ixSession:t,ixData:n}=e.getState(),r=window.innerWidth;if(r!==t.viewportWidth){let{mediaQueries:i}=n;e.dispatch(qo({width:r,mediaQueries:i}))}}function rF({logic:e,store:t,events:n}){iF(n);let{types:r,handler:i}=e,{ixData:o}=t.getState(),{actionLists:s}=o,a=eF(n,nF);if(!(0,iE.default)(a))return;(0,jt.default)(a,(p,d)=>{let h=n[d],{action:v,id:m,mediaQueries:T=o.mediaQueryKeys}=h,{actionListId:y}=v.config;MD(T,o.mediaQueryKeys)||t.dispatch(Go()),v.actionTypeId===Ae.GENERAL_CONTINUOUS_ACTION&&(Array.isArray(h.config)?h.config:[h.config]).forEach(A=>{let{continuousParameterGroupId:R}=A,P=(0,rt.default)(s,`${y}.continuousParameterGroups`,[]),O=(0,rE.default)(P,({id:V})=>V===R),F=(A.smoothing||0)/100,X=(A.restingState||0)/100;O&&p.forEach((V,k)=>{let Z=m+Jo+k;YD({store:t,eventStateKey:Z,eventTarget:V,eventId:m,eventConfig:A,actionListId:y,parameterGroup:O,smoothing:F,restingValue:X})})}),(v.actionTypeId===Ae.GENERAL_START_ACTION||Zo(v.actionTypeId))&&pE({store:t,actionListId:y,eventId:m})});let u=p=>{let{ixSession:d}=t.getState();tF(a,(h,v,m)=>{let T=n[v],y=d.eventState[m],{action:S,mediaQueries:A=o.mediaQueryKeys}=T;if(!Fr(A,d.mediaQueryKey))return;let R=(P={})=>{let O=i({store:t,element:h,event:T,eventConfig:P,nativeEvent:p,eventStateKey:m},y);DD(O,y)||t.dispatch(No(m,O))};S.actionTypeId===Ae.GENERAL_CONTINUOUS_ACTION?(Array.isArray(T.config)?T.config:[T.config]).forEach(R):R()})},c=(0,uE.default)(u,GD),g=({target:p=document,types:d,throttle:h})=>{d.split(" ").filter(Boolean).forEach(v=>{let m=h?c:u;p.addEventListener(v,m),t.dispatch(Ir(p,[v,m]))})};Array.isArray(r)?r.forEach(g):typeof r=="string"&&g(e)}function iF(e){if(!qD)return;let t={},n="";for(let r in e){let{eventTypeId:i,target:o}=e[r],s=Vo(o);t[s]||(i===Xe.MOUSE_CLICK||i===Xe.MOUSE_SECOND_CLICK)&&(t[s]=!0,n+=s+"{cursor: pointer;touch-action: manipulation;}")}if(n){let r=document.createElement("style");r.textContent=n,document.body.appendChild(r)}}function pE({store:e,actionListId:t,eventId:n}){let{ixData:r,ixSession:i}=e.getState(),{actionLists:o,events:s}=r,a=s[n],u=o[t];if(u&&u.useFirstGroupAsInitialState){let c=(0,rt.default)(u,"actionItemGroups[0].actionItems",[]),g=(0,rt.default)(a,"mediaQueries",r.mediaQueryKeys);if(!Fr(g,i.mediaQueryKey))return;c.forEach(p=>{let{config:d,actionTypeId:h}=p,v=d?.target?.useEventTarget===!0&&d?.target?.objectId==null?{target:a.target,targets:a.targets}:d,m=Dr({config:v,event:a,elementApi:we}),T=qr(h);m.forEach(y=>{let S=T?ta(h)(y,p):null;na({destination:ea({element:y,actionItem:p,elementApi:we},S),immediate:!0,store:e,element:y,eventId:n,actionItem:p,actionListId:t,pluginInstance:S})})})}}function gE({store:e}){let{ixInstances:t}=e.getState();(0,jt.default)(t,n=>{if(!n.continuous){let{actionListId:r,verbose:i}=n;ra(n,e),i&&e.dispatch(Wt({actionListId:r,isPlaying:!1}))}})}function zt({store:e,eventId:t,eventTarget:n,eventStateKey:r,actionListId:i}){let{ixInstances:o,ixSession:s}=e.getState(),a=s.hasBoundaryNodes&&n?In(n,Mr):null;(0,jt.default)(o,u=>{let c=(0,rt.default)(u,"actionItem.config.target.boundaryMode"),g=r?u.eventStateKey===r:!0;if(u.actionListId===i&&u.eventId===t&&g){if(a&&c&&!Uo(a,u.element))return;ra(u,e),u.verbose&&e.dispatch(Wt({actionListId:i,isPlaying:!1}))}})}function Sn({store:e,eventId:t,eventTarget:n,eventStateKey:r,actionListId:i,groupIndex:o=0,immediate:s,verbose:a}){let{ixData:u,ixSession:c}=e.getState(),{events:g}=u,p=g[t]||{},{mediaQueries:d=u.mediaQueryKeys}=p,h=(0,rt.default)(u,`actionLists.${i}`,{}),{actionItemGroups:v,useFirstGroupAsInitialState:m}=h;if(!v||!v.length)return!1;o>=v.length&&(0,rt.default)(p,"config.loop")&&(o=0),o===0&&m&&o++;let y=(o===0||o===1&&m)&&Zo(p.action?.actionTypeId)?p.config.delay:void 0,S=(0,rt.default)(v,[o,"actionItems"],[]);if(!S.length||!Fr(d,c.mediaQueryKey))return!1;let A=c.hasBoundaryNodes&&n?In(n,Mr):null,R=SD(S),P=!1;return S.forEach((O,F)=>{let{config:X,actionTypeId:V}=O,k=qr(V),{target:Z}=X;if(!Z)return;let N=Z.boundaryMode?A:null;Dr({config:X,event:p,eventTarget:n,elementRoot:N,elementApi:we}).forEach((L,U)=>{let q=k?ta(V)(L,O):null,te=k?FD(V)(L,O):null;P=!0;let Y=R===F&&U===0,se=wD({element:L,actionItem:O}),Ie=ea({element:L,actionItem:O,elementApi:we},q);na({store:e,element:L,actionItem:O,eventId:t,eventTarget:n,eventStateKey:r,actionListId:i,groupIndex:o,isCarrier:Y,computedStyle:se,destination:Ie,immediate:s,verbose:a,pluginInstance:q,pluginDuration:te,instanceDelay:y})})}),P}function na(e){let{store:t,computedStyle:n,...r}=e,{element:i,actionItem:o,immediate:s,pluginInstance:a,continuous:u,restingValue:c,eventId:g}=r,p=!u,d=bD(),{ixElements:h,ixSession:v,ixData:m}=t.getState(),T=TD(h,i),{refState:y}=h[T]||{},S=ko(i),A=v.reducedMotion&&hi[o.actionTypeId],R;if(A&&u)switch(m.events[g]?.eventTypeId){case Xe.MOUSE_MOVE:case Xe.MOUSE_MOVE_IN_VIEWPORT:R=c;break;default:R=.5;break}let P=OD(i,y,n,o,we,a);if(t.dispatch(Mo({instanceId:d,elementId:T,origin:P,refType:S,skipMotion:A,skipToValue:R,...r})),hE(document.body,"ix2-animation-started",d),s){oF(t,d);return}mt({store:t,select:({ixInstances:O})=>O[d],onChange:EE}),p&&t.dispatch(br(d,v.tick))}function ra(e,t){hE(document.body,"ix2-animation-stopping",{instanceId:e.id,state:t.getState()});let{elementId:n,actionItem:r}=e,{ixElements:i}=t.getState(),{ref:o,refType:s}=i[n]||{};s===cE&&PD(o,r,we),t.dispatch(Do(e.id))}function hE(e,t,n){let r=document.createEvent("CustomEvent");r.initCustomEvent(t,!0,!0,n),e.dispatchEvent(r)}function oF(e,t){let{ixParameters:n}=e.getState();e.dispatch(br(t,0)),e.dispatch(Tr(performance.now(),n));let{ixInstances:r}=e.getState();EE(r[t],e)}function EE(e,t){let{active:n,continuous:r,complete:i,elementId:o,actionItem:s,actionTypeId:a,renderType:u,current:c,groupIndex:g,eventId:p,eventTarget:d,eventStateKey:h,actionListId:v,isCarrier:m,styleProp:T,verbose:y,pluginInstance:S}=e,{ixData:A,ixSession:R}=t.getState(),{events:P}=A,O=P&&P[p]?P[p]:{},{mediaQueries:F=A.mediaQueryKeys}=O;if(Fr(F,R.mediaQueryKey)&&(r||n||i)){if(c||u===ID&&i){t.dispatch(Fo(o,a,c,s));let{ixElements:X}=t.getState(),{ref:V,refType:k,refState:Z}=X[o]||{},N=Z&&Z[a];(k===cE||qr(a))&&AD(V,Z,N,p,s,T,we,u,S)}if(i){if(m){let X=Sn({store:t,eventId:p,eventTarget:d,eventStateKey:h,actionListId:v,groupIndex:g+1,verbose:y});y&&!X&&t.dispatch(Wt({actionListId:v,isPlaying:!1}))}ra(e,t)}}}var rE,rt,iE,oE,aE,sE,jt,uE,Nr,_D,Zo,Jo,Mr,cE,ID,tE,Dr,TD,ea,mt,bD,AD,lE,SD,wD,OD,xD,RD,CD,Fr,PD,LD,ND,MD,DD,qr,ta,FD,nE,qD,GD,ZD,eF,tF,nF,Qo=fe(()=>{"use strict";rE=ae(Hi()),rt=ae(nr()),iE=ae(Cp()),oE=ae(ng()),aE=ae(ig()),sE=ae(ag()),jt=ae(dg()),uE=ae(vg());Re();Nr=ae(yt());Ar();Sg();eE();_D=Object.keys(Mn),Zo=e=>_D.includes(e),{COLON_DELIMITER:Jo,BOUNDARY_SELECTOR:Mr,HTML_ELEMENT:cE,RENDER_GENERAL:ID,W_MOD_IX:tE}=_e,{getAffectedElements:Dr,getElementId:TD,getDestinationValues:ea,observeStore:mt,getInstanceId:bD,renderHTMLElement:AD,clearAllStyles:lE,getMaxDurationItemIndex:SD,getComputedStyle:wD,getInstanceOrigin:OD,reduceListToGroup:xD,shouldNamespaceEventParameter:RD,getNamespacedParameterId:CD,shouldAllowMediaQuery:Fr,cleanupHTMLElement:PD,clearObjectCache:LD,stringifyTarget:ND,mediaQueriesEqual:MD,shallowEqual:DD}=Nr.IX2VanillaUtils,{isPluginType:qr,createPluginInstance:ta,getPluginDuration:FD}=Nr.IX2VanillaPlugins,nE=navigator.userAgent,qD=nE.match(/iPad/i)||nE.match(/iPhone/),GD=12;ZD=["resize","orientationchange"];eF=(e,t)=>(0,oE.default)((0,sE.default)(e,t),aE.default),tF=(e,t)=>{(0,jt.default)(e,(n,r)=>{n.forEach((i,o)=>{let s=r+Jo+o;t(i,r,s)})})},nF=e=>{let t={target:e.target,targets:e.targets};return Dr({config:t,elementApi:we})}});var _E=f(oa=>{"use strict";Object.defineProperty(oa,"__esModule",{value:!0});function aF(e,t){for(var n in t)Object.defineProperty(e,n,{enumerable:!0,get:t[n]})}aF(oa,{actions:function(){return cF},destroy:function(){return vE},init:function(){return pF},setEnv:function(){return dF},store:function(){return Vr}});var sF=di(),uF=lF((fp(),He(lp))),ia=(Qo(),He(yE)),cF=fF((Ar(),He(Ig)));function lF(e){return e&&e.__esModule?e:{default:e}}function mE(e){if(typeof WeakMap!="function")return null;var t=new WeakMap,n=new WeakMap;return(mE=function(r){return r?n:t})(e)}function fF(e,t){if(!t&&e&&e.__esModule)return e;if(e===null||typeof e!="object"&&typeof e!="function")return{default:e};var n=mE(t);if(n&&n.has(e))return n.get(e);var r={__proto__:null},i=Object.defineProperty&&Object.getOwnPropertyDescriptor;for(var o in e)if(o!=="default"&&Object.prototype.hasOwnProperty.call(e,o)){var s=i?Object.getOwnPropertyDescriptor(e,o):null;s&&(s.get||s.set)?Object.defineProperty(r,o,s):r[o]=e[o]}return r.default=e,n&&n.set(e,r),r}var Vr=(0,sF.createStore)(uF.default);function dF(e){e()&&(0,ia.observeRequests)(Vr)}function pF(e){vE(),(0,ia.startEngine)({store:Vr,rawData:e,allowEvents:!0})}function vE(){(0,ia.stopEngine)(Vr)}});var AE=f((mX,bE)=>{"use strict";var IE=ze(),TE=_E();TE.setEnv(IE.env);IE.define("ix2",bE.exports=function(){return TE})});var wE=f((vX,SE)=>{"use strict";var Kt=ze();Kt.define("links",SE.exports=function(e,t){var n={},r=e(window),i,o=Kt.env(),s=window.location,a=document.createElement("a"),u="w--current",c=/index\.(html|php)$/,g=/\/$/,p,d;n.ready=n.design=n.preview=h;function h(){i=o&&Kt.env("design"),d=Kt.env("slug")||s.pathname||"",Kt.scroll.off(m),p=[];for(var y=document.links,S=0;S<y.length;++S)v(y[S]);p.length&&(Kt.scroll.on(m),m())}function v(y){if(!y.getAttribute("hreflang")){var S=i&&y.getAttribute("href-disabled")||y.getAttribute("href");if(a.href=S,!(S.indexOf(":")>=0)){var A=e(y);if(a.hash.length>1&&a.host+a.pathname===s.host+s.pathname){if(!/^#[a-zA-Z0-9\-\_]+$/.test(a.hash))return;var R=e(a.hash);R.length&&p.push({link:A,sec:R,active:!1});return}if(!(S==="#"||S==="")){var P=a.href===s.href||S===d||c.test(S)&&g.test(d);T(A,u,P)}}}}function m(){var y=r.scrollTop(),S=r.height();t.each(p,function(A){if(!A.link.attr("hreflang")){var R=A.link,P=A.sec,O=P.offset().top,F=P.outerHeight(),X=S*.5,V=P.is(":visible")&&O+F-X>=y&&O+X<=y+S;A.active!==V&&(A.active=V,T(R,u,V))}})}function T(y,S,A){var R=y.hasClass(S);A&&R||!A&&!R||(A?y.addClass(S):y.removeClass(S))}return n})});var xE=f((_X,OE)=>{"use strict";var Ur=ze();Ur.define("scroll",OE.exports=function(e){var t={WF_CLICK_EMPTY:"click.wf-empty-link",WF_CLICK_SCROLL:"click.wf-scroll"},n=window.location,r=v()?null:window.history,i=e(window),o=e(document),s=e(document.body),a=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||function(N){window.setTimeout(N,15)},u=Ur.env("editor")?".w-editor-body":"body",c="header, "+u+" > .header, "+u+" > .w-nav:not([data-no-scroll])",g='a[href="#"]',p='a[href*="#"]:not(.w-tab-link):not('+g+")",d='.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}',h=document.createElement("style");h.appendChild(document.createTextNode(d));function v(){try{return!!window.frameElement}catch{return!0}}var m=/^#[a-zA-Z0-9][\w:.-]*$/;function T(N){return m.test(N.hash)&&N.host+N.pathname===n.host+n.pathname}let y=typeof window.matchMedia=="function"&&window.matchMedia("(prefers-reduced-motion: reduce)");function S(){return document.body.getAttribute("data-wf-scroll-motion")==="none"||y.matches}function A(N,I){var L;switch(I){case"add":L=N.attr("tabindex"),L?N.attr("data-wf-tabindex-swap",L):N.attr("tabindex","-1");break;case"remove":L=N.attr("data-wf-tabindex-swap"),L?(N.attr("tabindex",L),N.removeAttr("data-wf-tabindex-swap")):N.removeAttr("tabindex");break}N.toggleClass("wf-force-outline-none",I==="add")}function R(N){var I=N.currentTarget;if(!(Ur.env("design")||window.$.mobile&&/(?:^|\s)ui-link(?:$|\s)/.test(I.className))){var L=T(I)?I.hash:"";if(L!==""){var U=e(L);U.length&&(N&&(N.preventDefault(),N.stopPropagation()),P(L,N),window.setTimeout(function(){O(U,function(){A(U,"add"),U.get(0).focus({preventScroll:!0}),A(U,"remove")})},N?0:300))}}}function P(N){if(n.hash!==N&&r&&r.pushState&&!(Ur.env.chrome&&n.protocol==="file:")){var I=r.state&&r.state.hash;I!==N&&r.pushState({hash:N},"",N)}}function O(N,I){var L=i.scrollTop(),U=F(N);if(L!==U){var q=X(N,L,U),te=Date.now(),Y=function(){var se=Date.now()-te;window.scroll(0,V(L,U,se,q)),se<=q?a(Y):typeof I=="function"&&I()};a(Y)}}function F(N){var I=e(c),L=I.css("position")==="fixed"?I.outerHeight():0,U=N.offset().top-L;if(N.data("scroll")==="mid"){var q=i.height()-L,te=N.outerHeight();te<q&&(U-=Math.round((q-te)/2))}return U}function X(N,I,L){if(S())return 0;var U=1;return s.add(N).each(function(q,te){var Y=parseFloat(te.getAttribute("data-scroll-time"));!isNaN(Y)&&Y>=0&&(U=Y)}),(472.143*Math.log(Math.abs(I-L)+125)-2e3)*U}function V(N,I,L,U){return L>U?I:N+(I-N)*k(L/U)}function k(N){return N<.5?4*N*N*N:(N-1)*(2*N-2)*(2*N-2)+1}function Z(){var{WF_CLICK_EMPTY:N,WF_CLICK_SCROLL:I}=t;o.on(I,p,R),o.on(N,g,function(L){L.preventDefault()}),document.head.insertBefore(h,document.head.firstChild)}return{ready:Z}})});var CE=f((IX,RE)=>{"use strict";var gF=ze();gF.define("touch",RE.exports=function(e){var t={},n=window.getSelection;e.event.special.tap={bindType:"click",delegateType:"click"},t.init=function(o){return o=typeof o=="string"?e(o).get(0):o,o?new r(o):null};function r(o){var s=!1,a=!1,u=Math.min(Math.round(window.innerWidth*.04),40),c,g;o.addEventListener("touchstart",p,!1),o.addEventListener("touchmove",d,!1),o.addEventListener("touchend",h,!1),o.addEventListener("touchcancel",v,!1),o.addEventListener("mousedown",p,!1),o.addEventListener("mousemove",d,!1),o.addEventListener("mouseup",h,!1),o.addEventListener("mouseout",v,!1);function p(T){var y=T.touches;y&&y.length>1||(s=!0,y?(a=!0,c=y[0].clientX):c=T.clientX,g=c)}function d(T){if(s){if(a&&T.type==="mousemove"){T.preventDefault(),T.stopPropagation();return}var y=T.touches,S=y?y[0].clientX:T.clientX,A=S-g;g=S,Math.abs(A)>u&&n&&String(n())===""&&(i("swipe",T,{direction:A>0?"right":"left"}),v())}}function h(T){if(s&&(s=!1,a&&T.type==="mouseup")){T.preventDefault(),T.stopPropagation(),a=!1;return}}function v(){s=!1}function m(){o.removeEventListener("touchstart",p,!1),o.removeEventListener("touchmove",d,!1),o.removeEventListener("touchend",h,!1),o.removeEventListener("touchcancel",v,!1),o.removeEventListener("mousedown",p,!1),o.removeEventListener("mousemove",d,!1),o.removeEventListener("mouseup",h,!1),o.removeEventListener("mouseout",v,!1),o=null}this.destroy=m}function i(o,s,a){var u=e.Event(o,{originalEvent:s});e(s.target).trigger(u,a)}return t.instance=t.init(document),t})});var PE=f(aa=>{"use strict";Object.defineProperty(aa,"__esModule",{value:!0});Object.defineProperty(aa,"default",{enumerable:!0,get:function(){return hF}});function hF(e,t,n,r,i,o,s,a,u,c,g,p,d){return function(h){e(h);var v=h.form,m={name:v.attr("data-name")||v.attr("name")||"Untitled Form",pageId:v.attr("data-wf-page-id")||"",elementId:v.attr("data-wf-element-id")||"",source:t.href,test:n.env(),fields:{},fileUploads:{},dolphin:/pass[\s-_]?(word|code)|secret|login|credentials/i.test(v.html()),trackingCookies:r()};let T=v.attr("data-wf-flow");T&&(m.wfFlow=T),i(h);var y=o(v,m.fields);if(y)return s(y);if(m.fileUploads=a(v),u(h),!c){g(h);return}p.ajax({url:d,type:"POST",data:m,dataType:"json",crossDomain:!0}).done(function(S){S&&S.code===200&&(h.success=!0),g(h)}).fail(function(){g(h)})}}});var NE=f((bX,LE)=>{"use strict";var kr=ze(),EF=(e,t,n,r)=>{let i=document.createElement("div");t.appendChild(i),turnstile.render(i,{sitekey:e,callback:function(o){n(o)},"error-callback":function(){r()}})};kr.define("forms",LE.exports=function(e,t){let n="TURNSTILE_LOADED";var r={},i=e(document),o,s=window.location,a=window.XDomainRequest&&!window.atob,u=".w-form",c,g=/e(-)?mail/i,p=/^\S+@\S+$/,d=window.alert,h=kr.env(),v,m,T;let y=i.find("[data-turnstile-sitekey]").data("turnstile-sitekey"),S;var A=/list-manage[1-9]?.com/i,R=t.debounce(function(){d("Oops! This page has improperly configured forms. Please contact your website administrator to fix this issue.")},100);r.ready=r.design=r.preview=function(){O(),P(),!h&&!v&&X()};function P(){c=e("html").attr("data-wf-site"),m="https://webflow.com/api/v1/form/"+c,a&&m.indexOf("https://webflow.com")>=0&&(m=m.replace("https://webflow.com","https://formdata.webflow.com")),T=`${m}/signFile`,o=e(u+" form"),o.length&&o.each(F)}function O(){y&&(S=document.createElement("script"),S.src="https://challenges.cloudflare.com/turnstile/v0/api.js",document.head.appendChild(S),S.onload=()=>{i.trigger(n)})}function F(x,G){var W=e(G),D=e.data(G,u);D||(D=e.data(G,u,{form:W})),V(D);var ee=W.closest("div.w-form");D.done=ee.find("> .w-form-done"),D.fail=ee.find("> .w-form-fail"),D.fileUploads=ee.find(".w-file-upload"),D.fileUploads.each(function(j){Ie(j,D)}),y&&(D.wait=!1,k(D),i.on(typeof turnstile<"u"?"ready":n,function(){EF(y,G,j=>{D.turnstileToken=j,V(D)},()=>{k(D)})}));var ne=D.form.attr("aria-label")||D.form.attr("data-name")||"Form";D.done.attr("aria-label")||D.form.attr("aria-label",ne),D.done.attr("tabindex","-1"),D.done.attr("role","region"),D.done.attr("aria-label")||D.done.attr("aria-label",ne+" success"),D.fail.attr("tabindex","-1"),D.fail.attr("role","region"),D.fail.attr("aria-label")||D.fail.attr("aria-label",ne+" failure");var ie=D.action=W.attr("action");if(D.handler=null,D.redirect=W.attr("data-redirect"),A.test(ie)){D.handler=te;return}if(!ie){if(c){D.handler=(()=>{let j=PE().default;return j(V,s,kr,L,se,Z,d,N,k,c,Y,e,m)})();return}R()}}function X(){v=!0,i.on("submit",u+" form",function(j){var K=e.data(this,u);K.handler&&(K.evt=j,K.handler(K))});let x=".w-checkbox-input",G=".w-radio-input",W="w--redirected-checked",D="w--redirected-focus",ee="w--redirected-focus-visible",ne=":focus-visible, [data-wf-focus-visible]",ie=[["checkbox",x],["radio",G]];i.on("change",u+' form input[type="checkbox"]:not('+x+")",j=>{e(j.target).siblings(x).toggleClass(W)}),i.on("change",u+' form input[type="radio"]',j=>{e(`input[name="${j.target.name}"]:not(${x})`).map((ge,vt)=>e(vt).siblings(G).removeClass(W));let K=e(j.target);K.hasClass("w-radio-input")||K.siblings(G).addClass(W)}),ie.forEach(([j,K])=>{i.on("focus",u+` form input[type="${j}"]:not(`+K+")",ge=>{e(ge.target).siblings(K).addClass(D),e(ge.target).filter(ne).siblings(K).addClass(ee)}),i.on("blur",u+` form input[type="${j}"]:not(`+K+")",ge=>{e(ge.target).siblings(K).removeClass(`${D} ${ee}`)})})}function V(x){var G=x.btn=x.form.find(':input[type="submit"]');x.wait=x.btn.attr("data-wait")||null,x.success=!1,G.prop("disabled",!!(y&&!x.turnstileToken)),x.label&&G.val(x.label)}function k(x){var G=x.btn,W=x.wait;G.prop("disabled",!0),W&&(x.label=G.val(),G.val(W))}function Z(x,G){var W=null;return G=G||{},x.find(':input:not([type="submit"]):not([type="file"])').each(function(D,ee){var ne=e(ee),ie=ne.attr("type"),j=ne.attr("data-name")||ne.attr("name")||"Field "+(D+1);j=encodeURIComponent(j);var K=ne.val();if(ie==="checkbox")K=ne.is(":checked");else if(ie==="radio"){if(G[j]===null||typeof G[j]=="string")return;K=x.find('input[name="'+ne.attr("name")+'"]:checked').val()||null}typeof K=="string"&&(K=e.trim(K)),G[j]=K,W=W||U(ne,ie,j,K)}),W}function N(x){var G={};return x.find(':input[type="file"]').each(function(W,D){var ee=e(D),ne=ee.attr("data-name")||ee.attr("name")||"File "+(W+1),ie=ee.attr("data-value");typeof ie=="string"&&(ie=e.trim(ie)),G[ne]=ie}),G}let I={_mkto_trk:"marketo"};function L(){return document.cookie.split("; ").reduce(function(G,W){let D=W.split("="),ee=D[0];if(ee in I){let ne=I[ee],ie=D.slice(1).join("=");G[ne]=ie}return G},{})}function U(x,G,W,D){var ee=null;return G==="password"?ee="Passwords cannot be submitted.":x.attr("required")?D?g.test(x.attr("type"))&&(p.test(D)||(ee="Please enter a valid email address for: "+W)):ee="Please fill out the required field: "+W:W==="g-recaptcha-response"&&!D&&(ee="Please confirm you\u2019re not a robot."),ee}function q(x){se(x),Y(x)}function te(x){V(x);var G=x.form,W={};if(/^https/.test(s.href)&&!/^https/.test(x.action)){G.attr("method","post");return}se(x);var D=Z(G,W);if(D)return d(D);k(x);var ee;t.each(W,function(K,ge){g.test(ge)&&(W.EMAIL=K),/^((full[ _-]?)?name)$/i.test(ge)&&(ee=K),/^(first[ _-]?name)$/i.test(ge)&&(W.FNAME=K),/^(last[ _-]?name)$/i.test(ge)&&(W.LNAME=K)}),ee&&!W.FNAME&&(ee=ee.split(" "),W.FNAME=ee[0],W.LNAME=W.LNAME||ee[1]);var ne=x.action.replace("/post?","/post-json?")+"&c=?",ie=ne.indexOf("u=")+2;ie=ne.substring(ie,ne.indexOf("&",ie));var j=ne.indexOf("id=")+3;j=ne.substring(j,ne.indexOf("&",j)),W["b_"+ie+"_"+j]="",e.ajax({url:ne,data:W,dataType:"jsonp"}).done(function(K){x.success=K.result==="success"||/already/.test(K.msg),x.success||console.info("MailChimp error: "+K.msg),Y(x)}).fail(function(){Y(x)})}function Y(x){var G=x.form,W=x.redirect,D=x.success;if(D&&W){kr.location(W);return}x.done.toggle(D),x.fail.toggle(!D),D?x.done.focus():x.fail.focus(),G.toggle(!D),V(x)}function se(x){x.evt&&x.evt.preventDefault(),x.evt=null}function Ie(x,G){if(!G.fileUploads||!G.fileUploads[x])return;var W,D=e(G.fileUploads[x]),ee=D.find("> .w-file-upload-default"),ne=D.find("> .w-file-upload-uploading"),ie=D.find("> .w-file-upload-success"),j=D.find("> .w-file-upload-error"),K=ee.find(".w-file-upload-input"),ge=ee.find(".w-file-upload-label"),vt=ge.children(),it=j.find(".w-file-upload-error-msg"),Be=ie.find(".w-file-upload-file"),wn=ie.find(".w-file-remove-link"),Yt=Be.find(".w-file-upload-file-name"),l=it.attr("data-w-size-error"),E=it.attr("data-w-type-error"),_=it.attr("data-w-generic-error");if(h||ge.on("click keydown",function(H){H.type==="keydown"&&H.which!==13&&H.which!==32||(H.preventDefault(),K.click())}),ge.find(".w-icon-file-upload-icon").attr("aria-hidden","true"),wn.find(".w-icon-file-upload-remove").attr("aria-hidden","true"),h)K.on("click",function(H){H.preventDefault()}),ge.on("click",function(H){H.preventDefault()}),vt.on("click",function(H){H.preventDefault()});else{wn.on("click keydown",function(H){if(H.type==="keydown"){if(H.which!==13&&H.which!==32)return;H.preventDefault()}K.removeAttr("data-value"),K.val(""),Yt.html(""),ee.toggle(!0),ie.toggle(!1),ge.focus()}),K.on("change",function(H){W=H.target&&H.target.files&&H.target.files[0],W&&(ee.toggle(!1),j.toggle(!1),ne.toggle(!0),ne.focus(),Yt.text(W.name),Q()||k(G),G.fileUploads[x].uploading=!0,ke(W,w))});var b=ge.outerHeight();K.height(b),K.width(1)}function C(H){var M=H.responseJSON&&H.responseJSON.msg,J=_;typeof M=="string"&&M.indexOf("InvalidFileTypeError")===0?J=E:typeof M=="string"&&M.indexOf("MaxFileSizeError")===0&&(J=l),it.text(J),K.removeAttr("data-value"),K.val(""),ne.toggle(!1),ee.toggle(!0),j.toggle(!0),j.focus(),G.fileUploads[x].uploading=!1,Q()||V(G)}function w(H,M){if(H)return C(H);var J=M.fileName,re=M.postData,he=M.fileId,Le=M.s3Url;K.attr("data-value",he),me(Le,re,W,J,B)}function B(H){if(H)return C(H);ne.toggle(!1),ie.css("display","inline-block"),ie.focus(),G.fileUploads[x].uploading=!1,Q()||V(G)}function Q(){var H=G.fileUploads&&G.fileUploads.toArray()||[];return H.some(function(M){return M.uploading})}}function ke(x,G){var W=new URLSearchParams({name:x.name,size:x.size});e.ajax({type:"GET",url:`${T}?${W}`,crossDomain:!0}).done(function(D){G(null,D)}).fail(function(D){G(D)})}function me(x,G,W,D,ee){var ne=new FormData;for(var ie in G)ne.append(ie,G[ie]);ne.append("file",W,D),e.ajax({type:"POST",url:x,data:ne,processData:!1,contentType:!1}).done(function(){ee(null)}).fail(function(j){ee(j)})}return r})});ua();ca();Ta();Aa();wa();Ra();Fa();AE();wE();xE();CE();NE();})();
+(() => {
+  var qE = Object.create;
+  var xn = Object.defineProperty;
+  var GE = Object.getOwnPropertyDescriptor;
+  var XE = Object.getOwnPropertyNames;
+  var VE = Object.getPrototypeOf,
+    UE = Object.prototype.hasOwnProperty;
+  var fe = (e, t) => () => (e && (t = e((e = 0))), t);
+  var f = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports),
+    xe = (e, t) => {
+      for (var n in t) xn(e, n, { get: t[n], enumerable: !0 });
+    },
+    sa = (e, t, n, r) => {
+      if ((t && typeof t == "object") || typeof t == "function")
+        for (let i of XE(t))
+          !UE.call(e, i) &&
+            i !== n &&
+            xn(e, i, {
+              get: () => t[i],
+              enumerable: !(r = GE(t, i)) || r.enumerable,
+            });
+      return e;
+    };
+  var ae = (e, t, n) => (
+      (n = e != null ? qE(VE(e)) : {}),
+      sa(
+        t || !e || !e.__esModule
+          ? xn(n, "default", { value: e, enumerable: !0 })
+          : n,
+        e
+      )
+    ),
+    He = (e) => sa(xn({}, "__esModule", { value: !0 }), e);
+  var ua = f(() => {
+    "use strict";
+    (function () {
+      if (typeof window > "u") return;
+      let e = window.navigator.userAgent.match(/Edge\/(\d{2})\./),
+        t = e ? parseInt(e[1], 10) >= 16 : !1;
+      if ("objectFit" in document.documentElement.style && !t) {
+        window.objectFitPolyfill = function () {
+          return !1;
+        };
+        return;
+      }
+      let r = function (a) {
+          let u = window.getComputedStyle(a, null),
+            c = u.getPropertyValue("position"),
+            g = u.getPropertyValue("overflow"),
+            p = u.getPropertyValue("display");
+          (!c || c === "static") && (a.style.position = "relative"),
+            g !== "hidden" && (a.style.overflow = "hidden"),
+            (!p || p === "inline") && (a.style.display = "block"),
+            a.clientHeight === 0 && (a.style.height = "100%"),
+            a.className.indexOf("object-fit-polyfill") === -1 &&
+              (a.className += " object-fit-polyfill");
+        },
+        i = function (a) {
+          let u = window.getComputedStyle(a, null),
+            c = {
+              "max-width": "none",
+              "max-height": "none",
+              "min-width": "0px",
+              "min-height": "0px",
+              top: "auto",
+              right: "auto",
+              bottom: "auto",
+              left: "auto",
+              "margin-top": "0px",
+              "margin-right": "0px",
+              "margin-bottom": "0px",
+              "margin-left": "0px",
+            };
+          for (let g in c)
+            u.getPropertyValue(g) !== c[g] && (a.style[g] = c[g]);
+        },
+        o = function (a) {
+          let u = a.parentNode;
+          r(u),
+            i(a),
+            (a.style.position = "absolute"),
+            (a.style.height = "100%"),
+            (a.style.width = "auto"),
+            a.clientWidth > u.clientWidth
+              ? ((a.style.top = "0"),
+                (a.style.marginTop = "0"),
+                (a.style.left = "50%"),
+                (a.style.marginLeft = a.clientWidth / -2 + "px"))
+              : ((a.style.width = "100%"),
+                (a.style.height = "auto"),
+                (a.style.left = "0"),
+                (a.style.marginLeft = "0"),
+                (a.style.top = "50%"),
+                (a.style.marginTop = a.clientHeight / -2 + "px"));
+        },
+        s = function (a) {
+          if (typeof a > "u" || a instanceof Event)
+            a = document.querySelectorAll("[data-object-fit]");
+          else if (a && a.nodeName) a = [a];
+          else if (typeof a == "object" && a.length && a[0].nodeName) a = a;
+          else return !1;
+          for (let u = 0; u < a.length; u++) {
+            if (!a[u].nodeName) continue;
+            let c = a[u].nodeName.toLowerCase();
+            if (c === "img") {
+              if (t) continue;
+              a[u].complete
+                ? o(a[u])
+                : a[u].addEventListener("load", function () {
+                    o(this);
+                  });
+            } else
+              c === "video"
+                ? a[u].readyState > 0
+                  ? o(a[u])
+                  : a[u].addEventListener("loadedmetadata", function () {
+                      o(this);
+                    })
+                : o(a[u]);
+          }
+          return !0;
+        };
+      document.readyState === "loading"
+        ? document.addEventListener("DOMContentLoaded", s)
+        : s(),
+        window.addEventListener("resize", s),
+        (window.objectFitPolyfill = s);
+    })();
+  });
+  var ca = f(() => {
+    "use strict";
+    (function () {
+      if (typeof window > "u") return;
+      function e(r) {
+        Webflow.env("design") ||
+          ($("video").each(function () {
+            r && $(this).prop("autoplay") ? this.play() : this.pause();
+          }),
+          $(".w-background-video--control").each(function () {
+            r ? n($(this)) : t($(this));
+          }));
+      }
+      function t(r) {
+        r.find("> span").each(function (i) {
+          $(this).prop("hidden", () => i === 0);
+        });
+      }
+      function n(r) {
+        r.find("> span").each(function (i) {
+          $(this).prop("hidden", () => i === 1);
+        });
+      }
+      $(document).ready(() => {
+        let r = window.matchMedia("(prefers-reduced-motion: reduce)");
+        r.addEventListener("change", (i) => {
+          e(!i.matches);
+        }),
+          r.matches && e(!1),
+          $("video:not([autoplay])").each(function () {
+            $(this)
+              .parent()
+              .find(".w-background-video--control")
+              .each(function () {
+                t($(this));
+              });
+          }),
+          $(document).on("click", ".w-background-video--control", function (i) {
+            if (Webflow.env("design")) return;
+            let o = $(i.currentTarget),
+              s = $(`video#${o.attr("aria-controls")}`).get(0);
+            if (s)
+              if (s.paused) {
+                let a = s.play();
+                n(o),
+                  a &&
+                    typeof a.catch == "function" &&
+                    a.catch(() => {
+                      t(o);
+                    });
+              } else s.pause(), t(o);
+          });
+      });
+    })();
+  });
+  var Br = f(() => {
+    "use strict";
+    window.tram = (function (e) {
+      function t(l, E) {
+        var _ = new me.Bare();
+        return _.init(l, E);
+      }
+      function n(l) {
+        return l.replace(/[A-Z]/g, function (E) {
+          return "-" + E.toLowerCase();
+        });
+      }
+      function r(l) {
+        var E = parseInt(l.slice(1), 16),
+          _ = (E >> 16) & 255,
+          b = (E >> 8) & 255,
+          C = 255 & E;
+        return [_, b, C];
+      }
+      function i(l, E, _) {
+        return (
+          "#" + ((1 << 24) | (l << 16) | (E << 8) | _).toString(16).slice(1)
+        );
+      }
+      function o() {}
+      function s(l, E) {
+        c("Type warning: Expected: [" + l + "] Got: [" + typeof E + "] " + E);
+      }
+      function a(l, E, _) {
+        c("Units do not match [" + l + "]: " + E + ", " + _);
+      }
+      function u(l, E, _) {
+        if ((E !== void 0 && (_ = E), l === void 0)) return _;
+        var b = _;
+        return (
+          wn.test(l) || !Yt.test(l)
+            ? (b = parseInt(l, 10))
+            : Yt.test(l) && (b = 1e3 * parseFloat(l)),
+          0 > b && (b = 0),
+          b === b ? b : _
+        );
+      }
+      function c(l) {
+        j.debug && window && window.console.warn(l);
+      }
+      function g(l) {
+        for (var E = -1, _ = l ? l.length : 0, b = []; ++E < _; ) {
+          var C = l[E];
+          C && b.push(C);
+        }
+        return b;
+      }
+      var p = (function (l, E, _) {
+          function b(Q) {
+            return typeof Q == "object";
+          }
+          function C(Q) {
+            return typeof Q == "function";
+          }
+          function w() {}
+          function B(Q, H) {
+            function M() {
+              var Te = new J();
+              return C(Te.init) && Te.init.apply(Te, arguments), Te;
+            }
+            function J() {}
+            H === _ && ((H = Q), (Q = Object)), (M.Bare = J);
+            var re,
+              he = (w[l] = Q[l]),
+              Le = (J[l] = M[l] = new w());
+            return (
+              (Le.constructor = M),
+              (M.mixin = function (Te) {
+                return (J[l] = M[l] = B(M, Te)[l]), M;
+              }),
+              (M.open = function (Te) {
+                if (
+                  ((re = {}),
+                  C(Te) ? (re = Te.call(M, Le, he, M, Q)) : b(Te) && (re = Te),
+                  b(re))
+                )
+                  for (var $t in re) E.call(re, $t) && (Le[$t] = re[$t]);
+                return C(Le.init) || (Le.init = Q), M;
+              }),
+              M.open(H)
+            );
+          }
+          return B;
+        })("prototype", {}.hasOwnProperty),
+        d = {
+          ease: [
+            "ease",
+            function (l, E, _, b) {
+              var C = (l /= b) * l,
+                w = C * l;
+              return (
+                E +
+                _ * (-2.75 * w * C + 11 * C * C + -15.5 * w + 8 * C + 0.25 * l)
+              );
+            },
+          ],
+          "ease-in": [
+            "ease-in",
+            function (l, E, _, b) {
+              var C = (l /= b) * l,
+                w = C * l;
+              return E + _ * (-1 * w * C + 3 * C * C + -3 * w + 2 * C);
+            },
+          ],
+          "ease-out": [
+            "ease-out",
+            function (l, E, _, b) {
+              var C = (l /= b) * l,
+                w = C * l;
+              return (
+                E +
+                _ * (0.3 * w * C + -1.6 * C * C + 2.2 * w + -1.8 * C + 1.9 * l)
+              );
+            },
+          ],
+          "ease-in-out": [
+            "ease-in-out",
+            function (l, E, _, b) {
+              var C = (l /= b) * l,
+                w = C * l;
+              return E + _ * (2 * w * C + -5 * C * C + 2 * w + 2 * C);
+            },
+          ],
+          linear: [
+            "linear",
+            function (l, E, _, b) {
+              return (_ * l) / b + E;
+            },
+          ],
+          "ease-in-quad": [
+            "cubic-bezier(0.550, 0.085, 0.680, 0.530)",
+            function (l, E, _, b) {
+              return _ * (l /= b) * l + E;
+            },
+          ],
+          "ease-out-quad": [
+            "cubic-bezier(0.250, 0.460, 0.450, 0.940)",
+            function (l, E, _, b) {
+              return -_ * (l /= b) * (l - 2) + E;
+            },
+          ],
+          "ease-in-out-quad": [
+            "cubic-bezier(0.455, 0.030, 0.515, 0.955)",
+            function (l, E, _, b) {
+              return (l /= b / 2) < 1
+                ? (_ / 2) * l * l + E
+                : (-_ / 2) * (--l * (l - 2) - 1) + E;
+            },
+          ],
+          "ease-in-cubic": [
+            "cubic-bezier(0.550, 0.055, 0.675, 0.190)",
+            function (l, E, _, b) {
+              return _ * (l /= b) * l * l + E;
+            },
+          ],
+          "ease-out-cubic": [
+            "cubic-bezier(0.215, 0.610, 0.355, 1)",
+            function (l, E, _, b) {
+              return _ * ((l = l / b - 1) * l * l + 1) + E;
+            },
+          ],
+          "ease-in-out-cubic": [
+            "cubic-bezier(0.645, 0.045, 0.355, 1)",
+            function (l, E, _, b) {
+              return (l /= b / 2) < 1
+                ? (_ / 2) * l * l * l + E
+                : (_ / 2) * ((l -= 2) * l * l + 2) + E;
+            },
+          ],
+          "ease-in-quart": [
+            "cubic-bezier(0.895, 0.030, 0.685, 0.220)",
+            function (l, E, _, b) {
+              return _ * (l /= b) * l * l * l + E;
+            },
+          ],
+          "ease-out-quart": [
+            "cubic-bezier(0.165, 0.840, 0.440, 1)",
+            function (l, E, _, b) {
+              return -_ * ((l = l / b - 1) * l * l * l - 1) + E;
+            },
+          ],
+          "ease-in-out-quart": [
+            "cubic-bezier(0.770, 0, 0.175, 1)",
+            function (l, E, _, b) {
+              return (l /= b / 2) < 1
+                ? (_ / 2) * l * l * l * l + E
+                : (-_ / 2) * ((l -= 2) * l * l * l - 2) + E;
+            },
+          ],
+          "ease-in-quint": [
+            "cubic-bezier(0.755, 0.050, 0.855, 0.060)",
+            function (l, E, _, b) {
+              return _ * (l /= b) * l * l * l * l + E;
+            },
+          ],
+          "ease-out-quint": [
+            "cubic-bezier(0.230, 1, 0.320, 1)",
+            function (l, E, _, b) {
+              return _ * ((l = l / b - 1) * l * l * l * l + 1) + E;
+            },
+          ],
+          "ease-in-out-quint": [
+            "cubic-bezier(0.860, 0, 0.070, 1)",
+            function (l, E, _, b) {
+              return (l /= b / 2) < 1
+                ? (_ / 2) * l * l * l * l * l + E
+                : (_ / 2) * ((l -= 2) * l * l * l * l + 2) + E;
+            },
+          ],
+          "ease-in-sine": [
+            "cubic-bezier(0.470, 0, 0.745, 0.715)",
+            function (l, E, _, b) {
+              return -_ * Math.cos((l / b) * (Math.PI / 2)) + _ + E;
+            },
+          ],
+          "ease-out-sine": [
+            "cubic-bezier(0.390, 0.575, 0.565, 1)",
+            function (l, E, _, b) {
+              return _ * Math.sin((l / b) * (Math.PI / 2)) + E;
+            },
+          ],
+          "ease-in-out-sine": [
+            "cubic-bezier(0.445, 0.050, 0.550, 0.950)",
+            function (l, E, _, b) {
+              return (-_ / 2) * (Math.cos((Math.PI * l) / b) - 1) + E;
+            },
+          ],
+          "ease-in-expo": [
+            "cubic-bezier(0.950, 0.050, 0.795, 0.035)",
+            function (l, E, _, b) {
+              return l === 0 ? E : _ * Math.pow(2, 10 * (l / b - 1)) + E;
+            },
+          ],
+          "ease-out-expo": [
+            "cubic-bezier(0.190, 1, 0.220, 1)",
+            function (l, E, _, b) {
+              return l === b
+                ? E + _
+                : _ * (-Math.pow(2, (-10 * l) / b) + 1) + E;
+            },
+          ],
+          "ease-in-out-expo": [
+            "cubic-bezier(1, 0, 0, 1)",
+            function (l, E, _, b) {
+              return l === 0
+                ? E
+                : l === b
+                ? E + _
+                : (l /= b / 2) < 1
+                ? (_ / 2) * Math.pow(2, 10 * (l - 1)) + E
+                : (_ / 2) * (-Math.pow(2, -10 * --l) + 2) + E;
+            },
+          ],
+          "ease-in-circ": [
+            "cubic-bezier(0.600, 0.040, 0.980, 0.335)",
+            function (l, E, _, b) {
+              return -_ * (Math.sqrt(1 - (l /= b) * l) - 1) + E;
+            },
+          ],
+          "ease-out-circ": [
+            "cubic-bezier(0.075, 0.820, 0.165, 1)",
+            function (l, E, _, b) {
+              return _ * Math.sqrt(1 - (l = l / b - 1) * l) + E;
+            },
+          ],
+          "ease-in-out-circ": [
+            "cubic-bezier(0.785, 0.135, 0.150, 0.860)",
+            function (l, E, _, b) {
+              return (l /= b / 2) < 1
+                ? (-_ / 2) * (Math.sqrt(1 - l * l) - 1) + E
+                : (_ / 2) * (Math.sqrt(1 - (l -= 2) * l) + 1) + E;
+            },
+          ],
+          "ease-in-back": [
+            "cubic-bezier(0.600, -0.280, 0.735, 0.045)",
+            function (l, E, _, b, C) {
+              return (
+                C === void 0 && (C = 1.70158),
+                _ * (l /= b) * l * ((C + 1) * l - C) + E
+              );
+            },
+          ],
+          "ease-out-back": [
+            "cubic-bezier(0.175, 0.885, 0.320, 1.275)",
+            function (l, E, _, b, C) {
+              return (
+                C === void 0 && (C = 1.70158),
+                _ * ((l = l / b - 1) * l * ((C + 1) * l + C) + 1) + E
+              );
+            },
+          ],
+          "ease-in-out-back": [
+            "cubic-bezier(0.680, -0.550, 0.265, 1.550)",
+            function (l, E, _, b, C) {
+              return (
+                C === void 0 && (C = 1.70158),
+                (l /= b / 2) < 1
+                  ? (_ / 2) * l * l * (((C *= 1.525) + 1) * l - C) + E
+                  : (_ / 2) *
+                      ((l -= 2) * l * (((C *= 1.525) + 1) * l + C) + 2) +
+                    E
+              );
+            },
+          ],
+        },
+        h = {
+          "ease-in-back": "cubic-bezier(0.600, 0, 0.735, 0.045)",
+          "ease-out-back": "cubic-bezier(0.175, 0.885, 0.320, 1)",
+          "ease-in-out-back": "cubic-bezier(0.680, 0, 0.265, 1)",
+        },
+        v = document,
+        m = window,
+        T = "bkwld-tram",
+        y = /[\-\.0-9]/g,
+        S = /[A-Z]/,
+        A = "number",
+        R = /^(rgb|#)/,
+        P = /(em|cm|mm|in|pt|pc|px)$/,
+        O = /(em|cm|mm|in|pt|pc|px|%)$/,
+        F = /(deg|rad|turn)$/,
+        X = "unitless",
+        V = /(all|none) 0s ease 0s/,
+        k = /^(width|height)$/,
+        Z = " ",
+        N = v.createElement("a"),
+        I = ["Webkit", "Moz", "O", "ms"],
+        L = ["-webkit-", "-moz-", "-o-", "-ms-"],
+        U = function (l) {
+          if (l in N.style) return { dom: l, css: l };
+          var E,
+            _,
+            b = "",
+            C = l.split("-");
+          for (E = 0; E < C.length; E++)
+            b += C[E].charAt(0).toUpperCase() + C[E].slice(1);
+          for (E = 0; E < I.length; E++)
+            if (((_ = I[E] + b), _ in N.style))
+              return { dom: _, css: L[E] + l };
+        },
+        q = (t.support = {
+          bind: Function.prototype.bind,
+          transform: U("transform"),
+          transition: U("transition"),
+          backface: U("backface-visibility"),
+          timing: U("transition-timing-function"),
+        });
+      if (q.transition) {
+        var te = q.timing.dom;
+        if (((N.style[te] = d["ease-in-back"][0]), !N.style[te]))
+          for (var Y in h) d[Y][0] = h[Y];
+      }
+      var se = (t.frame = (function () {
+          var l =
+            m.requestAnimationFrame ||
+            m.webkitRequestAnimationFrame ||
+            m.mozRequestAnimationFrame ||
+            m.oRequestAnimationFrame ||
+            m.msRequestAnimationFrame;
+          return l && q.bind
+            ? l.bind(m)
+            : function (E) {
+                m.setTimeout(E, 16);
+              };
+        })()),
+        Ie = (t.now = (function () {
+          var l = m.performance,
+            E = l && (l.now || l.webkitNow || l.msNow || l.mozNow);
+          return E && q.bind
+            ? E.bind(l)
+            : Date.now ||
+                function () {
+                  return +new Date();
+                };
+        })()),
+        ke = p(function (l) {
+          function E(z, oe) {
+            var de = g(("" + z).split(Z)),
+              ue = de[0];
+            oe = oe || {};
+            var be = it[ue];
+            if (!be) return c("Unsupported property: " + ue);
+            if (!oe.weak || !this.props[ue]) {
+              var De = be[0],
+                Oe = this.props[ue];
+              return (
+                Oe || (Oe = this.props[ue] = new De.Bare()),
+                Oe.init(this.$el, de, be, oe),
+                Oe
+              );
+            }
+          }
+          function _(z, oe, de) {
+            if (z) {
+              var ue = typeof z;
+              if (
+                (oe ||
+                  (this.timer && this.timer.destroy(),
+                  (this.queue = []),
+                  (this.active = !1)),
+                ue == "number" && oe)
+              )
+                return (
+                  (this.timer = new ne({
+                    duration: z,
+                    context: this,
+                    complete: w,
+                  })),
+                  void (this.active = !0)
+                );
+              if (ue == "string" && oe) {
+                switch (z) {
+                  case "hide":
+                    M.call(this);
+                    break;
+                  case "stop":
+                    B.call(this);
+                    break;
+                  case "redraw":
+                    J.call(this);
+                    break;
+                  default:
+                    E.call(this, z, de && de[1]);
+                }
+                return w.call(this);
+              }
+              if (ue == "function") return void z.call(this, this);
+              if (ue == "object") {
+                var be = 0;
+                Le.call(
+                  this,
+                  z,
+                  function (Ee, FE) {
+                    Ee.span > be && (be = Ee.span), Ee.stop(), Ee.animate(FE);
+                  },
+                  function (Ee) {
+                    "wait" in Ee && (be = u(Ee.wait, 0));
+                  }
+                ),
+                  he.call(this),
+                  be > 0 &&
+                    ((this.timer = new ne({ duration: be, context: this })),
+                    (this.active = !0),
+                    oe && (this.timer.complete = w));
+                var De = this,
+                  Oe = !1,
+                  On = {};
+                se(function () {
+                  Le.call(De, z, function (Ee) {
+                    Ee.active && ((Oe = !0), (On[Ee.name] = Ee.nextStyle));
+                  }),
+                    Oe && De.$el.css(On);
+                });
+              }
+            }
+          }
+          function b(z) {
+            (z = u(z, 0)),
+              this.active
+                ? this.queue.push({ options: z })
+                : ((this.timer = new ne({
+                    duration: z,
+                    context: this,
+                    complete: w,
+                  })),
+                  (this.active = !0));
+          }
+          function C(z) {
+            return this.active
+              ? (this.queue.push({ options: z, args: arguments }),
+                void (this.timer.complete = w))
+              : c(
+                  "No active transition timer. Use start() or wait() before then()."
+                );
+          }
+          function w() {
+            if (
+              (this.timer && this.timer.destroy(),
+              (this.active = !1),
+              this.queue.length)
+            ) {
+              var z = this.queue.shift();
+              _.call(this, z.options, !0, z.args);
+            }
+          }
+          function B(z) {
+            this.timer && this.timer.destroy(),
+              (this.queue = []),
+              (this.active = !1);
+            var oe;
+            typeof z == "string"
+              ? ((oe = {}), (oe[z] = 1))
+              : (oe = typeof z == "object" && z != null ? z : this.props),
+              Le.call(this, oe, Te),
+              he.call(this);
+          }
+          function Q(z) {
+            B.call(this, z), Le.call(this, z, $t, ME);
+          }
+          function H(z) {
+            typeof z != "string" && (z = "block"), (this.el.style.display = z);
+          }
+          function M() {
+            B.call(this), (this.el.style.display = "none");
+          }
+          function J() {
+            this.el.offsetHeight;
+          }
+          function re() {
+            B.call(this), e.removeData(this.el, T), (this.$el = this.el = null);
+          }
+          function he() {
+            var z,
+              oe,
+              de = [];
+            this.upstream && de.push(this.upstream);
+            for (z in this.props)
+              (oe = this.props[z]), oe.active && de.push(oe.string);
+            (de = de.join(",")),
+              this.style !== de &&
+                ((this.style = de), (this.el.style[q.transition.dom] = de));
+          }
+          function Le(z, oe, de) {
+            var ue,
+              be,
+              De,
+              Oe,
+              On = oe !== Te,
+              Ee = {};
+            for (ue in z)
+              (De = z[ue]),
+                ue in Be
+                  ? (Ee.transform || (Ee.transform = {}),
+                    (Ee.transform[ue] = De))
+                  : (S.test(ue) && (ue = n(ue)),
+                    ue in it
+                      ? (Ee[ue] = De)
+                      : (Oe || (Oe = {}), (Oe[ue] = De)));
+            for (ue in Ee) {
+              if (((De = Ee[ue]), (be = this.props[ue]), !be)) {
+                if (!On) continue;
+                be = E.call(this, ue);
+              }
+              oe.call(this, be, De);
+            }
+            de && Oe && de.call(this, Oe);
+          }
+          function Te(z) {
+            z.stop();
+          }
+          function $t(z, oe) {
+            z.set(oe);
+          }
+          function ME(z) {
+            this.$el.css(z);
+          }
+          function Me(z, oe) {
+            l[z] = function () {
+              return this.children
+                ? DE.call(this, oe, arguments)
+                : (this.el && oe.apply(this, arguments), this);
+            };
+          }
+          function DE(z, oe) {
+            var de,
+              ue = this.children.length;
+            for (de = 0; ue > de; de++) z.apply(this.children[de], oe);
+            return this;
+          }
+          (l.init = function (z) {
+            if (
+              ((this.$el = e(z)),
+              (this.el = this.$el[0]),
+              (this.props = {}),
+              (this.queue = []),
+              (this.style = ""),
+              (this.active = !1),
+              j.keepInherited && !j.fallback)
+            ) {
+              var oe = ge(this.el, "transition");
+              oe && !V.test(oe) && (this.upstream = oe);
+            }
+            q.backface &&
+              j.hideBackface &&
+              K(this.el, q.backface.css, "hidden");
+          }),
+            Me("add", E),
+            Me("start", _),
+            Me("wait", b),
+            Me("then", C),
+            Me("next", w),
+            Me("stop", B),
+            Me("set", Q),
+            Me("show", H),
+            Me("hide", M),
+            Me("redraw", J),
+            Me("destroy", re);
+        }),
+        me = p(ke, function (l) {
+          function E(_, b) {
+            var C = e.data(_, T) || e.data(_, T, new ke.Bare());
+            return C.el || C.init(_), b ? C.start(b) : C;
+          }
+          l.init = function (_, b) {
+            var C = e(_);
+            if (!C.length) return this;
+            if (C.length === 1) return E(C[0], b);
+            var w = [];
+            return (
+              C.each(function (B, Q) {
+                w.push(E(Q, b));
+              }),
+              (this.children = w),
+              this
+            );
+          };
+        }),
+        x = p(function (l) {
+          function E() {
+            var w = this.get();
+            this.update("auto");
+            var B = this.get();
+            return this.update(w), B;
+          }
+          function _(w, B, Q) {
+            return B !== void 0 && (Q = B), w in d ? w : Q;
+          }
+          function b(w) {
+            var B = /rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(w);
+            return (B ? i(B[1], B[2], B[3]) : w).replace(
+              /#(\w)(\w)(\w)$/,
+              "#$1$1$2$2$3$3"
+            );
+          }
+          var C = { duration: 500, ease: "ease", delay: 0 };
+          (l.init = function (w, B, Q, H) {
+            (this.$el = w), (this.el = w[0]);
+            var M = B[0];
+            Q[2] && (M = Q[2]),
+              vt[M] && (M = vt[M]),
+              (this.name = M),
+              (this.type = Q[1]),
+              (this.duration = u(B[1], this.duration, C.duration)),
+              (this.ease = _(B[2], this.ease, C.ease)),
+              (this.delay = u(B[3], this.delay, C.delay)),
+              (this.span = this.duration + this.delay),
+              (this.active = !1),
+              (this.nextStyle = null),
+              (this.auto = k.test(this.name)),
+              (this.unit = H.unit || this.unit || j.defaultUnit),
+              (this.angle = H.angle || this.angle || j.defaultAngle),
+              j.fallback || H.fallback
+                ? (this.animate = this.fallback)
+                : ((this.animate = this.transition),
+                  (this.string =
+                    this.name +
+                    Z +
+                    this.duration +
+                    "ms" +
+                    (this.ease != "ease" ? Z + d[this.ease][0] : "") +
+                    (this.delay ? Z + this.delay + "ms" : "")));
+          }),
+            (l.set = function (w) {
+              (w = this.convert(w, this.type)), this.update(w), this.redraw();
+            }),
+            (l.transition = function (w) {
+              (this.active = !0),
+                (w = this.convert(w, this.type)),
+                this.auto &&
+                  (this.el.style[this.name] == "auto" &&
+                    (this.update(this.get()), this.redraw()),
+                  w == "auto" && (w = E.call(this))),
+                (this.nextStyle = w);
+            }),
+            (l.fallback = function (w) {
+              var B =
+                this.el.style[this.name] || this.convert(this.get(), this.type);
+              (w = this.convert(w, this.type)),
+                this.auto &&
+                  (B == "auto" && (B = this.convert(this.get(), this.type)),
+                  w == "auto" && (w = E.call(this))),
+                (this.tween = new ee({
+                  from: B,
+                  to: w,
+                  duration: this.duration,
+                  delay: this.delay,
+                  ease: this.ease,
+                  update: this.update,
+                  context: this,
+                }));
+            }),
+            (l.get = function () {
+              return ge(this.el, this.name);
+            }),
+            (l.update = function (w) {
+              K(this.el, this.name, w);
+            }),
+            (l.stop = function () {
+              (this.active || this.nextStyle) &&
+                ((this.active = !1),
+                (this.nextStyle = null),
+                K(this.el, this.name, this.get()));
+              var w = this.tween;
+              w && w.context && w.destroy();
+            }),
+            (l.convert = function (w, B) {
+              if (w == "auto" && this.auto) return w;
+              var Q,
+                H = typeof w == "number",
+                M = typeof w == "string";
+              switch (B) {
+                case A:
+                  if (H) return w;
+                  if (M && w.replace(y, "") === "") return +w;
+                  Q = "number(unitless)";
+                  break;
+                case R:
+                  if (M) {
+                    if (w === "" && this.original) return this.original;
+                    if (B.test(w))
+                      return w.charAt(0) == "#" && w.length == 7 ? w : b(w);
+                  }
+                  Q = "hex or rgb string";
+                  break;
+                case P:
+                  if (H) return w + this.unit;
+                  if (M && B.test(w)) return w;
+                  Q = "number(px) or string(unit)";
+                  break;
+                case O:
+                  if (H) return w + this.unit;
+                  if (M && B.test(w)) return w;
+                  Q = "number(px) or string(unit or %)";
+                  break;
+                case F:
+                  if (H) return w + this.angle;
+                  if (M && B.test(w)) return w;
+                  Q = "number(deg) or string(angle)";
+                  break;
+                case X:
+                  if (H || (M && O.test(w))) return w;
+                  Q = "number(unitless) or string(unit or %)";
+              }
+              return s(Q, w), w;
+            }),
+            (l.redraw = function () {
+              this.el.offsetHeight;
+            });
+        }),
+        G = p(x, function (l, E) {
+          l.init = function () {
+            E.init.apply(this, arguments),
+              this.original || (this.original = this.convert(this.get(), R));
+          };
+        }),
+        W = p(x, function (l, E) {
+          (l.init = function () {
+            E.init.apply(this, arguments), (this.animate = this.fallback);
+          }),
+            (l.get = function () {
+              return this.$el[this.name]();
+            }),
+            (l.update = function (_) {
+              this.$el[this.name](_);
+            });
+        }),
+        D = p(x, function (l, E) {
+          function _(b, C) {
+            var w, B, Q, H, M;
+            for (w in b)
+              (H = Be[w]),
+                (Q = H[0]),
+                (B = H[1] || w),
+                (M = this.convert(b[w], Q)),
+                C.call(this, B, M, Q);
+          }
+          (l.init = function () {
+            E.init.apply(this, arguments),
+              this.current ||
+                ((this.current = {}),
+                Be.perspective &&
+                  j.perspective &&
+                  ((this.current.perspective = j.perspective),
+                  K(this.el, this.name, this.style(this.current)),
+                  this.redraw()));
+          }),
+            (l.set = function (b) {
+              _.call(this, b, function (C, w) {
+                this.current[C] = w;
+              }),
+                K(this.el, this.name, this.style(this.current)),
+                this.redraw();
+            }),
+            (l.transition = function (b) {
+              var C = this.values(b);
+              this.tween = new ie({
+                current: this.current,
+                values: C,
+                duration: this.duration,
+                delay: this.delay,
+                ease: this.ease,
+              });
+              var w,
+                B = {};
+              for (w in this.current) B[w] = w in C ? C[w] : this.current[w];
+              (this.active = !0), (this.nextStyle = this.style(B));
+            }),
+            (l.fallback = function (b) {
+              var C = this.values(b);
+              this.tween = new ie({
+                current: this.current,
+                values: C,
+                duration: this.duration,
+                delay: this.delay,
+                ease: this.ease,
+                update: this.update,
+                context: this,
+              });
+            }),
+            (l.update = function () {
+              K(this.el, this.name, this.style(this.current));
+            }),
+            (l.style = function (b) {
+              var C,
+                w = "";
+              for (C in b) w += C + "(" + b[C] + ") ";
+              return w;
+            }),
+            (l.values = function (b) {
+              var C,
+                w = {};
+              return (
+                _.call(this, b, function (B, Q, H) {
+                  (w[B] = Q),
+                    this.current[B] === void 0 &&
+                      ((C = 0),
+                      ~B.indexOf("scale") && (C = 1),
+                      (this.current[B] = this.convert(C, H)));
+                }),
+                w
+              );
+            });
+        }),
+        ee = p(function (l) {
+          function E(M) {
+            Q.push(M) === 1 && se(_);
+          }
+          function _() {
+            var M,
+              J,
+              re,
+              he = Q.length;
+            if (he)
+              for (se(_), J = Ie(), M = he; M--; )
+                (re = Q[M]), re && re.render(J);
+          }
+          function b(M) {
+            var J,
+              re = e.inArray(M, Q);
+            re >= 0 &&
+              ((J = Q.slice(re + 1)),
+              (Q.length = re),
+              J.length && (Q = Q.concat(J)));
+          }
+          function C(M) {
+            return Math.round(M * H) / H;
+          }
+          function w(M, J, re) {
+            return i(
+              M[0] + re * (J[0] - M[0]),
+              M[1] + re * (J[1] - M[1]),
+              M[2] + re * (J[2] - M[2])
+            );
+          }
+          var B = { ease: d.ease[1], from: 0, to: 1 };
+          (l.init = function (M) {
+            (this.duration = M.duration || 0), (this.delay = M.delay || 0);
+            var J = M.ease || B.ease;
+            d[J] && (J = d[J][1]),
+              typeof J != "function" && (J = B.ease),
+              (this.ease = J),
+              (this.update = M.update || o),
+              (this.complete = M.complete || o),
+              (this.context = M.context || this),
+              (this.name = M.name);
+            var re = M.from,
+              he = M.to;
+            re === void 0 && (re = B.from),
+              he === void 0 && (he = B.to),
+              (this.unit = M.unit || ""),
+              typeof re == "number" && typeof he == "number"
+                ? ((this.begin = re), (this.change = he - re))
+                : this.format(he, re),
+              (this.value = this.begin + this.unit),
+              (this.start = Ie()),
+              M.autoplay !== !1 && this.play();
+          }),
+            (l.play = function () {
+              this.active ||
+                (this.start || (this.start = Ie()),
+                (this.active = !0),
+                E(this));
+            }),
+            (l.stop = function () {
+              this.active && ((this.active = !1), b(this));
+            }),
+            (l.render = function (M) {
+              var J,
+                re = M - this.start;
+              if (this.delay) {
+                if (re <= this.delay) return;
+                re -= this.delay;
+              }
+              if (re < this.duration) {
+                var he = this.ease(re, 0, 1, this.duration);
+                return (
+                  (J = this.startRGB
+                    ? w(this.startRGB, this.endRGB, he)
+                    : C(this.begin + he * this.change)),
+                  (this.value = J + this.unit),
+                  void this.update.call(this.context, this.value)
+                );
+              }
+              (J = this.endHex || this.begin + this.change),
+                (this.value = J + this.unit),
+                this.update.call(this.context, this.value),
+                this.complete.call(this.context),
+                this.destroy();
+            }),
+            (l.format = function (M, J) {
+              if (((J += ""), (M += ""), M.charAt(0) == "#"))
+                return (
+                  (this.startRGB = r(J)),
+                  (this.endRGB = r(M)),
+                  (this.endHex = M),
+                  (this.begin = 0),
+                  void (this.change = 1)
+                );
+              if (!this.unit) {
+                var re = J.replace(y, ""),
+                  he = M.replace(y, "");
+                re !== he && a("tween", J, M), (this.unit = re);
+              }
+              (J = parseFloat(J)),
+                (M = parseFloat(M)),
+                (this.begin = this.value = J),
+                (this.change = M - J);
+            }),
+            (l.destroy = function () {
+              this.stop(),
+                (this.context = null),
+                (this.ease = this.update = this.complete = o);
+            });
+          var Q = [],
+            H = 1e3;
+        }),
+        ne = p(ee, function (l) {
+          (l.init = function (E) {
+            (this.duration = E.duration || 0),
+              (this.complete = E.complete || o),
+              (this.context = E.context),
+              this.play();
+          }),
+            (l.render = function (E) {
+              var _ = E - this.start;
+              _ < this.duration ||
+                (this.complete.call(this.context), this.destroy());
+            });
+        }),
+        ie = p(ee, function (l, E) {
+          (l.init = function (_) {
+            (this.context = _.context),
+              (this.update = _.update),
+              (this.tweens = []),
+              (this.current = _.current);
+            var b, C;
+            for (b in _.values)
+              (C = _.values[b]),
+                this.current[b] !== C &&
+                  this.tweens.push(
+                    new ee({
+                      name: b,
+                      from: this.current[b],
+                      to: C,
+                      duration: _.duration,
+                      delay: _.delay,
+                      ease: _.ease,
+                      autoplay: !1,
+                    })
+                  );
+            this.play();
+          }),
+            (l.render = function (_) {
+              var b,
+                C,
+                w = this.tweens.length,
+                B = !1;
+              for (b = w; b--; )
+                (C = this.tweens[b]),
+                  C.context &&
+                    (C.render(_), (this.current[C.name] = C.value), (B = !0));
+              return B
+                ? void (this.update && this.update.call(this.context))
+                : this.destroy();
+            }),
+            (l.destroy = function () {
+              if ((E.destroy.call(this), this.tweens)) {
+                var _,
+                  b = this.tweens.length;
+                for (_ = b; _--; ) this.tweens[_].destroy();
+                (this.tweens = null), (this.current = null);
+              }
+            });
+        }),
+        j = (t.config = {
+          debug: !1,
+          defaultUnit: "px",
+          defaultAngle: "deg",
+          keepInherited: !1,
+          hideBackface: !1,
+          perspective: "",
+          fallback: !q.transition,
+          agentTests: [],
+        });
+      (t.fallback = function (l) {
+        if (!q.transition) return (j.fallback = !0);
+        j.agentTests.push("(" + l + ")");
+        var E = new RegExp(j.agentTests.join("|"), "i");
+        j.fallback = E.test(navigator.userAgent);
+      }),
+        t.fallback("6.0.[2-5] Safari"),
+        (t.tween = function (l) {
+          return new ee(l);
+        }),
+        (t.delay = function (l, E, _) {
+          return new ne({ complete: E, duration: l, context: _ });
+        }),
+        (e.fn.tram = function (l) {
+          return t.call(null, this, l);
+        });
+      var K = e.style,
+        ge = e.css,
+        vt = { transform: q.transform && q.transform.css },
+        it = {
+          color: [G, R],
+          background: [G, R, "background-color"],
+          "outline-color": [G, R],
+          "border-color": [G, R],
+          "border-top-color": [G, R],
+          "border-right-color": [G, R],
+          "border-bottom-color": [G, R],
+          "border-left-color": [G, R],
+          "border-width": [x, P],
+          "border-top-width": [x, P],
+          "border-right-width": [x, P],
+          "border-bottom-width": [x, P],
+          "border-left-width": [x, P],
+          "border-spacing": [x, P],
+          "letter-spacing": [x, P],
+          margin: [x, P],
+          "margin-top": [x, P],
+          "margin-right": [x, P],
+          "margin-bottom": [x, P],
+          "margin-left": [x, P],
+          padding: [x, P],
+          "padding-top": [x, P],
+          "padding-right": [x, P],
+          "padding-bottom": [x, P],
+          "padding-left": [x, P],
+          "outline-width": [x, P],
+          opacity: [x, A],
+          top: [x, O],
+          right: [x, O],
+          bottom: [x, O],
+          left: [x, O],
+          "font-size": [x, O],
+          "text-indent": [x, O],
+          "word-spacing": [x, O],
+          width: [x, O],
+          "min-width": [x, O],
+          "max-width": [x, O],
+          height: [x, O],
+          "min-height": [x, O],
+          "max-height": [x, O],
+          "line-height": [x, X],
+          "scroll-top": [W, A, "scrollTop"],
+          "scroll-left": [W, A, "scrollLeft"],
+        },
+        Be = {};
+      q.transform &&
+        ((it.transform = [D]),
+        (Be = {
+          x: [O, "translateX"],
+          y: [O, "translateY"],
+          rotate: [F],
+          rotateX: [F],
+          rotateY: [F],
+          scale: [A],
+          scaleX: [A],
+          scaleY: [A],
+          skew: [F],
+          skewX: [F],
+          skewY: [F],
+        })),
+        q.transform &&
+          q.backface &&
+          ((Be.z = [O, "translateZ"]),
+          (Be.rotateZ = [F]),
+          (Be.scaleZ = [A]),
+          (Be.perspective = [P]));
+      var wn = /ms/,
+        Yt = /s|\./;
+      return (e.tram = t);
+    })(window.jQuery);
+  });
+  var fa = f((AF, la) => {
+    "use strict";
+    var kE = window.$,
+      BE = Br() && kE.tram;
+    la.exports = (function () {
+      var e = {};
+      e.VERSION = "1.6.0-Webflow";
+      var t = {},
+        n = Array.prototype,
+        r = Object.prototype,
+        i = Function.prototype,
+        o = n.push,
+        s = n.slice,
+        a = n.concat,
+        u = r.toString,
+        c = r.hasOwnProperty,
+        g = n.forEach,
+        p = n.map,
+        d = n.reduce,
+        h = n.reduceRight,
+        v = n.filter,
+        m = n.every,
+        T = n.some,
+        y = n.indexOf,
+        S = n.lastIndexOf,
+        A = Array.isArray,
+        R = Object.keys,
+        P = i.bind,
+        O =
+          (e.each =
+          e.forEach =
+            function (I, L, U) {
+              if (I == null) return I;
+              if (g && I.forEach === g) I.forEach(L, U);
+              else if (I.length === +I.length) {
+                for (var q = 0, te = I.length; q < te; q++)
+                  if (L.call(U, I[q], q, I) === t) return;
+              } else
+                for (var Y = e.keys(I), q = 0, te = Y.length; q < te; q++)
+                  if (L.call(U, I[Y[q]], Y[q], I) === t) return;
+              return I;
+            });
+      (e.map = e.collect =
+        function (I, L, U) {
+          var q = [];
+          return I == null
+            ? q
+            : p && I.map === p
+            ? I.map(L, U)
+            : (O(I, function (te, Y, se) {
+                q.push(L.call(U, te, Y, se));
+              }),
+              q);
+        }),
+        (e.find = e.detect =
+          function (I, L, U) {
+            var q;
+            return (
+              F(I, function (te, Y, se) {
+                if (L.call(U, te, Y, se)) return (q = te), !0;
+              }),
+              q
+            );
+          }),
+        (e.filter = e.select =
+          function (I, L, U) {
+            var q = [];
+            return I == null
+              ? q
+              : v && I.filter === v
+              ? I.filter(L, U)
+              : (O(I, function (te, Y, se) {
+                  L.call(U, te, Y, se) && q.push(te);
+                }),
+                q);
+          });
+      var F =
+        (e.some =
+        e.any =
+          function (I, L, U) {
+            L || (L = e.identity);
+            var q = !1;
+            return I == null
+              ? q
+              : T && I.some === T
+              ? I.some(L, U)
+              : (O(I, function (te, Y, se) {
+                  if (q || (q = L.call(U, te, Y, se))) return t;
+                }),
+                !!q);
+          });
+      (e.contains = e.include =
+        function (I, L) {
+          return I == null
+            ? !1
+            : y && I.indexOf === y
+            ? I.indexOf(L) != -1
+            : F(I, function (U) {
+                return U === L;
+              });
+        }),
+        (e.delay = function (I, L) {
+          var U = s.call(arguments, 2);
+          return setTimeout(function () {
+            return I.apply(null, U);
+          }, L);
+        }),
+        (e.defer = function (I) {
+          return e.delay.apply(e, [I, 1].concat(s.call(arguments, 1)));
+        }),
+        (e.throttle = function (I) {
+          var L, U, q;
+          return function () {
+            L ||
+              ((L = !0),
+              (U = arguments),
+              (q = this),
+              BE.frame(function () {
+                (L = !1), I.apply(q, U);
+              }));
+          };
+        }),
+        (e.debounce = function (I, L, U) {
+          var q,
+            te,
+            Y,
+            se,
+            Ie,
+            ke = function () {
+              var me = e.now() - se;
+              me < L
+                ? (q = setTimeout(ke, L - me))
+                : ((q = null), U || ((Ie = I.apply(Y, te)), (Y = te = null)));
+            };
+          return function () {
+            (Y = this), (te = arguments), (se = e.now());
+            var me = U && !q;
+            return (
+              q || (q = setTimeout(ke, L)),
+              me && ((Ie = I.apply(Y, te)), (Y = te = null)),
+              Ie
+            );
+          };
+        }),
+        (e.defaults = function (I) {
+          if (!e.isObject(I)) return I;
+          for (var L = 1, U = arguments.length; L < U; L++) {
+            var q = arguments[L];
+            for (var te in q) I[te] === void 0 && (I[te] = q[te]);
+          }
+          return I;
+        }),
+        (e.keys = function (I) {
+          if (!e.isObject(I)) return [];
+          if (R) return R(I);
+          var L = [];
+          for (var U in I) e.has(I, U) && L.push(U);
+          return L;
+        }),
+        (e.has = function (I, L) {
+          return c.call(I, L);
+        }),
+        (e.isObject = function (I) {
+          return I === Object(I);
+        }),
+        (e.now =
+          Date.now ||
+          function () {
+            return new Date().getTime();
+          }),
+        (e.templateSettings = {
+          evaluate: /<%([\s\S]+?)%>/g,
+          interpolate: /<%=([\s\S]+?)%>/g,
+          escape: /<%-([\s\S]+?)%>/g,
+        });
+      var X = /(.)^/,
+        V = {
+          "'": "'",
+          "\\": "\\",
+          "\r": "r",
+          "\n": "n",
+          "\u2028": "u2028",
+          "\u2029": "u2029",
+        },
+        k = /\\|'|\r|\n|\u2028|\u2029/g,
+        Z = function (I) {
+          return "\\" + V[I];
+        },
+        N = /^\s*(\w|\$)+\s*$/;
+      return (
+        (e.template = function (I, L, U) {
+          !L && U && (L = U), (L = e.defaults({}, L, e.templateSettings));
+          var q = RegExp(
+              [
+                (L.escape || X).source,
+                (L.interpolate || X).source,
+                (L.evaluate || X).source,
+              ].join("|") + "|$",
+              "g"
+            ),
+            te = 0,
+            Y = "__p+='";
+          I.replace(q, function (me, x, G, W, D) {
+            return (
+              (Y += I.slice(te, D).replace(k, Z)),
+              (te = D + me.length),
+              x
+                ? (Y +=
+                    `'+
+((__t=(` +
+                    x +
+                    `))==null?'':_.escape(__t))+
+'`)
+                : G
+                ? (Y +=
+                    `'+
+((__t=(` +
+                    G +
+                    `))==null?'':__t)+
+'`)
+                : W &&
+                  (Y +=
+                    `';
+` +
+                    W +
+                    `
+__p+='`),
+              me
+            );
+          }),
+            (Y += `';
+`);
+          var se = L.variable;
+          if (se) {
+            if (!N.test(se))
+              throw new Error("variable is not a bare identifier: " + se);
+          } else
+            (Y =
+              `with(obj||{}){
+` +
+              Y +
+              `}
+`),
+              (se = "obj");
+          Y =
+            `var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
+` +
+            Y +
+            `return __p;
+`;
+          var Ie;
+          try {
+            Ie = new Function(L.variable || "obj", "_", Y);
+          } catch (me) {
+            throw ((me.source = Y), me);
+          }
+          var ke = function (me) {
+            return Ie.call(this, me, e);
+          };
+          return (
+            (ke.source =
+              "function(" +
+              se +
+              `){
+` +
+              Y +
+              "}"),
+            ke
+          );
+        }),
+        e
+      );
+    })();
+  });
+  var ze = f((SF, va) => {
+    "use strict";
+    var ce = {},
+      _t = {},
+      It = [],
+      Wr = window.Webflow || [],
+      ot = window.jQuery,
+      qe = ot(window),
+      HE = ot(document),
+      We = ot.isFunction,
+      Fe = (ce._ = fa()),
+      pa = (ce.tram = Br() && ot.tram),
+      Cn = !1,
+      zr = !1;
+    pa.config.hideBackface = !1;
+    pa.config.keepInherited = !0;
+    ce.define = function (e, t, n) {
+      _t[e] && ha(_t[e]);
+      var r = (_t[e] = t(ot, Fe, n) || {});
+      return ga(r), r;
+    };
+    ce.require = function (e) {
+      return _t[e];
+    };
+    function ga(e) {
+      ce.env() &&
+        (We(e.design) && qe.on("__wf_design", e.design),
+        We(e.preview) && qe.on("__wf_preview", e.preview)),
+        We(e.destroy) && qe.on("__wf_destroy", e.destroy),
+        e.ready && We(e.ready) && WE(e);
+    }
+    function WE(e) {
+      if (Cn) {
+        e.ready();
+        return;
+      }
+      Fe.contains(It, e.ready) || It.push(e.ready);
+    }
+    function ha(e) {
+      We(e.design) && qe.off("__wf_design", e.design),
+        We(e.preview) && qe.off("__wf_preview", e.preview),
+        We(e.destroy) && qe.off("__wf_destroy", e.destroy),
+        e.ready && We(e.ready) && zE(e);
+    }
+    function zE(e) {
+      It = Fe.filter(It, function (t) {
+        return t !== e.ready;
+      });
+    }
+    ce.push = function (e) {
+      if (Cn) {
+        We(e) && e();
+        return;
+      }
+      Wr.push(e);
+    };
+    ce.env = function (e) {
+      var t = window.__wf_design,
+        n = typeof t < "u";
+      if (!e) return n;
+      if (e === "design") return n && t;
+      if (e === "preview") return n && !t;
+      if (e === "slug") return n && window.__wf_slug;
+      if (e === "editor") return window.WebflowEditor;
+      if (e === "test") return window.__wf_test;
+      if (e === "frame") return window !== window.top;
+    };
+    var Rn = navigator.userAgent.toLowerCase(),
+      Ea = (ce.env.touch =
+        "ontouchstart" in window ||
+        (window.DocumentTouch && document instanceof window.DocumentTouch)),
+      jE = (ce.env.chrome =
+        /chrome/.test(Rn) &&
+        /Google/.test(navigator.vendor) &&
+        parseInt(Rn.match(/chrome\/(\d+)\./)[1], 10)),
+      KE = (ce.env.ios = /(ipod|iphone|ipad)/.test(Rn));
+    ce.env.safari = /safari/.test(Rn) && !jE && !KE;
+    var Hr;
+    Ea &&
+      HE.on("touchstart mousedown", function (e) {
+        Hr = e.target;
+      });
+    ce.validClick = Ea
+      ? function (e) {
+          return e === Hr || ot.contains(e, Hr);
+        }
+      : function () {
+          return !0;
+        };
+    var ya = "resize.webflow orientationchange.webflow load.webflow",
+      YE = "scroll.webflow " + ya;
+    ce.resize = jr(qe, ya);
+    ce.scroll = jr(qe, YE);
+    ce.redraw = jr();
+    function jr(e, t) {
+      var n = [],
+        r = {};
+      return (
+        (r.up = Fe.throttle(function (i) {
+          Fe.each(n, function (o) {
+            o(i);
+          });
+        })),
+        e && t && e.on(t, r.up),
+        (r.on = function (i) {
+          typeof i == "function" && (Fe.contains(n, i) || n.push(i));
+        }),
+        (r.off = function (i) {
+          if (!arguments.length) {
+            n = [];
+            return;
+          }
+          n = Fe.filter(n, function (o) {
+            return o !== i;
+          });
+        }),
+        r
+      );
+    }
+    ce.location = function (e) {
+      window.location = e;
+    };
+    ce.env() && (ce.location = function () {});
+    ce.ready = function () {
+      (Cn = !0), zr ? $E() : Fe.each(It, da), Fe.each(Wr, da), ce.resize.up();
+    };
+    function da(e) {
+      We(e) && e();
+    }
+    function $E() {
+      (zr = !1), Fe.each(_t, ga);
+    }
+    var ft;
+    ce.load = function (e) {
+      ft.then(e);
+    };
+    function ma() {
+      ft && (ft.reject(), qe.off("load", ft.resolve)),
+        (ft = new ot.Deferred()),
+        qe.on("load", ft.resolve);
+    }
+    ce.destroy = function (e) {
+      (e = e || {}),
+        (zr = !0),
+        qe.triggerHandler("__wf_destroy"),
+        e.domready != null && (Cn = e.domready),
+        Fe.each(_t, ha),
+        ce.resize.off(),
+        ce.scroll.off(),
+        ce.redraw.off(),
+        (It = []),
+        (Wr = []),
+        ft.state() === "pending" && ma();
+    };
+    ot(ce.ready);
+    ma();
+    va.exports = window.Webflow = ce;
+  });
+  var Ta = f((wF, Ia) => {
+    "use strict";
+    var _a = ze();
+    _a.define(
+      "brand",
+      (Ia.exports = function (e) {
+        var t = {},
+          n = document,
+          r = e("html"),
+          i = e("body"),
+          o = ".w-webflow-badge",
+          s = window.location,
+          a = /PhantomJS/i.test(navigator.userAgent),
+          u =
+            "fullscreenchange webkitfullscreenchange mozfullscreenchange msfullscreenchange",
+          c;
+        t.ready = function () {
+          var h = r.attr("data-wf-status"),
+            v = r.attr("data-wf-domain") || "";
+          /\.webflow\.io$/i.test(v) && s.hostname !== v && (h = !0),
+            h &&
+              !a &&
+              ((c = c || p()),
+              d(),
+              setTimeout(d, 500),
+              e(n).off(u, g).on(u, g));
+        };
+        function g() {
+          var h =
+            n.fullScreen ||
+            n.mozFullScreen ||
+            n.webkitIsFullScreen ||
+            n.msFullscreenElement ||
+            !!n.webkitFullscreenElement;
+          e(c).attr("style", h ? "display: none !important;" : "");
+        }
+        function p() {
+          var h = e('<a class="w-webflow-badge"></a>').attr(
+              "href",
+              "https://webflow.com?utm_campaign=brandjs"
+            ),
+            v = e("<img>")
+              .attr(
+                "src",
+                "https://d3e54v103j8qbb.cloudfront.net/img/webflow-badge-icon-d2.89e12c322e.svg"
+              )
+              .attr("alt", "")
+              .css({ marginRight: "4px", width: "26px" }),
+            m = e("<img>")
+              .attr(
+                "src",
+                "https://d3e54v103j8qbb.cloudfront.net/img/webflow-badge-text-d2.c82cec3b78.svg"
+              )
+              .attr("alt", "Made in Webflow");
+          return h.append(v, m), h[0];
+        }
+        function d() {
+          var h = i.children(o),
+            v = h.length && h.get(0) === c,
+            m = _a.env("editor");
+          if (v) {
+            m && h.remove();
+            return;
+          }
+          h.length && h.remove(), m || i.append(c);
+        }
+        return t;
+      })
+    );
+  });
+  var Aa = f((OF, ba) => {
+    "use strict";
+    var Kr = ze();
+    Kr.define(
+      "edit",
+      (ba.exports = function (e, t, n) {
+        if (
+          ((n = n || {}),
+          (Kr.env("test") || Kr.env("frame")) && !n.fixture && !QE())
+        )
+          return { exit: 1 };
+        var r = {},
+          i = e(window),
+          o = e(document.documentElement),
+          s = document.location,
+          a = "hashchange",
+          u,
+          c = n.load || d,
+          g = !1;
+        try {
+          g =
+            localStorage &&
+            localStorage.getItem &&
+            localStorage.getItem("WebflowEditor");
+        } catch {}
+        g
+          ? c()
+          : s.search
+          ? (/[?&](edit)(?:[=&?]|$)/.test(s.search) ||
+              /\?edit$/.test(s.href)) &&
+            c()
+          : i.on(a, p).triggerHandler(a);
+        function p() {
+          u || (/\?edit/.test(s.hash) && c());
+        }
+        function d() {
+          (u = !0),
+            (window.WebflowEditor = !0),
+            i.off(a, p),
+            S(function (R) {
+              e.ajax({
+                url: y("https://editor-api.webflow.com/api/editor/view"),
+                data: { siteId: o.attr("data-wf-site") },
+                xhrFields: { withCredentials: !0 },
+                dataType: "json",
+                crossDomain: !0,
+                success: h(R),
+              });
+            });
+        }
+        function h(R) {
+          return function (P) {
+            if (!P) {
+              console.error("Could not load editor data");
+              return;
+            }
+            (P.thirdPartyCookiesSupported = R),
+              v(T(P.scriptPath), function () {
+                window.WebflowEditor(P);
+              });
+          };
+        }
+        function v(R, P) {
+          e.ajax({ type: "GET", url: R, dataType: "script", cache: !0 }).then(
+            P,
+            m
+          );
+        }
+        function m(R, P, O) {
+          throw (console.error("Could not load editor script: " + P), O);
+        }
+        function T(R) {
+          return R.indexOf("//") >= 0
+            ? R
+            : y("https://editor-api.webflow.com" + R);
+        }
+        function y(R) {
+          return R.replace(/([^:])\/\//g, "$1/");
+        }
+        function S(R) {
+          var P = window.document.createElement("iframe");
+          (P.src = "https://webflow.com/site/third-party-cookie-check.html"),
+            (P.style.display = "none"),
+            (P.sandbox = "allow-scripts allow-same-origin");
+          var O = function (F) {
+            F.data === "WF_third_party_cookies_unsupported"
+              ? (A(P, O), R(!1))
+              : F.data === "WF_third_party_cookies_supported" &&
+                (A(P, O), R(!0));
+          };
+          (P.onerror = function () {
+            A(P, O), R(!1);
+          }),
+            window.addEventListener("message", O, !1),
+            window.document.body.appendChild(P);
+        }
+        function A(R, P) {
+          window.removeEventListener("message", P, !1), R.remove();
+        }
+        return r;
+      })
+    );
+    function QE() {
+      try {
+        return window.top.__Cypress__;
+      } catch {
+        return !1;
+      }
+    }
+  });
+  var wa = f((xF, Sa) => {
+    "use strict";
+    var ZE = ze();
+    ZE.define(
+      "focus-visible",
+      (Sa.exports = function () {
+        function e(n) {
+          var r = !0,
+            i = !1,
+            o = null,
+            s = {
+              text: !0,
+              search: !0,
+              url: !0,
+              tel: !0,
+              email: !0,
+              password: !0,
+              number: !0,
+              date: !0,
+              month: !0,
+              week: !0,
+              time: !0,
+              datetime: !0,
+              "datetime-local": !0,
+            };
+          function a(A) {
+            return !!(
+              A &&
+              A !== document &&
+              A.nodeName !== "HTML" &&
+              A.nodeName !== "BODY" &&
+              "classList" in A &&
+              "contains" in A.classList
+            );
+          }
+          function u(A) {
+            var R = A.type,
+              P = A.tagName;
+            return !!(
+              (P === "INPUT" && s[R] && !A.readOnly) ||
+              (P === "TEXTAREA" && !A.readOnly) ||
+              A.isContentEditable
+            );
+          }
+          function c(A) {
+            A.getAttribute("data-wf-focus-visible") ||
+              A.setAttribute("data-wf-focus-visible", "true");
+          }
+          function g(A) {
+            A.getAttribute("data-wf-focus-visible") &&
+              A.removeAttribute("data-wf-focus-visible");
+          }
+          function p(A) {
+            A.metaKey ||
+              A.altKey ||
+              A.ctrlKey ||
+              (a(n.activeElement) && c(n.activeElement), (r = !0));
+          }
+          function d() {
+            r = !1;
+          }
+          function h(A) {
+            a(A.target) && (r || u(A.target)) && c(A.target);
+          }
+          function v(A) {
+            a(A.target) &&
+              A.target.hasAttribute("data-wf-focus-visible") &&
+              ((i = !0),
+              window.clearTimeout(o),
+              (o = window.setTimeout(function () {
+                i = !1;
+              }, 100)),
+              g(A.target));
+          }
+          function m() {
+            document.visibilityState === "hidden" && (i && (r = !0), T());
+          }
+          function T() {
+            document.addEventListener("mousemove", S),
+              document.addEventListener("mousedown", S),
+              document.addEventListener("mouseup", S),
+              document.addEventListener("pointermove", S),
+              document.addEventListener("pointerdown", S),
+              document.addEventListener("pointerup", S),
+              document.addEventListener("touchmove", S),
+              document.addEventListener("touchstart", S),
+              document.addEventListener("touchend", S);
+          }
+          function y() {
+            document.removeEventListener("mousemove", S),
+              document.removeEventListener("mousedown", S),
+              document.removeEventListener("mouseup", S),
+              document.removeEventListener("pointermove", S),
+              document.removeEventListener("pointerdown", S),
+              document.removeEventListener("pointerup", S),
+              document.removeEventListener("touchmove", S),
+              document.removeEventListener("touchstart", S),
+              document.removeEventListener("touchend", S);
+          }
+          function S(A) {
+            (A.target.nodeName && A.target.nodeName.toLowerCase() === "html") ||
+              ((r = !1), y());
+          }
+          document.addEventListener("keydown", p, !0),
+            document.addEventListener("mousedown", d, !0),
+            document.addEventListener("pointerdown", d, !0),
+            document.addEventListener("touchstart", d, !0),
+            document.addEventListener("visibilitychange", m, !0),
+            T(),
+            n.addEventListener("focus", h, !0),
+            n.addEventListener("blur", v, !0);
+        }
+        function t() {
+          if (typeof document < "u")
+            try {
+              document.querySelector(":focus-visible");
+            } catch {
+              e(document);
+            }
+        }
+        return { ready: t };
+      })
+    );
+  });
+  var Ra = f((RF, xa) => {
+    "use strict";
+    var Oa = ze();
+    Oa.define(
+      "focus",
+      (xa.exports = function () {
+        var e = [],
+          t = !1;
+        function n(s) {
+          t &&
+            (s.preventDefault(),
+            s.stopPropagation(),
+            s.stopImmediatePropagation(),
+            e.unshift(s));
+        }
+        function r(s) {
+          var a = s.target,
+            u = a.tagName;
+          return (
+            (/^a$/i.test(u) && a.href != null) ||
+            (/^(button|textarea)$/i.test(u) && a.disabled !== !0) ||
+            (/^input$/i.test(u) &&
+              /^(button|reset|submit|radio|checkbox)$/i.test(a.type) &&
+              !a.disabled) ||
+            (!/^(button|input|textarea|select|a)$/i.test(u) &&
+              !Number.isNaN(Number.parseFloat(a.tabIndex))) ||
+            /^audio$/i.test(u) ||
+            (/^video$/i.test(u) && a.controls === !0)
+          );
+        }
+        function i(s) {
+          r(s) &&
+            ((t = !0),
+            setTimeout(() => {
+              for (t = !1, s.target.focus(); e.length > 0; ) {
+                var a = e.pop();
+                a.target.dispatchEvent(new MouseEvent(a.type, a));
+              }
+            }, 0));
+        }
+        function o() {
+          typeof document < "u" &&
+            document.body.hasAttribute("data-wf-focus-within") &&
+            Oa.env.safari &&
+            (document.addEventListener("mousedown", i, !0),
+            document.addEventListener("mouseup", n, !0),
+            document.addEventListener("click", n, !0));
+        }
+        return { ready: o };
+      })
+    );
+  });
+  var La = f((CF, Pa) => {
+    "use strict";
+    var Yr = window.jQuery,
+      je = {},
+      Pn = [],
+      Ca = ".w-ix",
+      Ln = {
+        reset: function (e, t) {
+          t.__wf_intro = null;
+        },
+        intro: function (e, t) {
+          t.__wf_intro ||
+            ((t.__wf_intro = !0), Yr(t).triggerHandler(je.types.INTRO));
+        },
+        outro: function (e, t) {
+          t.__wf_intro &&
+            ((t.__wf_intro = null), Yr(t).triggerHandler(je.types.OUTRO));
+        },
+      };
+    je.triggers = {};
+    je.types = { INTRO: "w-ix-intro" + Ca, OUTRO: "w-ix-outro" + Ca };
+    je.init = function () {
+      for (var e = Pn.length, t = 0; t < e; t++) {
+        var n = Pn[t];
+        n[0](0, n[1]);
+      }
+      (Pn = []), Yr.extend(je.triggers, Ln);
+    };
+    je.async = function () {
+      for (var e in Ln) {
+        var t = Ln[e];
+        Ln.hasOwnProperty(e) &&
+          (je.triggers[e] = function (n, r) {
+            Pn.push([t, r]);
+          });
+      }
+    };
+    je.async();
+    Pa.exports = je;
+  });
+  var Fa = f((PF, Da) => {
+    "use strict";
+    var $r = La();
+    function Na(e, t) {
+      var n = document.createEvent("CustomEvent");
+      n.initCustomEvent(t, !0, !0, null), e.dispatchEvent(n);
+    }
+    var JE = window.jQuery,
+      Nn = {},
+      Ma = ".w-ix",
+      ey = {
+        reset: function (e, t) {
+          $r.triggers.reset(e, t);
+        },
+        intro: function (e, t) {
+          $r.triggers.intro(e, t), Na(t, "COMPONENT_ACTIVE");
+        },
+        outro: function (e, t) {
+          $r.triggers.outro(e, t), Na(t, "COMPONENT_INACTIVE");
+        },
+      };
+    Nn.triggers = {};
+    Nn.types = { INTRO: "w-ix-intro" + Ma, OUTRO: "w-ix-outro" + Ma };
+    JE.extend(Nn.triggers, ey);
+    Da.exports = Nn;
+  });
+  var Qr = f((LF, qa) => {
+    var ty =
+      typeof global == "object" && global && global.Object === Object && global;
+    qa.exports = ty;
+  });
+  var Ge = f((NF, Ga) => {
+    var ny = Qr(),
+      ry = typeof self == "object" && self && self.Object === Object && self,
+      iy = ny || ry || Function("return this")();
+    Ga.exports = iy;
+  });
+  var Tt = f((MF, Xa) => {
+    var oy = Ge(),
+      ay = oy.Symbol;
+    Xa.exports = ay;
+  });
+  var Ba = f((DF, ka) => {
+    var Va = Tt(),
+      Ua = Object.prototype,
+      sy = Ua.hasOwnProperty,
+      uy = Ua.toString,
+      Qt = Va ? Va.toStringTag : void 0;
+    function cy(e) {
+      var t = sy.call(e, Qt),
+        n = e[Qt];
+      try {
+        e[Qt] = void 0;
+        var r = !0;
+      } catch {}
+      var i = uy.call(e);
+      return r && (t ? (e[Qt] = n) : delete e[Qt]), i;
+    }
+    ka.exports = cy;
+  });
+  var Wa = f((FF, Ha) => {
+    var ly = Object.prototype,
+      fy = ly.toString;
+    function dy(e) {
+      return fy.call(e);
+    }
+    Ha.exports = dy;
+  });
+  var at = f((qF, Ka) => {
+    var za = Tt(),
+      py = Ba(),
+      gy = Wa(),
+      hy = "[object Null]",
+      Ey = "[object Undefined]",
+      ja = za ? za.toStringTag : void 0;
+    function yy(e) {
+      return e == null
+        ? e === void 0
+          ? Ey
+          : hy
+        : ja && ja in Object(e)
+        ? py(e)
+        : gy(e);
+    }
+    Ka.exports = yy;
+  });
+  var Zr = f((GF, Ya) => {
+    function my(e, t) {
+      return function (n) {
+        return e(t(n));
+      };
+    }
+    Ya.exports = my;
+  });
+  var Jr = f((XF, $a) => {
+    var vy = Zr(),
+      _y = vy(Object.getPrototypeOf, Object);
+    $a.exports = _y;
+  });
+  var Je = f((VF, Qa) => {
+    function Iy(e) {
+      return e != null && typeof e == "object";
+    }
+    Qa.exports = Iy;
+  });
+  var ei = f((UF, Ja) => {
+    var Ty = at(),
+      by = Jr(),
+      Ay = Je(),
+      Sy = "[object Object]",
+      wy = Function.prototype,
+      Oy = Object.prototype,
+      Za = wy.toString,
+      xy = Oy.hasOwnProperty,
+      Ry = Za.call(Object);
+    function Cy(e) {
+      if (!Ay(e) || Ty(e) != Sy) return !1;
+      var t = by(e);
+      if (t === null) return !0;
+      var n = xy.call(t, "constructor") && t.constructor;
+      return typeof n == "function" && n instanceof n && Za.call(n) == Ry;
+    }
+    Ja.exports = Cy;
+  });
+  var es = f((ti) => {
+    "use strict";
+    Object.defineProperty(ti, "__esModule", { value: !0 });
+    ti.default = Py;
+    function Py(e) {
+      var t,
+        n = e.Symbol;
+      return (
+        typeof n == "function"
+          ? n.observable
+            ? (t = n.observable)
+            : ((t = n("observable")), (n.observable = t))
+          : (t = "@@observable"),
+        t
+      );
+    }
+  });
+  var ts = f((ri, ni) => {
+    "use strict";
+    Object.defineProperty(ri, "__esModule", { value: !0 });
+    var Ly = es(),
+      Ny = My(Ly);
+    function My(e) {
+      return e && e.__esModule ? e : { default: e };
+    }
+    var bt;
+    typeof self < "u"
+      ? (bt = self)
+      : typeof window < "u"
+      ? (bt = window)
+      : typeof global < "u"
+      ? (bt = global)
+      : typeof ni < "u"
+      ? (bt = ni)
+      : (bt = Function("return this")());
+    var Dy = (0, Ny.default)(bt);
+    ri.default = Dy;
+  });
+  var ii = f((Zt) => {
+    "use strict";
+    Zt.__esModule = !0;
+    Zt.ActionTypes = void 0;
+    Zt.default = os;
+    var Fy = ei(),
+      qy = is(Fy),
+      Gy = ts(),
+      ns = is(Gy);
+    function is(e) {
+      return e && e.__esModule ? e : { default: e };
+    }
+    var rs = (Zt.ActionTypes = { INIT: "@@redux/INIT" });
+    function os(e, t, n) {
+      var r;
+      if (
+        (typeof t == "function" && typeof n > "u" && ((n = t), (t = void 0)),
+        typeof n < "u")
+      ) {
+        if (typeof n != "function")
+          throw new Error("Expected the enhancer to be a function.");
+        return n(os)(e, t);
+      }
+      if (typeof e != "function")
+        throw new Error("Expected the reducer to be a function.");
+      var i = e,
+        o = t,
+        s = [],
+        a = s,
+        u = !1;
+      function c() {
+        a === s && (a = s.slice());
+      }
+      function g() {
+        return o;
+      }
+      function p(m) {
+        if (typeof m != "function")
+          throw new Error("Expected listener to be a function.");
+        var T = !0;
+        return (
+          c(),
+          a.push(m),
+          function () {
+            if (T) {
+              (T = !1), c();
+              var S = a.indexOf(m);
+              a.splice(S, 1);
+            }
+          }
+        );
+      }
+      function d(m) {
+        if (!(0, qy.default)(m))
+          throw new Error(
+            "Actions must be plain objects. Use custom middleware for async actions."
+          );
+        if (typeof m.type > "u")
+          throw new Error(
+            'Actions may not have an undefined "type" property. Have you misspelled a constant?'
+          );
+        if (u) throw new Error("Reducers may not dispatch actions.");
+        try {
+          (u = !0), (o = i(o, m));
+        } finally {
+          u = !1;
+        }
+        for (var T = (s = a), y = 0; y < T.length; y++) T[y]();
+        return m;
+      }
+      function h(m) {
+        if (typeof m != "function")
+          throw new Error("Expected the nextReducer to be a function.");
+        (i = m), d({ type: rs.INIT });
+      }
+      function v() {
+        var m,
+          T = p;
+        return (
+          (m = {
+            subscribe: function (S) {
+              if (typeof S != "object")
+                throw new TypeError("Expected the observer to be an object.");
+              function A() {
+                S.next && S.next(g());
+              }
+              A();
+              var R = T(A);
+              return { unsubscribe: R };
+            },
+          }),
+          (m[ns.default] = function () {
+            return this;
+          }),
+          m
+        );
+      }
+      return (
+        d({ type: rs.INIT }),
+        (r = { dispatch: d, subscribe: p, getState: g, replaceReducer: h }),
+        (r[ns.default] = v),
+        r
+      );
+    }
+  });
+  var ai = f((oi) => {
+    "use strict";
+    oi.__esModule = !0;
+    oi.default = Xy;
+    function Xy(e) {
+      typeof console < "u" &&
+        typeof console.error == "function" &&
+        console.error(e);
+      try {
+        throw new Error(e);
+      } catch {}
+    }
+  });
+  var us = f((si) => {
+    "use strict";
+    si.__esModule = !0;
+    si.default = Hy;
+    var as = ii(),
+      Vy = ei(),
+      WF = ss(Vy),
+      Uy = ai(),
+      zF = ss(Uy);
+    function ss(e) {
+      return e && e.__esModule ? e : { default: e };
+    }
+    function ky(e, t) {
+      var n = t && t.type,
+        r = (n && '"' + n.toString() + '"') || "an action";
+      return (
+        "Given action " +
+        r +
+        ', reducer "' +
+        e +
+        '" returned undefined. To ignore an action, you must explicitly return the previous state.'
+      );
+    }
+    function By(e) {
+      Object.keys(e).forEach(function (t) {
+        var n = e[t],
+          r = n(void 0, { type: as.ActionTypes.INIT });
+        if (typeof r > "u")
+          throw new Error(
+            'Reducer "' +
+              t +
+              '" returned undefined during initialization. If the state passed to the reducer is undefined, you must explicitly return the initial state. The initial state may not be undefined.'
+          );
+        var i =
+          "@@redux/PROBE_UNKNOWN_ACTION_" +
+          Math.random().toString(36).substring(7).split("").join(".");
+        if (typeof n(void 0, { type: i }) > "u")
+          throw new Error(
+            'Reducer "' +
+              t +
+              '" returned undefined when probed with a random type. ' +
+              ("Don't try to handle " +
+                as.ActionTypes.INIT +
+                ' or other actions in "redux/*" ') +
+              "namespace. They are considered private. Instead, you must return the current state for any unknown actions, unless it is undefined, in which case you must return the initial state, regardless of the action type. The initial state may not be undefined."
+          );
+      });
+    }
+    function Hy(e) {
+      for (var t = Object.keys(e), n = {}, r = 0; r < t.length; r++) {
+        var i = t[r];
+        typeof e[i] == "function" && (n[i] = e[i]);
+      }
+      var o = Object.keys(n);
+      if (!1) var s;
+      var a;
+      try {
+        By(n);
+      } catch (u) {
+        a = u;
+      }
+      return function () {
+        var c =
+            arguments.length <= 0 || arguments[0] === void 0
+              ? {}
+              : arguments[0],
+          g = arguments[1];
+        if (a) throw a;
+        if (!1) var p;
+        for (var d = !1, h = {}, v = 0; v < o.length; v++) {
+          var m = o[v],
+            T = n[m],
+            y = c[m],
+            S = T(y, g);
+          if (typeof S > "u") {
+            var A = ky(m, g);
+            throw new Error(A);
+          }
+          (h[m] = S), (d = d || S !== y);
+        }
+        return d ? h : c;
+      };
+    }
+  });
+  var ls = f((ui) => {
+    "use strict";
+    ui.__esModule = !0;
+    ui.default = Wy;
+    function cs(e, t) {
+      return function () {
+        return t(e.apply(void 0, arguments));
+      };
+    }
+    function Wy(e, t) {
+      if (typeof e == "function") return cs(e, t);
+      if (typeof e != "object" || e === null)
+        throw new Error(
+          "bindActionCreators expected an object or a function, instead received " +
+            (e === null ? "null" : typeof e) +
+            '. Did you write "import ActionCreators from" instead of "import * as ActionCreators from"?'
+        );
+      for (var n = Object.keys(e), r = {}, i = 0; i < n.length; i++) {
+        var o = n[i],
+          s = e[o];
+        typeof s == "function" && (r[o] = cs(s, t));
+      }
+      return r;
+    }
+  });
+  var li = f((ci) => {
+    "use strict";
+    ci.__esModule = !0;
+    ci.default = zy;
+    function zy() {
+      for (var e = arguments.length, t = Array(e), n = 0; n < e; n++)
+        t[n] = arguments[n];
+      if (t.length === 0)
+        return function (o) {
+          return o;
+        };
+      if (t.length === 1) return t[0];
+      var r = t[t.length - 1],
+        i = t.slice(0, -1);
+      return function () {
+        return i.reduceRight(function (o, s) {
+          return s(o);
+        }, r.apply(void 0, arguments));
+      };
+    }
+  });
+  var fs = f((fi) => {
+    "use strict";
+    fi.__esModule = !0;
+    var jy =
+      Object.assign ||
+      function (e) {
+        for (var t = 1; t < arguments.length; t++) {
+          var n = arguments[t];
+          for (var r in n)
+            Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
+        }
+        return e;
+      };
+    fi.default = Qy;
+    var Ky = li(),
+      Yy = $y(Ky);
+    function $y(e) {
+      return e && e.__esModule ? e : { default: e };
+    }
+    function Qy() {
+      for (var e = arguments.length, t = Array(e), n = 0; n < e; n++)
+        t[n] = arguments[n];
+      return function (r) {
+        return function (i, o, s) {
+          var a = r(i, o, s),
+            u = a.dispatch,
+            c = [],
+            g = {
+              getState: a.getState,
+              dispatch: function (d) {
+                return u(d);
+              },
+            };
+          return (
+            (c = t.map(function (p) {
+              return p(g);
+            })),
+            (u = Yy.default.apply(void 0, c)(a.dispatch)),
+            jy({}, a, { dispatch: u })
+          );
+        };
+      };
+    }
+  });
+  var di = f((Ne) => {
+    "use strict";
+    Ne.__esModule = !0;
+    Ne.compose =
+      Ne.applyMiddleware =
+      Ne.bindActionCreators =
+      Ne.combineReducers =
+      Ne.createStore =
+        void 0;
+    var Zy = ii(),
+      Jy = At(Zy),
+      em = us(),
+      tm = At(em),
+      nm = ls(),
+      rm = At(nm),
+      im = fs(),
+      om = At(im),
+      am = li(),
+      sm = At(am),
+      um = ai(),
+      QF = At(um);
+    function At(e) {
+      return e && e.__esModule ? e : { default: e };
+    }
+    Ne.createStore = Jy.default;
+    Ne.combineReducers = tm.default;
+    Ne.bindActionCreators = rm.default;
+    Ne.applyMiddleware = om.default;
+    Ne.compose = sm.default;
+  });
+  var Xe,
+    pi,
+    Ke,
+    cm,
+    lm,
+    Mn,
+    fm,
+    gi = fe(() => {
+      "use strict";
+      (Xe = {
+        NAVBAR_OPEN: "NAVBAR_OPEN",
+        NAVBAR_CLOSE: "NAVBAR_CLOSE",
+        TAB_ACTIVE: "TAB_ACTIVE",
+        TAB_INACTIVE: "TAB_INACTIVE",
+        SLIDER_ACTIVE: "SLIDER_ACTIVE",
+        SLIDER_INACTIVE: "SLIDER_INACTIVE",
+        DROPDOWN_OPEN: "DROPDOWN_OPEN",
+        DROPDOWN_CLOSE: "DROPDOWN_CLOSE",
+        MOUSE_CLICK: "MOUSE_CLICK",
+        MOUSE_SECOND_CLICK: "MOUSE_SECOND_CLICK",
+        MOUSE_DOWN: "MOUSE_DOWN",
+        MOUSE_UP: "MOUSE_UP",
+        MOUSE_OVER: "MOUSE_OVER",
+        MOUSE_OUT: "MOUSE_OUT",
+        MOUSE_MOVE: "MOUSE_MOVE",
+        MOUSE_MOVE_IN_VIEWPORT: "MOUSE_MOVE_IN_VIEWPORT",
+        SCROLL_INTO_VIEW: "SCROLL_INTO_VIEW",
+        SCROLL_OUT_OF_VIEW: "SCROLL_OUT_OF_VIEW",
+        SCROLLING_IN_VIEW: "SCROLLING_IN_VIEW",
+        ECOMMERCE_CART_OPEN: "ECOMMERCE_CART_OPEN",
+        ECOMMERCE_CART_CLOSE: "ECOMMERCE_CART_CLOSE",
+        PAGE_START: "PAGE_START",
+        PAGE_FINISH: "PAGE_FINISH",
+        PAGE_SCROLL_UP: "PAGE_SCROLL_UP",
+        PAGE_SCROLL_DOWN: "PAGE_SCROLL_DOWN",
+        PAGE_SCROLL: "PAGE_SCROLL",
+      }),
+        (pi = { ELEMENT: "ELEMENT", CLASS: "CLASS", PAGE: "PAGE" }),
+        (Ke = { ELEMENT: "ELEMENT", VIEWPORT: "VIEWPORT" }),
+        (cm = { X_AXIS: "X_AXIS", Y_AXIS: "Y_AXIS" }),
+        (lm = {
+          CHILDREN: "CHILDREN",
+          SIBLINGS: "SIBLINGS",
+          IMMEDIATE_CHILDREN: "IMMEDIATE_CHILDREN",
+        }),
+        (Mn = {
+          FADE_EFFECT: "FADE_EFFECT",
+          SLIDE_EFFECT: "SLIDE_EFFECT",
+          GROW_EFFECT: "GROW_EFFECT",
+          SHRINK_EFFECT: "SHRINK_EFFECT",
+          SPIN_EFFECT: "SPIN_EFFECT",
+          FLY_EFFECT: "FLY_EFFECT",
+          POP_EFFECT: "POP_EFFECT",
+          FLIP_EFFECT: "FLIP_EFFECT",
+          JIGGLE_EFFECT: "JIGGLE_EFFECT",
+          PULSE_EFFECT: "PULSE_EFFECT",
+          DROP_EFFECT: "DROP_EFFECT",
+          BLINK_EFFECT: "BLINK_EFFECT",
+          BOUNCE_EFFECT: "BOUNCE_EFFECT",
+          FLIP_LEFT_TO_RIGHT_EFFECT: "FLIP_LEFT_TO_RIGHT_EFFECT",
+          FLIP_RIGHT_TO_LEFT_EFFECT: "FLIP_RIGHT_TO_LEFT_EFFECT",
+          RUBBER_BAND_EFFECT: "RUBBER_BAND_EFFECT",
+          JELLO_EFFECT: "JELLO_EFFECT",
+          GROW_BIG_EFFECT: "GROW_BIG_EFFECT",
+          SHRINK_BIG_EFFECT: "SHRINK_BIG_EFFECT",
+          PLUGIN_LOTTIE_EFFECT: "PLUGIN_LOTTIE_EFFECT",
+        }),
+        (fm = {
+          LEFT: "LEFT",
+          RIGHT: "RIGHT",
+          BOTTOM: "BOTTOM",
+          TOP: "TOP",
+          BOTTOM_LEFT: "BOTTOM_LEFT",
+          BOTTOM_RIGHT: "BOTTOM_RIGHT",
+          TOP_RIGHT: "TOP_RIGHT",
+          TOP_LEFT: "TOP_LEFT",
+          CLOCKWISE: "CLOCKWISE",
+          COUNTER_CLOCKWISE: "COUNTER_CLOCKWISE",
+        });
+    });
+  var Ae,
+    dm,
+    Dn = fe(() => {
+      "use strict";
+      (Ae = {
+        TRANSFORM_MOVE: "TRANSFORM_MOVE",
+        TRANSFORM_SCALE: "TRANSFORM_SCALE",
+        TRANSFORM_ROTATE: "TRANSFORM_ROTATE",
+        TRANSFORM_SKEW: "TRANSFORM_SKEW",
+        STYLE_OPACITY: "STYLE_OPACITY",
+        STYLE_SIZE: "STYLE_SIZE",
+        STYLE_FILTER: "STYLE_FILTER",
+        STYLE_FONT_VARIATION: "STYLE_FONT_VARIATION",
+        STYLE_BACKGROUND_COLOR: "STYLE_BACKGROUND_COLOR",
+        STYLE_BORDER: "STYLE_BORDER",
+        STYLE_TEXT_COLOR: "STYLE_TEXT_COLOR",
+        OBJECT_VALUE: "OBJECT_VALUE",
+        PLUGIN_LOTTIE: "PLUGIN_LOTTIE",
+        PLUGIN_SPLINE: "PLUGIN_SPLINE",
+        PLUGIN_RIVE: "PLUGIN_RIVE",
+        PLUGIN_VARIABLE: "PLUGIN_VARIABLE",
+        GENERAL_DISPLAY: "GENERAL_DISPLAY",
+        GENERAL_START_ACTION: "GENERAL_START_ACTION",
+        GENERAL_CONTINUOUS_ACTION: "GENERAL_CONTINUOUS_ACTION",
+        GENERAL_COMBO_CLASS: "GENERAL_COMBO_CLASS",
+        GENERAL_STOP_ACTION: "GENERAL_STOP_ACTION",
+        GENERAL_LOOP: "GENERAL_LOOP",
+        STYLE_BOX_SHADOW: "STYLE_BOX_SHADOW",
+      }),
+        (dm = {
+          ELEMENT: "ELEMENT",
+          ELEMENT_CLASS: "ELEMENT_CLASS",
+          TRIGGER_ELEMENT: "TRIGGER_ELEMENT",
+        });
+    });
+  var pm,
+    ds = fe(() => {
+      "use strict";
+      pm = {
+        MOUSE_CLICK_INTERACTION: "MOUSE_CLICK_INTERACTION",
+        MOUSE_HOVER_INTERACTION: "MOUSE_HOVER_INTERACTION",
+        MOUSE_MOVE_INTERACTION: "MOUSE_MOVE_INTERACTION",
+        SCROLL_INTO_VIEW_INTERACTION: "SCROLL_INTO_VIEW_INTERACTION",
+        SCROLLING_IN_VIEW_INTERACTION: "SCROLLING_IN_VIEW_INTERACTION",
+        MOUSE_MOVE_IN_VIEWPORT_INTERACTION:
+          "MOUSE_MOVE_IN_VIEWPORT_INTERACTION",
+        PAGE_IS_SCROLLING_INTERACTION: "PAGE_IS_SCROLLING_INTERACTION",
+        PAGE_LOAD_INTERACTION: "PAGE_LOAD_INTERACTION",
+        PAGE_SCROLLED_INTERACTION: "PAGE_SCROLLED_INTERACTION",
+        NAVBAR_INTERACTION: "NAVBAR_INTERACTION",
+        DROPDOWN_INTERACTION: "DROPDOWN_INTERACTION",
+        ECOMMERCE_CART_INTERACTION: "ECOMMERCE_CART_INTERACTION",
+        TAB_INTERACTION: "TAB_INTERACTION",
+        SLIDER_INTERACTION: "SLIDER_INTERACTION",
+      };
+    });
+  var gm,
+    hm,
+    Em,
+    ym,
+    mm,
+    vm,
+    _m,
+    hi,
+    ps = fe(() => {
+      "use strict";
+      Dn();
+      ({
+        TRANSFORM_MOVE: gm,
+        TRANSFORM_SCALE: hm,
+        TRANSFORM_ROTATE: Em,
+        TRANSFORM_SKEW: ym,
+        STYLE_SIZE: mm,
+        STYLE_FILTER: vm,
+        STYLE_FONT_VARIATION: _m,
+      } = Ae),
+        (hi = {
+          [gm]: !0,
+          [hm]: !0,
+          [Em]: !0,
+          [ym]: !0,
+          [mm]: !0,
+          [vm]: !0,
+          [_m]: !0,
+        });
+    });
+  var ye = {};
+  xe(ye, {
+    IX2_ACTION_LIST_PLAYBACK_CHANGED: () => qm,
+    IX2_ANIMATION_FRAME_CHANGED: () => Pm,
+    IX2_CLEAR_REQUESTED: () => xm,
+    IX2_ELEMENT_STATE_CHANGED: () => Fm,
+    IX2_EVENT_LISTENER_ADDED: () => Rm,
+    IX2_EVENT_STATE_CHANGED: () => Cm,
+    IX2_INSTANCE_ADDED: () => Nm,
+    IX2_INSTANCE_REMOVED: () => Dm,
+    IX2_INSTANCE_STARTED: () => Mm,
+    IX2_MEDIA_QUERIES_DEFINED: () => Xm,
+    IX2_PARAMETER_CHANGED: () => Lm,
+    IX2_PLAYBACK_REQUESTED: () => wm,
+    IX2_PREVIEW_REQUESTED: () => Sm,
+    IX2_RAW_DATA_IMPORTED: () => Im,
+    IX2_SESSION_INITIALIZED: () => Tm,
+    IX2_SESSION_STARTED: () => bm,
+    IX2_SESSION_STOPPED: () => Am,
+    IX2_STOP_REQUESTED: () => Om,
+    IX2_TEST_FRAME_RENDERED: () => Vm,
+    IX2_VIEWPORT_WIDTH_CHANGED: () => Gm,
+  });
+  var Im,
+    Tm,
+    bm,
+    Am,
+    Sm,
+    wm,
+    Om,
+    xm,
+    Rm,
+    Cm,
+    Pm,
+    Lm,
+    Nm,
+    Mm,
+    Dm,
+    Fm,
+    qm,
+    Gm,
+    Xm,
+    Vm,
+    gs = fe(() => {
+      "use strict";
+      (Im = "IX2_RAW_DATA_IMPORTED"),
+        (Tm = "IX2_SESSION_INITIALIZED"),
+        (bm = "IX2_SESSION_STARTED"),
+        (Am = "IX2_SESSION_STOPPED"),
+        (Sm = "IX2_PREVIEW_REQUESTED"),
+        (wm = "IX2_PLAYBACK_REQUESTED"),
+        (Om = "IX2_STOP_REQUESTED"),
+        (xm = "IX2_CLEAR_REQUESTED"),
+        (Rm = "IX2_EVENT_LISTENER_ADDED"),
+        (Cm = "IX2_EVENT_STATE_CHANGED"),
+        (Pm = "IX2_ANIMATION_FRAME_CHANGED"),
+        (Lm = "IX2_PARAMETER_CHANGED"),
+        (Nm = "IX2_INSTANCE_ADDED"),
+        (Mm = "IX2_INSTANCE_STARTED"),
+        (Dm = "IX2_INSTANCE_REMOVED"),
+        (Fm = "IX2_ELEMENT_STATE_CHANGED"),
+        (qm = "IX2_ACTION_LIST_PLAYBACK_CHANGED"),
+        (Gm = "IX2_VIEWPORT_WIDTH_CHANGED"),
+        (Xm = "IX2_MEDIA_QUERIES_DEFINED"),
+        (Vm = "IX2_TEST_FRAME_RENDERED");
+    });
+  var _e = {};
+  xe(_e, {
+    ABSTRACT_NODE: () => Gv,
+    AUTO: () => Ov,
+    BACKGROUND: () => Iv,
+    BACKGROUND_COLOR: () => _v,
+    BAR_DELIMITER: () => Cv,
+    BORDER_COLOR: () => Tv,
+    BOUNDARY_SELECTOR: () => Wm,
+    CHILDREN: () => Pv,
+    COLON_DELIMITER: () => Rv,
+    COLOR: () => bv,
+    COMMA_DELIMITER: () => xv,
+    CONFIG_UNIT: () => Jm,
+    CONFIG_VALUE: () => Ym,
+    CONFIG_X_UNIT: () => $m,
+    CONFIG_X_VALUE: () => zm,
+    CONFIG_Y_UNIT: () => Qm,
+    CONFIG_Y_VALUE: () => jm,
+    CONFIG_Z_UNIT: () => Zm,
+    CONFIG_Z_VALUE: () => Km,
+    DISPLAY: () => Av,
+    FILTER: () => Ev,
+    FLEX: () => Sv,
+    FONT_VARIATION_SETTINGS: () => yv,
+    HEIGHT: () => vv,
+    HTML_ELEMENT: () => Fv,
+    IMMEDIATE_CHILDREN: () => Lv,
+    IX2_ID_DELIMITER: () => Um,
+    OPACITY: () => hv,
+    PARENT: () => Mv,
+    PLAIN_OBJECT: () => qv,
+    PRESERVE_3D: () => Dv,
+    RENDER_GENERAL: () => Vv,
+    RENDER_PLUGIN: () => kv,
+    RENDER_STYLE: () => Uv,
+    RENDER_TRANSFORM: () => Xv,
+    ROTATE_X: () => cv,
+    ROTATE_Y: () => lv,
+    ROTATE_Z: () => fv,
+    SCALE_3D: () => uv,
+    SCALE_X: () => ov,
+    SCALE_Y: () => av,
+    SCALE_Z: () => sv,
+    SIBLINGS: () => Nv,
+    SKEW: () => dv,
+    SKEW_X: () => pv,
+    SKEW_Y: () => gv,
+    TRANSFORM: () => ev,
+    TRANSLATE_3D: () => iv,
+    TRANSLATE_X: () => tv,
+    TRANSLATE_Y: () => nv,
+    TRANSLATE_Z: () => rv,
+    WF_PAGE: () => km,
+    WIDTH: () => mv,
+    WILL_CHANGE: () => wv,
+    W_MOD_IX: () => Hm,
+    W_MOD_JS: () => Bm,
+  });
+  var Um,
+    km,
+    Bm,
+    Hm,
+    Wm,
+    zm,
+    jm,
+    Km,
+    Ym,
+    $m,
+    Qm,
+    Zm,
+    Jm,
+    ev,
+    tv,
+    nv,
+    rv,
+    iv,
+    ov,
+    av,
+    sv,
+    uv,
+    cv,
+    lv,
+    fv,
+    dv,
+    pv,
+    gv,
+    hv,
+    Ev,
+    yv,
+    mv,
+    vv,
+    _v,
+    Iv,
+    Tv,
+    bv,
+    Av,
+    Sv,
+    wv,
+    Ov,
+    xv,
+    Rv,
+    Cv,
+    Pv,
+    Lv,
+    Nv,
+    Mv,
+    Dv,
+    Fv,
+    qv,
+    Gv,
+    Xv,
+    Vv,
+    Uv,
+    kv,
+    hs = fe(() => {
+      "use strict";
+      (Um = "|"),
+        (km = "data-wf-page"),
+        (Bm = "w-mod-js"),
+        (Hm = "w-mod-ix"),
+        (Wm = ".w-dyn-item"),
+        (zm = "xValue"),
+        (jm = "yValue"),
+        (Km = "zValue"),
+        (Ym = "value"),
+        ($m = "xUnit"),
+        (Qm = "yUnit"),
+        (Zm = "zUnit"),
+        (Jm = "unit"),
+        (ev = "transform"),
+        (tv = "translateX"),
+        (nv = "translateY"),
+        (rv = "translateZ"),
+        (iv = "translate3d"),
+        (ov = "scaleX"),
+        (av = "scaleY"),
+        (sv = "scaleZ"),
+        (uv = "scale3d"),
+        (cv = "rotateX"),
+        (lv = "rotateY"),
+        (fv = "rotateZ"),
+        (dv = "skew"),
+        (pv = "skewX"),
+        (gv = "skewY"),
+        (hv = "opacity"),
+        (Ev = "filter"),
+        (yv = "font-variation-settings"),
+        (mv = "width"),
+        (vv = "height"),
+        (_v = "backgroundColor"),
+        (Iv = "background"),
+        (Tv = "borderColor"),
+        (bv = "color"),
+        (Av = "display"),
+        (Sv = "flex"),
+        (wv = "willChange"),
+        (Ov = "AUTO"),
+        (xv = ","),
+        (Rv = ":"),
+        (Cv = "|"),
+        (Pv = "CHILDREN"),
+        (Lv = "IMMEDIATE_CHILDREN"),
+        (Nv = "SIBLINGS"),
+        (Mv = "PARENT"),
+        (Dv = "preserve-3d"),
+        (Fv = "HTML_ELEMENT"),
+        (qv = "PLAIN_OBJECT"),
+        (Gv = "ABSTRACT_NODE"),
+        (Xv = "RENDER_TRANSFORM"),
+        (Vv = "RENDER_GENERAL"),
+        (Uv = "RENDER_STYLE"),
+        (kv = "RENDER_PLUGIN");
+    });
+  var Es = {};
+  xe(Es, {
+    ActionAppliesTo: () => dm,
+    ActionTypeConsts: () => Ae,
+    EventAppliesTo: () => pi,
+    EventBasedOn: () => Ke,
+    EventContinuousMouseAxes: () => cm,
+    EventLimitAffectedElements: () => lm,
+    EventTypeConsts: () => Xe,
+    IX2EngineActionTypes: () => ye,
+    IX2EngineConstants: () => _e,
+    InteractionTypeConsts: () => pm,
+    QuickEffectDirectionConsts: () => fm,
+    QuickEffectIds: () => Mn,
+    ReducedMotionTypes: () => hi,
+  });
+  var Re = fe(() => {
+    "use strict";
+    gi();
+    Dn();
+    ds();
+    ps();
+    gs();
+    hs();
+    Dn();
+    gi();
+  });
+  var Bv,
+    ys,
+    ms = fe(() => {
+      "use strict";
+      Re();
+      ({ IX2_RAW_DATA_IMPORTED: Bv } = ye),
+        (ys = (e = Object.freeze({}), t) => {
+          switch (t.type) {
+            case Bv:
+              return t.payload.ixData || Object.freeze({});
+            default:
+              return e;
+          }
+        });
+    });
+  var St = f((pe) => {
+    "use strict";
+    Object.defineProperty(pe, "__esModule", { value: !0 });
+    var Hv =
+      typeof Symbol == "function" && typeof Symbol.iterator == "symbol"
+        ? function (e) {
+            return typeof e;
+          }
+        : function (e) {
+            return e &&
+              typeof Symbol == "function" &&
+              e.constructor === Symbol &&
+              e !== Symbol.prototype
+              ? "symbol"
+              : typeof e;
+          };
+    pe.clone = qn;
+    pe.addLast = Is;
+    pe.addFirst = Ts;
+    pe.removeLast = bs;
+    pe.removeFirst = As;
+    pe.insert = Ss;
+    pe.removeAt = ws;
+    pe.replaceAt = Os;
+    pe.getIn = Gn;
+    pe.set = Xn;
+    pe.setIn = Vn;
+    pe.update = Rs;
+    pe.updateIn = Cs;
+    pe.merge = Ps;
+    pe.mergeDeep = Ls;
+    pe.mergeIn = Ns;
+    pe.omit = Ms;
+    pe.addDefaults = Ds;
+    var vs = "INVALID_ARGS";
+    function _s(e) {
+      throw new Error(e);
+    }
+    function Ei(e) {
+      var t = Object.keys(e);
+      return Object.getOwnPropertySymbols
+        ? t.concat(Object.getOwnPropertySymbols(e))
+        : t;
+    }
+    var Wv = {}.hasOwnProperty;
+    function qn(e) {
+      if (Array.isArray(e)) return e.slice();
+      for (var t = Ei(e), n = {}, r = 0; r < t.length; r++) {
+        var i = t[r];
+        n[i] = e[i];
+      }
+      return n;
+    }
+    function Ce(e, t, n) {
+      var r = n;
+      r == null && _s(vs);
+      for (
+        var i = !1, o = arguments.length, s = Array(o > 3 ? o - 3 : 0), a = 3;
+        a < o;
+        a++
+      )
+        s[a - 3] = arguments[a];
+      for (var u = 0; u < s.length; u++) {
+        var c = s[u];
+        if (c != null) {
+          var g = Ei(c);
+          if (g.length)
+            for (var p = 0; p <= g.length; p++) {
+              var d = g[p];
+              if (!(e && r[d] !== void 0)) {
+                var h = c[d];
+                t && Fn(r[d]) && Fn(h) && (h = Ce(e, t, r[d], h)),
+                  !(h === void 0 || h === r[d]) &&
+                    (i || ((i = !0), (r = qn(r))), (r[d] = h));
+              }
+            }
+        }
+      }
+      return r;
+    }
+    function Fn(e) {
+      var t = typeof e > "u" ? "undefined" : Hv(e);
+      return e != null && (t === "object" || t === "function");
+    }
+    function Is(e, t) {
+      return Array.isArray(t) ? e.concat(t) : e.concat([t]);
+    }
+    function Ts(e, t) {
+      return Array.isArray(t) ? t.concat(e) : [t].concat(e);
+    }
+    function bs(e) {
+      return e.length ? e.slice(0, e.length - 1) : e;
+    }
+    function As(e) {
+      return e.length ? e.slice(1) : e;
+    }
+    function Ss(e, t, n) {
+      return e
+        .slice(0, t)
+        .concat(Array.isArray(n) ? n : [n])
+        .concat(e.slice(t));
+    }
+    function ws(e, t) {
+      return t >= e.length || t < 0 ? e : e.slice(0, t).concat(e.slice(t + 1));
+    }
+    function Os(e, t, n) {
+      if (e[t] === n) return e;
+      for (var r = e.length, i = Array(r), o = 0; o < r; o++) i[o] = e[o];
+      return (i[t] = n), i;
+    }
+    function Gn(e, t) {
+      if ((!Array.isArray(t) && _s(vs), e != null)) {
+        for (var n = e, r = 0; r < t.length; r++) {
+          var i = t[r];
+          if (((n = n?.[i]), n === void 0)) return n;
+        }
+        return n;
+      }
+    }
+    function Xn(e, t, n) {
+      var r = typeof t == "number" ? [] : {},
+        i = e ?? r;
+      if (i[t] === n) return i;
+      var o = qn(i);
+      return (o[t] = n), o;
+    }
+    function xs(e, t, n, r) {
+      var i = void 0,
+        o = t[r];
+      if (r === t.length - 1) i = n;
+      else {
+        var s =
+          Fn(e) && Fn(e[o]) ? e[o] : typeof t[r + 1] == "number" ? [] : {};
+        i = xs(s, t, n, r + 1);
+      }
+      return Xn(e, o, i);
+    }
+    function Vn(e, t, n) {
+      return t.length ? xs(e, t, n, 0) : n;
+    }
+    function Rs(e, t, n) {
+      var r = e?.[t],
+        i = n(r);
+      return Xn(e, t, i);
+    }
+    function Cs(e, t, n) {
+      var r = Gn(e, t),
+        i = n(r);
+      return Vn(e, t, i);
+    }
+    function Ps(e, t, n, r, i, o) {
+      for (
+        var s = arguments.length, a = Array(s > 6 ? s - 6 : 0), u = 6;
+        u < s;
+        u++
+      )
+        a[u - 6] = arguments[u];
+      return a.length
+        ? Ce.call.apply(Ce, [null, !1, !1, e, t, n, r, i, o].concat(a))
+        : Ce(!1, !1, e, t, n, r, i, o);
+    }
+    function Ls(e, t, n, r, i, o) {
+      for (
+        var s = arguments.length, a = Array(s > 6 ? s - 6 : 0), u = 6;
+        u < s;
+        u++
+      )
+        a[u - 6] = arguments[u];
+      return a.length
+        ? Ce.call.apply(Ce, [null, !1, !0, e, t, n, r, i, o].concat(a))
+        : Ce(!1, !0, e, t, n, r, i, o);
+    }
+    function Ns(e, t, n, r, i, o, s) {
+      var a = Gn(e, t);
+      a == null && (a = {});
+      for (
+        var u = void 0,
+          c = arguments.length,
+          g = Array(c > 7 ? c - 7 : 0),
+          p = 7;
+        p < c;
+        p++
+      )
+        g[p - 7] = arguments[p];
+      return (
+        g.length
+          ? (u = Ce.call.apply(Ce, [null, !1, !1, a, n, r, i, o, s].concat(g)))
+          : (u = Ce(!1, !1, a, n, r, i, o, s)),
+        Vn(e, t, u)
+      );
+    }
+    function Ms(e, t) {
+      for (var n = Array.isArray(t) ? t : [t], r = !1, i = 0; i < n.length; i++)
+        if (Wv.call(e, n[i])) {
+          r = !0;
+          break;
+        }
+      if (!r) return e;
+      for (var o = {}, s = Ei(e), a = 0; a < s.length; a++) {
+        var u = s[a];
+        n.indexOf(u) >= 0 || (o[u] = e[u]);
+      }
+      return o;
+    }
+    function Ds(e, t, n, r, i, o) {
+      for (
+        var s = arguments.length, a = Array(s > 6 ? s - 6 : 0), u = 6;
+        u < s;
+        u++
+      )
+        a[u - 6] = arguments[u];
+      return a.length
+        ? Ce.call.apply(Ce, [null, !0, !1, e, t, n, r, i, o].concat(a))
+        : Ce(!0, !1, e, t, n, r, i, o);
+    }
+    var zv = {
+      clone: qn,
+      addLast: Is,
+      addFirst: Ts,
+      removeLast: bs,
+      removeFirst: As,
+      insert: Ss,
+      removeAt: ws,
+      replaceAt: Os,
+      getIn: Gn,
+      set: Xn,
+      setIn: Vn,
+      update: Rs,
+      updateIn: Cs,
+      merge: Ps,
+      mergeDeep: Ls,
+      mergeIn: Ns,
+      omit: Ms,
+      addDefaults: Ds,
+    };
+    pe.default = zv;
+  });
+  var qs,
+    jv,
+    Kv,
+    Yv,
+    $v,
+    Qv,
+    Fs,
+    Gs,
+    Xs = fe(() => {
+      "use strict";
+      Re();
+      (qs = ae(St())),
+        ({
+          IX2_PREVIEW_REQUESTED: jv,
+          IX2_PLAYBACK_REQUESTED: Kv,
+          IX2_STOP_REQUESTED: Yv,
+          IX2_CLEAR_REQUESTED: $v,
+        } = ye),
+        (Qv = { preview: {}, playback: {}, stop: {}, clear: {} }),
+        (Fs = Object.create(null, {
+          [jv]: { value: "preview" },
+          [Kv]: { value: "playback" },
+          [Yv]: { value: "stop" },
+          [$v]: { value: "clear" },
+        })),
+        (Gs = (e = Qv, t) => {
+          if (t.type in Fs) {
+            let n = [Fs[t.type]];
+            return (0, qs.setIn)(e, [n], { ...t.payload });
+          }
+          return e;
+        });
+    });
+  var Se,
+    Zv,
+    Jv,
+    e_,
+    t_,
+    n_,
+    r_,
+    i_,
+    o_,
+    a_,
+    s_,
+    Vs,
+    u_,
+    Us,
+    ks = fe(() => {
+      "use strict";
+      Re();
+      (Se = ae(St())),
+        ({
+          IX2_SESSION_INITIALIZED: Zv,
+          IX2_SESSION_STARTED: Jv,
+          IX2_TEST_FRAME_RENDERED: e_,
+          IX2_SESSION_STOPPED: t_,
+          IX2_EVENT_LISTENER_ADDED: n_,
+          IX2_EVENT_STATE_CHANGED: r_,
+          IX2_ANIMATION_FRAME_CHANGED: i_,
+          IX2_ACTION_LIST_PLAYBACK_CHANGED: o_,
+          IX2_VIEWPORT_WIDTH_CHANGED: a_,
+          IX2_MEDIA_QUERIES_DEFINED: s_,
+        } = ye),
+        (Vs = {
+          active: !1,
+          tick: 0,
+          eventListeners: [],
+          eventState: {},
+          playbackState: {},
+          viewportWidth: 0,
+          mediaQueryKey: null,
+          hasBoundaryNodes: !1,
+          hasDefinedMediaQueries: !1,
+          reducedMotion: !1,
+        }),
+        (u_ = 20),
+        (Us = (e = Vs, t) => {
+          switch (t.type) {
+            case Zv: {
+              let { hasBoundaryNodes: n, reducedMotion: r } = t.payload;
+              return (0, Se.merge)(e, {
+                hasBoundaryNodes: n,
+                reducedMotion: r,
+              });
+            }
+            case Jv:
+              return (0, Se.set)(e, "active", !0);
+            case e_: {
+              let {
+                payload: { step: n = u_ },
+              } = t;
+              return (0, Se.set)(e, "tick", e.tick + n);
+            }
+            case t_:
+              return Vs;
+            case i_: {
+              let {
+                payload: { now: n },
+              } = t;
+              return (0, Se.set)(e, "tick", n);
+            }
+            case n_: {
+              let n = (0, Se.addLast)(e.eventListeners, t.payload);
+              return (0, Se.set)(e, "eventListeners", n);
+            }
+            case r_: {
+              let { stateKey: n, newState: r } = t.payload;
+              return (0, Se.setIn)(e, ["eventState", n], r);
+            }
+            case o_: {
+              let { actionListId: n, isPlaying: r } = t.payload;
+              return (0, Se.setIn)(e, ["playbackState", n], r);
+            }
+            case a_: {
+              let { width: n, mediaQueries: r } = t.payload,
+                i = r.length,
+                o = null;
+              for (let s = 0; s < i; s++) {
+                let { key: a, min: u, max: c } = r[s];
+                if (n >= u && n <= c) {
+                  o = a;
+                  break;
+                }
+              }
+              return (0, Se.merge)(e, { viewportWidth: n, mediaQueryKey: o });
+            }
+            case s_:
+              return (0, Se.set)(e, "hasDefinedMediaQueries", !0);
+            default:
+              return e;
+          }
+        });
+    });
+  var Hs = f((y2, Bs) => {
+    function c_() {
+      (this.__data__ = []), (this.size = 0);
+    }
+    Bs.exports = c_;
+  });
+  var Un = f((m2, Ws) => {
+    function l_(e, t) {
+      return e === t || (e !== e && t !== t);
+    }
+    Ws.exports = l_;
+  });
+  var Jt = f((v2, zs) => {
+    var f_ = Un();
+    function d_(e, t) {
+      for (var n = e.length; n--; ) if (f_(e[n][0], t)) return n;
+      return -1;
+    }
+    zs.exports = d_;
+  });
+  var Ks = f((_2, js) => {
+    var p_ = Jt(),
+      g_ = Array.prototype,
+      h_ = g_.splice;
+    function E_(e) {
+      var t = this.__data__,
+        n = p_(t, e);
+      if (n < 0) return !1;
+      var r = t.length - 1;
+      return n == r ? t.pop() : h_.call(t, n, 1), --this.size, !0;
+    }
+    js.exports = E_;
+  });
+  var $s = f((I2, Ys) => {
+    var y_ = Jt();
+    function m_(e) {
+      var t = this.__data__,
+        n = y_(t, e);
+      return n < 0 ? void 0 : t[n][1];
+    }
+    Ys.exports = m_;
+  });
+  var Zs = f((T2, Qs) => {
+    var v_ = Jt();
+    function __(e) {
+      return v_(this.__data__, e) > -1;
+    }
+    Qs.exports = __;
+  });
+  var eu = f((b2, Js) => {
+    var I_ = Jt();
+    function T_(e, t) {
+      var n = this.__data__,
+        r = I_(n, e);
+      return r < 0 ? (++this.size, n.push([e, t])) : (n[r][1] = t), this;
+    }
+    Js.exports = T_;
+  });
+  var en = f((A2, tu) => {
+    var b_ = Hs(),
+      A_ = Ks(),
+      S_ = $s(),
+      w_ = Zs(),
+      O_ = eu();
+    function wt(e) {
+      var t = -1,
+        n = e == null ? 0 : e.length;
+      for (this.clear(); ++t < n; ) {
+        var r = e[t];
+        this.set(r[0], r[1]);
+      }
+    }
+    wt.prototype.clear = b_;
+    wt.prototype.delete = A_;
+    wt.prototype.get = S_;
+    wt.prototype.has = w_;
+    wt.prototype.set = O_;
+    tu.exports = wt;
+  });
+  var ru = f((S2, nu) => {
+    var x_ = en();
+    function R_() {
+      (this.__data__ = new x_()), (this.size = 0);
+    }
+    nu.exports = R_;
+  });
+  var ou = f((w2, iu) => {
+    function C_(e) {
+      var t = this.__data__,
+        n = t.delete(e);
+      return (this.size = t.size), n;
+    }
+    iu.exports = C_;
+  });
+  var su = f((O2, au) => {
+    function P_(e) {
+      return this.__data__.get(e);
+    }
+    au.exports = P_;
+  });
+  var cu = f((x2, uu) => {
+    function L_(e) {
+      return this.__data__.has(e);
+    }
+    uu.exports = L_;
+  });
+  var Ye = f((R2, lu) => {
+    function N_(e) {
+      var t = typeof e;
+      return e != null && (t == "object" || t == "function");
+    }
+    lu.exports = N_;
+  });
+  var yi = f((C2, fu) => {
+    var M_ = at(),
+      D_ = Ye(),
+      F_ = "[object AsyncFunction]",
+      q_ = "[object Function]",
+      G_ = "[object GeneratorFunction]",
+      X_ = "[object Proxy]";
+    function V_(e) {
+      if (!D_(e)) return !1;
+      var t = M_(e);
+      return t == q_ || t == G_ || t == F_ || t == X_;
+    }
+    fu.exports = V_;
+  });
+  var pu = f((P2, du) => {
+    var U_ = Ge(),
+      k_ = U_["__core-js_shared__"];
+    du.exports = k_;
+  });
+  var Eu = f((L2, hu) => {
+    var mi = pu(),
+      gu = (function () {
+        var e = /[^.]+$/.exec((mi && mi.keys && mi.keys.IE_PROTO) || "");
+        return e ? "Symbol(src)_1." + e : "";
+      })();
+    function B_(e) {
+      return !!gu && gu in e;
+    }
+    hu.exports = B_;
+  });
+  var vi = f((N2, yu) => {
+    var H_ = Function.prototype,
+      W_ = H_.toString;
+    function z_(e) {
+      if (e != null) {
+        try {
+          return W_.call(e);
+        } catch {}
+        try {
+          return e + "";
+        } catch {}
+      }
+      return "";
+    }
+    yu.exports = z_;
+  });
+  var vu = f((M2, mu) => {
+    var j_ = yi(),
+      K_ = Eu(),
+      Y_ = Ye(),
+      $_ = vi(),
+      Q_ = /[\\^$.*+?()[\]{}|]/g,
+      Z_ = /^\[object .+?Constructor\]$/,
+      J_ = Function.prototype,
+      eI = Object.prototype,
+      tI = J_.toString,
+      nI = eI.hasOwnProperty,
+      rI = RegExp(
+        "^" +
+          tI
+            .call(nI)
+            .replace(Q_, "\\$&")
+            .replace(
+              /hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,
+              "$1.*?"
+            ) +
+          "$"
+      );
+    function iI(e) {
+      if (!Y_(e) || K_(e)) return !1;
+      var t = j_(e) ? rI : Z_;
+      return t.test($_(e));
+    }
+    mu.exports = iI;
+  });
+  var Iu = f((D2, _u) => {
+    function oI(e, t) {
+      return e?.[t];
+    }
+    _u.exports = oI;
+  });
+  var st = f((F2, Tu) => {
+    var aI = vu(),
+      sI = Iu();
+    function uI(e, t) {
+      var n = sI(e, t);
+      return aI(n) ? n : void 0;
+    }
+    Tu.exports = uI;
+  });
+  var kn = f((q2, bu) => {
+    var cI = st(),
+      lI = Ge(),
+      fI = cI(lI, "Map");
+    bu.exports = fI;
+  });
+  var tn = f((G2, Au) => {
+    var dI = st(),
+      pI = dI(Object, "create");
+    Au.exports = pI;
+  });
+  var Ou = f((X2, wu) => {
+    var Su = tn();
+    function gI() {
+      (this.__data__ = Su ? Su(null) : {}), (this.size = 0);
+    }
+    wu.exports = gI;
+  });
+  var Ru = f((V2, xu) => {
+    function hI(e) {
+      var t = this.has(e) && delete this.__data__[e];
+      return (this.size -= t ? 1 : 0), t;
+    }
+    xu.exports = hI;
+  });
+  var Pu = f((U2, Cu) => {
+    var EI = tn(),
+      yI = "__lodash_hash_undefined__",
+      mI = Object.prototype,
+      vI = mI.hasOwnProperty;
+    function _I(e) {
+      var t = this.__data__;
+      if (EI) {
+        var n = t[e];
+        return n === yI ? void 0 : n;
+      }
+      return vI.call(t, e) ? t[e] : void 0;
+    }
+    Cu.exports = _I;
+  });
+  var Nu = f((k2, Lu) => {
+    var II = tn(),
+      TI = Object.prototype,
+      bI = TI.hasOwnProperty;
+    function AI(e) {
+      var t = this.__data__;
+      return II ? t[e] !== void 0 : bI.call(t, e);
+    }
+    Lu.exports = AI;
+  });
+  var Du = f((B2, Mu) => {
+    var SI = tn(),
+      wI = "__lodash_hash_undefined__";
+    function OI(e, t) {
+      var n = this.__data__;
+      return (
+        (this.size += this.has(e) ? 0 : 1),
+        (n[e] = SI && t === void 0 ? wI : t),
+        this
+      );
+    }
+    Mu.exports = OI;
+  });
+  var qu = f((H2, Fu) => {
+    var xI = Ou(),
+      RI = Ru(),
+      CI = Pu(),
+      PI = Nu(),
+      LI = Du();
+    function Ot(e) {
+      var t = -1,
+        n = e == null ? 0 : e.length;
+      for (this.clear(); ++t < n; ) {
+        var r = e[t];
+        this.set(r[0], r[1]);
+      }
+    }
+    Ot.prototype.clear = xI;
+    Ot.prototype.delete = RI;
+    Ot.prototype.get = CI;
+    Ot.prototype.has = PI;
+    Ot.prototype.set = LI;
+    Fu.exports = Ot;
+  });
+  var Vu = f((W2, Xu) => {
+    var Gu = qu(),
+      NI = en(),
+      MI = kn();
+    function DI() {
+      (this.size = 0),
+        (this.__data__ = {
+          hash: new Gu(),
+          map: new (MI || NI)(),
+          string: new Gu(),
+        });
+    }
+    Xu.exports = DI;
+  });
+  var ku = f((z2, Uu) => {
+    function FI(e) {
+      var t = typeof e;
+      return t == "string" || t == "number" || t == "symbol" || t == "boolean"
+        ? e !== "__proto__"
+        : e === null;
+    }
+    Uu.exports = FI;
+  });
+  var nn = f((j2, Bu) => {
+    var qI = ku();
+    function GI(e, t) {
+      var n = e.__data__;
+      return qI(t) ? n[typeof t == "string" ? "string" : "hash"] : n.map;
+    }
+    Bu.exports = GI;
+  });
+  var Wu = f((K2, Hu) => {
+    var XI = nn();
+    function VI(e) {
+      var t = XI(this, e).delete(e);
+      return (this.size -= t ? 1 : 0), t;
+    }
+    Hu.exports = VI;
+  });
+  var ju = f((Y2, zu) => {
+    var UI = nn();
+    function kI(e) {
+      return UI(this, e).get(e);
+    }
+    zu.exports = kI;
+  });
+  var Yu = f(($2, Ku) => {
+    var BI = nn();
+    function HI(e) {
+      return BI(this, e).has(e);
+    }
+    Ku.exports = HI;
+  });
+  var Qu = f((Q2, $u) => {
+    var WI = nn();
+    function zI(e, t) {
+      var n = WI(this, e),
+        r = n.size;
+      return n.set(e, t), (this.size += n.size == r ? 0 : 1), this;
+    }
+    $u.exports = zI;
+  });
+  var Bn = f((Z2, Zu) => {
+    var jI = Vu(),
+      KI = Wu(),
+      YI = ju(),
+      $I = Yu(),
+      QI = Qu();
+    function xt(e) {
+      var t = -1,
+        n = e == null ? 0 : e.length;
+      for (this.clear(); ++t < n; ) {
+        var r = e[t];
+        this.set(r[0], r[1]);
+      }
+    }
+    xt.prototype.clear = jI;
+    xt.prototype.delete = KI;
+    xt.prototype.get = YI;
+    xt.prototype.has = $I;
+    xt.prototype.set = QI;
+    Zu.exports = xt;
+  });
+  var ec = f((J2, Ju) => {
+    var ZI = en(),
+      JI = kn(),
+      eT = Bn(),
+      tT = 200;
+    function nT(e, t) {
+      var n = this.__data__;
+      if (n instanceof ZI) {
+        var r = n.__data__;
+        if (!JI || r.length < tT - 1)
+          return r.push([e, t]), (this.size = ++n.size), this;
+        n = this.__data__ = new eT(r);
+      }
+      return n.set(e, t), (this.size = n.size), this;
+    }
+    Ju.exports = nT;
+  });
+  var _i = f((eq, tc) => {
+    var rT = en(),
+      iT = ru(),
+      oT = ou(),
+      aT = su(),
+      sT = cu(),
+      uT = ec();
+    function Rt(e) {
+      var t = (this.__data__ = new rT(e));
+      this.size = t.size;
+    }
+    Rt.prototype.clear = iT;
+    Rt.prototype.delete = oT;
+    Rt.prototype.get = aT;
+    Rt.prototype.has = sT;
+    Rt.prototype.set = uT;
+    tc.exports = Rt;
+  });
+  var rc = f((tq, nc) => {
+    var cT = "__lodash_hash_undefined__";
+    function lT(e) {
+      return this.__data__.set(e, cT), this;
+    }
+    nc.exports = lT;
+  });
+  var oc = f((nq, ic) => {
+    function fT(e) {
+      return this.__data__.has(e);
+    }
+    ic.exports = fT;
+  });
+  var sc = f((rq, ac) => {
+    var dT = Bn(),
+      pT = rc(),
+      gT = oc();
+    function Hn(e) {
+      var t = -1,
+        n = e == null ? 0 : e.length;
+      for (this.__data__ = new dT(); ++t < n; ) this.add(e[t]);
+    }
+    Hn.prototype.add = Hn.prototype.push = pT;
+    Hn.prototype.has = gT;
+    ac.exports = Hn;
+  });
+  var cc = f((iq, uc) => {
+    function hT(e, t) {
+      for (var n = -1, r = e == null ? 0 : e.length; ++n < r; )
+        if (t(e[n], n, e)) return !0;
+      return !1;
+    }
+    uc.exports = hT;
+  });
+  var fc = f((oq, lc) => {
+    function ET(e, t) {
+      return e.has(t);
+    }
+    lc.exports = ET;
+  });
+  var Ii = f((aq, dc) => {
+    var yT = sc(),
+      mT = cc(),
+      vT = fc(),
+      _T = 1,
+      IT = 2;
+    function TT(e, t, n, r, i, o) {
+      var s = n & _T,
+        a = e.length,
+        u = t.length;
+      if (a != u && !(s && u > a)) return !1;
+      var c = o.get(e),
+        g = o.get(t);
+      if (c && g) return c == t && g == e;
+      var p = -1,
+        d = !0,
+        h = n & IT ? new yT() : void 0;
+      for (o.set(e, t), o.set(t, e); ++p < a; ) {
+        var v = e[p],
+          m = t[p];
+        if (r) var T = s ? r(m, v, p, t, e, o) : r(v, m, p, e, t, o);
+        if (T !== void 0) {
+          if (T) continue;
+          d = !1;
+          break;
+        }
+        if (h) {
+          if (
+            !mT(t, function (y, S) {
+              if (!vT(h, S) && (v === y || i(v, y, n, r, o))) return h.push(S);
+            })
+          ) {
+            d = !1;
+            break;
+          }
+        } else if (!(v === m || i(v, m, n, r, o))) {
+          d = !1;
+          break;
+        }
+      }
+      return o.delete(e), o.delete(t), d;
+    }
+    dc.exports = TT;
+  });
+  var gc = f((sq, pc) => {
+    var bT = Ge(),
+      AT = bT.Uint8Array;
+    pc.exports = AT;
+  });
+  var Ec = f((uq, hc) => {
+    function ST(e) {
+      var t = -1,
+        n = Array(e.size);
+      return (
+        e.forEach(function (r, i) {
+          n[++t] = [i, r];
+        }),
+        n
+      );
+    }
+    hc.exports = ST;
+  });
+  var mc = f((cq, yc) => {
+    function wT(e) {
+      var t = -1,
+        n = Array(e.size);
+      return (
+        e.forEach(function (r) {
+          n[++t] = r;
+        }),
+        n
+      );
+    }
+    yc.exports = wT;
+  });
+  var bc = f((lq, Tc) => {
+    var vc = Tt(),
+      _c = gc(),
+      OT = Un(),
+      xT = Ii(),
+      RT = Ec(),
+      CT = mc(),
+      PT = 1,
+      LT = 2,
+      NT = "[object Boolean]",
+      MT = "[object Date]",
+      DT = "[object Error]",
+      FT = "[object Map]",
+      qT = "[object Number]",
+      GT = "[object RegExp]",
+      XT = "[object Set]",
+      VT = "[object String]",
+      UT = "[object Symbol]",
+      kT = "[object ArrayBuffer]",
+      BT = "[object DataView]",
+      Ic = vc ? vc.prototype : void 0,
+      Ti = Ic ? Ic.valueOf : void 0;
+    function HT(e, t, n, r, i, o, s) {
+      switch (n) {
+        case BT:
+          if (e.byteLength != t.byteLength || e.byteOffset != t.byteOffset)
+            return !1;
+          (e = e.buffer), (t = t.buffer);
+        case kT:
+          return !(e.byteLength != t.byteLength || !o(new _c(e), new _c(t)));
+        case NT:
+        case MT:
+        case qT:
+          return OT(+e, +t);
+        case DT:
+          return e.name == t.name && e.message == t.message;
+        case GT:
+        case VT:
+          return e == t + "";
+        case FT:
+          var a = RT;
+        case XT:
+          var u = r & PT;
+          if ((a || (a = CT), e.size != t.size && !u)) return !1;
+          var c = s.get(e);
+          if (c) return c == t;
+          (r |= LT), s.set(e, t);
+          var g = xT(a(e), a(t), r, i, o, s);
+          return s.delete(e), g;
+        case UT:
+          if (Ti) return Ti.call(e) == Ti.call(t);
+      }
+      return !1;
+    }
+    Tc.exports = HT;
+  });
+  var Wn = f((fq, Ac) => {
+    function WT(e, t) {
+      for (var n = -1, r = t.length, i = e.length; ++n < r; ) e[i + n] = t[n];
+      return e;
+    }
+    Ac.exports = WT;
+  });
+  var ve = f((dq, Sc) => {
+    var zT = Array.isArray;
+    Sc.exports = zT;
+  });
+  var bi = f((pq, wc) => {
+    var jT = Wn(),
+      KT = ve();
+    function YT(e, t, n) {
+      var r = t(e);
+      return KT(e) ? r : jT(r, n(e));
+    }
+    wc.exports = YT;
+  });
+  var xc = f((gq, Oc) => {
+    function $T(e, t) {
+      for (var n = -1, r = e == null ? 0 : e.length, i = 0, o = []; ++n < r; ) {
+        var s = e[n];
+        t(s, n, e) && (o[i++] = s);
+      }
+      return o;
+    }
+    Oc.exports = $T;
+  });
+  var Ai = f((hq, Rc) => {
+    function QT() {
+      return [];
+    }
+    Rc.exports = QT;
+  });
+  var Si = f((Eq, Pc) => {
+    var ZT = xc(),
+      JT = Ai(),
+      eb = Object.prototype,
+      tb = eb.propertyIsEnumerable,
+      Cc = Object.getOwnPropertySymbols,
+      nb = Cc
+        ? function (e) {
+            return e == null
+              ? []
+              : ((e = Object(e)),
+                ZT(Cc(e), function (t) {
+                  return tb.call(e, t);
+                }));
+          }
+        : JT;
+    Pc.exports = nb;
+  });
+  var Nc = f((yq, Lc) => {
+    function rb(e, t) {
+      for (var n = -1, r = Array(e); ++n < e; ) r[n] = t(n);
+      return r;
+    }
+    Lc.exports = rb;
+  });
+  var Dc = f((mq, Mc) => {
+    var ib = at(),
+      ob = Je(),
+      ab = "[object Arguments]";
+    function sb(e) {
+      return ob(e) && ib(e) == ab;
+    }
+    Mc.exports = sb;
+  });
+  var rn = f((vq, Gc) => {
+    var Fc = Dc(),
+      ub = Je(),
+      qc = Object.prototype,
+      cb = qc.hasOwnProperty,
+      lb = qc.propertyIsEnumerable,
+      fb = Fc(
+        (function () {
+          return arguments;
+        })()
+      )
+        ? Fc
+        : function (e) {
+            return ub(e) && cb.call(e, "callee") && !lb.call(e, "callee");
+          };
+    Gc.exports = fb;
+  });
+  var Vc = f((_q, Xc) => {
+    function db() {
+      return !1;
+    }
+    Xc.exports = db;
+  });
+  var zn = f((on, Ct) => {
+    var pb = Ge(),
+      gb = Vc(),
+      Bc = typeof on == "object" && on && !on.nodeType && on,
+      Uc = Bc && typeof Ct == "object" && Ct && !Ct.nodeType && Ct,
+      hb = Uc && Uc.exports === Bc,
+      kc = hb ? pb.Buffer : void 0,
+      Eb = kc ? kc.isBuffer : void 0,
+      yb = Eb || gb;
+    Ct.exports = yb;
+  });
+  var jn = f((Iq, Hc) => {
+    var mb = 9007199254740991,
+      vb = /^(?:0|[1-9]\d*)$/;
+    function _b(e, t) {
+      var n = typeof e;
+      return (
+        (t = t ?? mb),
+        !!t &&
+          (n == "number" || (n != "symbol" && vb.test(e))) &&
+          e > -1 &&
+          e % 1 == 0 &&
+          e < t
+      );
+    }
+    Hc.exports = _b;
+  });
+  var Kn = f((Tq, Wc) => {
+    var Ib = 9007199254740991;
+    function Tb(e) {
+      return typeof e == "number" && e > -1 && e % 1 == 0 && e <= Ib;
+    }
+    Wc.exports = Tb;
+  });
+  var jc = f((bq, zc) => {
+    var bb = at(),
+      Ab = Kn(),
+      Sb = Je(),
+      wb = "[object Arguments]",
+      Ob = "[object Array]",
+      xb = "[object Boolean]",
+      Rb = "[object Date]",
+      Cb = "[object Error]",
+      Pb = "[object Function]",
+      Lb = "[object Map]",
+      Nb = "[object Number]",
+      Mb = "[object Object]",
+      Db = "[object RegExp]",
+      Fb = "[object Set]",
+      qb = "[object String]",
+      Gb = "[object WeakMap]",
+      Xb = "[object ArrayBuffer]",
+      Vb = "[object DataView]",
+      Ub = "[object Float32Array]",
+      kb = "[object Float64Array]",
+      Bb = "[object Int8Array]",
+      Hb = "[object Int16Array]",
+      Wb = "[object Int32Array]",
+      zb = "[object Uint8Array]",
+      jb = "[object Uint8ClampedArray]",
+      Kb = "[object Uint16Array]",
+      Yb = "[object Uint32Array]",
+      le = {};
+    le[Ub] =
+      le[kb] =
+      le[Bb] =
+      le[Hb] =
+      le[Wb] =
+      le[zb] =
+      le[jb] =
+      le[Kb] =
+      le[Yb] =
+        !0;
+    le[wb] =
+      le[Ob] =
+      le[Xb] =
+      le[xb] =
+      le[Vb] =
+      le[Rb] =
+      le[Cb] =
+      le[Pb] =
+      le[Lb] =
+      le[Nb] =
+      le[Mb] =
+      le[Db] =
+      le[Fb] =
+      le[qb] =
+      le[Gb] =
+        !1;
+    function $b(e) {
+      return Sb(e) && Ab(e.length) && !!le[bb(e)];
+    }
+    zc.exports = $b;
+  });
+  var Yc = f((Aq, Kc) => {
+    function Qb(e) {
+      return function (t) {
+        return e(t);
+      };
+    }
+    Kc.exports = Qb;
+  });
+  var Qc = f((an, Pt) => {
+    var Zb = Qr(),
+      $c = typeof an == "object" && an && !an.nodeType && an,
+      sn = $c && typeof Pt == "object" && Pt && !Pt.nodeType && Pt,
+      Jb = sn && sn.exports === $c,
+      wi = Jb && Zb.process,
+      eA = (function () {
+        try {
+          var e = sn && sn.require && sn.require("util").types;
+          return e || (wi && wi.binding && wi.binding("util"));
+        } catch {}
+      })();
+    Pt.exports = eA;
+  });
+  var Yn = f((Sq, el) => {
+    var tA = jc(),
+      nA = Yc(),
+      Zc = Qc(),
+      Jc = Zc && Zc.isTypedArray,
+      rA = Jc ? nA(Jc) : tA;
+    el.exports = rA;
+  });
+  var Oi = f((wq, tl) => {
+    var iA = Nc(),
+      oA = rn(),
+      aA = ve(),
+      sA = zn(),
+      uA = jn(),
+      cA = Yn(),
+      lA = Object.prototype,
+      fA = lA.hasOwnProperty;
+    function dA(e, t) {
+      var n = aA(e),
+        r = !n && oA(e),
+        i = !n && !r && sA(e),
+        o = !n && !r && !i && cA(e),
+        s = n || r || i || o,
+        a = s ? iA(e.length, String) : [],
+        u = a.length;
+      for (var c in e)
+        (t || fA.call(e, c)) &&
+          !(
+            s &&
+            (c == "length" ||
+              (i && (c == "offset" || c == "parent")) ||
+              (o &&
+                (c == "buffer" || c == "byteLength" || c == "byteOffset")) ||
+              uA(c, u))
+          ) &&
+          a.push(c);
+      return a;
+    }
+    tl.exports = dA;
+  });
+  var $n = f((Oq, nl) => {
+    var pA = Object.prototype;
+    function gA(e) {
+      var t = e && e.constructor,
+        n = (typeof t == "function" && t.prototype) || pA;
+      return e === n;
+    }
+    nl.exports = gA;
+  });
+  var il = f((xq, rl) => {
+    var hA = Zr(),
+      EA = hA(Object.keys, Object);
+    rl.exports = EA;
+  });
+  var Qn = f((Rq, ol) => {
+    var yA = $n(),
+      mA = il(),
+      vA = Object.prototype,
+      _A = vA.hasOwnProperty;
+    function IA(e) {
+      if (!yA(e)) return mA(e);
+      var t = [];
+      for (var n in Object(e)) _A.call(e, n) && n != "constructor" && t.push(n);
+      return t;
+    }
+    ol.exports = IA;
+  });
+  var dt = f((Cq, al) => {
+    var TA = yi(),
+      bA = Kn();
+    function AA(e) {
+      return e != null && bA(e.length) && !TA(e);
+    }
+    al.exports = AA;
+  });
+  var un = f((Pq, sl) => {
+    var SA = Oi(),
+      wA = Qn(),
+      OA = dt();
+    function xA(e) {
+      return OA(e) ? SA(e) : wA(e);
+    }
+    sl.exports = xA;
+  });
+  var cl = f((Lq, ul) => {
+    var RA = bi(),
+      CA = Si(),
+      PA = un();
+    function LA(e) {
+      return RA(e, PA, CA);
+    }
+    ul.exports = LA;
+  });
+  var dl = f((Nq, fl) => {
+    var ll = cl(),
+      NA = 1,
+      MA = Object.prototype,
+      DA = MA.hasOwnProperty;
+    function FA(e, t, n, r, i, o) {
+      var s = n & NA,
+        a = ll(e),
+        u = a.length,
+        c = ll(t),
+        g = c.length;
+      if (u != g && !s) return !1;
+      for (var p = u; p--; ) {
+        var d = a[p];
+        if (!(s ? d in t : DA.call(t, d))) return !1;
+      }
+      var h = o.get(e),
+        v = o.get(t);
+      if (h && v) return h == t && v == e;
+      var m = !0;
+      o.set(e, t), o.set(t, e);
+      for (var T = s; ++p < u; ) {
+        d = a[p];
+        var y = e[d],
+          S = t[d];
+        if (r) var A = s ? r(S, y, d, t, e, o) : r(y, S, d, e, t, o);
+        if (!(A === void 0 ? y === S || i(y, S, n, r, o) : A)) {
+          m = !1;
+          break;
+        }
+        T || (T = d == "constructor");
+      }
+      if (m && !T) {
+        var R = e.constructor,
+          P = t.constructor;
+        R != P &&
+          "constructor" in e &&
+          "constructor" in t &&
+          !(
+            typeof R == "function" &&
+            R instanceof R &&
+            typeof P == "function" &&
+            P instanceof P
+          ) &&
+          (m = !1);
+      }
+      return o.delete(e), o.delete(t), m;
+    }
+    fl.exports = FA;
+  });
+  var gl = f((Mq, pl) => {
+    var qA = st(),
+      GA = Ge(),
+      XA = qA(GA, "DataView");
+    pl.exports = XA;
+  });
+  var El = f((Dq, hl) => {
+    var VA = st(),
+      UA = Ge(),
+      kA = VA(UA, "Promise");
+    hl.exports = kA;
+  });
+  var ml = f((Fq, yl) => {
+    var BA = st(),
+      HA = Ge(),
+      WA = BA(HA, "Set");
+    yl.exports = WA;
+  });
+  var xi = f((qq, vl) => {
+    var zA = st(),
+      jA = Ge(),
+      KA = zA(jA, "WeakMap");
+    vl.exports = KA;
+  });
+  var Zn = f((Gq, wl) => {
+    var Ri = gl(),
+      Ci = kn(),
+      Pi = El(),
+      Li = ml(),
+      Ni = xi(),
+      Sl = at(),
+      Lt = vi(),
+      _l = "[object Map]",
+      YA = "[object Object]",
+      Il = "[object Promise]",
+      Tl = "[object Set]",
+      bl = "[object WeakMap]",
+      Al = "[object DataView]",
+      $A = Lt(Ri),
+      QA = Lt(Ci),
+      ZA = Lt(Pi),
+      JA = Lt(Li),
+      e0 = Lt(Ni),
+      pt = Sl;
+    ((Ri && pt(new Ri(new ArrayBuffer(1))) != Al) ||
+      (Ci && pt(new Ci()) != _l) ||
+      (Pi && pt(Pi.resolve()) != Il) ||
+      (Li && pt(new Li()) != Tl) ||
+      (Ni && pt(new Ni()) != bl)) &&
+      (pt = function (e) {
+        var t = Sl(e),
+          n = t == YA ? e.constructor : void 0,
+          r = n ? Lt(n) : "";
+        if (r)
+          switch (r) {
+            case $A:
+              return Al;
+            case QA:
+              return _l;
+            case ZA:
+              return Il;
+            case JA:
+              return Tl;
+            case e0:
+              return bl;
+          }
+        return t;
+      });
+    wl.exports = pt;
+  });
+  var Ml = f((Xq, Nl) => {
+    var Mi = _i(),
+      t0 = Ii(),
+      n0 = bc(),
+      r0 = dl(),
+      Ol = Zn(),
+      xl = ve(),
+      Rl = zn(),
+      i0 = Yn(),
+      o0 = 1,
+      Cl = "[object Arguments]",
+      Pl = "[object Array]",
+      Jn = "[object Object]",
+      a0 = Object.prototype,
+      Ll = a0.hasOwnProperty;
+    function s0(e, t, n, r, i, o) {
+      var s = xl(e),
+        a = xl(t),
+        u = s ? Pl : Ol(e),
+        c = a ? Pl : Ol(t);
+      (u = u == Cl ? Jn : u), (c = c == Cl ? Jn : c);
+      var g = u == Jn,
+        p = c == Jn,
+        d = u == c;
+      if (d && Rl(e)) {
+        if (!Rl(t)) return !1;
+        (s = !0), (g = !1);
+      }
+      if (d && !g)
+        return (
+          o || (o = new Mi()),
+          s || i0(e) ? t0(e, t, n, r, i, o) : n0(e, t, u, n, r, i, o)
+        );
+      if (!(n & o0)) {
+        var h = g && Ll.call(e, "__wrapped__"),
+          v = p && Ll.call(t, "__wrapped__");
+        if (h || v) {
+          var m = h ? e.value() : e,
+            T = v ? t.value() : t;
+          return o || (o = new Mi()), i(m, T, n, r, o);
+        }
+      }
+      return d ? (o || (o = new Mi()), r0(e, t, n, r, i, o)) : !1;
+    }
+    Nl.exports = s0;
+  });
+  var Di = f((Vq, ql) => {
+    var u0 = Ml(),
+      Dl = Je();
+    function Fl(e, t, n, r, i) {
+      return e === t
+        ? !0
+        : e == null || t == null || (!Dl(e) && !Dl(t))
+        ? e !== e && t !== t
+        : u0(e, t, n, r, Fl, i);
+    }
+    ql.exports = Fl;
+  });
+  var Xl = f((Uq, Gl) => {
+    var c0 = _i(),
+      l0 = Di(),
+      f0 = 1,
+      d0 = 2;
+    function p0(e, t, n, r) {
+      var i = n.length,
+        o = i,
+        s = !r;
+      if (e == null) return !o;
+      for (e = Object(e); i--; ) {
+        var a = n[i];
+        if (s && a[2] ? a[1] !== e[a[0]] : !(a[0] in e)) return !1;
+      }
+      for (; ++i < o; ) {
+        a = n[i];
+        var u = a[0],
+          c = e[u],
+          g = a[1];
+        if (s && a[2]) {
+          if (c === void 0 && !(u in e)) return !1;
+        } else {
+          var p = new c0();
+          if (r) var d = r(c, g, u, e, t, p);
+          if (!(d === void 0 ? l0(g, c, f0 | d0, r, p) : d)) return !1;
+        }
+      }
+      return !0;
+    }
+    Gl.exports = p0;
+  });
+  var Fi = f((kq, Vl) => {
+    var g0 = Ye();
+    function h0(e) {
+      return e === e && !g0(e);
+    }
+    Vl.exports = h0;
+  });
+  var kl = f((Bq, Ul) => {
+    var E0 = Fi(),
+      y0 = un();
+    function m0(e) {
+      for (var t = y0(e), n = t.length; n--; ) {
+        var r = t[n],
+          i = e[r];
+        t[n] = [r, i, E0(i)];
+      }
+      return t;
+    }
+    Ul.exports = m0;
+  });
+  var qi = f((Hq, Bl) => {
+    function v0(e, t) {
+      return function (n) {
+        return n == null ? !1 : n[e] === t && (t !== void 0 || e in Object(n));
+      };
+    }
+    Bl.exports = v0;
+  });
+  var Wl = f((Wq, Hl) => {
+    var _0 = Xl(),
+      I0 = kl(),
+      T0 = qi();
+    function b0(e) {
+      var t = I0(e);
+      return t.length == 1 && t[0][2]
+        ? T0(t[0][0], t[0][1])
+        : function (n) {
+            return n === e || _0(n, e, t);
+          };
+    }
+    Hl.exports = b0;
+  });
+  var cn = f((zq, zl) => {
+    var A0 = at(),
+      S0 = Je(),
+      w0 = "[object Symbol]";
+    function O0(e) {
+      return typeof e == "symbol" || (S0(e) && A0(e) == w0);
+    }
+    zl.exports = O0;
+  });
+  var er = f((jq, jl) => {
+    var x0 = ve(),
+      R0 = cn(),
+      C0 = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
+      P0 = /^\w*$/;
+    function L0(e, t) {
+      if (x0(e)) return !1;
+      var n = typeof e;
+      return n == "number" ||
+        n == "symbol" ||
+        n == "boolean" ||
+        e == null ||
+        R0(e)
+        ? !0
+        : P0.test(e) || !C0.test(e) || (t != null && e in Object(t));
+    }
+    jl.exports = L0;
+  });
+  var $l = f((Kq, Yl) => {
+    var Kl = Bn(),
+      N0 = "Expected a function";
+    function Gi(e, t) {
+      if (typeof e != "function" || (t != null && typeof t != "function"))
+        throw new TypeError(N0);
+      var n = function () {
+        var r = arguments,
+          i = t ? t.apply(this, r) : r[0],
+          o = n.cache;
+        if (o.has(i)) return o.get(i);
+        var s = e.apply(this, r);
+        return (n.cache = o.set(i, s) || o), s;
+      };
+      return (n.cache = new (Gi.Cache || Kl)()), n;
+    }
+    Gi.Cache = Kl;
+    Yl.exports = Gi;
+  });
+  var Zl = f((Yq, Ql) => {
+    var M0 = $l(),
+      D0 = 500;
+    function F0(e) {
+      var t = M0(e, function (r) {
+          return n.size === D0 && n.clear(), r;
+        }),
+        n = t.cache;
+      return t;
+    }
+    Ql.exports = F0;
+  });
+  var ef = f(($q, Jl) => {
+    var q0 = Zl(),
+      G0 =
+        /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g,
+      X0 = /\\(\\)?/g,
+      V0 = q0(function (e) {
+        var t = [];
+        return (
+          e.charCodeAt(0) === 46 && t.push(""),
+          e.replace(G0, function (n, r, i, o) {
+            t.push(i ? o.replace(X0, "$1") : r || n);
+          }),
+          t
+        );
+      });
+    Jl.exports = V0;
+  });
+  var Xi = f((Qq, tf) => {
+    function U0(e, t) {
+      for (var n = -1, r = e == null ? 0 : e.length, i = Array(r); ++n < r; )
+        i[n] = t(e[n], n, e);
+      return i;
+    }
+    tf.exports = U0;
+  });
+  var uf = f((Zq, sf) => {
+    var nf = Tt(),
+      k0 = Xi(),
+      B0 = ve(),
+      H0 = cn(),
+      W0 = 1 / 0,
+      rf = nf ? nf.prototype : void 0,
+      of = rf ? rf.toString : void 0;
+    function af(e) {
+      if (typeof e == "string") return e;
+      if (B0(e)) return k0(e, af) + "";
+      if (H0(e)) return of ? of.call(e) : "";
+      var t = e + "";
+      return t == "0" && 1 / e == -W0 ? "-0" : t;
+    }
+    sf.exports = af;
+  });
+  var lf = f((Jq, cf) => {
+    var z0 = uf();
+    function j0(e) {
+      return e == null ? "" : z0(e);
+    }
+    cf.exports = j0;
+  });
+  var ln = f((e1, ff) => {
+    var K0 = ve(),
+      Y0 = er(),
+      $0 = ef(),
+      Q0 = lf();
+    function Z0(e, t) {
+      return K0(e) ? e : Y0(e, t) ? [e] : $0(Q0(e));
+    }
+    ff.exports = Z0;
+  });
+  var Nt = f((t1, df) => {
+    var J0 = cn(),
+      eS = 1 / 0;
+    function tS(e) {
+      if (typeof e == "string" || J0(e)) return e;
+      var t = e + "";
+      return t == "0" && 1 / e == -eS ? "-0" : t;
+    }
+    df.exports = tS;
+  });
+  var tr = f((n1, pf) => {
+    var nS = ln(),
+      rS = Nt();
+    function iS(e, t) {
+      t = nS(t, e);
+      for (var n = 0, r = t.length; e != null && n < r; ) e = e[rS(t[n++])];
+      return n && n == r ? e : void 0;
+    }
+    pf.exports = iS;
+  });
+  var nr = f((r1, gf) => {
+    var oS = tr();
+    function aS(e, t, n) {
+      var r = e == null ? void 0 : oS(e, t);
+      return r === void 0 ? n : r;
+    }
+    gf.exports = aS;
+  });
+  var Ef = f((i1, hf) => {
+    function sS(e, t) {
+      return e != null && t in Object(e);
+    }
+    hf.exports = sS;
+  });
+  var mf = f((o1, yf) => {
+    var uS = ln(),
+      cS = rn(),
+      lS = ve(),
+      fS = jn(),
+      dS = Kn(),
+      pS = Nt();
+    function gS(e, t, n) {
+      t = uS(t, e);
+      for (var r = -1, i = t.length, o = !1; ++r < i; ) {
+        var s = pS(t[r]);
+        if (!(o = e != null && n(e, s))) break;
+        e = e[s];
+      }
+      return o || ++r != i
+        ? o
+        : ((i = e == null ? 0 : e.length),
+          !!i && dS(i) && fS(s, i) && (lS(e) || cS(e)));
+    }
+    yf.exports = gS;
+  });
+  var _f = f((a1, vf) => {
+    var hS = Ef(),
+      ES = mf();
+    function yS(e, t) {
+      return e != null && ES(e, t, hS);
+    }
+    vf.exports = yS;
+  });
+  var Tf = f((s1, If) => {
+    var mS = Di(),
+      vS = nr(),
+      _S = _f(),
+      IS = er(),
+      TS = Fi(),
+      bS = qi(),
+      AS = Nt(),
+      SS = 1,
+      wS = 2;
+    function OS(e, t) {
+      return IS(e) && TS(t)
+        ? bS(AS(e), t)
+        : function (n) {
+            var r = vS(n, e);
+            return r === void 0 && r === t ? _S(n, e) : mS(t, r, SS | wS);
+          };
+    }
+    If.exports = OS;
+  });
+  var rr = f((u1, bf) => {
+    function xS(e) {
+      return e;
+    }
+    bf.exports = xS;
+  });
+  var Vi = f((c1, Af) => {
+    function RS(e) {
+      return function (t) {
+        return t?.[e];
+      };
+    }
+    Af.exports = RS;
+  });
+  var wf = f((l1, Sf) => {
+    var CS = tr();
+    function PS(e) {
+      return function (t) {
+        return CS(t, e);
+      };
+    }
+    Sf.exports = PS;
+  });
+  var xf = f((f1, Of) => {
+    var LS = Vi(),
+      NS = wf(),
+      MS = er(),
+      DS = Nt();
+    function FS(e) {
+      return MS(e) ? LS(DS(e)) : NS(e);
+    }
+    Of.exports = FS;
+  });
+  var ut = f((d1, Rf) => {
+    var qS = Wl(),
+      GS = Tf(),
+      XS = rr(),
+      VS = ve(),
+      US = xf();
+    function kS(e) {
+      return typeof e == "function"
+        ? e
+        : e == null
+        ? XS
+        : typeof e == "object"
+        ? VS(e)
+          ? GS(e[0], e[1])
+          : qS(e)
+        : US(e);
+    }
+    Rf.exports = kS;
+  });
+  var Ui = f((p1, Cf) => {
+    var BS = ut(),
+      HS = dt(),
+      WS = un();
+    function zS(e) {
+      return function (t, n, r) {
+        var i = Object(t);
+        if (!HS(t)) {
+          var o = BS(n, 3);
+          (t = WS(t)),
+            (n = function (a) {
+              return o(i[a], a, i);
+            });
+        }
+        var s = e(t, n, r);
+        return s > -1 ? i[o ? t[s] : s] : void 0;
+      };
+    }
+    Cf.exports = zS;
+  });
+  var ki = f((g1, Pf) => {
+    function jS(e, t, n, r) {
+      for (var i = e.length, o = n + (r ? 1 : -1); r ? o-- : ++o < i; )
+        if (t(e[o], o, e)) return o;
+      return -1;
+    }
+    Pf.exports = jS;
+  });
+  var Nf = f((h1, Lf) => {
+    var KS = /\s/;
+    function YS(e) {
+      for (var t = e.length; t-- && KS.test(e.charAt(t)); );
+      return t;
+    }
+    Lf.exports = YS;
+  });
+  var Df = f((E1, Mf) => {
+    var $S = Nf(),
+      QS = /^\s+/;
+    function ZS(e) {
+      return e && e.slice(0, $S(e) + 1).replace(QS, "");
+    }
+    Mf.exports = ZS;
+  });
+  var ir = f((y1, Gf) => {
+    var JS = Df(),
+      Ff = Ye(),
+      ew = cn(),
+      qf = 0 / 0,
+      tw = /^[-+]0x[0-9a-f]+$/i,
+      nw = /^0b[01]+$/i,
+      rw = /^0o[0-7]+$/i,
+      iw = parseInt;
+    function ow(e) {
+      if (typeof e == "number") return e;
+      if (ew(e)) return qf;
+      if (Ff(e)) {
+        var t = typeof e.valueOf == "function" ? e.valueOf() : e;
+        e = Ff(t) ? t + "" : t;
+      }
+      if (typeof e != "string") return e === 0 ? e : +e;
+      e = JS(e);
+      var n = nw.test(e);
+      return n || rw.test(e) ? iw(e.slice(2), n ? 2 : 8) : tw.test(e) ? qf : +e;
+    }
+    Gf.exports = ow;
+  });
+  var Uf = f((m1, Vf) => {
+    var aw = ir(),
+      Xf = 1 / 0,
+      sw = 17976931348623157e292;
+    function uw(e) {
+      if (!e) return e === 0 ? e : 0;
+      if (((e = aw(e)), e === Xf || e === -Xf)) {
+        var t = e < 0 ? -1 : 1;
+        return t * sw;
+      }
+      return e === e ? e : 0;
+    }
+    Vf.exports = uw;
+  });
+  var Bi = f((v1, kf) => {
+    var cw = Uf();
+    function lw(e) {
+      var t = cw(e),
+        n = t % 1;
+      return t === t ? (n ? t - n : t) : 0;
+    }
+    kf.exports = lw;
+  });
+  var Hf = f((_1, Bf) => {
+    var fw = ki(),
+      dw = ut(),
+      pw = Bi(),
+      gw = Math.max;
+    function hw(e, t, n) {
+      var r = e == null ? 0 : e.length;
+      if (!r) return -1;
+      var i = n == null ? 0 : pw(n);
+      return i < 0 && (i = gw(r + i, 0)), fw(e, dw(t, 3), i);
+    }
+    Bf.exports = hw;
+  });
+  var Hi = f((I1, Wf) => {
+    var Ew = Ui(),
+      yw = Hf(),
+      mw = Ew(yw);
+    Wf.exports = mw;
+  });
+  var Kf = {};
+  xe(Kf, {
+    ELEMENT_MATCHES: () => vw,
+    FLEX_PREFIXED: () => Wi,
+    IS_BROWSER_ENV: () => Ve,
+    TRANSFORM_PREFIXED: () => ct,
+    TRANSFORM_STYLE_PREFIXED: () => ar,
+    withBrowser: () => or,
+  });
+  var jf,
+    Ve,
+    or,
+    vw,
+    Wi,
+    ct,
+    zf,
+    ar,
+    sr = fe(() => {
+      "use strict";
+      (jf = ae(Hi())),
+        (Ve = typeof window < "u"),
+        (or = (e, t) => (Ve ? e() : t)),
+        (vw = or(() =>
+          (0, jf.default)(
+            [
+              "matches",
+              "matchesSelector",
+              "mozMatchesSelector",
+              "msMatchesSelector",
+              "oMatchesSelector",
+              "webkitMatchesSelector",
+            ],
+            (e) => e in Element.prototype
+          )
+        )),
+        (Wi = or(() => {
+          let e = document.createElement("i"),
+            t = [
+              "flex",
+              "-webkit-flex",
+              "-ms-flexbox",
+              "-moz-box",
+              "-webkit-box",
+            ],
+            n = "";
+          try {
+            let { length: r } = t;
+            for (let i = 0; i < r; i++) {
+              let o = t[i];
+              if (((e.style.display = o), e.style.display === o)) return o;
+            }
+            return n;
+          } catch {
+            return n;
+          }
+        }, "flex")),
+        (ct = or(() => {
+          let e = document.createElement("i");
+          if (e.style.transform == null) {
+            let t = ["Webkit", "Moz", "ms"],
+              n = "Transform",
+              { length: r } = t;
+            for (let i = 0; i < r; i++) {
+              let o = t[i] + n;
+              if (e.style[o] !== void 0) return o;
+            }
+          }
+          return "transform";
+        }, "transform")),
+        (zf = ct.split("transform")[0]),
+        (ar = zf ? zf + "TransformStyle" : "transformStyle");
+    });
+  var zi = f((T1, Jf) => {
+    var _w = 4,
+      Iw = 0.001,
+      Tw = 1e-7,
+      bw = 10,
+      fn = 11,
+      ur = 1 / (fn - 1),
+      Aw = typeof Float32Array == "function";
+    function Yf(e, t) {
+      return 1 - 3 * t + 3 * e;
+    }
+    function $f(e, t) {
+      return 3 * t - 6 * e;
+    }
+    function Qf(e) {
+      return 3 * e;
+    }
+    function cr(e, t, n) {
+      return ((Yf(t, n) * e + $f(t, n)) * e + Qf(t)) * e;
+    }
+    function Zf(e, t, n) {
+      return 3 * Yf(t, n) * e * e + 2 * $f(t, n) * e + Qf(t);
+    }
+    function Sw(e, t, n, r, i) {
+      var o,
+        s,
+        a = 0;
+      do
+        (s = t + (n - t) / 2), (o = cr(s, r, i) - e), o > 0 ? (n = s) : (t = s);
+      while (Math.abs(o) > Tw && ++a < bw);
+      return s;
+    }
+    function ww(e, t, n, r) {
+      for (var i = 0; i < _w; ++i) {
+        var o = Zf(t, n, r);
+        if (o === 0) return t;
+        var s = cr(t, n, r) - e;
+        t -= s / o;
+      }
+      return t;
+    }
+    Jf.exports = function (t, n, r, i) {
+      if (!(0 <= t && t <= 1 && 0 <= r && r <= 1))
+        throw new Error("bezier x values must be in [0, 1] range");
+      var o = Aw ? new Float32Array(fn) : new Array(fn);
+      if (t !== n || r !== i)
+        for (var s = 0; s < fn; ++s) o[s] = cr(s * ur, t, r);
+      function a(u) {
+        for (var c = 0, g = 1, p = fn - 1; g !== p && o[g] <= u; ++g) c += ur;
+        --g;
+        var d = (u - o[g]) / (o[g + 1] - o[g]),
+          h = c + d * ur,
+          v = Zf(h, t, r);
+        return v >= Iw ? ww(u, h, t, r) : v === 0 ? h : Sw(u, c, c + ur, t, r);
+      }
+      return function (c) {
+        return t === n && r === i
+          ? c
+          : c === 0
+          ? 0
+          : c === 1
+          ? 1
+          : cr(a(c), n, i);
+      };
+    };
+  });
+  var pn = {};
+  xe(pn, {
+    bounce: () => uO,
+    bouncePast: () => cO,
+    ease: () => Ow,
+    easeIn: () => xw,
+    easeInOut: () => Cw,
+    easeOut: () => Rw,
+    inBack: () => Jw,
+    inCirc: () => Yw,
+    inCubic: () => Mw,
+    inElastic: () => nO,
+    inExpo: () => zw,
+    inOutBack: () => tO,
+    inOutCirc: () => Qw,
+    inOutCubic: () => Fw,
+    inOutElastic: () => iO,
+    inOutExpo: () => Kw,
+    inOutQuad: () => Nw,
+    inOutQuart: () => Xw,
+    inOutQuint: () => kw,
+    inOutSine: () => Ww,
+    inQuad: () => Pw,
+    inQuart: () => qw,
+    inQuint: () => Vw,
+    inSine: () => Bw,
+    outBack: () => eO,
+    outBounce: () => Zw,
+    outCirc: () => $w,
+    outCubic: () => Dw,
+    outElastic: () => rO,
+    outExpo: () => jw,
+    outQuad: () => Lw,
+    outQuart: () => Gw,
+    outQuint: () => Uw,
+    outSine: () => Hw,
+    swingFrom: () => aO,
+    swingFromTo: () => oO,
+    swingTo: () => sO,
+  });
+  function Pw(e) {
+    return Math.pow(e, 2);
+  }
+  function Lw(e) {
+    return -(Math.pow(e - 1, 2) - 1);
+  }
+  function Nw(e) {
+    return (e /= 0.5) < 1 ? 0.5 * Math.pow(e, 2) : -0.5 * ((e -= 2) * e - 2);
+  }
+  function Mw(e) {
+    return Math.pow(e, 3);
+  }
+  function Dw(e) {
+    return Math.pow(e - 1, 3) + 1;
+  }
+  function Fw(e) {
+    return (e /= 0.5) < 1
+      ? 0.5 * Math.pow(e, 3)
+      : 0.5 * (Math.pow(e - 2, 3) + 2);
+  }
+  function qw(e) {
+    return Math.pow(e, 4);
+  }
+  function Gw(e) {
+    return -(Math.pow(e - 1, 4) - 1);
+  }
+  function Xw(e) {
+    return (e /= 0.5) < 1
+      ? 0.5 * Math.pow(e, 4)
+      : -0.5 * ((e -= 2) * Math.pow(e, 3) - 2);
+  }
+  function Vw(e) {
+    return Math.pow(e, 5);
+  }
+  function Uw(e) {
+    return Math.pow(e - 1, 5) + 1;
+  }
+  function kw(e) {
+    return (e /= 0.5) < 1
+      ? 0.5 * Math.pow(e, 5)
+      : 0.5 * (Math.pow(e - 2, 5) + 2);
+  }
+  function Bw(e) {
+    return -Math.cos(e * (Math.PI / 2)) + 1;
+  }
+  function Hw(e) {
+    return Math.sin(e * (Math.PI / 2));
+  }
+  function Ww(e) {
+    return -0.5 * (Math.cos(Math.PI * e) - 1);
+  }
+  function zw(e) {
+    return e === 0 ? 0 : Math.pow(2, 10 * (e - 1));
+  }
+  function jw(e) {
+    return e === 1 ? 1 : -Math.pow(2, -10 * e) + 1;
+  }
+  function Kw(e) {
+    return e === 0
+      ? 0
+      : e === 1
+      ? 1
+      : (e /= 0.5) < 1
+      ? 0.5 * Math.pow(2, 10 * (e - 1))
+      : 0.5 * (-Math.pow(2, -10 * --e) + 2);
+  }
+  function Yw(e) {
+    return -(Math.sqrt(1 - e * e) - 1);
+  }
+  function $w(e) {
+    return Math.sqrt(1 - Math.pow(e - 1, 2));
+  }
+  function Qw(e) {
+    return (e /= 0.5) < 1
+      ? -0.5 * (Math.sqrt(1 - e * e) - 1)
+      : 0.5 * (Math.sqrt(1 - (e -= 2) * e) + 1);
+  }
+  function Zw(e) {
+    return e < 1 / 2.75
+      ? 7.5625 * e * e
+      : e < 2 / 2.75
+      ? 7.5625 * (e -= 1.5 / 2.75) * e + 0.75
+      : e < 2.5 / 2.75
+      ? 7.5625 * (e -= 2.25 / 2.75) * e + 0.9375
+      : 7.5625 * (e -= 2.625 / 2.75) * e + 0.984375;
+  }
+  function Jw(e) {
+    let t = et;
+    return e * e * ((t + 1) * e - t);
+  }
+  function eO(e) {
+    let t = et;
+    return (e -= 1) * e * ((t + 1) * e + t) + 1;
+  }
+  function tO(e) {
+    let t = et;
+    return (e /= 0.5) < 1
+      ? 0.5 * (e * e * (((t *= 1.525) + 1) * e - t))
+      : 0.5 * ((e -= 2) * e * (((t *= 1.525) + 1) * e + t) + 2);
+  }
+  function nO(e) {
+    let t = et,
+      n = 0,
+      r = 1;
+    return e === 0
+      ? 0
+      : e === 1
+      ? 1
+      : (n || (n = 0.3),
+        r < 1
+          ? ((r = 1), (t = n / 4))
+          : (t = (n / (2 * Math.PI)) * Math.asin(1 / r)),
+        -(
+          r *
+          Math.pow(2, 10 * (e -= 1)) *
+          Math.sin(((e - t) * (2 * Math.PI)) / n)
+        ));
+  }
+  function rO(e) {
+    let t = et,
+      n = 0,
+      r = 1;
+    return e === 0
+      ? 0
+      : e === 1
+      ? 1
+      : (n || (n = 0.3),
+        r < 1
+          ? ((r = 1), (t = n / 4))
+          : (t = (n / (2 * Math.PI)) * Math.asin(1 / r)),
+        r * Math.pow(2, -10 * e) * Math.sin(((e - t) * (2 * Math.PI)) / n) + 1);
+  }
+  function iO(e) {
+    let t = et,
+      n = 0,
+      r = 1;
+    return e === 0
+      ? 0
+      : (e /= 1 / 2) === 2
+      ? 1
+      : (n || (n = 0.3 * 1.5),
+        r < 1
+          ? ((r = 1), (t = n / 4))
+          : (t = (n / (2 * Math.PI)) * Math.asin(1 / r)),
+        e < 1
+          ? -0.5 *
+            (r *
+              Math.pow(2, 10 * (e -= 1)) *
+              Math.sin(((e - t) * (2 * Math.PI)) / n))
+          : r *
+              Math.pow(2, -10 * (e -= 1)) *
+              Math.sin(((e - t) * (2 * Math.PI)) / n) *
+              0.5 +
+            1);
+  }
+  function oO(e) {
+    let t = et;
+    return (e /= 0.5) < 1
+      ? 0.5 * (e * e * (((t *= 1.525) + 1) * e - t))
+      : 0.5 * ((e -= 2) * e * (((t *= 1.525) + 1) * e + t) + 2);
+  }
+  function aO(e) {
+    let t = et;
+    return e * e * ((t + 1) * e - t);
+  }
+  function sO(e) {
+    let t = et;
+    return (e -= 1) * e * ((t + 1) * e + t) + 1;
+  }
+  function uO(e) {
+    return e < 1 / 2.75
+      ? 7.5625 * e * e
+      : e < 2 / 2.75
+      ? 7.5625 * (e -= 1.5 / 2.75) * e + 0.75
+      : e < 2.5 / 2.75
+      ? 7.5625 * (e -= 2.25 / 2.75) * e + 0.9375
+      : 7.5625 * (e -= 2.625 / 2.75) * e + 0.984375;
+  }
+  function cO(e) {
+    return e < 1 / 2.75
+      ? 7.5625 * e * e
+      : e < 2 / 2.75
+      ? 2 - (7.5625 * (e -= 1.5 / 2.75) * e + 0.75)
+      : e < 2.5 / 2.75
+      ? 2 - (7.5625 * (e -= 2.25 / 2.75) * e + 0.9375)
+      : 2 - (7.5625 * (e -= 2.625 / 2.75) * e + 0.984375);
+  }
+  var dn,
+    et,
+    Ow,
+    xw,
+    Rw,
+    Cw,
+    ji = fe(() => {
+      "use strict";
+      (dn = ae(zi())),
+        (et = 1.70158),
+        (Ow = (0, dn.default)(0.25, 0.1, 0.25, 1)),
+        (xw = (0, dn.default)(0.42, 0, 1, 1)),
+        (Rw = (0, dn.default)(0, 0, 0.58, 1)),
+        (Cw = (0, dn.default)(0.42, 0, 0.58, 1));
+    });
+  var td = {};
+  xe(td, {
+    applyEasing: () => fO,
+    createBezierEasing: () => lO,
+    optimizeFloat: () => gn,
+  });
+  function gn(e, t = 5, n = 10) {
+    let r = Math.pow(n, t),
+      i = Number(Math.round(e * r) / r);
+    return Math.abs(i) > 1e-4 ? i : 0;
+  }
+  function lO(e) {
+    return (0, ed.default)(...e);
+  }
+  function fO(e, t, n) {
+    return t === 0
+      ? 0
+      : t === 1
+      ? 1
+      : gn(n ? (t > 0 ? n(t) : t) : t > 0 && e && pn[e] ? pn[e](t) : t);
+  }
+  var ed,
+    Ki = fe(() => {
+      "use strict";
+      ji();
+      ed = ae(zi());
+    });
+  var id = {};
+  xe(id, {
+    createElementState: () => rd,
+    ixElements: () => SO,
+    mergeActionState: () => Yi,
+  });
+  function rd(e, t, n, r, i) {
+    let o =
+      n === dO ? (0, Mt.getIn)(i, ["config", "target", "objectId"]) : null;
+    return (0, Mt.mergeIn)(e, [r], { id: r, ref: t, refId: o, refType: n });
+  }
+  function Yi(e, t, n, r, i) {
+    let o = OO(i);
+    return (0, Mt.mergeIn)(e, [t, AO, n], r, o);
+  }
+  function OO(e) {
+    let { config: t } = e;
+    return wO.reduce((n, r) => {
+      let i = r[0],
+        o = r[1],
+        s = t[i],
+        a = t[o];
+      return s != null && a != null && (n[o] = a), n;
+    }, {});
+  }
+  var Mt,
+    A1,
+    dO,
+    S1,
+    pO,
+    gO,
+    hO,
+    EO,
+    yO,
+    mO,
+    vO,
+    _O,
+    IO,
+    TO,
+    bO,
+    nd,
+    AO,
+    SO,
+    wO,
+    od = fe(() => {
+      "use strict";
+      Mt = ae(St());
+      Re();
+      ({
+        HTML_ELEMENT: A1,
+        PLAIN_OBJECT: dO,
+        ABSTRACT_NODE: S1,
+        CONFIG_X_VALUE: pO,
+        CONFIG_Y_VALUE: gO,
+        CONFIG_Z_VALUE: hO,
+        CONFIG_VALUE: EO,
+        CONFIG_X_UNIT: yO,
+        CONFIG_Y_UNIT: mO,
+        CONFIG_Z_UNIT: vO,
+        CONFIG_UNIT: _O,
+      } = _e),
+        ({
+          IX2_SESSION_STOPPED: IO,
+          IX2_INSTANCE_ADDED: TO,
+          IX2_ELEMENT_STATE_CHANGED: bO,
+        } = ye),
+        (nd = {}),
+        (AO = "refState"),
+        (SO = (e = nd, t = {}) => {
+          switch (t.type) {
+            case IO:
+              return nd;
+            case TO: {
+              let {
+                  elementId: n,
+                  element: r,
+                  origin: i,
+                  actionItem: o,
+                  refType: s,
+                } = t.payload,
+                { actionTypeId: a } = o,
+                u = e;
+              return (
+                (0, Mt.getIn)(u, [n, r]) !== r && (u = rd(u, r, s, n, o)),
+                Yi(u, n, a, i, o)
+              );
+            }
+            case bO: {
+              let {
+                elementId: n,
+                actionTypeId: r,
+                current: i,
+                actionItem: o,
+              } = t.payload;
+              return Yi(e, n, r, i, o);
+            }
+            default:
+              return e;
+          }
+        });
+      wO = [
+        [pO, yO],
+        [gO, mO],
+        [hO, vO],
+        [EO, _O],
+      ];
+    });
+  var ad = f(($i) => {
+    "use strict";
+    Object.defineProperty($i, "__esModule", { value: !0 });
+    function xO(e, t) {
+      for (var n in t)
+        Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
+    }
+    xO($i, {
+      clearPlugin: function () {
+        return DO;
+      },
+      createPluginInstance: function () {
+        return NO;
+      },
+      getPluginConfig: function () {
+        return RO;
+      },
+      getPluginDestination: function () {
+        return LO;
+      },
+      getPluginDuration: function () {
+        return CO;
+      },
+      getPluginOrigin: function () {
+        return PO;
+      },
+      renderPlugin: function () {
+        return MO;
+      },
+    });
+    var RO = (e) => e.value,
+      CO = (e, t) => {
+        if (t.config.duration !== "auto") return null;
+        let n = parseFloat(e.getAttribute("data-duration"));
+        return n > 0
+          ? n * 1e3
+          : parseFloat(e.getAttribute("data-default-duration")) * 1e3;
+      },
+      PO = (e) => e || { value: 0 },
+      LO = (e) => ({ value: e.value }),
+      NO = (e) => {
+        let t = window.Webflow.require("lottie").createInstance(e);
+        return t.stop(), t.setSubframe(!0), t;
+      },
+      MO = (e, t, n) => {
+        if (!e) return;
+        let r = t[n.actionTypeId].value / 100;
+        e.goToFrame(e.frames * r);
+      },
+      DO = (e) => {
+        window.Webflow.require("lottie").createInstance(e).stop();
+      };
+  });
+  var ud = f((Qi) => {
+    "use strict";
+    Object.defineProperty(Qi, "__esModule", { value: !0 });
+    function FO(e, t) {
+      for (var n in t)
+        Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
+    }
+    FO(Qi, {
+      clearPlugin: function () {
+        return zO;
+      },
+      createPluginInstance: function () {
+        return HO;
+      },
+      getPluginConfig: function () {
+        return VO;
+      },
+      getPluginDestination: function () {
+        return BO;
+      },
+      getPluginDuration: function () {
+        return UO;
+      },
+      getPluginOrigin: function () {
+        return kO;
+      },
+      renderPlugin: function () {
+        return WO;
+      },
+    });
+    var qO = (e) => document.querySelector(`[data-w-id="${e}"]`),
+      GO = () => window.Webflow.require("spline"),
+      XO = (e, t) => e.filter((n) => !t.includes(n)),
+      VO = (e, t) => e.value[t],
+      UO = () => null,
+      sd = Object.freeze({
+        positionX: 0,
+        positionY: 0,
+        positionZ: 0,
+        rotationX: 0,
+        rotationY: 0,
+        rotationZ: 0,
+        scaleX: 1,
+        scaleY: 1,
+        scaleZ: 1,
+      }),
+      kO = (e, t) => {
+        let n = t.config.value,
+          r = Object.keys(n);
+        if (e) {
+          let o = Object.keys(e),
+            s = XO(r, o);
+          return s.length ? s.reduce((u, c) => ((u[c] = sd[c]), u), e) : e;
+        }
+        return r.reduce((o, s) => ((o[s] = sd[s]), o), {});
+      },
+      BO = (e) => e.value,
+      HO = (e, t) => {
+        let n = t?.config?.target?.pluginElement;
+        return n ? qO(n) : null;
+      },
+      WO = (e, t, n) => {
+        let r = GO(),
+          i = r.getInstance(e),
+          o = n.config.target.objectId,
+          s = (a) => {
+            if (!a)
+              throw new Error("Invalid spline app passed to renderSpline");
+            let u = o && a.findObjectById(o);
+            if (!u) return;
+            let { PLUGIN_SPLINE: c } = t;
+            c.positionX != null && (u.position.x = c.positionX),
+              c.positionY != null && (u.position.y = c.positionY),
+              c.positionZ != null && (u.position.z = c.positionZ),
+              c.rotationX != null && (u.rotation.x = c.rotationX),
+              c.rotationY != null && (u.rotation.y = c.rotationY),
+              c.rotationZ != null && (u.rotation.z = c.rotationZ),
+              c.scaleX != null && (u.scale.x = c.scaleX),
+              c.scaleY != null && (u.scale.y = c.scaleY),
+              c.scaleZ != null && (u.scale.z = c.scaleZ);
+          };
+        i ? s(i.spline) : r.setLoadHandler(e, s);
+      },
+      zO = () => null;
+  });
+  var cd = f((eo) => {
+    "use strict";
+    Object.defineProperty(eo, "__esModule", { value: !0 });
+    function jO(e, t) {
+      for (var n in t)
+        Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
+    }
+    jO(eo, {
+      clearPlugin: function () {
+        return nx;
+      },
+      createPluginInstance: function () {
+        return ex;
+      },
+      getPluginConfig: function () {
+        return $O;
+      },
+      getPluginDestination: function () {
+        return JO;
+      },
+      getPluginDuration: function () {
+        return QO;
+      },
+      getPluginOrigin: function () {
+        return ZO;
+      },
+      renderPlugin: function () {
+        return tx;
+      },
+    });
+    var Zi = "--wf-rive-fit",
+      Ji = "--wf-rive-alignment",
+      KO = (e) => document.querySelector(`[data-w-id="${e}"]`),
+      YO = () => window.Webflow.require("rive"),
+      $O = (e, t) => e.value.inputs[t],
+      QO = () => null,
+      ZO = (e, t) => {
+        if (e) return e;
+        let n = {},
+          { inputs: r = {} } = t.config.value;
+        for (let i in r) r[i] == null && (n[i] = 0);
+        return n;
+      },
+      JO = (e) => e.value.inputs ?? {},
+      ex = (e, t) => {
+        if ((t.config?.target?.selectorGuids || []).length > 0) return e;
+        let r = t?.config?.target?.pluginElement;
+        return r ? KO(r) : null;
+      },
+      tx = (e, { PLUGIN_RIVE: t }, n) => {
+        let r = YO(),
+          i = r.getInstance(e),
+          o = r.rive.StateMachineInputType,
+          { name: s, inputs: a = {} } = n.config.value || {};
+        function u(c) {
+          if (c.loaded) g();
+          else {
+            let p = () => {
+              g(), c?.off("load", p);
+            };
+            c?.on("load", p);
+          }
+          function g() {
+            let p = c.stateMachineInputs(s);
+            if (p != null) {
+              if ((c.isPlaying || c.play(s, !1), Zi in a || Ji in a)) {
+                let d = c.layout,
+                  h = a[Zi] ?? d.fit,
+                  v = a[Ji] ?? d.alignment;
+                (h !== d.fit || v !== d.alignment) &&
+                  (c.layout = d.copyWith({ fit: h, alignment: v }));
+              }
+              for (let d in a) {
+                if (d === Zi || d === Ji) continue;
+                let h = p.find((v) => v.name === d);
+                if (h != null)
+                  switch (h.type) {
+                    case o.Boolean: {
+                      if (a[d] != null) {
+                        let v = !!a[d];
+                        h.value = v;
+                      }
+                      break;
+                    }
+                    case o.Number: {
+                      let v = t[d];
+                      v != null && (h.value = v);
+                      break;
+                    }
+                    case o.Trigger: {
+                      a[d] && h.fire();
+                      break;
+                    }
+                  }
+              }
+            }
+          }
+        }
+        i?.rive ? u(i.rive) : r.setLoadHandler(e, u);
+      },
+      nx = (e, t) => null;
+  });
+  var no = f((to) => {
+    "use strict";
+    Object.defineProperty(to, "__esModule", { value: !0 });
+    Object.defineProperty(to, "normalizeColor", {
+      enumerable: !0,
+      get: function () {
+        return rx;
+      },
+    });
+    var ld = {
+      aliceblue: "#F0F8FF",
+      antiquewhite: "#FAEBD7",
+      aqua: "#00FFFF",
+      aquamarine: "#7FFFD4",
+      azure: "#F0FFFF",
+      beige: "#F5F5DC",
+      bisque: "#FFE4C4",
+      black: "#000000",
+      blanchedalmond: "#FFEBCD",
+      blue: "#0000FF",
+      blueviolet: "#8A2BE2",
+      brown: "#A52A2A",
+      burlywood: "#DEB887",
+      cadetblue: "#5F9EA0",
+      chartreuse: "#7FFF00",
+      chocolate: "#D2691E",
+      coral: "#FF7F50",
+      cornflowerblue: "#6495ED",
+      cornsilk: "#FFF8DC",
+      crimson: "#DC143C",
+      cyan: "#00FFFF",
+      darkblue: "#00008B",
+      darkcyan: "#008B8B",
+      darkgoldenrod: "#B8860B",
+      darkgray: "#A9A9A9",
+      darkgreen: "#006400",
+      darkgrey: "#A9A9A9",
+      darkkhaki: "#BDB76B",
+      darkmagenta: "#8B008B",
+      darkolivegreen: "#556B2F",
+      darkorange: "#FF8C00",
+      darkorchid: "#9932CC",
+      darkred: "#8B0000",
+      darksalmon: "#E9967A",
+      darkseagreen: "#8FBC8F",
+      darkslateblue: "#483D8B",
+      darkslategray: "#2F4F4F",
+      darkslategrey: "#2F4F4F",
+      darkturquoise: "#00CED1",
+      darkviolet: "#9400D3",
+      deeppink: "#FF1493",
+      deepskyblue: "#00BFFF",
+      dimgray: "#696969",
+      dimgrey: "#696969",
+      dodgerblue: "#1E90FF",
+      firebrick: "#B22222",
+      floralwhite: "#FFFAF0",
+      forestgreen: "#228B22",
+      fuchsia: "#FF00FF",
+      gainsboro: "#DCDCDC",
+      ghostwhite: "#F8F8FF",
+      gold: "#FFD700",
+      goldenrod: "#DAA520",
+      gray: "#808080",
+      green: "#008000",
+      greenyellow: "#ADFF2F",
+      grey: "#808080",
+      honeydew: "#F0FFF0",
+      hotpink: "#FF69B4",
+      indianred: "#CD5C5C",
+      indigo: "#4B0082",
+      ivory: "#FFFFF0",
+      khaki: "#F0E68C",
+      lavender: "#E6E6FA",
+      lavenderblush: "#FFF0F5",
+      lawngreen: "#7CFC00",
+      lemonchiffon: "#FFFACD",
+      lightblue: "#ADD8E6",
+      lightcoral: "#F08080",
+      lightcyan: "#E0FFFF",
+      lightgoldenrodyellow: "#FAFAD2",
+      lightgray: "#D3D3D3",
+      lightgreen: "#90EE90",
+      lightgrey: "#D3D3D3",
+      lightpink: "#FFB6C1",
+      lightsalmon: "#FFA07A",
+      lightseagreen: "#20B2AA",
+      lightskyblue: "#87CEFA",
+      lightslategray: "#778899",
+      lightslategrey: "#778899",
+      lightsteelblue: "#B0C4DE",
+      lightyellow: "#FFFFE0",
+      lime: "#00FF00",
+      limegreen: "#32CD32",
+      linen: "#FAF0E6",
+      magenta: "#FF00FF",
+      maroon: "#800000",
+      mediumaquamarine: "#66CDAA",
+      mediumblue: "#0000CD",
+      mediumorchid: "#BA55D3",
+      mediumpurple: "#9370DB",
+      mediumseagreen: "#3CB371",
+      mediumslateblue: "#7B68EE",
+      mediumspringgreen: "#00FA9A",
+      mediumturquoise: "#48D1CC",
+      mediumvioletred: "#C71585",
+      midnightblue: "#191970",
+      mintcream: "#F5FFFA",
+      mistyrose: "#FFE4E1",
+      moccasin: "#FFE4B5",
+      navajowhite: "#FFDEAD",
+      navy: "#000080",
+      oldlace: "#FDF5E6",
+      olive: "#808000",
+      olivedrab: "#6B8E23",
+      orange: "#FFA500",
+      orangered: "#FF4500",
+      orchid: "#DA70D6",
+      palegoldenrod: "#EEE8AA",
+      palegreen: "#98FB98",
+      paleturquoise: "#AFEEEE",
+      palevioletred: "#DB7093",
+      papayawhip: "#FFEFD5",
+      peachpuff: "#FFDAB9",
+      peru: "#CD853F",
+      pink: "#FFC0CB",
+      plum: "#DDA0DD",
+      powderblue: "#B0E0E6",
+      purple: "#800080",
+      rebeccapurple: "#663399",
+      red: "#FF0000",
+      rosybrown: "#BC8F8F",
+      royalblue: "#4169E1",
+      saddlebrown: "#8B4513",
+      salmon: "#FA8072",
+      sandybrown: "#F4A460",
+      seagreen: "#2E8B57",
+      seashell: "#FFF5EE",
+      sienna: "#A0522D",
+      silver: "#C0C0C0",
+      skyblue: "#87CEEB",
+      slateblue: "#6A5ACD",
+      slategray: "#708090",
+      slategrey: "#708090",
+      snow: "#FFFAFA",
+      springgreen: "#00FF7F",
+      steelblue: "#4682B4",
+      tan: "#D2B48C",
+      teal: "#008080",
+      thistle: "#D8BFD8",
+      tomato: "#FF6347",
+      turquoise: "#40E0D0",
+      violet: "#EE82EE",
+      wheat: "#F5DEB3",
+      white: "#FFFFFF",
+      whitesmoke: "#F5F5F5",
+      yellow: "#FFFF00",
+      yellowgreen: "#9ACD32",
+    };
+    function rx(e) {
+      let t,
+        n,
+        r,
+        i = 1,
+        o = e.replace(/\s/g, "").toLowerCase(),
+        a = (typeof ld[o] == "string" ? ld[o].toLowerCase() : null) || o;
+      if (a.startsWith("#")) {
+        let u = a.substring(1);
+        u.length === 3 || u.length === 4
+          ? ((t = parseInt(u[0] + u[0], 16)),
+            (n = parseInt(u[1] + u[1], 16)),
+            (r = parseInt(u[2] + u[2], 16)),
+            u.length === 4 && (i = parseInt(u[3] + u[3], 16) / 255))
+          : (u.length === 6 || u.length === 8) &&
+            ((t = parseInt(u.substring(0, 2), 16)),
+            (n = parseInt(u.substring(2, 4), 16)),
+            (r = parseInt(u.substring(4, 6), 16)),
+            u.length === 8 && (i = parseInt(u.substring(6, 8), 16) / 255));
+      } else if (a.startsWith("rgba")) {
+        let u = a.match(/rgba\(([^)]+)\)/)[1].split(",");
+        (t = parseInt(u[0], 10)),
+          (n = parseInt(u[1], 10)),
+          (r = parseInt(u[2], 10)),
+          (i = parseFloat(u[3]));
+      } else if (a.startsWith("rgb")) {
+        let u = a.match(/rgb\(([^)]+)\)/)[1].split(",");
+        (t = parseInt(u[0], 10)),
+          (n = parseInt(u[1], 10)),
+          (r = parseInt(u[2], 10));
+      } else if (a.startsWith("hsla")) {
+        let u = a.match(/hsla\(([^)]+)\)/)[1].split(","),
+          c = parseFloat(u[0]),
+          g = parseFloat(u[1].replace("%", "")) / 100,
+          p = parseFloat(u[2].replace("%", "")) / 100;
+        i = parseFloat(u[3]);
+        let d = (1 - Math.abs(2 * p - 1)) * g,
+          h = d * (1 - Math.abs(((c / 60) % 2) - 1)),
+          v = p - d / 2,
+          m,
+          T,
+          y;
+        c >= 0 && c < 60
+          ? ((m = d), (T = h), (y = 0))
+          : c >= 60 && c < 120
+          ? ((m = h), (T = d), (y = 0))
+          : c >= 120 && c < 180
+          ? ((m = 0), (T = d), (y = h))
+          : c >= 180 && c < 240
+          ? ((m = 0), (T = h), (y = d))
+          : c >= 240 && c < 300
+          ? ((m = h), (T = 0), (y = d))
+          : ((m = d), (T = 0), (y = h)),
+          (t = Math.round((m + v) * 255)),
+          (n = Math.round((T + v) * 255)),
+          (r = Math.round((y + v) * 255));
+      } else if (a.startsWith("hsl")) {
+        let u = a.match(/hsl\(([^)]+)\)/)[1].split(","),
+          c = parseFloat(u[0]),
+          g = parseFloat(u[1].replace("%", "")) / 100,
+          p = parseFloat(u[2].replace("%", "")) / 100,
+          d = (1 - Math.abs(2 * p - 1)) * g,
+          h = d * (1 - Math.abs(((c / 60) % 2) - 1)),
+          v = p - d / 2,
+          m,
+          T,
+          y;
+        c >= 0 && c < 60
+          ? ((m = d), (T = h), (y = 0))
+          : c >= 60 && c < 120
+          ? ((m = h), (T = d), (y = 0))
+          : c >= 120 && c < 180
+          ? ((m = 0), (T = d), (y = h))
+          : c >= 180 && c < 240
+          ? ((m = 0), (T = h), (y = d))
+          : c >= 240 && c < 300
+          ? ((m = h), (T = 0), (y = d))
+          : ((m = d), (T = 0), (y = h)),
+          (t = Math.round((m + v) * 255)),
+          (n = Math.round((T + v) * 255)),
+          (r = Math.round((y + v) * 255));
+      }
+      if (Number.isNaN(t) || Number.isNaN(n) || Number.isNaN(r))
+        throw new Error(
+          `Invalid color in [ix2/shared/utils/normalizeColor.js] '${e}'`
+        );
+      return { red: t, green: n, blue: r, alpha: i };
+    }
+  });
+  var fd = f((ro) => {
+    "use strict";
+    Object.defineProperty(ro, "__esModule", { value: !0 });
+    function ix(e, t) {
+      for (var n in t)
+        Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
+    }
+    ix(ro, {
+      clearPlugin: function () {
+        return dx;
+      },
+      createPluginInstance: function () {
+        return lx;
+      },
+      getPluginConfig: function () {
+        return ax;
+      },
+      getPluginDestination: function () {
+        return cx;
+      },
+      getPluginDuration: function () {
+        return sx;
+      },
+      getPluginOrigin: function () {
+        return ux;
+      },
+      renderPlugin: function () {
+        return fx;
+      },
+    });
+    var ox = no(),
+      ax = (e, t) => e.value[t],
+      sx = () => null,
+      ux = (e, t) => {
+        if (e) return e;
+        let n = t.config.value,
+          r = t.config.target.objectId,
+          i = getComputedStyle(document.documentElement).getPropertyValue(r);
+        if (n.size != null) return { size: parseInt(i, 10) };
+        if (n.red != null && n.green != null && n.blue != null)
+          return (0, ox.normalizeColor)(i);
+      },
+      cx = (e) => e.value,
+      lx = () => null,
+      fx = (e, t, n) => {
+        let r = n.config.target.objectId,
+          i = n.config.value.unit,
+          { PLUGIN_VARIABLE: o } = t,
+          { size: s, red: a, green: u, blue: c, alpha: g } = o,
+          p;
+        s != null && (p = s + i),
+          a != null &&
+            c != null &&
+            u != null &&
+            g != null &&
+            (p = `rgba(${a}, ${u}, ${c}, ${g})`),
+          p != null && document.documentElement.style.setProperty(r, p);
+      },
+      dx = (e, t) => {
+        let n = t.config.target.objectId;
+        document.documentElement.style.removeProperty(n);
+      };
+  });
+  var pd = f((io) => {
+    "use strict";
+    Object.defineProperty(io, "__esModule", { value: !0 });
+    Object.defineProperty(io, "pluginMethodMap", {
+      enumerable: !0,
+      get: function () {
+        return yx;
+      },
+    });
+    var lr = (Re(), He(Es)),
+      px = fr(ad()),
+      gx = fr(ud()),
+      hx = fr(cd()),
+      Ex = fr(fd());
+    function dd(e) {
+      if (typeof WeakMap != "function") return null;
+      var t = new WeakMap(),
+        n = new WeakMap();
+      return (dd = function (r) {
+        return r ? n : t;
+      })(e);
+    }
+    function fr(e, t) {
+      if (!t && e && e.__esModule) return e;
+      if (e === null || (typeof e != "object" && typeof e != "function"))
+        return { default: e };
+      var n = dd(t);
+      if (n && n.has(e)) return n.get(e);
+      var r = { __proto__: null },
+        i = Object.defineProperty && Object.getOwnPropertyDescriptor;
+      for (var o in e)
+        if (o !== "default" && Object.prototype.hasOwnProperty.call(e, o)) {
+          var s = i ? Object.getOwnPropertyDescriptor(e, o) : null;
+          s && (s.get || s.set)
+            ? Object.defineProperty(r, o, s)
+            : (r[o] = e[o]);
+        }
+      return (r.default = e), n && n.set(e, r), r;
+    }
+    var yx = new Map([
+      [lr.ActionTypeConsts.PLUGIN_LOTTIE, { ...px }],
+      [lr.ActionTypeConsts.PLUGIN_SPLINE, { ...gx }],
+      [lr.ActionTypeConsts.PLUGIN_RIVE, { ...hx }],
+      [lr.ActionTypeConsts.PLUGIN_VARIABLE, { ...Ex }],
+    ]);
+  });
+  var gd = {};
+  xe(gd, {
+    clearPlugin: () => lo,
+    createPluginInstance: () => vx,
+    getPluginConfig: () => ao,
+    getPluginDestination: () => uo,
+    getPluginDuration: () => mx,
+    getPluginOrigin: () => so,
+    isPluginType: () => gt,
+    renderPlugin: () => co,
+  });
+  function gt(e) {
+    return oo.pluginMethodMap.has(e);
+  }
+  var oo,
+    ht,
+    ao,
+    so,
+    mx,
+    uo,
+    vx,
+    co,
+    lo,
+    fo = fe(() => {
+      "use strict";
+      sr();
+      oo = ae(pd());
+      (ht = (e) => (t) => {
+        if (!Ve) return () => null;
+        let n = oo.pluginMethodMap.get(t);
+        if (!n) throw new Error(`IX2 no plugin configured for: ${t}`);
+        let r = n[e];
+        if (!r) throw new Error(`IX2 invalid plugin method: ${e}`);
+        return r;
+      }),
+        (ao = ht("getPluginConfig")),
+        (so = ht("getPluginOrigin")),
+        (mx = ht("getPluginDuration")),
+        (uo = ht("getPluginDestination")),
+        (vx = ht("createPluginInstance")),
+        (co = ht("renderPlugin")),
+        (lo = ht("clearPlugin"));
+    });
+  var Ed = f((N1, hd) => {
+    function _x(e, t) {
+      return e == null || e !== e ? t : e;
+    }
+    hd.exports = _x;
+  });
+  var md = f((M1, yd) => {
+    function Ix(e, t, n, r) {
+      var i = -1,
+        o = e == null ? 0 : e.length;
+      for (r && o && (n = e[++i]); ++i < o; ) n = t(n, e[i], i, e);
+      return n;
+    }
+    yd.exports = Ix;
+  });
+  var _d = f((D1, vd) => {
+    function Tx(e) {
+      return function (t, n, r) {
+        for (var i = -1, o = Object(t), s = r(t), a = s.length; a--; ) {
+          var u = s[e ? a : ++i];
+          if (n(o[u], u, o) === !1) break;
+        }
+        return t;
+      };
+    }
+    vd.exports = Tx;
+  });
+  var Td = f((F1, Id) => {
+    var bx = _d(),
+      Ax = bx();
+    Id.exports = Ax;
+  });
+  var po = f((q1, bd) => {
+    var Sx = Td(),
+      wx = un();
+    function Ox(e, t) {
+      return e && Sx(e, t, wx);
+    }
+    bd.exports = Ox;
+  });
+  var Sd = f((G1, Ad) => {
+    var xx = dt();
+    function Rx(e, t) {
+      return function (n, r) {
+        if (n == null) return n;
+        if (!xx(n)) return e(n, r);
+        for (
+          var i = n.length, o = t ? i : -1, s = Object(n);
+          (t ? o-- : ++o < i) && r(s[o], o, s) !== !1;
+
+        );
+        return n;
+      };
+    }
+    Ad.exports = Rx;
+  });
+  var go = f((X1, wd) => {
+    var Cx = po(),
+      Px = Sd(),
+      Lx = Px(Cx);
+    wd.exports = Lx;
+  });
+  var xd = f((V1, Od) => {
+    function Nx(e, t, n, r, i) {
+      return (
+        i(e, function (o, s, a) {
+          n = r ? ((r = !1), o) : t(n, o, s, a);
+        }),
+        n
+      );
+    }
+    Od.exports = Nx;
+  });
+  var Cd = f((U1, Rd) => {
+    var Mx = md(),
+      Dx = go(),
+      Fx = ut(),
+      qx = xd(),
+      Gx = ve();
+    function Xx(e, t, n) {
+      var r = Gx(e) ? Mx : qx,
+        i = arguments.length < 3;
+      return r(e, Fx(t, 4), n, i, Dx);
+    }
+    Rd.exports = Xx;
+  });
+  var Ld = f((k1, Pd) => {
+    var Vx = ki(),
+      Ux = ut(),
+      kx = Bi(),
+      Bx = Math.max,
+      Hx = Math.min;
+    function Wx(e, t, n) {
+      var r = e == null ? 0 : e.length;
+      if (!r) return -1;
+      var i = r - 1;
+      return (
+        n !== void 0 &&
+          ((i = kx(n)), (i = n < 0 ? Bx(r + i, 0) : Hx(i, r - 1))),
+        Vx(e, Ux(t, 3), i, !0)
+      );
+    }
+    Pd.exports = Wx;
+  });
+  var Md = f((B1, Nd) => {
+    var zx = Ui(),
+      jx = Ld(),
+      Kx = zx(jx);
+    Nd.exports = Kx;
+  });
+  function Dd(e, t) {
+    return e === t ? e !== 0 || t !== 0 || 1 / e === 1 / t : e !== e && t !== t;
+  }
+  function Yx(e, t) {
+    if (Dd(e, t)) return !0;
+    if (
+      typeof e != "object" ||
+      e === null ||
+      typeof t != "object" ||
+      t === null
+    )
+      return !1;
+    let n = Object.keys(e),
+      r = Object.keys(t);
+    if (n.length !== r.length) return !1;
+    for (let i = 0; i < n.length; i++)
+      if (!Object.hasOwn(t, n[i]) || !Dd(e[n[i]], t[n[i]])) return !1;
+    return !0;
+  }
+  var ho,
+    Fd = fe(() => {
+      "use strict";
+      ho = Yx;
+    });
+  var ep = {};
+  xe(ep, {
+    cleanupHTMLElement: () => zR,
+    clearAllStyles: () => WR,
+    clearObjectCache: () => dR,
+    getActionListProgress: () => KR,
+    getAffectedElements: () => _o,
+    getComputedStyle: () => _R,
+    getDestinationValues: () => OR,
+    getElementId: () => ER,
+    getInstanceId: () => gR,
+    getInstanceOrigin: () => bR,
+    getItemConfigByKey: () => wR,
+    getMaxDurationItemIndex: () => Jd,
+    getNamespacedParameterId: () => QR,
+    getRenderType: () => $d,
+    getStyleProp: () => xR,
+    mediaQueriesEqual: () => JR,
+    observeStore: () => vR,
+    reduceListToGroup: () => YR,
+    reifyState: () => yR,
+    renderHTMLElement: () => RR,
+    shallowEqual: () => ho,
+    shouldAllowMediaQuery: () => ZR,
+    shouldNamespaceEventParameter: () => $R,
+    stringifyTarget: () => eC,
+  });
+  function dR() {
+    dr.clear();
+  }
+  function gR() {
+    return "i" + pR++;
+  }
+  function ER(e, t) {
+    for (let n in e) {
+      let r = e[n];
+      if (r && r.ref === t) return r.id;
+    }
+    return "e" + hR++;
+  }
+  function yR({ events: e, actionLists: t, site: n } = {}) {
+    let r = (0, Er.default)(
+        e,
+        (s, a) => {
+          let { eventTypeId: u } = a;
+          return s[u] || (s[u] = {}), (s[u][a.id] = a), s;
+        },
+        {}
+      ),
+      i = n && n.mediaQueries,
+      o = [];
+    return (
+      i
+        ? (o = i.map((s) => s.key))
+        : ((i = []), console.warn("IX2 missing mediaQueries in site data")),
+      {
+        ixData: {
+          events: e,
+          actionLists: t,
+          eventTypeMap: r,
+          mediaQueries: i,
+          mediaQueryKeys: o,
+        },
+      }
+    );
+  }
+  function vR({ store: e, select: t, onChange: n, comparator: r = mR }) {
+    let { getState: i, subscribe: o } = e,
+      s = o(u),
+      a = t(i());
+    function u() {
+      let c = t(i());
+      if (c == null) {
+        s();
+        return;
+      }
+      r(c, a) || ((a = c), n(a, e));
+    }
+    return s;
+  }
+  function Xd(e) {
+    let t = typeof e;
+    if (t === "string") return { id: e };
+    if (e != null && t === "object") {
+      let {
+        id: n,
+        objectId: r,
+        selector: i,
+        selectorGuids: o,
+        appliesTo: s,
+        useEventTarget: a,
+      } = e;
+      return {
+        id: n,
+        objectId: r,
+        selector: i,
+        selectorGuids: o,
+        appliesTo: s,
+        useEventTarget: a,
+      };
+    }
+    return {};
+  }
+  function _o({
+    config: e,
+    event: t,
+    eventTarget: n,
+    elementRoot: r,
+    elementApi: i,
+  }) {
+    if (!i) throw new Error("IX2 missing elementApi");
+    let { targets: o } = e;
+    if (Array.isArray(o) && o.length > 0)
+      return o.reduce(
+        (N, I) =>
+          N.concat(
+            _o({
+              config: { target: I },
+              event: t,
+              eventTarget: n,
+              elementRoot: r,
+              elementApi: i,
+            })
+          ),
+        []
+      );
+    let {
+        getValidDocument: s,
+        getQuerySelector: a,
+        queryDocument: u,
+        getChildElements: c,
+        getSiblingElements: g,
+        matchSelector: p,
+        elementContains: d,
+        isSiblingNode: h,
+      } = i,
+      { target: v } = e;
+    if (!v) return [];
+    let {
+      id: m,
+      objectId: T,
+      selector: y,
+      selectorGuids: S,
+      appliesTo: A,
+      useEventTarget: R,
+    } = Xd(v);
+    if (T) return [dr.has(T) ? dr.get(T) : dr.set(T, {}).get(T)];
+    if (A === pi.PAGE) {
+      let N = s(m);
+      return N ? [N] : [];
+    }
+    let O = (t?.action?.config?.affectedElements ?? {})[m || y] || {},
+      F = !!(O.id || O.selector),
+      X,
+      V,
+      k,
+      Z = t && a(Xd(t.target));
+    if (
+      (F
+        ? ((X = O.limitAffectedElements), (V = Z), (k = a(O)))
+        : (V = k = a({ id: m, selector: y, selectorGuids: S })),
+      t && R)
+    ) {
+      let N = n && (k || R === !0) ? [n] : u(Z);
+      if (k) {
+        if (R === cR) return u(k).filter((I) => N.some((L) => d(I, L)));
+        if (R === qd) return u(k).filter((I) => N.some((L) => d(L, I)));
+        if (R === Gd) return u(k).filter((I) => N.some((L) => h(L, I)));
+      }
+      return N;
+    }
+    return V == null || k == null
+      ? []
+      : Ve && r
+      ? u(k).filter((N) => r.contains(N))
+      : X === qd
+      ? u(V, k)
+      : X === uR
+      ? c(u(V)).filter(p(k))
+      : X === Gd
+      ? g(u(V)).filter(p(k))
+      : u(k);
+  }
+  function _R({ element: e, actionItem: t }) {
+    if (!Ve) return {};
+    let { actionTypeId: n } = t;
+    switch (n) {
+      case Xt:
+      case Vt:
+      case Ut:
+      case kt:
+      case mr:
+        return window.getComputedStyle(e);
+      default:
+        return {};
+    }
+  }
+  function bR(e, t = {}, n = {}, r, i) {
+    let { getStyle: o } = i,
+      { actionTypeId: s } = r;
+    if (gt(s)) return so(s)(t[s], r);
+    switch (r.actionTypeId) {
+      case Ft:
+      case qt:
+      case Gt:
+      case mn:
+        return t[r.actionTypeId] || Io[r.actionTypeId];
+      case vn:
+        return IR(t[r.actionTypeId], r.config.filters);
+      case _n:
+        return TR(t[r.actionTypeId], r.config.fontVariations);
+      case jd:
+        return { value: (0, tt.default)(parseFloat(o(e, gr)), 1) };
+      case Xt: {
+        let a = o(e, $e),
+          u = o(e, Qe),
+          c,
+          g;
+        return (
+          r.config.widthUnit === lt
+            ? (c = Vd.test(a) ? parseFloat(a) : parseFloat(n.width))
+            : (c = (0, tt.default)(parseFloat(a), parseFloat(n.width))),
+          r.config.heightUnit === lt
+            ? (g = Vd.test(u) ? parseFloat(u) : parseFloat(n.height))
+            : (g = (0, tt.default)(parseFloat(u), parseFloat(n.height))),
+          { widthValue: c, heightValue: g }
+        );
+      }
+      case Vt:
+      case Ut:
+      case kt:
+        return kR({
+          element: e,
+          actionTypeId: r.actionTypeId,
+          computedStyle: n,
+          getStyle: o,
+        });
+      case mr:
+        return { value: (0, tt.default)(o(e, hr), n.display) };
+      case fR:
+        return t[r.actionTypeId] || { value: 0 };
+      default:
+        return;
+    }
+  }
+  function OR({ element: e, actionItem: t, elementApi: n }) {
+    if (gt(t.actionTypeId)) return uo(t.actionTypeId)(t.config);
+    switch (t.actionTypeId) {
+      case Ft:
+      case qt:
+      case Gt:
+      case mn: {
+        let { xValue: r, yValue: i, zValue: o } = t.config;
+        return { xValue: r, yValue: i, zValue: o };
+      }
+      case Xt: {
+        let { getStyle: r, setStyle: i, getProperty: o } = n,
+          { widthUnit: s, heightUnit: a } = t.config,
+          { widthValue: u, heightValue: c } = t.config;
+        if (!Ve) return { widthValue: u, heightValue: c };
+        if (s === lt) {
+          let g = r(e, $e);
+          i(e, $e, ""), (u = o(e, "offsetWidth")), i(e, $e, g);
+        }
+        if (a === lt) {
+          let g = r(e, Qe);
+          i(e, Qe, ""), (c = o(e, "offsetHeight")), i(e, Qe, g);
+        }
+        return { widthValue: u, heightValue: c };
+      }
+      case Vt:
+      case Ut:
+      case kt: {
+        let {
+          rValue: r,
+          gValue: i,
+          bValue: o,
+          aValue: s,
+          globalSwatchId: a,
+        } = t.config;
+        if (a && a.startsWith("--")) {
+          let { getStyle: u } = n,
+            c = u(e, a),
+            g = (0, Bd.normalizeColor)(c);
+          return {
+            rValue: g.red,
+            gValue: g.green,
+            bValue: g.blue,
+            aValue: g.alpha,
+          };
+        }
+        return { rValue: r, gValue: i, bValue: o, aValue: s };
+      }
+      case vn:
+        return t.config.filters.reduce(AR, {});
+      case _n:
+        return t.config.fontVariations.reduce(SR, {});
+      default: {
+        let { value: r } = t.config;
+        return { value: r };
+      }
+    }
+  }
+  function $d(e) {
+    if (/^TRANSFORM_/.test(e)) return Wd;
+    if (/^STYLE_/.test(e)) return mo;
+    if (/^GENERAL_/.test(e)) return yo;
+    if (/^PLUGIN_/.test(e)) return zd;
+  }
+  function xR(e, t) {
+    return e === mo ? t.replace("STYLE_", "").toLowerCase() : null;
+  }
+  function RR(e, t, n, r, i, o, s, a, u) {
+    switch (a) {
+      case Wd:
+        return MR(e, t, n, i, s);
+      case mo:
+        return BR(e, t, n, i, o, s);
+      case yo:
+        return HR(e, i, s);
+      case zd: {
+        let { actionTypeId: c } = i;
+        if (gt(c)) return co(c)(u, t, i);
+      }
+    }
+  }
+  function MR(e, t, n, r, i) {
+    let o = NR.map((a) => {
+        let u = Io[a],
+          {
+            xValue: c = u.xValue,
+            yValue: g = u.yValue,
+            zValue: p = u.zValue,
+            xUnit: d = "",
+            yUnit: h = "",
+            zUnit: v = "",
+          } = t[a] || {};
+        switch (a) {
+          case Ft:
+            return `${Zx}(${c}${d}, ${g}${h}, ${p}${v})`;
+          case qt:
+            return `${Jx}(${c}${d}, ${g}${h}, ${p}${v})`;
+          case Gt:
+            return `${eR}(${c}${d}) ${tR}(${g}${h}) ${nR}(${p}${v})`;
+          case mn:
+            return `${rR}(${c}${d}, ${g}${h})`;
+          default:
+            return "";
+        }
+      }).join(" "),
+      { setStyle: s } = i;
+    Et(e, ct, i), s(e, ct, o), qR(r, n) && s(e, ar, iR);
+  }
+  function DR(e, t, n, r) {
+    let i = (0, Er.default)(t, (s, a, u) => `${s} ${u}(${a}${LR(u, n)})`, ""),
+      { setStyle: o } = r;
+    Et(e, hn, r), o(e, hn, i);
+  }
+  function FR(e, t, n, r) {
+    let i = (0, Er.default)(
+        t,
+        (s, a, u) => (s.push(`"${u}" ${a}`), s),
+        []
+      ).join(", "),
+      { setStyle: o } = r;
+    Et(e, En, r), o(e, En, i);
+  }
+  function qR({ actionTypeId: e }, { xValue: t, yValue: n, zValue: r }) {
+    return (
+      (e === Ft && r !== void 0) ||
+      (e === qt && r !== void 0) ||
+      (e === Gt && (t !== void 0 || n !== void 0))
+    );
+  }
+  function UR(e, t) {
+    let n = e.exec(t);
+    return n ? n[1] : "";
+  }
+  function kR({ element: e, actionTypeId: t, computedStyle: n, getStyle: r }) {
+    let i = vo[t],
+      o = r(e, i),
+      s = XR.test(o) ? o : n[i],
+      a = UR(VR, s).split(yn);
+    return {
+      rValue: (0, tt.default)(parseInt(a[0], 10), 255),
+      gValue: (0, tt.default)(parseInt(a[1], 10), 255),
+      bValue: (0, tt.default)(parseInt(a[2], 10), 255),
+      aValue: (0, tt.default)(parseFloat(a[3]), 1),
+    };
+  }
+  function BR(e, t, n, r, i, o) {
+    let { setStyle: s } = o;
+    switch (r.actionTypeId) {
+      case Xt: {
+        let { widthUnit: a = "", heightUnit: u = "" } = r.config,
+          { widthValue: c, heightValue: g } = n;
+        c !== void 0 && (a === lt && (a = "px"), Et(e, $e, o), s(e, $e, c + a)),
+          g !== void 0 &&
+            (u === lt && (u = "px"), Et(e, Qe, o), s(e, Qe, g + u));
+        break;
+      }
+      case vn: {
+        DR(e, n, r.config, o);
+        break;
+      }
+      case _n: {
+        FR(e, n, r.config, o);
+        break;
+      }
+      case Vt:
+      case Ut:
+      case kt: {
+        let a = vo[r.actionTypeId],
+          u = Math.round(n.rValue),
+          c = Math.round(n.gValue),
+          g = Math.round(n.bValue),
+          p = n.aValue;
+        Et(e, a, o),
+          s(e, a, p >= 1 ? `rgb(${u},${c},${g})` : `rgba(${u},${c},${g},${p})`);
+        break;
+      }
+      default: {
+        let { unit: a = "" } = r.config;
+        Et(e, i, o), s(e, i, n.value + a);
+        break;
+      }
+    }
+  }
+  function HR(e, t, n) {
+    let { setStyle: r } = n;
+    switch (t.actionTypeId) {
+      case mr: {
+        let { value: i } = t.config;
+        i === oR && Ve ? r(e, hr, Wi) : r(e, hr, i);
+        return;
+      }
+    }
+  }
+  function Et(e, t, n) {
+    if (!Ve) return;
+    let r = Yd[t];
+    if (!r) return;
+    let { getStyle: i, setStyle: o } = n,
+      s = i(e, Dt);
+    if (!s) {
+      o(e, Dt, r);
+      return;
+    }
+    let a = s.split(yn).map(Kd);
+    a.indexOf(r) === -1 && o(e, Dt, a.concat(r).join(yn));
+  }
+  function Qd(e, t, n) {
+    if (!Ve) return;
+    let r = Yd[t];
+    if (!r) return;
+    let { getStyle: i, setStyle: o } = n,
+      s = i(e, Dt);
+    !s ||
+      s.indexOf(r) === -1 ||
+      o(
+        e,
+        Dt,
+        s
+          .split(yn)
+          .map(Kd)
+          .filter((a) => a !== r)
+          .join(yn)
+      );
+  }
+  function WR({ store: e, elementApi: t }) {
+    let { ixData: n } = e.getState(),
+      { events: r = {}, actionLists: i = {} } = n;
+    Object.keys(r).forEach((o) => {
+      let s = r[o],
+        { config: a } = s.action,
+        { actionListId: u } = a,
+        c = i[u];
+      c && Ud({ actionList: c, event: s, elementApi: t });
+    }),
+      Object.keys(i).forEach((o) => {
+        Ud({ actionList: i[o], elementApi: t });
+      });
+  }
+  function Ud({ actionList: e = {}, event: t, elementApi: n }) {
+    let { actionItemGroups: r, continuousParameterGroups: i } = e;
+    r &&
+      r.forEach((o) => {
+        kd({ actionGroup: o, event: t, elementApi: n });
+      }),
+      i &&
+        i.forEach((o) => {
+          let { continuousActionGroups: s } = o;
+          s.forEach((a) => {
+            kd({ actionGroup: a, event: t, elementApi: n });
+          });
+        });
+  }
+  function kd({ actionGroup: e, event: t, elementApi: n }) {
+    let { actionItems: r } = e;
+    r.forEach((i) => {
+      let { actionTypeId: o, config: s } = i,
+        a;
+      gt(o)
+        ? (a = (u) => lo(o)(u, i))
+        : (a = Zd({ effect: jR, actionTypeId: o, elementApi: n })),
+        _o({ config: s, event: t, elementApi: n }).forEach(a);
+    });
+  }
+  function zR(e, t, n) {
+    let { setStyle: r, getStyle: i } = n,
+      { actionTypeId: o } = t;
+    if (o === Xt) {
+      let { config: s } = t;
+      s.widthUnit === lt && r(e, $e, ""), s.heightUnit === lt && r(e, Qe, "");
+    }
+    i(e, Dt) && Zd({ effect: Qd, actionTypeId: o, elementApi: n })(e);
+  }
+  function jR(e, t, n) {
+    let { setStyle: r } = n;
+    Qd(e, t, n), r(e, t, ""), t === ct && r(e, ar, "");
+  }
+  function Jd(e) {
+    let t = 0,
+      n = 0;
+    return (
+      e.forEach((r, i) => {
+        let { config: o } = r,
+          s = o.delay + o.duration;
+        s >= t && ((t = s), (n = i));
+      }),
+      n
+    );
+  }
+  function KR(e, t) {
+    let { actionItemGroups: n, useFirstGroupAsInitialState: r } = e,
+      { actionItem: i, verboseTimeElapsed: o = 0 } = t,
+      s = 0,
+      a = 0;
+    return (
+      n.forEach((u, c) => {
+        if (r && c === 0) return;
+        let { actionItems: g } = u,
+          p = g[Jd(g)],
+          { config: d, actionTypeId: h } = p;
+        i.id === p.id && (a = s + o);
+        let v = $d(h) === yo ? 0 : d.duration;
+        s += d.delay + v;
+      }),
+      s > 0 ? gn(a / s) : 0
+    );
+  }
+  function YR({ actionList: e, actionItemId: t, rawData: n }) {
+    let { actionItemGroups: r, continuousParameterGroups: i } = e,
+      o = [],
+      s = (a) => (
+        o.push((0, yr.mergeIn)(a, ["config"], { delay: 0, duration: 0 })),
+        a.id === t
+      );
+    return (
+      r && r.some(({ actionItems: a }) => a.some(s)),
+      i &&
+        i.some((a) => {
+          let { continuousActionGroups: u } = a;
+          return u.some(({ actionItems: c }) => c.some(s));
+        }),
+      (0, yr.setIn)(n, ["actionLists"], {
+        [e.id]: { id: e.id, actionItemGroups: [{ actionItems: o }] },
+      })
+    );
+  }
+  function $R(e, { basedOn: t }) {
+    return (
+      (e === Xe.SCROLLING_IN_VIEW && (t === Ke.ELEMENT || t == null)) ||
+      (e === Xe.MOUSE_MOVE && t === Ke.ELEMENT)
+    );
+  }
+  function QR(e, t) {
+    return e + lR + t;
+  }
+  function ZR(e, t) {
+    return t == null ? !0 : e.indexOf(t) !== -1;
+  }
+  function JR(e, t) {
+    return ho(e && e.sort(), t && t.sort());
+  }
+  function eC(e) {
+    if (typeof e == "string") return e;
+    if (e.pluginElement && e.objectId) return e.pluginElement + Eo + e.objectId;
+    if (e.objectId) return e.objectId;
+    let { id: t = "", selector: n = "", useEventTarget: r = "" } = e;
+    return t + Eo + n + Eo + r;
+  }
+  var tt,
+    Er,
+    pr,
+    yr,
+    Bd,
+    $x,
+    Qx,
+    Zx,
+    Jx,
+    eR,
+    tR,
+    nR,
+    rR,
+    iR,
+    oR,
+    gr,
+    hn,
+    En,
+    $e,
+    Qe,
+    Hd,
+    aR,
+    sR,
+    qd,
+    uR,
+    Gd,
+    cR,
+    hr,
+    Dt,
+    lt,
+    yn,
+    lR,
+    Eo,
+    Wd,
+    yo,
+    mo,
+    zd,
+    Ft,
+    qt,
+    Gt,
+    mn,
+    jd,
+    vn,
+    _n,
+    Xt,
+    Vt,
+    Ut,
+    kt,
+    mr,
+    fR,
+    Kd,
+    vo,
+    Yd,
+    dr,
+    pR,
+    hR,
+    mR,
+    Vd,
+    IR,
+    TR,
+    AR,
+    SR,
+    wR,
+    Io,
+    CR,
+    PR,
+    LR,
+    NR,
+    GR,
+    XR,
+    VR,
+    Zd,
+    tp = fe(() => {
+      "use strict";
+      (tt = ae(Ed())), (Er = ae(Cd())), (pr = ae(Md())), (yr = ae(St()));
+      Re();
+      Fd();
+      Ki();
+      Bd = ae(no());
+      fo();
+      sr();
+      ({
+        BACKGROUND: $x,
+        TRANSFORM: Qx,
+        TRANSLATE_3D: Zx,
+        SCALE_3D: Jx,
+        ROTATE_X: eR,
+        ROTATE_Y: tR,
+        ROTATE_Z: nR,
+        SKEW: rR,
+        PRESERVE_3D: iR,
+        FLEX: oR,
+        OPACITY: gr,
+        FILTER: hn,
+        FONT_VARIATION_SETTINGS: En,
+        WIDTH: $e,
+        HEIGHT: Qe,
+        BACKGROUND_COLOR: Hd,
+        BORDER_COLOR: aR,
+        COLOR: sR,
+        CHILDREN: qd,
+        IMMEDIATE_CHILDREN: uR,
+        SIBLINGS: Gd,
+        PARENT: cR,
+        DISPLAY: hr,
+        WILL_CHANGE: Dt,
+        AUTO: lt,
+        COMMA_DELIMITER: yn,
+        COLON_DELIMITER: lR,
+        BAR_DELIMITER: Eo,
+        RENDER_TRANSFORM: Wd,
+        RENDER_GENERAL: yo,
+        RENDER_STYLE: mo,
+        RENDER_PLUGIN: zd,
+      } = _e),
+        ({
+          TRANSFORM_MOVE: Ft,
+          TRANSFORM_SCALE: qt,
+          TRANSFORM_ROTATE: Gt,
+          TRANSFORM_SKEW: mn,
+          STYLE_OPACITY: jd,
+          STYLE_FILTER: vn,
+          STYLE_FONT_VARIATION: _n,
+          STYLE_SIZE: Xt,
+          STYLE_BACKGROUND_COLOR: Vt,
+          STYLE_BORDER: Ut,
+          STYLE_TEXT_COLOR: kt,
+          GENERAL_DISPLAY: mr,
+          OBJECT_VALUE: fR,
+        } = Ae),
+        (Kd = (e) => e.trim()),
+        (vo = Object.freeze({ [Vt]: Hd, [Ut]: aR, [kt]: sR })),
+        (Yd = Object.freeze({
+          [ct]: Qx,
+          [Hd]: $x,
+          [gr]: gr,
+          [hn]: hn,
+          [$e]: $e,
+          [Qe]: Qe,
+          [En]: En,
+        })),
+        (dr = new Map());
+      pR = 1;
+      hR = 1;
+      mR = (e, t) => e === t;
+      (Vd = /px/),
+        (IR = (e, t) =>
+          t.reduce(
+            (n, r) => (n[r.type] == null && (n[r.type] = CR[r.type]), n),
+            e || {}
+          )),
+        (TR = (e, t) =>
+          t.reduce(
+            (n, r) => (
+              n[r.type] == null &&
+                (n[r.type] = PR[r.type] || r.defaultValue || 0),
+              n
+            ),
+            e || {}
+          ));
+      (AR = (e, t) => (t && (e[t.type] = t.value || 0), e)),
+        (SR = (e, t) => (t && (e[t.type] = t.value || 0), e)),
+        (wR = (e, t, n) => {
+          if (gt(e)) return ao(e)(n, t);
+          switch (e) {
+            case vn: {
+              let r = (0, pr.default)(n.filters, ({ type: i }) => i === t);
+              return r ? r.value : 0;
+            }
+            case _n: {
+              let r = (0, pr.default)(
+                n.fontVariations,
+                ({ type: i }) => i === t
+              );
+              return r ? r.value : 0;
+            }
+            default:
+              return n[t];
+          }
+        });
+      (Io = {
+        [Ft]: Object.freeze({ xValue: 0, yValue: 0, zValue: 0 }),
+        [qt]: Object.freeze({ xValue: 1, yValue: 1, zValue: 1 }),
+        [Gt]: Object.freeze({ xValue: 0, yValue: 0, zValue: 0 }),
+        [mn]: Object.freeze({ xValue: 0, yValue: 0 }),
+      }),
+        (CR = Object.freeze({
+          blur: 0,
+          "hue-rotate": 0,
+          invert: 0,
+          grayscale: 0,
+          saturate: 100,
+          sepia: 0,
+          contrast: 100,
+          brightness: 100,
+        })),
+        (PR = Object.freeze({ wght: 0, opsz: 0, wdth: 0, slnt: 0 })),
+        (LR = (e, t) => {
+          let n = (0, pr.default)(t.filters, ({ type: r }) => r === e);
+          if (n && n.unit) return n.unit;
+          switch (e) {
+            case "blur":
+              return "px";
+            case "hue-rotate":
+              return "deg";
+            default:
+              return "%";
+          }
+        }),
+        (NR = Object.keys(Io));
+      (GR = "\\(([^)]+)\\)"), (XR = /^rgb/), (VR = RegExp(`rgba?${GR}`));
+      Zd =
+        ({ effect: e, actionTypeId: t, elementApi: n }) =>
+        (r) => {
+          switch (t) {
+            case Ft:
+            case qt:
+            case Gt:
+            case mn:
+              e(r, ct, n);
+              break;
+            case vn:
+              e(r, hn, n);
+              break;
+            case _n:
+              e(r, En, n);
+              break;
+            case jd:
+              e(r, gr, n);
+              break;
+            case Xt:
+              e(r, $e, n), e(r, Qe, n);
+              break;
+            case Vt:
+            case Ut:
+            case kt:
+              e(r, vo[t], n);
+              break;
+            case mr:
+              e(r, hr, n);
+              break;
+          }
+        };
+    });
+  var yt = f((To) => {
+    "use strict";
+    Object.defineProperty(To, "__esModule", { value: !0 });
+    function tC(e, t) {
+      for (var n in t)
+        Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
+    }
+    tC(To, {
+      IX2BrowserSupport: function () {
+        return nC;
+      },
+      IX2EasingUtils: function () {
+        return iC;
+      },
+      IX2Easings: function () {
+        return rC;
+      },
+      IX2ElementsReducer: function () {
+        return oC;
+      },
+      IX2VanillaPlugins: function () {
+        return aC;
+      },
+      IX2VanillaUtils: function () {
+        return sC;
+      },
+    });
+    var nC = Bt((sr(), He(Kf))),
+      rC = Bt((ji(), He(pn))),
+      iC = Bt((Ki(), He(td))),
+      oC = Bt((od(), He(id))),
+      aC = Bt((fo(), He(gd))),
+      sC = Bt((tp(), He(ep)));
+    function np(e) {
+      if (typeof WeakMap != "function") return null;
+      var t = new WeakMap(),
+        n = new WeakMap();
+      return (np = function (r) {
+        return r ? n : t;
+      })(e);
+    }
+    function Bt(e, t) {
+      if (!t && e && e.__esModule) return e;
+      if (e === null || (typeof e != "object" && typeof e != "function"))
+        return { default: e };
+      var n = np(t);
+      if (n && n.has(e)) return n.get(e);
+      var r = { __proto__: null },
+        i = Object.defineProperty && Object.getOwnPropertyDescriptor;
+      for (var o in e)
+        if (o !== "default" && Object.prototype.hasOwnProperty.call(e, o)) {
+          var s = i ? Object.getOwnPropertyDescriptor(e, o) : null;
+          s && (s.get || s.set)
+            ? Object.defineProperty(r, o, s)
+            : (r[o] = e[o]);
+        }
+      return (r.default = e), n && n.set(e, r), r;
+    }
+  });
+  var _r,
+    nt,
+    uC,
+    cC,
+    lC,
+    fC,
+    dC,
+    pC,
+    vr,
+    rp,
+    gC,
+    hC,
+    bo,
+    EC,
+    yC,
+    mC,
+    vC,
+    ip,
+    op = fe(() => {
+      "use strict";
+      Re();
+      (_r = ae(yt())),
+        (nt = ae(St())),
+        ({
+          IX2_RAW_DATA_IMPORTED: uC,
+          IX2_SESSION_STOPPED: cC,
+          IX2_INSTANCE_ADDED: lC,
+          IX2_INSTANCE_STARTED: fC,
+          IX2_INSTANCE_REMOVED: dC,
+          IX2_ANIMATION_FRAME_CHANGED: pC,
+        } = ye),
+        ({
+          optimizeFloat: vr,
+          applyEasing: rp,
+          createBezierEasing: gC,
+        } = _r.IX2EasingUtils),
+        ({ RENDER_GENERAL: hC } = _e),
+        ({
+          getItemConfigByKey: bo,
+          getRenderType: EC,
+          getStyleProp: yC,
+        } = _r.IX2VanillaUtils),
+        (mC = (e, t) => {
+          let {
+              position: n,
+              parameterId: r,
+              actionGroups: i,
+              destinationKeys: o,
+              smoothing: s,
+              restingValue: a,
+              actionTypeId: u,
+              customEasingFn: c,
+              skipMotion: g,
+              skipToValue: p,
+            } = e,
+            { parameters: d } = t.payload,
+            h = Math.max(1 - s, 0.01),
+            v = d[r];
+          v == null && ((h = 1), (v = a));
+          let m = Math.max(v, 0) || 0,
+            T = vr(m - n),
+            y = g ? p : vr(n + T * h),
+            S = y * 100;
+          if (y === n && e.current) return e;
+          let A, R, P, O;
+          for (let X = 0, { length: V } = i; X < V; X++) {
+            let { keyframe: k, actionItems: Z } = i[X];
+            if ((X === 0 && (A = Z[0]), S >= k)) {
+              A = Z[0];
+              let N = i[X + 1],
+                I = N && S !== k;
+              (R = I ? N.actionItems[0] : null),
+                I && ((P = k / 100), (O = (N.keyframe - k) / 100));
+            }
+          }
+          let F = {};
+          if (A && !R)
+            for (let X = 0, { length: V } = o; X < V; X++) {
+              let k = o[X];
+              F[k] = bo(u, k, A.config);
+            }
+          else if (A && R && P !== void 0 && O !== void 0) {
+            let X = (y - P) / O,
+              V = A.config.easing,
+              k = rp(V, X, c);
+            for (let Z = 0, { length: N } = o; Z < N; Z++) {
+              let I = o[Z],
+                L = bo(u, I, A.config),
+                te = (bo(u, I, R.config) - L) * k + L;
+              F[I] = te;
+            }
+          }
+          return (0, nt.merge)(e, { position: y, current: F });
+        }),
+        (vC = (e, t) => {
+          let {
+              active: n,
+              origin: r,
+              start: i,
+              immediate: o,
+              renderType: s,
+              verbose: a,
+              actionItem: u,
+              destination: c,
+              destinationKeys: g,
+              pluginDuration: p,
+              instanceDelay: d,
+              customEasingFn: h,
+              skipMotion: v,
+            } = e,
+            m = u.config.easing,
+            { duration: T, delay: y } = u.config;
+          p != null && (T = p),
+            (y = d ?? y),
+            s === hC ? (T = 0) : (o || v) && (T = y = 0);
+          let { now: S } = t.payload;
+          if (n && r) {
+            let A = S - (i + y);
+            if (a) {
+              let X = S - i,
+                V = T + y,
+                k = vr(Math.min(Math.max(0, X / V), 1));
+              e = (0, nt.set)(e, "verboseTimeElapsed", V * k);
+            }
+            if (A < 0) return e;
+            let R = vr(Math.min(Math.max(0, A / T), 1)),
+              P = rp(m, R, h),
+              O = {},
+              F = null;
+            return (
+              g.length &&
+                (F = g.reduce((X, V) => {
+                  let k = c[V],
+                    Z = parseFloat(r[V]) || 0,
+                    I = (parseFloat(k) - Z) * P + Z;
+                  return (X[V] = I), X;
+                }, {})),
+              (O.current = F),
+              (O.position = R),
+              R === 1 && ((O.active = !1), (O.complete = !0)),
+              (0, nt.merge)(e, O)
+            );
+          }
+          return e;
+        }),
+        (ip = (e = Object.freeze({}), t) => {
+          switch (t.type) {
+            case uC:
+              return t.payload.ixInstances || Object.freeze({});
+            case cC:
+              return Object.freeze({});
+            case lC: {
+              let {
+                  instanceId: n,
+                  elementId: r,
+                  actionItem: i,
+                  eventId: o,
+                  eventTarget: s,
+                  eventStateKey: a,
+                  actionListId: u,
+                  groupIndex: c,
+                  isCarrier: g,
+                  origin: p,
+                  destination: d,
+                  immediate: h,
+                  verbose: v,
+                  continuous: m,
+                  parameterId: T,
+                  actionGroups: y,
+                  smoothing: S,
+                  restingValue: A,
+                  pluginInstance: R,
+                  pluginDuration: P,
+                  instanceDelay: O,
+                  skipMotion: F,
+                  skipToValue: X,
+                } = t.payload,
+                { actionTypeId: V } = i,
+                k = EC(V),
+                Z = yC(k, V),
+                N = Object.keys(d).filter(
+                  (L) => d[L] != null && typeof d[L] != "string"
+                ),
+                { easing: I } = i.config;
+              return (0, nt.set)(e, n, {
+                id: n,
+                elementId: r,
+                active: !1,
+                position: 0,
+                start: 0,
+                origin: p,
+                destination: d,
+                destinationKeys: N,
+                immediate: h,
+                verbose: v,
+                current: null,
+                actionItem: i,
+                actionTypeId: V,
+                eventId: o,
+                eventTarget: s,
+                eventStateKey: a,
+                actionListId: u,
+                groupIndex: c,
+                renderType: k,
+                isCarrier: g,
+                styleProp: Z,
+                continuous: m,
+                parameterId: T,
+                actionGroups: y,
+                smoothing: S,
+                restingValue: A,
+                pluginInstance: R,
+                pluginDuration: P,
+                instanceDelay: O,
+                skipMotion: F,
+                skipToValue: X,
+                customEasingFn:
+                  Array.isArray(I) && I.length === 4 ? gC(I) : void 0,
+              });
+            }
+            case fC: {
+              let { instanceId: n, time: r } = t.payload;
+              return (0, nt.mergeIn)(e, [n], {
+                active: !0,
+                complete: !1,
+                start: r,
+              });
+            }
+            case dC: {
+              let { instanceId: n } = t.payload;
+              if (!e[n]) return e;
+              let r = {},
+                i = Object.keys(e),
+                { length: o } = i;
+              for (let s = 0; s < o; s++) {
+                let a = i[s];
+                a !== n && (r[a] = e[a]);
+              }
+              return r;
+            }
+            case pC: {
+              let n = e,
+                r = Object.keys(e),
+                { length: i } = r;
+              for (let o = 0; o < i; o++) {
+                let s = r[o],
+                  a = e[s],
+                  u = a.continuous ? mC : vC;
+                n = (0, nt.set)(n, s, u(a, t));
+              }
+              return n;
+            }
+            default:
+              return e;
+          }
+        });
+    });
+  var _C,
+    IC,
+    TC,
+    ap,
+    sp = fe(() => {
+      "use strict";
+      Re();
+      ({
+        IX2_RAW_DATA_IMPORTED: _C,
+        IX2_SESSION_STOPPED: IC,
+        IX2_PARAMETER_CHANGED: TC,
+      } = ye),
+        (ap = (e = {}, t) => {
+          switch (t.type) {
+            case _C:
+              return t.payload.ixParameters || {};
+            case IC:
+              return {};
+            case TC: {
+              let { key: n, value: r } = t.payload;
+              return (e[n] = r), e;
+            }
+            default:
+              return e;
+          }
+        });
+    });
+  var lp = {};
+  xe(lp, { default: () => AC });
+  var up,
+    cp,
+    bC,
+    AC,
+    fp = fe(() => {
+      "use strict";
+      up = ae(di());
+      ms();
+      Xs();
+      ks();
+      cp = ae(yt());
+      op();
+      sp();
+      ({ ixElements: bC } = cp.IX2ElementsReducer),
+        (AC = (0, up.combineReducers)({
+          ixData: ys,
+          ixRequest: Gs,
+          ixSession: Us,
+          ixElements: bC,
+          ixInstances: ip,
+          ixParameters: ap,
+        }));
+    });
+  var pp = f((sG, dp) => {
+    var SC = at(),
+      wC = ve(),
+      OC = Je(),
+      xC = "[object String]";
+    function RC(e) {
+      return typeof e == "string" || (!wC(e) && OC(e) && SC(e) == xC);
+    }
+    dp.exports = RC;
+  });
+  var hp = f((uG, gp) => {
+    var CC = Vi(),
+      PC = CC("length");
+    gp.exports = PC;
+  });
+  var yp = f((cG, Ep) => {
+    var LC = "\\ud800-\\udfff",
+      NC = "\\u0300-\\u036f",
+      MC = "\\ufe20-\\ufe2f",
+      DC = "\\u20d0-\\u20ff",
+      FC = NC + MC + DC,
+      qC = "\\ufe0e\\ufe0f",
+      GC = "\\u200d",
+      XC = RegExp("[" + GC + LC + FC + qC + "]");
+    function VC(e) {
+      return XC.test(e);
+    }
+    Ep.exports = VC;
+  });
+  var wp = f((lG, Sp) => {
+    var vp = "\\ud800-\\udfff",
+      UC = "\\u0300-\\u036f",
+      kC = "\\ufe20-\\ufe2f",
+      BC = "\\u20d0-\\u20ff",
+      HC = UC + kC + BC,
+      WC = "\\ufe0e\\ufe0f",
+      zC = "[" + vp + "]",
+      Ao = "[" + HC + "]",
+      So = "\\ud83c[\\udffb-\\udfff]",
+      jC = "(?:" + Ao + "|" + So + ")",
+      _p = "[^" + vp + "]",
+      Ip = "(?:\\ud83c[\\udde6-\\uddff]){2}",
+      Tp = "[\\ud800-\\udbff][\\udc00-\\udfff]",
+      KC = "\\u200d",
+      bp = jC + "?",
+      Ap = "[" + WC + "]?",
+      YC = "(?:" + KC + "(?:" + [_p, Ip, Tp].join("|") + ")" + Ap + bp + ")*",
+      $C = Ap + bp + YC,
+      QC = "(?:" + [_p + Ao + "?", Ao, Ip, Tp, zC].join("|") + ")",
+      mp = RegExp(So + "(?=" + So + ")|" + QC + $C, "g");
+    function ZC(e) {
+      for (var t = (mp.lastIndex = 0); mp.test(e); ) ++t;
+      return t;
+    }
+    Sp.exports = ZC;
+  });
+  var xp = f((fG, Op) => {
+    var JC = hp(),
+      eP = yp(),
+      tP = wp();
+    function nP(e) {
+      return eP(e) ? tP(e) : JC(e);
+    }
+    Op.exports = nP;
+  });
+  var Cp = f((dG, Rp) => {
+    var rP = Qn(),
+      iP = Zn(),
+      oP = dt(),
+      aP = pp(),
+      sP = xp(),
+      uP = "[object Map]",
+      cP = "[object Set]";
+    function lP(e) {
+      if (e == null) return 0;
+      if (oP(e)) return aP(e) ? sP(e) : e.length;
+      var t = iP(e);
+      return t == uP || t == cP ? e.size : rP(e).length;
+    }
+    Rp.exports = lP;
+  });
+  var Lp = f((pG, Pp) => {
+    var fP = "Expected a function";
+    function dP(e) {
+      if (typeof e != "function") throw new TypeError(fP);
+      return function () {
+        var t = arguments;
+        switch (t.length) {
+          case 0:
+            return !e.call(this);
+          case 1:
+            return !e.call(this, t[0]);
+          case 2:
+            return !e.call(this, t[0], t[1]);
+          case 3:
+            return !e.call(this, t[0], t[1], t[2]);
+        }
+        return !e.apply(this, t);
+      };
+    }
+    Pp.exports = dP;
+  });
+  var wo = f((gG, Np) => {
+    var pP = st(),
+      gP = (function () {
+        try {
+          var e = pP(Object, "defineProperty");
+          return e({}, "", {}), e;
+        } catch {}
+      })();
+    Np.exports = gP;
+  });
+  var Oo = f((hG, Dp) => {
+    var Mp = wo();
+    function hP(e, t, n) {
+      t == "__proto__" && Mp
+        ? Mp(e, t, { configurable: !0, enumerable: !0, value: n, writable: !0 })
+        : (e[t] = n);
+    }
+    Dp.exports = hP;
+  });
+  var qp = f((EG, Fp) => {
+    var EP = Oo(),
+      yP = Un(),
+      mP = Object.prototype,
+      vP = mP.hasOwnProperty;
+    function _P(e, t, n) {
+      var r = e[t];
+      (!(vP.call(e, t) && yP(r, n)) || (n === void 0 && !(t in e))) &&
+        EP(e, t, n);
+    }
+    Fp.exports = _P;
+  });
+  var Vp = f((yG, Xp) => {
+    var IP = qp(),
+      TP = ln(),
+      bP = jn(),
+      Gp = Ye(),
+      AP = Nt();
+    function SP(e, t, n, r) {
+      if (!Gp(e)) return e;
+      t = TP(t, e);
+      for (var i = -1, o = t.length, s = o - 1, a = e; a != null && ++i < o; ) {
+        var u = AP(t[i]),
+          c = n;
+        if (u === "__proto__" || u === "constructor" || u === "prototype")
+          return e;
+        if (i != s) {
+          var g = a[u];
+          (c = r ? r(g, u, a) : void 0),
+            c === void 0 && (c = Gp(g) ? g : bP(t[i + 1]) ? [] : {});
+        }
+        IP(a, u, c), (a = a[u]);
+      }
+      return e;
+    }
+    Xp.exports = SP;
+  });
+  var kp = f((mG, Up) => {
+    var wP = tr(),
+      OP = Vp(),
+      xP = ln();
+    function RP(e, t, n) {
+      for (var r = -1, i = t.length, o = {}; ++r < i; ) {
+        var s = t[r],
+          a = wP(e, s);
+        n(a, s) && OP(o, xP(s, e), a);
+      }
+      return o;
+    }
+    Up.exports = RP;
+  });
+  var Hp = f((vG, Bp) => {
+    var CP = Wn(),
+      PP = Jr(),
+      LP = Si(),
+      NP = Ai(),
+      MP = Object.getOwnPropertySymbols,
+      DP = MP
+        ? function (e) {
+            for (var t = []; e; ) CP(t, LP(e)), (e = PP(e));
+            return t;
+          }
+        : NP;
+    Bp.exports = DP;
+  });
+  var zp = f((_G, Wp) => {
+    function FP(e) {
+      var t = [];
+      if (e != null) for (var n in Object(e)) t.push(n);
+      return t;
+    }
+    Wp.exports = FP;
+  });
+  var Kp = f((IG, jp) => {
+    var qP = Ye(),
+      GP = $n(),
+      XP = zp(),
+      VP = Object.prototype,
+      UP = VP.hasOwnProperty;
+    function kP(e) {
+      if (!qP(e)) return XP(e);
+      var t = GP(e),
+        n = [];
+      for (var r in e)
+        (r == "constructor" && (t || !UP.call(e, r))) || n.push(r);
+      return n;
+    }
+    jp.exports = kP;
+  });
+  var $p = f((TG, Yp) => {
+    var BP = Oi(),
+      HP = Kp(),
+      WP = dt();
+    function zP(e) {
+      return WP(e) ? BP(e, !0) : HP(e);
+    }
+    Yp.exports = zP;
+  });
+  var Zp = f((bG, Qp) => {
+    var jP = bi(),
+      KP = Hp(),
+      YP = $p();
+    function $P(e) {
+      return jP(e, YP, KP);
+    }
+    Qp.exports = $P;
+  });
+  var eg = f((AG, Jp) => {
+    var QP = Xi(),
+      ZP = ut(),
+      JP = kp(),
+      eL = Zp();
+    function tL(e, t) {
+      if (e == null) return {};
+      var n = QP(eL(e), function (r) {
+        return [r];
+      });
+      return (
+        (t = ZP(t)),
+        JP(e, n, function (r, i) {
+          return t(r, i[0]);
+        })
+      );
+    }
+    Jp.exports = tL;
+  });
+  var ng = f((SG, tg) => {
+    var nL = ut(),
+      rL = Lp(),
+      iL = eg();
+    function oL(e, t) {
+      return iL(e, rL(nL(t)));
+    }
+    tg.exports = oL;
+  });
+  var ig = f((wG, rg) => {
+    var aL = Qn(),
+      sL = Zn(),
+      uL = rn(),
+      cL = ve(),
+      lL = dt(),
+      fL = zn(),
+      dL = $n(),
+      pL = Yn(),
+      gL = "[object Map]",
+      hL = "[object Set]",
+      EL = Object.prototype,
+      yL = EL.hasOwnProperty;
+    function mL(e) {
+      if (e == null) return !0;
+      if (
+        lL(e) &&
+        (cL(e) ||
+          typeof e == "string" ||
+          typeof e.splice == "function" ||
+          fL(e) ||
+          pL(e) ||
+          uL(e))
+      )
+        return !e.length;
+      var t = sL(e);
+      if (t == gL || t == hL) return !e.size;
+      if (dL(e)) return !aL(e).length;
+      for (var n in e) if (yL.call(e, n)) return !1;
+      return !0;
+    }
+    rg.exports = mL;
+  });
+  var ag = f((OG, og) => {
+    var vL = Oo(),
+      _L = po(),
+      IL = ut();
+    function TL(e, t) {
+      var n = {};
+      return (
+        (t = IL(t, 3)),
+        _L(e, function (r, i, o) {
+          vL(n, i, t(r, i, o));
+        }),
+        n
+      );
+    }
+    og.exports = TL;
+  });
+  var ug = f((xG, sg) => {
+    function bL(e, t) {
+      for (
+        var n = -1, r = e == null ? 0 : e.length;
+        ++n < r && t(e[n], n, e) !== !1;
+
+      );
+      return e;
+    }
+    sg.exports = bL;
+  });
+  var lg = f((RG, cg) => {
+    var AL = rr();
+    function SL(e) {
+      return typeof e == "function" ? e : AL;
+    }
+    cg.exports = SL;
+  });
+  var dg = f((CG, fg) => {
+    var wL = ug(),
+      OL = go(),
+      xL = lg(),
+      RL = ve();
+    function CL(e, t) {
+      var n = RL(e) ? wL : OL;
+      return n(e, xL(t));
+    }
+    fg.exports = CL;
+  });
+  var gg = f((PG, pg) => {
+    var PL = Ge(),
+      LL = function () {
+        return PL.Date.now();
+      };
+    pg.exports = LL;
+  });
+  var yg = f((LG, Eg) => {
+    var NL = Ye(),
+      xo = gg(),
+      hg = ir(),
+      ML = "Expected a function",
+      DL = Math.max,
+      FL = Math.min;
+    function qL(e, t, n) {
+      var r,
+        i,
+        o,
+        s,
+        a,
+        u,
+        c = 0,
+        g = !1,
+        p = !1,
+        d = !0;
+      if (typeof e != "function") throw new TypeError(ML);
+      (t = hg(t) || 0),
+        NL(n) &&
+          ((g = !!n.leading),
+          (p = "maxWait" in n),
+          (o = p ? DL(hg(n.maxWait) || 0, t) : o),
+          (d = "trailing" in n ? !!n.trailing : d));
+      function h(O) {
+        var F = r,
+          X = i;
+        return (r = i = void 0), (c = O), (s = e.apply(X, F)), s;
+      }
+      function v(O) {
+        return (c = O), (a = setTimeout(y, t)), g ? h(O) : s;
+      }
+      function m(O) {
+        var F = O - u,
+          X = O - c,
+          V = t - F;
+        return p ? FL(V, o - X) : V;
+      }
+      function T(O) {
+        var F = O - u,
+          X = O - c;
+        return u === void 0 || F >= t || F < 0 || (p && X >= o);
+      }
+      function y() {
+        var O = xo();
+        if (T(O)) return S(O);
+        a = setTimeout(y, m(O));
+      }
+      function S(O) {
+        return (a = void 0), d && r ? h(O) : ((r = i = void 0), s);
+      }
+      function A() {
+        a !== void 0 && clearTimeout(a), (c = 0), (r = u = i = a = void 0);
+      }
+      function R() {
+        return a === void 0 ? s : S(xo());
+      }
+      function P() {
+        var O = xo(),
+          F = T(O);
+        if (((r = arguments), (i = this), (u = O), F)) {
+          if (a === void 0) return v(u);
+          if (p) return clearTimeout(a), (a = setTimeout(y, t)), h(u);
+        }
+        return a === void 0 && (a = setTimeout(y, t)), s;
+      }
+      return (P.cancel = A), (P.flush = R), P;
+    }
+    Eg.exports = qL;
+  });
+  var vg = f((NG, mg) => {
+    var GL = yg(),
+      XL = Ye(),
+      VL = "Expected a function";
+    function UL(e, t, n) {
+      var r = !0,
+        i = !0;
+      if (typeof e != "function") throw new TypeError(VL);
+      return (
+        XL(n) &&
+          ((r = "leading" in n ? !!n.leading : r),
+          (i = "trailing" in n ? !!n.trailing : i)),
+        GL(e, t, { leading: r, maxWait: t, trailing: i })
+      );
+    }
+    mg.exports = UL;
+  });
+  var Ig = {};
+  xe(Ig, {
+    actionListPlaybackChanged: () => Wt,
+    animationFrameChanged: () => Tr,
+    clearRequested: () => dN,
+    elementStateChanged: () => Fo,
+    eventListenerAdded: () => Ir,
+    eventStateChanged: () => No,
+    instanceAdded: () => Mo,
+    instanceRemoved: () => Do,
+    instanceStarted: () => br,
+    mediaQueriesDefined: () => Go,
+    parameterChanged: () => Ht,
+    playbackRequested: () => lN,
+    previewRequested: () => cN,
+    rawDataImported: () => Ro,
+    sessionInitialized: () => Co,
+    sessionStarted: () => Po,
+    sessionStopped: () => Lo,
+    stopRequested: () => fN,
+    testFrameRendered: () => pN,
+    viewportWidthChanged: () => qo,
+  });
+  var _g,
+    kL,
+    BL,
+    HL,
+    WL,
+    zL,
+    jL,
+    KL,
+    YL,
+    $L,
+    QL,
+    ZL,
+    JL,
+    eN,
+    tN,
+    nN,
+    rN,
+    iN,
+    oN,
+    aN,
+    sN,
+    uN,
+    Ro,
+    Co,
+    Po,
+    Lo,
+    cN,
+    lN,
+    fN,
+    dN,
+    Ir,
+    pN,
+    No,
+    Tr,
+    Ht,
+    Mo,
+    br,
+    Do,
+    Fo,
+    Wt,
+    qo,
+    Go,
+    Ar = fe(() => {
+      "use strict";
+      Re();
+      (_g = ae(yt())),
+        ({
+          IX2_RAW_DATA_IMPORTED: kL,
+          IX2_SESSION_INITIALIZED: BL,
+          IX2_SESSION_STARTED: HL,
+          IX2_SESSION_STOPPED: WL,
+          IX2_PREVIEW_REQUESTED: zL,
+          IX2_PLAYBACK_REQUESTED: jL,
+          IX2_STOP_REQUESTED: KL,
+          IX2_CLEAR_REQUESTED: YL,
+          IX2_EVENT_LISTENER_ADDED: $L,
+          IX2_TEST_FRAME_RENDERED: QL,
+          IX2_EVENT_STATE_CHANGED: ZL,
+          IX2_ANIMATION_FRAME_CHANGED: JL,
+          IX2_PARAMETER_CHANGED: eN,
+          IX2_INSTANCE_ADDED: tN,
+          IX2_INSTANCE_STARTED: nN,
+          IX2_INSTANCE_REMOVED: rN,
+          IX2_ELEMENT_STATE_CHANGED: iN,
+          IX2_ACTION_LIST_PLAYBACK_CHANGED: oN,
+          IX2_VIEWPORT_WIDTH_CHANGED: aN,
+          IX2_MEDIA_QUERIES_DEFINED: sN,
+        } = ye),
+        ({ reifyState: uN } = _g.IX2VanillaUtils),
+        (Ro = (e) => ({ type: kL, payload: { ...uN(e) } })),
+        (Co = ({ hasBoundaryNodes: e, reducedMotion: t }) => ({
+          type: BL,
+          payload: { hasBoundaryNodes: e, reducedMotion: t },
+        })),
+        (Po = () => ({ type: HL })),
+        (Lo = () => ({ type: WL })),
+        (cN = ({ rawData: e, defer: t }) => ({
+          type: zL,
+          payload: { defer: t, rawData: e },
+        })),
+        (lN = ({
+          actionTypeId: e = Ae.GENERAL_START_ACTION,
+          actionListId: t,
+          actionItemId: n,
+          eventId: r,
+          allowEvents: i,
+          immediate: o,
+          testManual: s,
+          verbose: a,
+          rawData: u,
+        }) => ({
+          type: jL,
+          payload: {
+            actionTypeId: e,
+            actionListId: t,
+            actionItemId: n,
+            testManual: s,
+            eventId: r,
+            allowEvents: i,
+            immediate: o,
+            verbose: a,
+            rawData: u,
+          },
+        })),
+        (fN = (e) => ({ type: KL, payload: { actionListId: e } })),
+        (dN = () => ({ type: YL })),
+        (Ir = (e, t) => ({
+          type: $L,
+          payload: { target: e, listenerParams: t },
+        })),
+        (pN = (e = 1) => ({ type: QL, payload: { step: e } })),
+        (No = (e, t) => ({ type: ZL, payload: { stateKey: e, newState: t } })),
+        (Tr = (e, t) => ({ type: JL, payload: { now: e, parameters: t } })),
+        (Ht = (e, t) => ({ type: eN, payload: { key: e, value: t } })),
+        (Mo = (e) => ({ type: tN, payload: { ...e } })),
+        (br = (e, t) => ({ type: nN, payload: { instanceId: e, time: t } })),
+        (Do = (e) => ({ type: rN, payload: { instanceId: e } })),
+        (Fo = (e, t, n, r) => ({
+          type: iN,
+          payload: { elementId: e, actionTypeId: t, current: n, actionItem: r },
+        })),
+        (Wt = ({ actionListId: e, isPlaying: t }) => ({
+          type: oN,
+          payload: { actionListId: e, isPlaying: t },
+        })),
+        (qo = ({ width: e, mediaQueries: t }) => ({
+          type: aN,
+          payload: { width: e, mediaQueries: t },
+        })),
+        (Go = () => ({ type: sN }));
+    });
+  var we = {};
+  xe(we, {
+    elementContains: () => Uo,
+    getChildElements: () => bN,
+    getClosestElement: () => In,
+    getProperty: () => mN,
+    getQuerySelector: () => Vo,
+    getRefType: () => ko,
+    getSiblingElements: () => AN,
+    getStyle: () => yN,
+    getValidDocument: () => _N,
+    isSiblingNode: () => TN,
+    matchSelector: () => vN,
+    queryDocument: () => IN,
+    setStyle: () => EN,
+  });
+  function EN(e, t, n) {
+    e.style[t] = n;
+  }
+  function yN(e, t) {
+    return t.startsWith("--")
+      ? window.getComputedStyle(document.documentElement).getPropertyValue(t)
+      : e.style[t];
+  }
+  function mN(e, t) {
+    return e[t];
+  }
+  function vN(e) {
+    return (t) => t[Xo](e);
+  }
+  function Vo({ id: e, selector: t }) {
+    if (e) {
+      let n = e;
+      if (e.indexOf(Tg) !== -1) {
+        let r = e.split(Tg),
+          i = r[0];
+        if (((n = r[1]), i !== document.documentElement.getAttribute(Ag)))
+          return null;
+      }
+      return `[data-w-id="${n}"], [data-w-id^="${n}_instance"]`;
+    }
+    return t;
+  }
+  function _N(e) {
+    return e == null || e === document.documentElement.getAttribute(Ag)
+      ? document
+      : null;
+  }
+  function IN(e, t) {
+    return Array.prototype.slice.call(
+      document.querySelectorAll(t ? e + " " + t : e)
+    );
+  }
+  function Uo(e, t) {
+    return e.contains(t);
+  }
+  function TN(e, t) {
+    return e !== t && e.parentNode === t.parentNode;
+  }
+  function bN(e) {
+    let t = [];
+    for (let n = 0, { length: r } = e || []; n < r; n++) {
+      let { children: i } = e[n],
+        { length: o } = i;
+      if (o) for (let s = 0; s < o; s++) t.push(i[s]);
+    }
+    return t;
+  }
+  function AN(e = []) {
+    let t = [],
+      n = [];
+    for (let r = 0, { length: i } = e; r < i; r++) {
+      let { parentNode: o } = e[r];
+      if (!o || !o.children || !o.children.length || n.indexOf(o) !== -1)
+        continue;
+      n.push(o);
+      let s = o.firstElementChild;
+      for (; s != null; )
+        e.indexOf(s) === -1 && t.push(s), (s = s.nextElementSibling);
+    }
+    return t;
+  }
+  function ko(e) {
+    return e != null && typeof e == "object"
+      ? e instanceof Element
+        ? gN
+        : hN
+      : null;
+  }
+  var bg,
+    Xo,
+    Tg,
+    gN,
+    hN,
+    Ag,
+    In,
+    Sg = fe(() => {
+      "use strict";
+      bg = ae(yt());
+      Re();
+      ({ ELEMENT_MATCHES: Xo } = bg.IX2BrowserSupport),
+        ({
+          IX2_ID_DELIMITER: Tg,
+          HTML_ELEMENT: gN,
+          PLAIN_OBJECT: hN,
+          WF_PAGE: Ag,
+        } = _e);
+      In = Element.prototype.closest
+        ? (e, t) => (document.documentElement.contains(e) ? e.closest(t) : null)
+        : (e, t) => {
+            if (!document.documentElement.contains(e)) return null;
+            let n = e;
+            do {
+              if (n[Xo] && n[Xo](t)) return n;
+              n = n.parentNode;
+            } while (n != null);
+            return null;
+          };
+    });
+  var Bo = f((FG, Og) => {
+    var SN = Ye(),
+      wg = Object.create,
+      wN = (function () {
+        function e() {}
+        return function (t) {
+          if (!SN(t)) return {};
+          if (wg) return wg(t);
+          e.prototype = t;
+          var n = new e();
+          return (e.prototype = void 0), n;
+        };
+      })();
+    Og.exports = wN;
+  });
+  var Sr = f((qG, xg) => {
+    function ON() {}
+    xg.exports = ON;
+  });
+  var Or = f((GG, Rg) => {
+    var xN = Bo(),
+      RN = Sr();
+    function wr(e, t) {
+      (this.__wrapped__ = e),
+        (this.__actions__ = []),
+        (this.__chain__ = !!t),
+        (this.__index__ = 0),
+        (this.__values__ = void 0);
+    }
+    wr.prototype = xN(RN.prototype);
+    wr.prototype.constructor = wr;
+    Rg.exports = wr;
+  });
+  var Ng = f((XG, Lg) => {
+    var Cg = Tt(),
+      CN = rn(),
+      PN = ve(),
+      Pg = Cg ? Cg.isConcatSpreadable : void 0;
+    function LN(e) {
+      return PN(e) || CN(e) || !!(Pg && e && e[Pg]);
+    }
+    Lg.exports = LN;
+  });
+  var Fg = f((VG, Dg) => {
+    var NN = Wn(),
+      MN = Ng();
+    function Mg(e, t, n, r, i) {
+      var o = -1,
+        s = e.length;
+      for (n || (n = MN), i || (i = []); ++o < s; ) {
+        var a = e[o];
+        t > 0 && n(a)
+          ? t > 1
+            ? Mg(a, t - 1, n, r, i)
+            : NN(i, a)
+          : r || (i[i.length] = a);
+      }
+      return i;
+    }
+    Dg.exports = Mg;
+  });
+  var Gg = f((UG, qg) => {
+    var DN = Fg();
+    function FN(e) {
+      var t = e == null ? 0 : e.length;
+      return t ? DN(e, 1) : [];
+    }
+    qg.exports = FN;
+  });
+  var Vg = f((kG, Xg) => {
+    function qN(e, t, n) {
+      switch (n.length) {
+        case 0:
+          return e.call(t);
+        case 1:
+          return e.call(t, n[0]);
+        case 2:
+          return e.call(t, n[0], n[1]);
+        case 3:
+          return e.call(t, n[0], n[1], n[2]);
+      }
+      return e.apply(t, n);
+    }
+    Xg.exports = qN;
+  });
+  var Bg = f((BG, kg) => {
+    var GN = Vg(),
+      Ug = Math.max;
+    function XN(e, t, n) {
+      return (
+        (t = Ug(t === void 0 ? e.length - 1 : t, 0)),
+        function () {
+          for (
+            var r = arguments, i = -1, o = Ug(r.length - t, 0), s = Array(o);
+            ++i < o;
+
+          )
+            s[i] = r[t + i];
+          i = -1;
+          for (var a = Array(t + 1); ++i < t; ) a[i] = r[i];
+          return (a[t] = n(s)), GN(e, this, a);
+        }
+      );
+    }
+    kg.exports = XN;
+  });
+  var Wg = f((HG, Hg) => {
+    function VN(e) {
+      return function () {
+        return e;
+      };
+    }
+    Hg.exports = VN;
+  });
+  var Kg = f((WG, jg) => {
+    var UN = Wg(),
+      zg = wo(),
+      kN = rr(),
+      BN = zg
+        ? function (e, t) {
+            return zg(e, "toString", {
+              configurable: !0,
+              enumerable: !1,
+              value: UN(t),
+              writable: !0,
+            });
+          }
+        : kN;
+    jg.exports = BN;
+  });
+  var $g = f((zG, Yg) => {
+    var HN = 800,
+      WN = 16,
+      zN = Date.now;
+    function jN(e) {
+      var t = 0,
+        n = 0;
+      return function () {
+        var r = zN(),
+          i = WN - (r - n);
+        if (((n = r), i > 0)) {
+          if (++t >= HN) return arguments[0];
+        } else t = 0;
+        return e.apply(void 0, arguments);
+      };
+    }
+    Yg.exports = jN;
+  });
+  var Zg = f((jG, Qg) => {
+    var KN = Kg(),
+      YN = $g(),
+      $N = YN(KN);
+    Qg.exports = $N;
+  });
+  var eh = f((KG, Jg) => {
+    var QN = Gg(),
+      ZN = Bg(),
+      JN = Zg();
+    function eM(e) {
+      return JN(ZN(e, void 0, QN), e + "");
+    }
+    Jg.exports = eM;
+  });
+  var rh = f((YG, nh) => {
+    var th = xi(),
+      tM = th && new th();
+    nh.exports = tM;
+  });
+  var oh = f(($G, ih) => {
+    function nM() {}
+    ih.exports = nM;
+  });
+  var Ho = f((QG, sh) => {
+    var ah = rh(),
+      rM = oh(),
+      iM = ah
+        ? function (e) {
+            return ah.get(e);
+          }
+        : rM;
+    sh.exports = iM;
+  });
+  var ch = f((ZG, uh) => {
+    var oM = {};
+    uh.exports = oM;
+  });
+  var Wo = f((JG, fh) => {
+    var lh = ch(),
+      aM = Object.prototype,
+      sM = aM.hasOwnProperty;
+    function uM(e) {
+      for (
+        var t = e.name + "", n = lh[t], r = sM.call(lh, t) ? n.length : 0;
+        r--;
+
+      ) {
+        var i = n[r],
+          o = i.func;
+        if (o == null || o == e) return i.name;
+      }
+      return t;
+    }
+    fh.exports = uM;
+  });
+  var Rr = f((eX, dh) => {
+    var cM = Bo(),
+      lM = Sr(),
+      fM = 4294967295;
+    function xr(e) {
+      (this.__wrapped__ = e),
+        (this.__actions__ = []),
+        (this.__dir__ = 1),
+        (this.__filtered__ = !1),
+        (this.__iteratees__ = []),
+        (this.__takeCount__ = fM),
+        (this.__views__ = []);
+    }
+    xr.prototype = cM(lM.prototype);
+    xr.prototype.constructor = xr;
+    dh.exports = xr;
+  });
+  var gh = f((tX, ph) => {
+    function dM(e, t) {
+      var n = -1,
+        r = e.length;
+      for (t || (t = Array(r)); ++n < r; ) t[n] = e[n];
+      return t;
+    }
+    ph.exports = dM;
+  });
+  var Eh = f((nX, hh) => {
+    var pM = Rr(),
+      gM = Or(),
+      hM = gh();
+    function EM(e) {
+      if (e instanceof pM) return e.clone();
+      var t = new gM(e.__wrapped__, e.__chain__);
+      return (
+        (t.__actions__ = hM(e.__actions__)),
+        (t.__index__ = e.__index__),
+        (t.__values__ = e.__values__),
+        t
+      );
+    }
+    hh.exports = EM;
+  });
+  var vh = f((rX, mh) => {
+    var yM = Rr(),
+      yh = Or(),
+      mM = Sr(),
+      vM = ve(),
+      _M = Je(),
+      IM = Eh(),
+      TM = Object.prototype,
+      bM = TM.hasOwnProperty;
+    function Cr(e) {
+      if (_M(e) && !vM(e) && !(e instanceof yM)) {
+        if (e instanceof yh) return e;
+        if (bM.call(e, "__wrapped__")) return IM(e);
+      }
+      return new yh(e);
+    }
+    Cr.prototype = mM.prototype;
+    Cr.prototype.constructor = Cr;
+    mh.exports = Cr;
+  });
+  var Ih = f((iX, _h) => {
+    var AM = Rr(),
+      SM = Ho(),
+      wM = Wo(),
+      OM = vh();
+    function xM(e) {
+      var t = wM(e),
+        n = OM[t];
+      if (typeof n != "function" || !(t in AM.prototype)) return !1;
+      if (e === n) return !0;
+      var r = SM(n);
+      return !!r && e === r[0];
+    }
+    _h.exports = xM;
+  });
+  var Sh = f((oX, Ah) => {
+    var Th = Or(),
+      RM = eh(),
+      CM = Ho(),
+      zo = Wo(),
+      PM = ve(),
+      bh = Ih(),
+      LM = "Expected a function",
+      NM = 8,
+      MM = 32,
+      DM = 128,
+      FM = 256;
+    function qM(e) {
+      return RM(function (t) {
+        var n = t.length,
+          r = n,
+          i = Th.prototype.thru;
+        for (e && t.reverse(); r--; ) {
+          var o = t[r];
+          if (typeof o != "function") throw new TypeError(LM);
+          if (i && !s && zo(o) == "wrapper") var s = new Th([], !0);
+        }
+        for (r = s ? r : n; ++r < n; ) {
+          o = t[r];
+          var a = zo(o),
+            u = a == "wrapper" ? CM(o) : void 0;
+          u &&
+          bh(u[0]) &&
+          u[1] == (DM | NM | MM | FM) &&
+          !u[4].length &&
+          u[9] == 1
+            ? (s = s[zo(u[0])].apply(s, u[3]))
+            : (s = o.length == 1 && bh(o) ? s[a]() : s.thru(o));
+        }
+        return function () {
+          var c = arguments,
+            g = c[0];
+          if (s && c.length == 1 && PM(g)) return s.plant(g).value();
+          for (var p = 0, d = n ? t[p].apply(this, c) : g; ++p < n; )
+            d = t[p].call(this, d);
+          return d;
+        };
+      });
+    }
+    Ah.exports = qM;
+  });
+  var Oh = f((aX, wh) => {
+    var GM = Sh(),
+      XM = GM();
+    wh.exports = XM;
+  });
+  var Rh = f((sX, xh) => {
+    function VM(e, t, n) {
+      return (
+        e === e &&
+          (n !== void 0 && (e = e <= n ? e : n),
+          t !== void 0 && (e = e >= t ? e : t)),
+        e
+      );
+    }
+    xh.exports = VM;
+  });
+  var Ph = f((uX, Ch) => {
+    var UM = Rh(),
+      jo = ir();
+    function kM(e, t, n) {
+      return (
+        n === void 0 && ((n = t), (t = void 0)),
+        n !== void 0 && ((n = jo(n)), (n = n === n ? n : 0)),
+        t !== void 0 && ((t = jo(t)), (t = t === t ? t : 0)),
+        UM(jo(e), t, n)
+      );
+    }
+    Ch.exports = kM;
+  });
+  var Vh,
+    Uh,
+    kh,
+    Bh,
+    BM,
+    HM,
+    WM,
+    zM,
+    jM,
+    KM,
+    YM,
+    $M,
+    QM,
+    ZM,
+    JM,
+    eD,
+    tD,
+    nD,
+    rD,
+    Hh,
+    Wh,
+    iD,
+    oD,
+    aD,
+    zh,
+    sD,
+    uD,
+    jh,
+    cD,
+    Ko,
+    Kh,
+    Lh,
+    Nh,
+    Yh,
+    bn,
+    lD,
+    Ze,
+    $h,
+    fD,
+    Pe,
+    Ue,
+    An,
+    Qh,
+    Yo,
+    Mh,
+    $o,
+    dD,
+    Tn,
+    pD,
+    gD,
+    hD,
+    Zh,
+    Dh,
+    ED,
+    Fh,
+    yD,
+    mD,
+    vD,
+    qh,
+    Pr,
+    Lr,
+    Gh,
+    Xh,
+    Jh,
+    eE = fe(() => {
+      "use strict";
+      (Vh = ae(Oh())), (Uh = ae(nr())), (kh = ae(Ph()));
+      Re();
+      Qo();
+      Ar();
+      (Bh = ae(yt())),
+        ({
+          MOUSE_CLICK: BM,
+          MOUSE_SECOND_CLICK: HM,
+          MOUSE_DOWN: WM,
+          MOUSE_UP: zM,
+          MOUSE_OVER: jM,
+          MOUSE_OUT: KM,
+          DROPDOWN_CLOSE: YM,
+          DROPDOWN_OPEN: $M,
+          SLIDER_ACTIVE: QM,
+          SLIDER_INACTIVE: ZM,
+          TAB_ACTIVE: JM,
+          TAB_INACTIVE: eD,
+          NAVBAR_CLOSE: tD,
+          NAVBAR_OPEN: nD,
+          MOUSE_MOVE: rD,
+          PAGE_SCROLL_DOWN: Hh,
+          SCROLL_INTO_VIEW: Wh,
+          SCROLL_OUT_OF_VIEW: iD,
+          PAGE_SCROLL_UP: oD,
+          SCROLLING_IN_VIEW: aD,
+          PAGE_FINISH: zh,
+          ECOMMERCE_CART_CLOSE: sD,
+          ECOMMERCE_CART_OPEN: uD,
+          PAGE_START: jh,
+          PAGE_SCROLL: cD,
+        } = Xe),
+        (Ko = "COMPONENT_ACTIVE"),
+        (Kh = "COMPONENT_INACTIVE"),
+        ({ COLON_DELIMITER: Lh } = _e),
+        ({ getNamespacedParameterId: Nh } = Bh.IX2VanillaUtils),
+        (Yh = (e) => (t) => typeof t == "object" && e(t) ? !0 : t),
+        (bn = Yh(({ element: e, nativeEvent: t }) => e === t.target)),
+        (lD = Yh(({ element: e, nativeEvent: t }) => e.contains(t.target))),
+        (Ze = (0, Vh.default)([bn, lD])),
+        ($h = (e, t) => {
+          if (t) {
+            let { ixData: n } = e.getState(),
+              { events: r } = n,
+              i = r[t];
+            if (i && !dD[i.eventTypeId]) return i;
+          }
+          return null;
+        }),
+        (fD = ({ store: e, event: t }) => {
+          let { action: n } = t,
+            { autoStopEventId: r } = n.config;
+          return !!$h(e, r);
+        }),
+        (Pe = ({ store: e, event: t, element: n, eventStateKey: r }, i) => {
+          let { action: o, id: s } = t,
+            { actionListId: a, autoStopEventId: u } = o.config,
+            c = $h(e, u);
+          return (
+            c &&
+              zt({
+                store: e,
+                eventId: u,
+                eventTarget: n,
+                eventStateKey: u + Lh + r.split(Lh)[1],
+                actionListId: (0, Uh.default)(c, "action.config.actionListId"),
+              }),
+            zt({
+              store: e,
+              eventId: s,
+              eventTarget: n,
+              eventStateKey: r,
+              actionListId: a,
+            }),
+            Sn({
+              store: e,
+              eventId: s,
+              eventTarget: n,
+              eventStateKey: r,
+              actionListId: a,
+            }),
+            i
+          );
+        }),
+        (Ue = (e, t) => (n, r) => e(n, r) === !0 ? t(n, r) : r),
+        (An = { handler: Ue(Ze, Pe) }),
+        (Qh = { ...An, types: [Ko, Kh].join(" ") }),
+        (Yo = [
+          { target: window, types: "resize orientationchange", throttle: !0 },
+          {
+            target: document,
+            types: "scroll wheel readystatechange IX2_PAGE_UPDATE",
+            throttle: !0,
+          },
+        ]),
+        (Mh = "mouseover mouseout"),
+        ($o = { types: Yo }),
+        (dD = { PAGE_START: jh, PAGE_FINISH: zh }),
+        (Tn = (() => {
+          let e = window.pageXOffset !== void 0,
+            n =
+              document.compatMode === "CSS1Compat"
+                ? document.documentElement
+                : document.body;
+          return () => ({
+            scrollLeft: e ? window.pageXOffset : n.scrollLeft,
+            scrollTop: e ? window.pageYOffset : n.scrollTop,
+            stiffScrollTop: (0, kh.default)(
+              e ? window.pageYOffset : n.scrollTop,
+              0,
+              n.scrollHeight - window.innerHeight
+            ),
+            scrollWidth: n.scrollWidth,
+            scrollHeight: n.scrollHeight,
+            clientWidth: n.clientWidth,
+            clientHeight: n.clientHeight,
+            innerWidth: window.innerWidth,
+            innerHeight: window.innerHeight,
+          });
+        })()),
+        (pD = (e, t) =>
+          !(
+            e.left > t.right ||
+            e.right < t.left ||
+            e.top > t.bottom ||
+            e.bottom < t.top
+          )),
+        (gD = ({ element: e, nativeEvent: t }) => {
+          let { type: n, target: r, relatedTarget: i } = t,
+            o = e.contains(r);
+          if (n === "mouseover" && o) return !0;
+          let s = e.contains(i);
+          return !!(n === "mouseout" && o && s);
+        }),
+        (hD = (e) => {
+          let {
+              element: t,
+              event: { config: n },
+            } = e,
+            { clientWidth: r, clientHeight: i } = Tn(),
+            o = n.scrollOffsetValue,
+            u = n.scrollOffsetUnit === "PX" ? o : (i * (o || 0)) / 100;
+          return pD(t.getBoundingClientRect(), {
+            left: 0,
+            top: u,
+            right: r,
+            bottom: i - u,
+          });
+        }),
+        (Zh = (e) => (t, n) => {
+          let { type: r } = t.nativeEvent,
+            i = [Ko, Kh].indexOf(r) !== -1 ? r === Ko : n.isActive,
+            o = { ...n, isActive: i };
+          return ((!n || o.isActive !== n.isActive) && e(t, o)) || o;
+        }),
+        (Dh = (e) => (t, n) => {
+          let r = { elementHovered: gD(t) };
+          return (
+            ((n ? r.elementHovered !== n.elementHovered : r.elementHovered) &&
+              e(t, r)) ||
+            r
+          );
+        }),
+        (ED = (e) => (t, n) => {
+          let r = { ...n, elementVisible: hD(t) };
+          return (
+            ((n ? r.elementVisible !== n.elementVisible : r.elementVisible) &&
+              e(t, r)) ||
+            r
+          );
+        }),
+        (Fh =
+          (e) =>
+          (t, n = {}) => {
+            let { stiffScrollTop: r, scrollHeight: i, innerHeight: o } = Tn(),
+              {
+                event: { config: s, eventTypeId: a },
+              } = t,
+              { scrollOffsetValue: u, scrollOffsetUnit: c } = s,
+              g = c === "PX",
+              p = i - o,
+              d = Number((r / p).toFixed(2));
+            if (n && n.percentTop === d) return n;
+            let h = (g ? u : (o * (u || 0)) / 100) / p,
+              v,
+              m,
+              T = 0;
+            n &&
+              ((v = d > n.percentTop),
+              (m = n.scrollingDown !== v),
+              (T = m ? d : n.anchorTop));
+            let y = a === Hh ? d >= T + h : d <= T - h,
+              S = {
+                ...n,
+                percentTop: d,
+                inBounds: y,
+                anchorTop: T,
+                scrollingDown: v,
+              };
+            return (n && y && (m || S.inBounds !== n.inBounds) && e(t, S)) || S;
+          }),
+        (yD = (e, t) =>
+          e.left > t.left &&
+          e.left < t.right &&
+          e.top > t.top &&
+          e.top < t.bottom),
+        (mD = (e) => (t, n) => {
+          let r = { finished: document.readyState === "complete" };
+          return r.finished && !(n && n.finshed) && e(t), r;
+        }),
+        (vD = (e) => (t, n) => {
+          let r = { started: !0 };
+          return n || e(t), r;
+        }),
+        (qh =
+          (e) =>
+          (t, n = { clickCount: 0 }) => {
+            let r = { clickCount: (n.clickCount % 2) + 1 };
+            return (r.clickCount !== n.clickCount && e(t, r)) || r;
+          }),
+        (Pr = (e = !0) => ({
+          ...Qh,
+          handler: Ue(
+            e ? Ze : bn,
+            Zh((t, n) => (n.isActive ? An.handler(t, n) : n))
+          ),
+        })),
+        (Lr = (e = !0) => ({
+          ...Qh,
+          handler: Ue(
+            e ? Ze : bn,
+            Zh((t, n) => (n.isActive ? n : An.handler(t, n)))
+          ),
+        })),
+        (Gh = {
+          ...$o,
+          handler: ED((e, t) => {
+            let { elementVisible: n } = t,
+              { event: r, store: i } = e,
+              { ixData: o } = i.getState(),
+              { events: s } = o;
+            return !s[r.action.config.autoStopEventId] && t.triggered
+              ? t
+              : (r.eventTypeId === Wh) === n
+              ? (Pe(e), { ...t, triggered: !0 })
+              : t;
+          }),
+        }),
+        (Xh = 0.05),
+        (Jh = {
+          [QM]: Pr(),
+          [ZM]: Lr(),
+          [$M]: Pr(),
+          [YM]: Lr(),
+          [nD]: Pr(!1),
+          [tD]: Lr(!1),
+          [JM]: Pr(),
+          [eD]: Lr(),
+          [uD]: { types: "ecommerce-cart-open", handler: Ue(Ze, Pe) },
+          [sD]: { types: "ecommerce-cart-close", handler: Ue(Ze, Pe) },
+          [BM]: {
+            types: "click",
+            handler: Ue(
+              Ze,
+              qh((e, { clickCount: t }) => {
+                fD(e) ? t === 1 && Pe(e) : Pe(e);
+              })
+            ),
+          },
+          [HM]: {
+            types: "click",
+            handler: Ue(
+              Ze,
+              qh((e, { clickCount: t }) => {
+                t === 2 && Pe(e);
+              })
+            ),
+          },
+          [WM]: { ...An, types: "mousedown" },
+          [zM]: { ...An, types: "mouseup" },
+          [jM]: {
+            types: Mh,
+            handler: Ue(
+              Ze,
+              Dh((e, t) => {
+                t.elementHovered && Pe(e);
+              })
+            ),
+          },
+          [KM]: {
+            types: Mh,
+            handler: Ue(
+              Ze,
+              Dh((e, t) => {
+                t.elementHovered || Pe(e);
+              })
+            ),
+          },
+          [rD]: {
+            types: "mousemove mouseout scroll",
+            handler: (
+              {
+                store: e,
+                element: t,
+                eventConfig: n,
+                nativeEvent: r,
+                eventStateKey: i,
+              },
+              o = { clientX: 0, clientY: 0, pageX: 0, pageY: 0 }
+            ) => {
+              let {
+                  basedOn: s,
+                  selectedAxis: a,
+                  continuousParameterGroupId: u,
+                  reverse: c,
+                  restingState: g = 0,
+                } = n,
+                {
+                  clientX: p = o.clientX,
+                  clientY: d = o.clientY,
+                  pageX: h = o.pageX,
+                  pageY: v = o.pageY,
+                } = r,
+                m = a === "X_AXIS",
+                T = r.type === "mouseout",
+                y = g / 100,
+                S = u,
+                A = !1;
+              switch (s) {
+                case Ke.VIEWPORT: {
+                  y = m
+                    ? Math.min(p, window.innerWidth) / window.innerWidth
+                    : Math.min(d, window.innerHeight) / window.innerHeight;
+                  break;
+                }
+                case Ke.PAGE: {
+                  let {
+                    scrollLeft: R,
+                    scrollTop: P,
+                    scrollWidth: O,
+                    scrollHeight: F,
+                  } = Tn();
+                  y = m ? Math.min(R + h, O) / O : Math.min(P + v, F) / F;
+                  break;
+                }
+                case Ke.ELEMENT:
+                default: {
+                  S = Nh(i, u);
+                  let R = r.type.indexOf("mouse") === 0;
+                  if (R && Ze({ element: t, nativeEvent: r }) !== !0) break;
+                  let P = t.getBoundingClientRect(),
+                    { left: O, top: F, width: X, height: V } = P;
+                  if (!R && !yD({ left: p, top: d }, P)) break;
+                  (A = !0), (y = m ? (p - O) / X : (d - F) / V);
+                  break;
+                }
+              }
+              return (
+                T && (y > 1 - Xh || y < Xh) && (y = Math.round(y)),
+                (s !== Ke.ELEMENT || A || A !== o.elementHovered) &&
+                  ((y = c ? 1 - y : y), e.dispatch(Ht(S, y))),
+                {
+                  elementHovered: A,
+                  clientX: p,
+                  clientY: d,
+                  pageX: h,
+                  pageY: v,
+                }
+              );
+            },
+          },
+          [cD]: {
+            types: Yo,
+            handler: ({ store: e, eventConfig: t }) => {
+              let { continuousParameterGroupId: n, reverse: r } = t,
+                { scrollTop: i, scrollHeight: o, clientHeight: s } = Tn(),
+                a = i / (o - s);
+              (a = r ? 1 - a : a), e.dispatch(Ht(n, a));
+            },
+          },
+          [aD]: {
+            types: Yo,
+            handler: (
+              { element: e, store: t, eventConfig: n, eventStateKey: r },
+              i = { scrollPercent: 0 }
+            ) => {
+              let {
+                  scrollLeft: o,
+                  scrollTop: s,
+                  scrollWidth: a,
+                  scrollHeight: u,
+                  clientHeight: c,
+                } = Tn(),
+                {
+                  basedOn: g,
+                  selectedAxis: p,
+                  continuousParameterGroupId: d,
+                  startsEntering: h,
+                  startsExiting: v,
+                  addEndOffset: m,
+                  addStartOffset: T,
+                  addOffsetValue: y = 0,
+                  endOffsetValue: S = 0,
+                } = n,
+                A = p === "X_AXIS";
+              if (g === Ke.VIEWPORT) {
+                let R = A ? o / a : s / u;
+                return (
+                  R !== i.scrollPercent && t.dispatch(Ht(d, R)),
+                  { scrollPercent: R }
+                );
+              } else {
+                let R = Nh(r, d),
+                  P = e.getBoundingClientRect(),
+                  O = (T ? y : 0) / 100,
+                  F = (m ? S : 0) / 100;
+                (O = h ? O : 1 - O), (F = v ? F : 1 - F);
+                let X = P.top + Math.min(P.height * O, c),
+                  k = P.top + P.height * F - X,
+                  Z = Math.min(c + k, u),
+                  I = Math.min(Math.max(0, c - X), Z) / Z;
+                return (
+                  I !== i.scrollPercent && t.dispatch(Ht(R, I)),
+                  { scrollPercent: I }
+                );
+              }
+            },
+          },
+          [Wh]: Gh,
+          [iD]: Gh,
+          [Hh]: {
+            ...$o,
+            handler: Fh((e, t) => {
+              t.scrollingDown && Pe(e);
+            }),
+          },
+          [oD]: {
+            ...$o,
+            handler: Fh((e, t) => {
+              t.scrollingDown || Pe(e);
+            }),
+          },
+          [zh]: {
+            types: "readystatechange IX2_PAGE_UPDATE",
+            handler: Ue(bn, mD(Pe)),
+          },
+          [jh]: {
+            types: "readystatechange IX2_PAGE_UPDATE",
+            handler: Ue(bn, vD(Pe)),
+          },
+        });
+    });
+  var yE = {};
+  xe(yE, {
+    observeRequests: () => XD,
+    startActionGroup: () => Sn,
+    startEngine: () => Gr,
+    stopActionGroup: () => zt,
+    stopAllActionGroups: () => gE,
+    stopEngine: () => Xr,
+  });
+  function XD(e) {
+    mt({ store: e, select: ({ ixRequest: t }) => t.preview, onChange: kD }),
+      mt({ store: e, select: ({ ixRequest: t }) => t.playback, onChange: BD }),
+      mt({ store: e, select: ({ ixRequest: t }) => t.stop, onChange: HD }),
+      mt({ store: e, select: ({ ixRequest: t }) => t.clear, onChange: WD });
+  }
+  function VD(e) {
+    mt({
+      store: e,
+      select: ({ ixSession: t }) => t.mediaQueryKey,
+      onChange: () => {
+        Xr(e),
+          lE({ store: e, elementApi: we }),
+          Gr({ store: e, allowEvents: !0 }),
+          fE();
+      },
+    });
+  }
+  function UD(e, t) {
+    let n = mt({
+      store: e,
+      select: ({ ixSession: r }) => r.tick,
+      onChange: (r) => {
+        t(r), n();
+      },
+    });
+  }
+  function kD({ rawData: e, defer: t }, n) {
+    let r = () => {
+      Gr({ store: n, rawData: e, allowEvents: !0 }), fE();
+    };
+    t ? setTimeout(r, 0) : r();
+  }
+  function fE() {
+    document.dispatchEvent(new CustomEvent("IX2_PAGE_UPDATE"));
+  }
+  function BD(e, t) {
+    let {
+        actionTypeId: n,
+        actionListId: r,
+        actionItemId: i,
+        eventId: o,
+        allowEvents: s,
+        immediate: a,
+        testManual: u,
+        verbose: c = !0,
+      } = e,
+      { rawData: g } = e;
+    if (r && i && g && a) {
+      let p = g.actionLists[r];
+      p && (g = xD({ actionList: p, actionItemId: i, rawData: g }));
+    }
+    if (
+      (Gr({ store: t, rawData: g, allowEvents: s, testManual: u }),
+      (r && n === Ae.GENERAL_START_ACTION) || Zo(n))
+    ) {
+      zt({ store: t, actionListId: r }),
+        pE({ store: t, actionListId: r, eventId: o });
+      let p = Sn({
+        store: t,
+        eventId: o,
+        actionListId: r,
+        immediate: a,
+        verbose: c,
+      });
+      c && p && t.dispatch(Wt({ actionListId: r, isPlaying: !a }));
+    }
+  }
+  function HD({ actionListId: e }, t) {
+    e ? zt({ store: t, actionListId: e }) : gE({ store: t }), Xr(t);
+  }
+  function WD(e, t) {
+    Xr(t), lE({ store: t, elementApi: we });
+  }
+  function Gr({ store: e, rawData: t, allowEvents: n, testManual: r }) {
+    let { ixSession: i } = e.getState();
+    t && e.dispatch(Ro(t)),
+      i.active ||
+        (e.dispatch(
+          Co({
+            hasBoundaryNodes: !!document.querySelector(Mr),
+            reducedMotion:
+              document.body.hasAttribute("data-wf-ix-vacation") &&
+              window.matchMedia("(prefers-reduced-motion)").matches,
+          })
+        ),
+        n &&
+          (QD(e), zD(), e.getState().ixSession.hasDefinedMediaQueries && VD(e)),
+        e.dispatch(Po()),
+        jD(e, r));
+  }
+  function zD() {
+    let { documentElement: e } = document;
+    e.className.indexOf(tE) === -1 && (e.className += ` ${tE}`);
+  }
+  function jD(e, t) {
+    let n = (r) => {
+      let { ixSession: i, ixParameters: o } = e.getState();
+      i.active &&
+        (e.dispatch(Tr(r, o)), t ? UD(e, n) : requestAnimationFrame(n));
+    };
+    n(window.performance.now());
+  }
+  function Xr(e) {
+    let { ixSession: t } = e.getState();
+    if (t.active) {
+      let { eventListeners: n } = t;
+      n.forEach(KD), LD(), e.dispatch(Lo());
+    }
+  }
+  function KD({ target: e, listenerParams: t }) {
+    e.removeEventListener.apply(e, t);
+  }
+  function YD({
+    store: e,
+    eventStateKey: t,
+    eventTarget: n,
+    eventId: r,
+    eventConfig: i,
+    actionListId: o,
+    parameterGroup: s,
+    smoothing: a,
+    restingValue: u,
+  }) {
+    let { ixData: c, ixSession: g } = e.getState(),
+      { events: p } = c,
+      d = p[r],
+      { eventTypeId: h } = d,
+      v = {},
+      m = {},
+      T = [],
+      { continuousActionGroups: y } = s,
+      { id: S } = s;
+    RD(h, i) && (S = CD(t, S));
+    let A = g.hasBoundaryNodes && n ? In(n, Mr) : null;
+    y.forEach((R) => {
+      let { keyframe: P, actionItems: O } = R;
+      O.forEach((F) => {
+        let { actionTypeId: X } = F,
+          { target: V } = F.config;
+        if (!V) return;
+        let k = V.boundaryMode ? A : null,
+          Z = ND(V) + Jo + X;
+        if (((m[Z] = $D(m[Z], P, F)), !v[Z])) {
+          v[Z] = !0;
+          let { config: N } = F;
+          Dr({
+            config: N,
+            event: d,
+            eventTarget: n,
+            elementRoot: k,
+            elementApi: we,
+          }).forEach((I) => {
+            T.push({ element: I, key: Z });
+          });
+        }
+      });
+    }),
+      T.forEach(({ element: R, key: P }) => {
+        let O = m[P],
+          F = (0, rt.default)(O, "[0].actionItems[0]", {}),
+          { actionTypeId: X } = F,
+          k = (
+            X === Ae.PLUGIN_RIVE
+              ? (F.config?.target?.selectorGuids || []).length === 0
+              : qr(X)
+          )
+            ? ta(X)(R, F)
+            : null,
+          Z = ea({ element: R, actionItem: F, elementApi: we }, k);
+        na({
+          store: e,
+          element: R,
+          eventId: r,
+          actionListId: o,
+          actionItem: F,
+          destination: Z,
+          continuous: !0,
+          parameterId: S,
+          actionGroups: O,
+          smoothing: a,
+          restingValue: u,
+          pluginInstance: k,
+        });
+      });
+  }
+  function $D(e = [], t, n) {
+    let r = [...e],
+      i;
+    return (
+      r.some((o, s) => (o.keyframe === t ? ((i = s), !0) : !1)),
+      i == null && ((i = r.length), r.push({ keyframe: t, actionItems: [] })),
+      r[i].actionItems.push(n),
+      r
+    );
+  }
+  function QD(e) {
+    let { ixData: t } = e.getState(),
+      { eventTypeMap: n } = t;
+    dE(e),
+      (0, jt.default)(n, (i, o) => {
+        let s = Jh[o];
+        if (!s) {
+          console.warn(`IX2 event type not configured: ${o}`);
+          return;
+        }
+        rF({ logic: s, store: e, events: i });
+      });
+    let { ixSession: r } = e.getState();
+    r.eventListeners.length && JD(e);
+  }
+  function JD(e) {
+    let t = () => {
+      dE(e);
+    };
+    ZD.forEach((n) => {
+      window.addEventListener(n, t), e.dispatch(Ir(window, [n, t]));
+    }),
+      t();
+  }
+  function dE(e) {
+    let { ixSession: t, ixData: n } = e.getState(),
+      r = window.innerWidth;
+    if (r !== t.viewportWidth) {
+      let { mediaQueries: i } = n;
+      e.dispatch(qo({ width: r, mediaQueries: i }));
+    }
+  }
+  function rF({ logic: e, store: t, events: n }) {
+    iF(n);
+    let { types: r, handler: i } = e,
+      { ixData: o } = t.getState(),
+      { actionLists: s } = o,
+      a = eF(n, nF);
+    if (!(0, iE.default)(a)) return;
+    (0, jt.default)(a, (p, d) => {
+      let h = n[d],
+        { action: v, id: m, mediaQueries: T = o.mediaQueryKeys } = h,
+        { actionListId: y } = v.config;
+      MD(T, o.mediaQueryKeys) || t.dispatch(Go()),
+        v.actionTypeId === Ae.GENERAL_CONTINUOUS_ACTION &&
+          (Array.isArray(h.config) ? h.config : [h.config]).forEach((A) => {
+            let { continuousParameterGroupId: R } = A,
+              P = (0, rt.default)(s, `${y}.continuousParameterGroups`, []),
+              O = (0, rE.default)(P, ({ id: V }) => V === R),
+              F = (A.smoothing || 0) / 100,
+              X = (A.restingState || 0) / 100;
+            O &&
+              p.forEach((V, k) => {
+                let Z = m + Jo + k;
+                YD({
+                  store: t,
+                  eventStateKey: Z,
+                  eventTarget: V,
+                  eventId: m,
+                  eventConfig: A,
+                  actionListId: y,
+                  parameterGroup: O,
+                  smoothing: F,
+                  restingValue: X,
+                });
+              });
+          }),
+        (v.actionTypeId === Ae.GENERAL_START_ACTION || Zo(v.actionTypeId)) &&
+          pE({ store: t, actionListId: y, eventId: m });
+    });
+    let u = (p) => {
+        let { ixSession: d } = t.getState();
+        tF(a, (h, v, m) => {
+          let T = n[v],
+            y = d.eventState[m],
+            { action: S, mediaQueries: A = o.mediaQueryKeys } = T;
+          if (!Fr(A, d.mediaQueryKey)) return;
+          let R = (P = {}) => {
+            let O = i(
+              {
+                store: t,
+                element: h,
+                event: T,
+                eventConfig: P,
+                nativeEvent: p,
+                eventStateKey: m,
+              },
+              y
+            );
+            DD(O, y) || t.dispatch(No(m, O));
+          };
+          S.actionTypeId === Ae.GENERAL_CONTINUOUS_ACTION
+            ? (Array.isArray(T.config) ? T.config : [T.config]).forEach(R)
+            : R();
+        });
+      },
+      c = (0, uE.default)(u, GD),
+      g = ({ target: p = document, types: d, throttle: h }) => {
+        d.split(" ")
+          .filter(Boolean)
+          .forEach((v) => {
+            let m = h ? c : u;
+            p.addEventListener(v, m), t.dispatch(Ir(p, [v, m]));
+          });
+      };
+    Array.isArray(r) ? r.forEach(g) : typeof r == "string" && g(e);
+  }
+  function iF(e) {
+    if (!qD) return;
+    let t = {},
+      n = "";
+    for (let r in e) {
+      let { eventTypeId: i, target: o } = e[r],
+        s = Vo(o);
+      t[s] ||
+        ((i === Xe.MOUSE_CLICK || i === Xe.MOUSE_SECOND_CLICK) &&
+          ((t[s] = !0),
+          (n += s + "{cursor: pointer;touch-action: manipulation;}")));
+    }
+    if (n) {
+      let r = document.createElement("style");
+      (r.textContent = n), document.body.appendChild(r);
+    }
+  }
+  function pE({ store: e, actionListId: t, eventId: n }) {
+    let { ixData: r, ixSession: i } = e.getState(),
+      { actionLists: o, events: s } = r,
+      a = s[n],
+      u = o[t];
+    if (u && u.useFirstGroupAsInitialState) {
+      let c = (0, rt.default)(u, "actionItemGroups[0].actionItems", []),
+        g = (0, rt.default)(a, "mediaQueries", r.mediaQueryKeys);
+      if (!Fr(g, i.mediaQueryKey)) return;
+      c.forEach((p) => {
+        let { config: d, actionTypeId: h } = p,
+          v =
+            d?.target?.useEventTarget === !0 && d?.target?.objectId == null
+              ? { target: a.target, targets: a.targets }
+              : d,
+          m = Dr({ config: v, event: a, elementApi: we }),
+          T = qr(h);
+        m.forEach((y) => {
+          let S = T ? ta(h)(y, p) : null;
+          na({
+            destination: ea({ element: y, actionItem: p, elementApi: we }, S),
+            immediate: !0,
+            store: e,
+            element: y,
+            eventId: n,
+            actionItem: p,
+            actionListId: t,
+            pluginInstance: S,
+          });
+        });
+      });
+    }
+  }
+  function gE({ store: e }) {
+    let { ixInstances: t } = e.getState();
+    (0, jt.default)(t, (n) => {
+      if (!n.continuous) {
+        let { actionListId: r, verbose: i } = n;
+        ra(n, e), i && e.dispatch(Wt({ actionListId: r, isPlaying: !1 }));
+      }
+    });
+  }
+  function zt({
+    store: e,
+    eventId: t,
+    eventTarget: n,
+    eventStateKey: r,
+    actionListId: i,
+  }) {
+    let { ixInstances: o, ixSession: s } = e.getState(),
+      a = s.hasBoundaryNodes && n ? In(n, Mr) : null;
+    (0, jt.default)(o, (u) => {
+      let c = (0, rt.default)(u, "actionItem.config.target.boundaryMode"),
+        g = r ? u.eventStateKey === r : !0;
+      if (u.actionListId === i && u.eventId === t && g) {
+        if (a && c && !Uo(a, u.element)) return;
+        ra(u, e),
+          u.verbose && e.dispatch(Wt({ actionListId: i, isPlaying: !1 }));
+      }
+    });
+  }
+  function Sn({
+    store: e,
+    eventId: t,
+    eventTarget: n,
+    eventStateKey: r,
+    actionListId: i,
+    groupIndex: o = 0,
+    immediate: s,
+    verbose: a,
+  }) {
+    let { ixData: u, ixSession: c } = e.getState(),
+      { events: g } = u,
+      p = g[t] || {},
+      { mediaQueries: d = u.mediaQueryKeys } = p,
+      h = (0, rt.default)(u, `actionLists.${i}`, {}),
+      { actionItemGroups: v, useFirstGroupAsInitialState: m } = h;
+    if (!v || !v.length) return !1;
+    o >= v.length && (0, rt.default)(p, "config.loop") && (o = 0),
+      o === 0 && m && o++;
+    let y =
+        (o === 0 || (o === 1 && m)) && Zo(p.action?.actionTypeId)
+          ? p.config.delay
+          : void 0,
+      S = (0, rt.default)(v, [o, "actionItems"], []);
+    if (!S.length || !Fr(d, c.mediaQueryKey)) return !1;
+    let A = c.hasBoundaryNodes && n ? In(n, Mr) : null,
+      R = SD(S),
+      P = !1;
+    return (
+      S.forEach((O, F) => {
+        let { config: X, actionTypeId: V } = O,
+          k = qr(V),
+          { target: Z } = X;
+        if (!Z) return;
+        let N = Z.boundaryMode ? A : null;
+        Dr({
+          config: X,
+          event: p,
+          eventTarget: n,
+          elementRoot: N,
+          elementApi: we,
+        }).forEach((L, U) => {
+          let q = k ? ta(V)(L, O) : null,
+            te = k ? FD(V)(L, O) : null;
+          P = !0;
+          let Y = R === F && U === 0,
+            se = wD({ element: L, actionItem: O }),
+            Ie = ea({ element: L, actionItem: O, elementApi: we }, q);
+          na({
+            store: e,
+            element: L,
+            actionItem: O,
+            eventId: t,
+            eventTarget: n,
+            eventStateKey: r,
+            actionListId: i,
+            groupIndex: o,
+            isCarrier: Y,
+            computedStyle: se,
+            destination: Ie,
+            immediate: s,
+            verbose: a,
+            pluginInstance: q,
+            pluginDuration: te,
+            instanceDelay: y,
+          });
+        });
+      }),
+      P
+    );
+  }
+  function na(e) {
+    let { store: t, computedStyle: n, ...r } = e,
+      {
+        element: i,
+        actionItem: o,
+        immediate: s,
+        pluginInstance: a,
+        continuous: u,
+        restingValue: c,
+        eventId: g,
+      } = r,
+      p = !u,
+      d = bD(),
+      { ixElements: h, ixSession: v, ixData: m } = t.getState(),
+      T = TD(h, i),
+      { refState: y } = h[T] || {},
+      S = ko(i),
+      A = v.reducedMotion && hi[o.actionTypeId],
+      R;
+    if (A && u)
+      switch (m.events[g]?.eventTypeId) {
+        case Xe.MOUSE_MOVE:
+        case Xe.MOUSE_MOVE_IN_VIEWPORT:
+          R = c;
+          break;
+        default:
+          R = 0.5;
+          break;
+      }
+    let P = OD(i, y, n, o, we, a);
+    if (
+      (t.dispatch(
+        Mo({
+          instanceId: d,
+          elementId: T,
+          origin: P,
+          refType: S,
+          skipMotion: A,
+          skipToValue: R,
+          ...r,
+        })
+      ),
+      hE(document.body, "ix2-animation-started", d),
+      s)
+    ) {
+      oF(t, d);
+      return;
+    }
+    mt({ store: t, select: ({ ixInstances: O }) => O[d], onChange: EE }),
+      p && t.dispatch(br(d, v.tick));
+  }
+  function ra(e, t) {
+    hE(document.body, "ix2-animation-stopping", {
+      instanceId: e.id,
+      state: t.getState(),
+    });
+    let { elementId: n, actionItem: r } = e,
+      { ixElements: i } = t.getState(),
+      { ref: o, refType: s } = i[n] || {};
+    s === cE && PD(o, r, we), t.dispatch(Do(e.id));
+  }
+  function hE(e, t, n) {
+    let r = document.createEvent("CustomEvent");
+    r.initCustomEvent(t, !0, !0, n), e.dispatchEvent(r);
+  }
+  function oF(e, t) {
+    let { ixParameters: n } = e.getState();
+    e.dispatch(br(t, 0)), e.dispatch(Tr(performance.now(), n));
+    let { ixInstances: r } = e.getState();
+    EE(r[t], e);
+  }
+  function EE(e, t) {
+    let {
+        active: n,
+        continuous: r,
+        complete: i,
+        elementId: o,
+        actionItem: s,
+        actionTypeId: a,
+        renderType: u,
+        current: c,
+        groupIndex: g,
+        eventId: p,
+        eventTarget: d,
+        eventStateKey: h,
+        actionListId: v,
+        isCarrier: m,
+        styleProp: T,
+        verbose: y,
+        pluginInstance: S,
+      } = e,
+      { ixData: A, ixSession: R } = t.getState(),
+      { events: P } = A,
+      O = P && P[p] ? P[p] : {},
+      { mediaQueries: F = A.mediaQueryKeys } = O;
+    if (Fr(F, R.mediaQueryKey) && (r || n || i)) {
+      if (c || (u === ID && i)) {
+        t.dispatch(Fo(o, a, c, s));
+        let { ixElements: X } = t.getState(),
+          { ref: V, refType: k, refState: Z } = X[o] || {},
+          N = Z && Z[a];
+        (k === cE || qr(a)) && AD(V, Z, N, p, s, T, we, u, S);
+      }
+      if (i) {
+        if (m) {
+          let X = Sn({
+            store: t,
+            eventId: p,
+            eventTarget: d,
+            eventStateKey: h,
+            actionListId: v,
+            groupIndex: g + 1,
+            verbose: y,
+          });
+          y && !X && t.dispatch(Wt({ actionListId: v, isPlaying: !1 }));
+        }
+        ra(e, t);
+      }
+    }
+  }
+  var rE,
+    rt,
+    iE,
+    oE,
+    aE,
+    sE,
+    jt,
+    uE,
+    Nr,
+    _D,
+    Zo,
+    Jo,
+    Mr,
+    cE,
+    ID,
+    tE,
+    Dr,
+    TD,
+    ea,
+    mt,
+    bD,
+    AD,
+    lE,
+    SD,
+    wD,
+    OD,
+    xD,
+    RD,
+    CD,
+    Fr,
+    PD,
+    LD,
+    ND,
+    MD,
+    DD,
+    qr,
+    ta,
+    FD,
+    nE,
+    qD,
+    GD,
+    ZD,
+    eF,
+    tF,
+    nF,
+    Qo = fe(() => {
+      "use strict";
+      (rE = ae(Hi())),
+        (rt = ae(nr())),
+        (iE = ae(Cp())),
+        (oE = ae(ng())),
+        (aE = ae(ig())),
+        (sE = ae(ag())),
+        (jt = ae(dg())),
+        (uE = ae(vg()));
+      Re();
+      Nr = ae(yt());
+      Ar();
+      Sg();
+      eE();
+      (_D = Object.keys(Mn)),
+        (Zo = (e) => _D.includes(e)),
+        ({
+          COLON_DELIMITER: Jo,
+          BOUNDARY_SELECTOR: Mr,
+          HTML_ELEMENT: cE,
+          RENDER_GENERAL: ID,
+          W_MOD_IX: tE,
+        } = _e),
+        ({
+          getAffectedElements: Dr,
+          getElementId: TD,
+          getDestinationValues: ea,
+          observeStore: mt,
+          getInstanceId: bD,
+          renderHTMLElement: AD,
+          clearAllStyles: lE,
+          getMaxDurationItemIndex: SD,
+          getComputedStyle: wD,
+          getInstanceOrigin: OD,
+          reduceListToGroup: xD,
+          shouldNamespaceEventParameter: RD,
+          getNamespacedParameterId: CD,
+          shouldAllowMediaQuery: Fr,
+          cleanupHTMLElement: PD,
+          clearObjectCache: LD,
+          stringifyTarget: ND,
+          mediaQueriesEqual: MD,
+          shallowEqual: DD,
+        } = Nr.IX2VanillaUtils),
+        ({
+          isPluginType: qr,
+          createPluginInstance: ta,
+          getPluginDuration: FD,
+        } = Nr.IX2VanillaPlugins),
+        (nE = navigator.userAgent),
+        (qD = nE.match(/iPad/i) || nE.match(/iPhone/)),
+        (GD = 12);
+      ZD = ["resize", "orientationchange"];
+      (eF = (e, t) => (0, oE.default)((0, sE.default)(e, t), aE.default)),
+        (tF = (e, t) => {
+          (0, jt.default)(e, (n, r) => {
+            n.forEach((i, o) => {
+              let s = r + Jo + o;
+              t(i, r, s);
+            });
+          });
+        }),
+        (nF = (e) => {
+          let t = { target: e.target, targets: e.targets };
+          return Dr({ config: t, elementApi: we });
+        });
+    });
+  var _E = f((oa) => {
+    "use strict";
+    Object.defineProperty(oa, "__esModule", { value: !0 });
+    function aF(e, t) {
+      for (var n in t)
+        Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
+    }
+    aF(oa, {
+      actions: function () {
+        return cF;
+      },
+      destroy: function () {
+        return vE;
+      },
+      init: function () {
+        return pF;
+      },
+      setEnv: function () {
+        return dF;
+      },
+      store: function () {
+        return Vr;
+      },
+    });
+    var sF = di(),
+      uF = lF((fp(), He(lp))),
+      ia = (Qo(), He(yE)),
+      cF = fF((Ar(), He(Ig)));
+    function lF(e) {
+      return e && e.__esModule ? e : { default: e };
+    }
+    function mE(e) {
+      if (typeof WeakMap != "function") return null;
+      var t = new WeakMap(),
+        n = new WeakMap();
+      return (mE = function (r) {
+        return r ? n : t;
+      })(e);
+    }
+    function fF(e, t) {
+      if (!t && e && e.__esModule) return e;
+      if (e === null || (typeof e != "object" && typeof e != "function"))
+        return { default: e };
+      var n = mE(t);
+      if (n && n.has(e)) return n.get(e);
+      var r = { __proto__: null },
+        i = Object.defineProperty && Object.getOwnPropertyDescriptor;
+      for (var o in e)
+        if (o !== "default" && Object.prototype.hasOwnProperty.call(e, o)) {
+          var s = i ? Object.getOwnPropertyDescriptor(e, o) : null;
+          s && (s.get || s.set)
+            ? Object.defineProperty(r, o, s)
+            : (r[o] = e[o]);
+        }
+      return (r.default = e), n && n.set(e, r), r;
+    }
+    var Vr = (0, sF.createStore)(uF.default);
+    function dF(e) {
+      e() && (0, ia.observeRequests)(Vr);
+    }
+    function pF(e) {
+      vE(), (0, ia.startEngine)({ store: Vr, rawData: e, allowEvents: !0 });
+    }
+    function vE() {
+      (0, ia.stopEngine)(Vr);
+    }
+  });
+  var AE = f((mX, bE) => {
+    "use strict";
+    var IE = ze(),
+      TE = _E();
+    TE.setEnv(IE.env);
+    IE.define(
+      "ix2",
+      (bE.exports = function () {
+        return TE;
+      })
+    );
+  });
+  var wE = f((vX, SE) => {
+    "use strict";
+    var Kt = ze();
+    Kt.define(
+      "links",
+      (SE.exports = function (e, t) {
+        var n = {},
+          r = e(window),
+          i,
+          o = Kt.env(),
+          s = window.location,
+          a = document.createElement("a"),
+          u = "w--current",
+          c = /index\.(html|php)$/,
+          g = /\/$/,
+          p,
+          d;
+        n.ready = n.design = n.preview = h;
+        function h() {
+          (i = o && Kt.env("design")),
+            (d = Kt.env("slug") || s.pathname || ""),
+            Kt.scroll.off(m),
+            (p = []);
+          for (var y = document.links, S = 0; S < y.length; ++S) v(y[S]);
+          p.length && (Kt.scroll.on(m), m());
+        }
+        function v(y) {
+          if (!y.getAttribute("hreflang")) {
+            var S =
+              (i && y.getAttribute("href-disabled")) || y.getAttribute("href");
+            if (((a.href = S), !(S.indexOf(":") >= 0))) {
+              var A = e(y);
+              if (
+                a.hash.length > 1 &&
+                a.host + a.pathname === s.host + s.pathname
+              ) {
+                if (!/^#[a-zA-Z0-9\-\_]+$/.test(a.hash)) return;
+                var R = e(a.hash);
+                R.length && p.push({ link: A, sec: R, active: !1 });
+                return;
+              }
+              if (!(S === "#" || S === "")) {
+                var P =
+                  a.href === s.href || S === d || (c.test(S) && g.test(d));
+                T(A, u, P);
+              }
+            }
+          }
+        }
+        function m() {
+          var y = r.scrollTop(),
+            S = r.height();
+          t.each(p, function (A) {
+            if (!A.link.attr("hreflang")) {
+              var R = A.link,
+                P = A.sec,
+                O = P.offset().top,
+                F = P.outerHeight(),
+                X = S * 0.5,
+                V = P.is(":visible") && O + F - X >= y && O + X <= y + S;
+              A.active !== V && ((A.active = V), T(R, u, V));
+            }
+          });
+        }
+        function T(y, S, A) {
+          var R = y.hasClass(S);
+          (A && R) || (!A && !R) || (A ? y.addClass(S) : y.removeClass(S));
+        }
+        return n;
+      })
+    );
+  });
+  var xE = f((_X, OE) => {
+    "use strict";
+    var Ur = ze();
+    Ur.define(
+      "scroll",
+      (OE.exports = function (e) {
+        var t = {
+            WF_CLICK_EMPTY: "click.wf-empty-link",
+            WF_CLICK_SCROLL: "click.wf-scroll",
+          },
+          n = window.location,
+          r = v() ? null : window.history,
+          i = e(window),
+          o = e(document),
+          s = e(document.body),
+          a =
+            window.requestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            function (N) {
+              window.setTimeout(N, 15);
+            },
+          u = Ur.env("editor") ? ".w-editor-body" : "body",
+          c =
+            "header, " +
+            u +
+            " > .header, " +
+            u +
+            " > .w-nav:not([data-no-scroll])",
+          g = 'a[href="#"]',
+          p = 'a[href*="#"]:not(.w-tab-link):not(' + g + ")",
+          d = '.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}',
+          h = document.createElement("style");
+        h.appendChild(document.createTextNode(d));
+        function v() {
+          try {
+            return !!window.frameElement;
+          } catch {
+            return !0;
+          }
+        }
+        var m = /^#[a-zA-Z0-9][\w:.-]*$/;
+        function T(N) {
+          return m.test(N.hash) && N.host + N.pathname === n.host + n.pathname;
+        }
+        let y =
+          typeof window.matchMedia == "function" &&
+          window.matchMedia("(prefers-reduced-motion: reduce)");
+        function S() {
+          return (
+            document.body.getAttribute("data-wf-scroll-motion") === "none" ||
+            y.matches
+          );
+        }
+        function A(N, I) {
+          var L;
+          switch (I) {
+            case "add":
+              (L = N.attr("tabindex")),
+                L
+                  ? N.attr("data-wf-tabindex-swap", L)
+                  : N.attr("tabindex", "-1");
+              break;
+            case "remove":
+              (L = N.attr("data-wf-tabindex-swap")),
+                L
+                  ? (N.attr("tabindex", L),
+                    N.removeAttr("data-wf-tabindex-swap"))
+                  : N.removeAttr("tabindex");
+              break;
+          }
+          N.toggleClass("wf-force-outline-none", I === "add");
+        }
+        function R(N) {
+          var I = N.currentTarget;
+          if (
+            !(
+              Ur.env("design") ||
+              (window.$.mobile && /(?:^|\s)ui-link(?:$|\s)/.test(I.className))
+            )
+          ) {
+            var L = T(I) ? I.hash : "";
+            if (L !== "") {
+              var U = e(L);
+              U.length &&
+                (N && (N.preventDefault(), N.stopPropagation()),
+                P(L, N),
+                window.setTimeout(
+                  function () {
+                    O(U, function () {
+                      A(U, "add"),
+                        U.get(0).focus({ preventScroll: !0 }),
+                        A(U, "remove");
+                    });
+                  },
+                  N ? 0 : 300
+                ));
+            }
+          }
+        }
+        function P(N) {
+          if (
+            n.hash !== N &&
+            r &&
+            r.pushState &&
+            !(Ur.env.chrome && n.protocol === "file:")
+          ) {
+            var I = r.state && r.state.hash;
+            I !== N && r.pushState({ hash: N }, "", N);
+          }
+        }
+        function O(N, I) {
+          var L = i.scrollTop(),
+            U = F(N);
+          if (L !== U) {
+            var q = X(N, L, U),
+              te = Date.now(),
+              Y = function () {
+                var se = Date.now() - te;
+                window.scroll(0, V(L, U, se, q)),
+                  se <= q ? a(Y) : typeof I == "function" && I();
+              };
+            a(Y);
+          }
+        }
+        function F(N) {
+          var I = e(c),
+            L = I.css("position") === "fixed" ? I.outerHeight() : 0,
+            U = N.offset().top - L;
+          if (N.data("scroll") === "mid") {
+            var q = i.height() - L,
+              te = N.outerHeight();
+            te < q && (U -= Math.round((q - te) / 2));
+          }
+          return U;
+        }
+        function X(N, I, L) {
+          if (S()) return 0;
+          var U = 1;
+          return (
+            s.add(N).each(function (q, te) {
+              var Y = parseFloat(te.getAttribute("data-scroll-time"));
+              !isNaN(Y) && Y >= 0 && (U = Y);
+            }),
+            (472.143 * Math.log(Math.abs(I - L) + 125) - 2e3) * U
+          );
+        }
+        function V(N, I, L, U) {
+          return L > U ? I : N + (I - N) * k(L / U);
+        }
+        function k(N) {
+          return N < 0.5
+            ? 4 * N * N * N
+            : (N - 1) * (2 * N - 2) * (2 * N - 2) + 1;
+        }
+        function Z() {
+          var { WF_CLICK_EMPTY: N, WF_CLICK_SCROLL: I } = t;
+          o.on(I, p, R),
+            o.on(N, g, function (L) {
+              L.preventDefault();
+            }),
+            document.head.insertBefore(h, document.head.firstChild);
+        }
+        return { ready: Z };
+      })
+    );
+  });
+  var CE = f((IX, RE) => {
+    "use strict";
+    var gF = ze();
+    gF.define(
+      "touch",
+      (RE.exports = function (e) {
+        var t = {},
+          n = window.getSelection;
+        (e.event.special.tap = { bindType: "click", delegateType: "click" }),
+          (t.init = function (o) {
+            return (
+              (o = typeof o == "string" ? e(o).get(0) : o), o ? new r(o) : null
+            );
+          });
+        function r(o) {
+          var s = !1,
+            a = !1,
+            u = Math.min(Math.round(window.innerWidth * 0.04), 40),
+            c,
+            g;
+          o.addEventListener("touchstart", p, !1),
+            o.addEventListener("touchmove", d, !1),
+            o.addEventListener("touchend", h, !1),
+            o.addEventListener("touchcancel", v, !1),
+            o.addEventListener("mousedown", p, !1),
+            o.addEventListener("mousemove", d, !1),
+            o.addEventListener("mouseup", h, !1),
+            o.addEventListener("mouseout", v, !1);
+          function p(T) {
+            var y = T.touches;
+            (y && y.length > 1) ||
+              ((s = !0),
+              y ? ((a = !0), (c = y[0].clientX)) : (c = T.clientX),
+              (g = c));
+          }
+          function d(T) {
+            if (s) {
+              if (a && T.type === "mousemove") {
+                T.preventDefault(), T.stopPropagation();
+                return;
+              }
+              var y = T.touches,
+                S = y ? y[0].clientX : T.clientX,
+                A = S - g;
+              (g = S),
+                Math.abs(A) > u &&
+                  n &&
+                  String(n()) === "" &&
+                  (i("swipe", T, { direction: A > 0 ? "right" : "left" }), v());
+            }
+          }
+          function h(T) {
+            if (s && ((s = !1), a && T.type === "mouseup")) {
+              T.preventDefault(), T.stopPropagation(), (a = !1);
+              return;
+            }
+          }
+          function v() {
+            s = !1;
+          }
+          function m() {
+            o.removeEventListener("touchstart", p, !1),
+              o.removeEventListener("touchmove", d, !1),
+              o.removeEventListener("touchend", h, !1),
+              o.removeEventListener("touchcancel", v, !1),
+              o.removeEventListener("mousedown", p, !1),
+              o.removeEventListener("mousemove", d, !1),
+              o.removeEventListener("mouseup", h, !1),
+              o.removeEventListener("mouseout", v, !1),
+              (o = null);
+          }
+          this.destroy = m;
+        }
+        function i(o, s, a) {
+          var u = e.Event(o, { originalEvent: s });
+          e(s.target).trigger(u, a);
+        }
+        return (t.instance = t.init(document)), t;
+      })
+    );
+  });
+  var PE = f((aa) => {
+    "use strict";
+    Object.defineProperty(aa, "__esModule", { value: !0 });
+    Object.defineProperty(aa, "default", {
+      enumerable: !0,
+      get: function () {
+        return hF;
+      },
+    });
+    function hF(e, t, n, r, i, o, s, a, u, c, g, p, d) {
+      return function (h) {
+        e(h);
+        var v = h.form,
+          m = {
+            name: v.attr("data-name") || v.attr("name") || "Untitled Form",
+            pageId: v.attr("data-wf-page-id") || "",
+            elementId: v.attr("data-wf-element-id") || "",
+            source: t.href,
+            test: n.env(),
+            fields: {},
+            fileUploads: {},
+            dolphin: /pass[\s-_]?(word|code)|secret|login|credentials/i.test(
+              v.html()
+            ),
+            trackingCookies: r(),
+          };
+        let T = v.attr("data-wf-flow");
+        T && (m.wfFlow = T), i(h);
+        var y = o(v, m.fields);
+        if (y) return s(y);
+        if (((m.fileUploads = a(v)), u(h), !c)) {
+          g(h);
+          return;
+        }
+        p.ajax({
+          url: d,
+          type: "POST",
+          data: m,
+          dataType: "json",
+          crossDomain: !0,
+        })
+          .done(function (S) {
+            S && S.code === 200 && (h.success = !0), g(h);
+          })
+          .fail(function () {
+            g(h);
+          });
+      };
+    }
+  });
+  var NE = f((bX, LE) => {
+    "use strict";
+    var kr = ze(),
+      EF = (e, t, n, r) => {
+        let i = document.createElement("div");
+        t.appendChild(i),
+          turnstile.render(i, {
+            sitekey: e,
+            callback: function (o) {
+              n(o);
+            },
+            "error-callback": function () {
+              r();
+            },
+          });
+      };
+    kr.define(
+      "forms",
+      (LE.exports = function (e, t) {
+        let n = "TURNSTILE_LOADED";
+        var r = {},
+          i = e(document),
+          o,
+          s = window.location,
+          a = window.XDomainRequest && !window.atob,
+          u = ".w-form",
+          c,
+          g = /e(-)?mail/i,
+          p = /^\S+@\S+$/,
+          d = window.alert,
+          h = kr.env(),
+          v,
+          m,
+          T;
+        let y = i.find("[data-turnstile-sitekey]").data("turnstile-sitekey"),
+          S;
+        var A = /list-manage[1-9]?.com/i,
+          R = t.debounce(function () {
+            d(
+              "Oops! This page has improperly configured forms. Please contact your website administrator to fix this issue."
+            );
+          }, 100);
+        r.ready =
+          r.design =
+          r.preview =
+            function () {
+              O(), P(), !h && !v && X();
+            };
+        function P() {
+          (c = e("html").attr("data-wf-site")),
+            (m = "https://webflow.com/api/v1/form/" + c),
+            a &&
+              m.indexOf("https://webflow.com") >= 0 &&
+              (m = m.replace(
+                "https://webflow.com",
+                "https://formdata.webflow.com"
+              )),
+            (T = `${m}/signFile`),
+            (o = e(u + " form")),
+            o.length && o.each(F);
+        }
+        function O() {
+          y &&
+            ((S = document.createElement("script")),
+            (S.src = "https://challenges.cloudflare.com/turnstile/v0/api.js"),
+            document.head.appendChild(S),
+            (S.onload = () => {
+              i.trigger(n);
+            }));
+        }
+        function F(x, G) {
+          var W = e(G),
+            D = e.data(G, u);
+          D || (D = e.data(G, u, { form: W })), V(D);
+          var ee = W.closest("div.w-form");
+          (D.done = ee.find("> .w-form-done")),
+            (D.fail = ee.find("> .w-form-fail")),
+            (D.fileUploads = ee.find(".w-file-upload")),
+            D.fileUploads.each(function (j) {
+              Ie(j, D);
+            }),
+            y &&
+              ((D.wait = !1),
+              k(D),
+              i.on(typeof turnstile < "u" ? "ready" : n, function () {
+                EF(
+                  y,
+                  G,
+                  (j) => {
+                    (D.turnstileToken = j), V(D);
+                  },
+                  () => {
+                    k(D);
+                  }
+                );
+              }));
+          var ne =
+            D.form.attr("aria-label") || D.form.attr("data-name") || "Form";
+          D.done.attr("aria-label") || D.form.attr("aria-label", ne),
+            D.done.attr("tabindex", "-1"),
+            D.done.attr("role", "region"),
+            D.done.attr("aria-label") ||
+              D.done.attr("aria-label", ne + " success"),
+            D.fail.attr("tabindex", "-1"),
+            D.fail.attr("role", "region"),
+            D.fail.attr("aria-label") ||
+              D.fail.attr("aria-label", ne + " failure");
+          var ie = (D.action = W.attr("action"));
+          if (
+            ((D.handler = null),
+            (D.redirect = W.attr("data-redirect")),
+            A.test(ie))
+          ) {
+            D.handler = te;
+            return;
+          }
+          if (!ie) {
+            if (c) {
+              D.handler = (() => {
+                let j = PE().default;
+                return j(V, s, kr, L, se, Z, d, N, k, c, Y, e, m);
+              })();
+              return;
+            }
+            R();
+          }
+        }
+        function X() {
+          (v = !0),
+            i.on("submit", u + " form", function (j) {
+              var K = e.data(this, u);
+              K.handler && ((K.evt = j), K.handler(K));
+            });
+          let x = ".w-checkbox-input",
+            G = ".w-radio-input",
+            W = "w--redirected-checked",
+            D = "w--redirected-focus",
+            ee = "w--redirected-focus-visible",
+            ne = ":focus-visible, [data-wf-focus-visible]",
+            ie = [
+              ["checkbox", x],
+              ["radio", G],
+            ];
+          i.on(
+            "change",
+            u + ' form input[type="checkbox"]:not(' + x + ")",
+            (j) => {
+              e(j.target).siblings(x).toggleClass(W);
+            }
+          ),
+            i.on("change", u + ' form input[type="radio"]', (j) => {
+              e(`input[name="${j.target.name}"]:not(${x})`).map((ge, vt) =>
+                e(vt).siblings(G).removeClass(W)
+              );
+              let K = e(j.target);
+              K.hasClass("w-radio-input") || K.siblings(G).addClass(W);
+            }),
+            ie.forEach(([j, K]) => {
+              i.on(
+                "focus",
+                u + ` form input[type="${j}"]:not(` + K + ")",
+                (ge) => {
+                  e(ge.target).siblings(K).addClass(D),
+                    e(ge.target).filter(ne).siblings(K).addClass(ee);
+                }
+              ),
+                i.on(
+                  "blur",
+                  u + ` form input[type="${j}"]:not(` + K + ")",
+                  (ge) => {
+                    e(ge.target).siblings(K).removeClass(`${D} ${ee}`);
+                  }
+                );
+            });
+        }
+        function V(x) {
+          var G = (x.btn = x.form.find(':input[type="submit"]'));
+          (x.wait = x.btn.attr("data-wait") || null),
+            (x.success = !1),
+            G.prop("disabled", !!(y && !x.turnstileToken)),
+            x.label && G.val(x.label);
+        }
+        function k(x) {
+          var G = x.btn,
+            W = x.wait;
+          G.prop("disabled", !0), W && ((x.label = G.val()), G.val(W));
+        }
+        function Z(x, G) {
+          var W = null;
+          return (
+            (G = G || {}),
+            x
+              .find(':input:not([type="submit"]):not([type="file"])')
+              .each(function (D, ee) {
+                var ne = e(ee),
+                  ie = ne.attr("type"),
+                  j =
+                    ne.attr("data-name") ||
+                    ne.attr("name") ||
+                    "Field " + (D + 1);
+                j = encodeURIComponent(j);
+                var K = ne.val();
+                if (ie === "checkbox") K = ne.is(":checked");
+                else if (ie === "radio") {
+                  if (G[j] === null || typeof G[j] == "string") return;
+                  K =
+                    x
+                      .find('input[name="' + ne.attr("name") + '"]:checked')
+                      .val() || null;
+                }
+                typeof K == "string" && (K = e.trim(K)),
+                  (G[j] = K),
+                  (W = W || U(ne, ie, j, K));
+              }),
+            W
+          );
+        }
+        function N(x) {
+          var G = {};
+          return (
+            x.find(':input[type="file"]').each(function (W, D) {
+              var ee = e(D),
+                ne =
+                  ee.attr("data-name") || ee.attr("name") || "File " + (W + 1),
+                ie = ee.attr("data-value");
+              typeof ie == "string" && (ie = e.trim(ie)), (G[ne] = ie);
+            }),
+            G
+          );
+        }
+        let I = { _mkto_trk: "marketo" };
+        function L() {
+          return document.cookie.split("; ").reduce(function (G, W) {
+            let D = W.split("="),
+              ee = D[0];
+            if (ee in I) {
+              let ne = I[ee],
+                ie = D.slice(1).join("=");
+              G[ne] = ie;
+            }
+            return G;
+          }, {});
+        }
+        function U(x, G, W, D) {
+          var ee = null;
+          return (
+            G === "password"
+              ? (ee = "Passwords cannot be submitted.")
+              : x.attr("required")
+              ? D
+                ? g.test(x.attr("type")) &&
+                  (p.test(D) ||
+                    (ee = "Please enter a valid email address for: " + W))
+                : (ee = "Please fill out the required field: " + W)
+              : W === "g-recaptcha-response" &&
+                !D &&
+                (ee = "Please confirm you\u2019re not a robot."),
+            ee
+          );
+        }
+        function q(x) {
+          se(x), Y(x);
+        }
+        function te(x) {
+          V(x);
+          var G = x.form,
+            W = {};
+          if (/^https/.test(s.href) && !/^https/.test(x.action)) {
+            G.attr("method", "post");
+            return;
+          }
+          se(x);
+          var D = Z(G, W);
+          if (D) return d(D);
+          k(x);
+          var ee;
+          t.each(W, function (K, ge) {
+            g.test(ge) && (W.EMAIL = K),
+              /^((full[ _-]?)?name)$/i.test(ge) && (ee = K),
+              /^(first[ _-]?name)$/i.test(ge) && (W.FNAME = K),
+              /^(last[ _-]?name)$/i.test(ge) && (W.LNAME = K);
+          }),
+            ee &&
+              !W.FNAME &&
+              ((ee = ee.split(" ")),
+              (W.FNAME = ee[0]),
+              (W.LNAME = W.LNAME || ee[1]));
+          var ne = x.action.replace("/post?", "/post-json?") + "&c=?",
+            ie = ne.indexOf("u=") + 2;
+          ie = ne.substring(ie, ne.indexOf("&", ie));
+          var j = ne.indexOf("id=") + 3;
+          (j = ne.substring(j, ne.indexOf("&", j))),
+            (W["b_" + ie + "_" + j] = ""),
+            e
+              .ajax({ url: ne, data: W, dataType: "jsonp" })
+              .done(function (K) {
+                (x.success = K.result === "success" || /already/.test(K.msg)),
+                  x.success || console.info("MailChimp error: " + K.msg),
+                  Y(x);
+              })
+              .fail(function () {
+                Y(x);
+              });
+        }
+        function Y(x) {
+          var G = x.form,
+            W = x.redirect,
+            D = x.success;
+          if (D && W) {
+            kr.location(W);
+            return;
+          }
+          x.done.toggle(D),
+            x.fail.toggle(!D),
+            D ? x.done.focus() : x.fail.focus(),
+            G.toggle(!D),
+            V(x);
+        }
+        function se(x) {
+          x.evt && x.evt.preventDefault(), (x.evt = null);
+        }
+        function Ie(x, G) {
+          if (!G.fileUploads || !G.fileUploads[x]) return;
+          var W,
+            D = e(G.fileUploads[x]),
+            ee = D.find("> .w-file-upload-default"),
+            ne = D.find("> .w-file-upload-uploading"),
+            ie = D.find("> .w-file-upload-success"),
+            j = D.find("> .w-file-upload-error"),
+            K = ee.find(".w-file-upload-input"),
+            ge = ee.find(".w-file-upload-label"),
+            vt = ge.children(),
+            it = j.find(".w-file-upload-error-msg"),
+            Be = ie.find(".w-file-upload-file"),
+            wn = ie.find(".w-file-remove-link"),
+            Yt = Be.find(".w-file-upload-file-name"),
+            l = it.attr("data-w-size-error"),
+            E = it.attr("data-w-type-error"),
+            _ = it.attr("data-w-generic-error");
+          if (
+            (h ||
+              ge.on("click keydown", function (H) {
+                (H.type === "keydown" && H.which !== 13 && H.which !== 32) ||
+                  (H.preventDefault(), K.click());
+              }),
+            ge.find(".w-icon-file-upload-icon").attr("aria-hidden", "true"),
+            wn.find(".w-icon-file-upload-remove").attr("aria-hidden", "true"),
+            h)
+          )
+            K.on("click", function (H) {
+              H.preventDefault();
+            }),
+              ge.on("click", function (H) {
+                H.preventDefault();
+              }),
+              vt.on("click", function (H) {
+                H.preventDefault();
+              });
+          else {
+            wn.on("click keydown", function (H) {
+              if (H.type === "keydown") {
+                if (H.which !== 13 && H.which !== 32) return;
+                H.preventDefault();
+              }
+              K.removeAttr("data-value"),
+                K.val(""),
+                Yt.html(""),
+                ee.toggle(!0),
+                ie.toggle(!1),
+                ge.focus();
+            }),
+              K.on("change", function (H) {
+                (W = H.target && H.target.files && H.target.files[0]),
+                  W &&
+                    (ee.toggle(!1),
+                    j.toggle(!1),
+                    ne.toggle(!0),
+                    ne.focus(),
+                    Yt.text(W.name),
+                    Q() || k(G),
+                    (G.fileUploads[x].uploading = !0),
+                    ke(W, w));
+              });
+            var b = ge.outerHeight();
+            K.height(b), K.width(1);
+          }
+          function C(H) {
+            var M = H.responseJSON && H.responseJSON.msg,
+              J = _;
+            typeof M == "string" && M.indexOf("InvalidFileTypeError") === 0
+              ? (J = E)
+              : typeof M == "string" &&
+                M.indexOf("MaxFileSizeError") === 0 &&
+                (J = l),
+              it.text(J),
+              K.removeAttr("data-value"),
+              K.val(""),
+              ne.toggle(!1),
+              ee.toggle(!0),
+              j.toggle(!0),
+              j.focus(),
+              (G.fileUploads[x].uploading = !1),
+              Q() || V(G);
+          }
+          function w(H, M) {
+            if (H) return C(H);
+            var J = M.fileName,
+              re = M.postData,
+              he = M.fileId,
+              Le = M.s3Url;
+            K.attr("data-value", he), me(Le, re, W, J, B);
+          }
+          function B(H) {
+            if (H) return C(H);
+            ne.toggle(!1),
+              ie.css("display", "inline-block"),
+              ie.focus(),
+              (G.fileUploads[x].uploading = !1),
+              Q() || V(G);
+          }
+          function Q() {
+            var H = (G.fileUploads && G.fileUploads.toArray()) || [];
+            return H.some(function (M) {
+              return M.uploading;
+            });
+          }
+        }
+        function ke(x, G) {
+          var W = new URLSearchParams({ name: x.name, size: x.size });
+          e.ajax({ type: "GET", url: `${T}?${W}`, crossDomain: !0 })
+            .done(function (D) {
+              G(null, D);
+            })
+            .fail(function (D) {
+              G(D);
+            });
+        }
+        function me(x, G, W, D, ee) {
+          var ne = new FormData();
+          for (var ie in G) ne.append(ie, G[ie]);
+          ne.append("file", W, D),
+            e
+              .ajax({
+                type: "POST",
+                url: x,
+                data: ne,
+                processData: !1,
+                contentType: !1,
+              })
+              .done(function () {
+                ee(null);
+              })
+              .fail(function (j) {
+                ee(j);
+              });
+        }
+        return r;
+      })
+    );
+  });
+  ua();
+  ca();
+  Ta();
+  Aa();
+  wa();
+  Ra();
+  Fa();
+  AE();
+  wE();
+  xE();
+  CE();
+  NE();
+})();
 /*!
-* tram.js v0.8.2-global
-* Cross-browser CSS3 transitions in JavaScript
-* https://github.com/bkwld/tram
-* MIT License
-*/
+ * tram.js v0.8.2-global
+ * Cross-browser CSS3 transitions in JavaScript
+ * https://github.com/bkwld/tram
+ * MIT License
+ */
 /*!
  * Webflow._ (aka) Underscore.js 1.6.0 (custom build)
  *
@@ -50,6 +10643,6425 @@ timm/lib/timm.js:
  * ----------------------------------------------------------------------
  * Webflow: Interactions 2.0: Init
  */
-Webflow.require('ix2').init(
-{"events":{"e":{"id":"e","name":"","animationType":"custom","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-2"}},"mediaQueries":["main"],"target":{"selector":".button-primary","originalId":"63dae69273397d4c9f22626f|b1d41114-1b66-0e03-c504-a630001ffb33","appliesTo":"CLASS"},"targets":[{"selector":".button-primary","originalId":"63dae69273397d4c9f22626f|b1d41114-1b66-0e03-c504-a630001ffb33","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675383852012},"e-2":{"id":"e-2","name":"","animationType":"custom","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-2","affectedElements":{},"playInReverse":false,"autoStopEventId":"e"}},"mediaQueries":["main"],"target":{"selector":".button-primary","originalId":"63dae69273397d4c9f22626f|b1d41114-1b66-0e03-c504-a630001ffb33","appliesTo":"CLASS"},"targets":[{"selector":".button-primary","originalId":"63dae69273397d4c9f22626f|b1d41114-1b66-0e03-c504-a630001ffb33","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675383852016},"e-7":{"id":"e-7","name":"","animationType":"preset","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-7","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-72"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"5d7f9305-1482-e663-3e87-f83c9038636c","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"5d7f9305-1482-e663-3e87-f83c9038636c","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675394799102},"e-8":{"id":"e-8","name":"","animationType":"preset","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-8","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-71"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"5d7f9305-1482-e663-3e87-f83c9038636c","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"5d7f9305-1482-e663-3e87-f83c9038636c","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675394799102},"e-13":{"id":"e-13","name":"","animationType":"custom","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-11","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-14"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"471fe825-a5db-be72-8c72-ed8344ba4a72","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"471fe825-a5db-be72-8c72-ed8344ba4a72","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675503851717},"e-14":{"id":"e-14","name":"","animationType":"custom","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-12","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-13"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"471fe825-a5db-be72-8c72-ed8344ba4a72","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"471fe825-a5db-be72-8c72-ed8344ba4a72","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675503851717},"e-16":{"id":"e-16","name":"","animationType":"preset","eventTypeId":"SCROLLING_IN_VIEW","action":{"id":"","actionTypeId":"GENERAL_CONTINUOUS_ACTION","config":{"actionListId":"a-14","affectedElements":{},"duration":0}},"mediaQueries":["main"],"target":{"id":"63df5d0b8b609634b1371f37|73754695-cf5e-f9e9-af08-d7b460af89d8","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63df5d0b8b609634b1371f37|73754695-cf5e-f9e9-af08-d7b460af89d8","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":[{"continuousParameterGroupId":"a-14-p","smoothing":50,"startsEntering":true,"addStartOffset":false,"addOffsetValue":50,"startsExiting":false,"addEndOffset":false,"endOffsetValue":50}],"createdOn":1675582755992},"e-19":{"id":"e-19","name":"","animationType":"custom","eventTypeId":"SCROLL_INTO_VIEW","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-15","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-20"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae19244d4326cd3f5baa5|70d91fa5-3c65-1f79-de04-aecda6e31732","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae19244d4326cd3f5baa5|70d91fa5-3c65-1f79-de04-aecda6e31732","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":true,"playInReverse":false,"scrollOffsetValue":0,"scrollOffsetUnit":"%","delay":null,"direction":null,"effectIn":null},"createdOn":1675633503870},"e-22":{"id":"e-22","name":"","animationType":"custom","eventTypeId":"SCROLLING_IN_VIEW","action":{"id":"","actionTypeId":"GENERAL_CONTINUOUS_ACTION","config":{"actionListId":"a-21","affectedElements":{},"duration":0}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae19244d4326cd3f5baa5|0f300277-070a-b516-8846-4fba1095fe4e","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae19244d4326cd3f5baa5|0f300277-070a-b516-8846-4fba1095fe4e","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":[{"continuousParameterGroupId":"a-21-p","smoothing":95,"startsEntering":true,"addStartOffset":false,"addOffsetValue":50,"startsExiting":false,"addEndOffset":false,"endOffsetValue":50}],"createdOn":1675740352667},"e-23":{"id":"e-23","name":"","animationType":"custom","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-19","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-24"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675741515602},"e-24":{"id":"e-24","name":"","animationType":"custom","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-20","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-23"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675741515603},"e-25":{"id":"e-25","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-22","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-26"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675824354789},"e-27":{"id":"e-27","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-23","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-28"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675824565421},"e-31":{"id":"e-31","name":"","animationType":"custom","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-26","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-32"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675879180764},"e-32":{"id":"e-32","name":"","animationType":"custom","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-27","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-31"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675879180764},"e-33":{"id":"e-33","name":"","animationType":"custom","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-30","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-34"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"c21ed082-0c38-409c-0c28-96439166e6f6","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"c21ed082-0c38-409c-0c28-96439166e6f6","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675879688755},"e-34":{"id":"e-34","name":"","animationType":"custom","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-31","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-33"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"c21ed082-0c38-409c-0c28-96439166e6f6","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"c21ed082-0c38-409c-0c28-96439166e6f6","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675879688756},"e-35":{"id":"e-35","name":"","animationType":"custom","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-34","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-36"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"2744a9d0-5ca6-e329-6d5e-2d1778778de5","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"2744a9d0-5ca6-e329-6d5e-2d1778778de5","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675957915847},"e-36":{"id":"e-36","name":"","animationType":"custom","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-35","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-35"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"2744a9d0-5ca6-e329-6d5e-2d1778778de5","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"2744a9d0-5ca6-e329-6d5e-2d1778778de5","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1675957915847},"e-37":{"id":"e-37","name":"","animationType":"custom","eventTypeId":"SCROLLING_IN_VIEW","action":{"id":"","actionTypeId":"GENERAL_CONTINUOUS_ACTION","config":{"actionListId":"a-36","affectedElements":{},"duration":0}},"mediaQueries":["main","medium"],"target":{"id":"63dae19244d4326cd3f5baa5|7dbecf2c-55a0-2342-2a55-6b8392bc8dbe","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae19244d4326cd3f5baa5|7dbecf2c-55a0-2342-2a55-6b8392bc8dbe","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":[{"continuousParameterGroupId":"a-36-p","smoothing":90,"startsEntering":true,"addStartOffset":false,"addOffsetValue":50,"startsExiting":false,"addEndOffset":false,"endOffsetValue":50}],"createdOn":1675967121016},"e-38":{"id":"e-38","name":"","animationType":"custom","eventTypeId":"SCROLLING_IN_VIEW","action":{"id":"","actionTypeId":"GENERAL_CONTINUOUS_ACTION","config":{"actionListId":"a-38","affectedElements":{},"duration":0}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae19244d4326cd3f5baa5|1d554892-f3ab-d1dc-bc0c-eec205724d7f","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae19244d4326cd3f5baa5|1d554892-f3ab-d1dc-bc0c-eec205724d7f","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":[{"continuousParameterGroupId":"a-38-p","smoothing":93,"startsEntering":true,"addStartOffset":false,"addOffsetValue":50,"startsExiting":false,"addEndOffset":false,"endOffsetValue":50}],"createdOn":1675983519164},"e-65":{"id":"e-65","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-41","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-66"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".radio-pill","originalId":"63dd7d5878a04717bd29ff9a|c0811938-30f5-f384-576b-964e29a869d4","appliesTo":"CLASS"},"targets":[{"selector":".radio-pill","originalId":"63dd7d5878a04717bd29ff9a|c0811938-30f5-f384-576b-964e29a869d4","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676323176697},"e-67":{"id":"e-67","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-42","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-68"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".radio-pill","originalId":"63dd7d5878a04717bd29ff9a|c0811938-30f5-f384-576b-964e29a869d4","appliesTo":"CLASS"},"targets":[{"selector":".radio-pill","originalId":"63dd7d5878a04717bd29ff9a|c0811938-30f5-f384-576b-964e29a869d4","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676323362844},"e-69":{"id":"e-69","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-43","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-70"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".radio","originalId":"63dae69273397d4c9f22626f|9eb952be-ec0f-5e65-9fbf-404962173ae6","appliesTo":"CLASS"},"targets":[{"selector":".radio","originalId":"63dae69273397d4c9f22626f|9eb952be-ec0f-5e65-9fbf-404962173ae6","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1584888432047},"e-71":{"id":"e-71","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-44","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-72"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".radio","originalId":"63dae69273397d4c9f22626f|9eb952be-ec0f-5e65-9fbf-404962173ae6","appliesTo":"CLASS"},"targets":[{"selector":".radio","originalId":"63dae69273397d4c9f22626f|9eb952be-ec0f-5e65-9fbf-404962173ae6","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1584888440221},"e-73":{"id":"e-73","name":"","animationType":"preset","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-39","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-74"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83eb","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83eb","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676342883568},"e-74":{"id":"e-74","name":"","animationType":"preset","eventTypeId":"MOUSE_SECOND_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-40","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-73"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83eb","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83eb","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676342883568},"e-75":{"id":"e-75","name":"","animationType":"preset","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-39","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-76"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f0","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f0","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676342883568},"e-76":{"id":"e-76","name":"","animationType":"preset","eventTypeId":"MOUSE_SECOND_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-40","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-75"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f0","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f0","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676342883568},"e-77":{"id":"e-77","name":"","animationType":"preset","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-39","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-78"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f5","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f5","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676342883568},"e-78":{"id":"e-78","name":"","animationType":"preset","eventTypeId":"MOUSE_SECOND_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-40","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-77"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f5","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f5","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676342883568},"e-79":{"id":"e-79","name":"","animationType":"preset","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-39","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-80"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83fa","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83fa","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676342883568},"e-80":{"id":"e-80","name":"","animationType":"preset","eventTypeId":"MOUSE_SECOND_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-40","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-79"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83fa","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83fa","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676342883568},"e-99":{"id":"e-99","name":"","animationType":"preset","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-7","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-100"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|2dc850af-ab15-4bf2-d291-8884d1ae9ec5","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|2dc850af-ab15-4bf2-d291-8884d1ae9ec5","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676581263716},"e-100":{"id":"e-100","name":"","animationType":"preset","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-8","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-99"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|2dc850af-ab15-4bf2-d291-8884d1ae9ec5","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|2dc850af-ab15-4bf2-d291-8884d1ae9ec5","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1676581263716},"e-105":{"id":"e-105","name":"","animationType":"custom","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-54","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-106"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"156404c8-e490-2bf1-c617-e658209d75cd","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"156404c8-e490-2bf1-c617-e658209d75cd","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1677619274125},"e-107":{"id":"e-107","name":"","animationType":"preset","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-54","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-108"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".button_medium","originalId":"63dae69273397d4c9f22626f|30cac943-434f-4663-1969-53df579211ff","appliesTo":"CLASS"},"targets":[{"selector":".button_medium","originalId":"63dae69273397d4c9f22626f|30cac943-434f-4663-1969-53df579211ff","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1677619519454},"e-108":{"id":"e-108","name":"","animationType":"custom","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-55","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-107"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".button_medium","originalId":"63dae69273397d4c9f22626f|30cac943-434f-4663-1969-53df579211ff","appliesTo":"CLASS"},"targets":[{"selector":".button_medium","originalId":"63dae69273397d4c9f22626f|30cac943-434f-4663-1969-53df579211ff","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1677619519454},"e-115":{"id":"e-115","name":"","animationType":"preset","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-56","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-116"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|0d0fd482-449f-be2a-ea34-30fb497a659d","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|0d0fd482-449f-be2a-ea34-30fb497a659d","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1677620142259},"e-116":{"id":"e-116","name":"","animationType":"preset","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-57","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-115"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dae69273397d4c9f22626f|0d0fd482-449f-be2a-ea34-30fb497a659d","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dae69273397d4c9f22626f|0d0fd482-449f-be2a-ea34-30fb497a659d","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1677620142259},"e-117":{"id":"e-117","name":"","animationType":"custom","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-9","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-118"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"21a171ba-87cf-c337-da53-1aa71201346e","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"21a171ba-87cf-c337-da53-1aa71201346e","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1677620343292},"e-118":{"id":"e-118","name":"","animationType":"custom","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-10","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-117"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"21a171ba-87cf-c337-da53-1aa71201346e","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"21a171ba-87cf-c337-da53-1aa71201346e","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1677620343293},"e-121":{"id":"e-121","name":"","animationType":"custom","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-62","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-122"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"8bec40d9-794e-f9c7-fdb7-6252708a3488","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"8bec40d9-794e-f9c7-fdb7-6252708a3488","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1678121946222},"e-122":{"id":"e-122","name":"","animationType":"custom","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-63","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-121"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"8bec40d9-794e-f9c7-fdb7-6252708a3488","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"8bec40d9-794e-f9c7-fdb7-6252708a3488","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1678121946224},"e-125":{"id":"e-125","name":"","animationType":"custom","eventTypeId":"MOUSE_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-39","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-126"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".checkbox_trigger","originalId":"63dd7d5878a04717bd29ff9a|9297965a-f8f3-4384-62e2-374020b29427","appliesTo":"CLASS"},"targets":[{"selector":".checkbox_trigger","originalId":"63dd7d5878a04717bd29ff9a|9297965a-f8f3-4384-62e2-374020b29427","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1678139673118},"e-126":{"id":"e-126","name":"","animationType":"custom","eventTypeId":"MOUSE_SECOND_CLICK","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-40","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-125"}},"mediaQueries":["main","medium","small","tiny"],"target":{"selector":".checkbox_trigger","originalId":"63dd7d5878a04717bd29ff9a|9297965a-f8f3-4384-62e2-374020b29427","appliesTo":"CLASS"},"targets":[{"selector":".checkbox_trigger","originalId":"63dd7d5878a04717bd29ff9a|9297965a-f8f3-4384-62e2-374020b29427","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1678139673119},"e-128":{"id":"e-128","name":"","animationType":"custom","eventTypeId":"SCROLLING_IN_VIEW","action":{"id":"","actionTypeId":"GENERAL_CONTINUOUS_ACTION","config":{"actionListId":"a-66","affectedElements":{},"duration":0}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63f39261e65caf960d5fe302|7b162bf9-a9e9-3bb0-c1e1-8eae3a5ca4dc","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63f39261e65caf960d5fe302|7b162bf9-a9e9-3bb0-c1e1-8eae3a5ca4dc","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":[{"continuousParameterGroupId":"a-66-p","smoothing":90,"startsEntering":true,"addStartOffset":false,"addOffsetValue":50,"startsExiting":false,"addEndOffset":false,"endOffsetValue":50}],"createdOn":1678485750278},"e-129":{"id":"e-129","name":"","animationType":"custom","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-67","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-130"}},"mediaQueries":["main"],"target":{"selector":".cs_projects-link","originalId":"63f39261e65caf960d5fe302|28090dd5-bf1f-3b30-16e8-3e0e90170a21","appliesTo":"CLASS"},"targets":[{"selector":".cs_projects-link","originalId":"63f39261e65caf960d5fe302|28090dd5-bf1f-3b30-16e8-3e0e90170a21","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1684268738624},"e-130":{"id":"e-130","name":"","animationType":"custom","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-68","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-129"}},"mediaQueries":["main"],"target":{"selector":".cs_projects-link","originalId":"63f39261e65caf960d5fe302|28090dd5-bf1f-3b30-16e8-3e0e90170a21","appliesTo":"CLASS"},"targets":[{"selector":".cs_projects-link","originalId":"63f39261e65caf960d5fe302|28090dd5-bf1f-3b30-16e8-3e0e90170a21","appliesTo":"CLASS"}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1684268738625},"e-133":{"id":"e-133","name":"","animationType":"custom","eventTypeId":"MOUSE_OVER","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-72","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-134"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1717122122443},"e-134":{"id":"e-134","name":"","animationType":"custom","eventTypeId":"MOUSE_OUT","action":{"id":"","actionTypeId":"GENERAL_START_ACTION","config":{"delay":0,"easing":"","duration":0,"actionListId":"a-73","affectedElements":{},"playInReverse":false,"autoStopEventId":"e-133"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":null,"scrollOffsetUnit":null,"delay":null,"direction":null,"effectIn":null},"createdOn":1717122122444}},"actionLists":{"a":{"id":"a","title":"primary btn (hover in)","actionItemGroups":[{"actionItems":[{"id":"a-n","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".primary_panel-1","selectorGuids":["ea75bbd9-0752-f1c8-8196-8e3841233cc5"]},"value":1,"unit":""}},{"id":"a-n-2","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".primary_fill","selectorGuids":["e9106d5f-f68c-40e5-9b23-95b9cc667c29"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".primary_panel-2","selectorGuids":["b1137cf6-16dc-3fd5-057f-4521b8f034dd"]},"yValue":100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]},{"actionItems":[{"id":"a-n-4","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"outCubic","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".primary_panel-1","selectorGuids":["ea75bbd9-0752-f1c8-8196-8e3841233cc5"]},"value":0,"unit":""}},{"id":"a-n-5","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"outCubic","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".primary_fill","selectorGuids":["e9106d5f-f68c-40e5-9b23-95b9cc667c29"]},"yValue":105,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":100,"easing":"outCubic","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".primary_panel-2","selectorGuids":["b1137cf6-16dc-3fd5-057f-4521b8f034dd"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1675383866275},"a-2":{"id":"a-2","title":"primary btn (hover in) 2","actionItemGroups":[{"actionItems":[{"id":"a-2-n-4","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"outCubic","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".primary_panel-1","selectorGuids":["ea75bbd9-0752-f1c8-8196-8e3841233cc5"]},"value":1,"unit":""}},{"id":"a-2-n-5","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"outCubic","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".primary_fill","selectorGuids":["e9106d5f-f68c-40e5-9b23-95b9cc667c29"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]},{"actionItems":[{"id":"a-2-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".primary_panel-2","selectorGuids":["b1137cf6-16dc-3fd5-057f-4521b8f034dd"]},"yValue":100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1675383866275},"a-7":{"id":"a-7","title":"new","actionItemGroups":[{"actionItems":[{"id":"a-7-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".primary_fill","selectorGuids":["e9106d5f-f68c-40e5-9b23-95b9cc667c29"]},"xValue":0,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-7-n-2","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".primary_panel-1","selectorGuids":["ea75bbd9-0752-f1c8-8196-8e3841233cc5"]},"value":1,"unit":""}},{"id":"a-7-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".html-embed","selectorGuids":["15b5dd70-4e87-7b63-cbec-cadf84828771"]},"xValue":-100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]},{"actionItems":[{"id":"a-7-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"outCubic","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".primary_fill","selectorGuids":["e9106d5f-f68c-40e5-9b23-95b9cc667c29"]},"xValue":105,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-7-n-5","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"outCubic","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".primary_panel-1","selectorGuids":["ea75bbd9-0752-f1c8-8196-8e3841233cc5"]},"value":0,"unit":""}},{"id":"a-7-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":200,"easing":"outCubic","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".html-embed","selectorGuids":["15b5dd70-4e87-7b63-cbec-cadf84828771"]},"xValue":0,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1675384649857},"a-8":{"id":"a-8","title":"new 2","actionItemGroups":[{"actionItems":[{"id":"a-8-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"outCubic","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".primary_fill","selectorGuids":["e9106d5f-f68c-40e5-9b23-95b9cc667c29"]},"xValue":0,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-8-n-5","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"outCubic","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".primary_panel-1","selectorGuids":["ea75bbd9-0752-f1c8-8196-8e3841233cc5"]},"value":1,"unit":""}},{"id":"a-8-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":200,"easing":"outCubic","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".html-embed","selectorGuids":["15b5dd70-4e87-7b63-cbec-cadf84828771"]},"xValue":-100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1675384649857},"a-11":{"id":"a-11","title":"nav logo hover in","actionItemGroups":[{"actionItems":[{"id":"a-11-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".nav-top_melonhead","selectorGuids":["28cec278-4292-389a-3146-1b8152091f50"]},"yValue":75,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]},{"actionItems":[{"id":"a-11-n-2","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"swingTo","duration":400,"target":{"useEventTarget":"CHILDREN","selector":".nav-top_melonhead","selectorGuids":["28cec278-4292-389a-3146-1b8152091f50"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1675503868322},"a-12":{"id":"a-12","title":"nav logo hover out","actionItemGroups":[{"actionItems":[{"id":"a-12-n-2","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"swingFrom","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".nav-top_melonhead","selectorGuids":["28cec278-4292-389a-3146-1b8152091f50"]},"yValue":75,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1675503868322},"a-14":{"id":"a-14","title":"Slider in view","continuousParameterGroups":[{"id":"a-14-p","type":"SCROLL_PROGRESS","parameterLabel":"Scroll","continuousActionGroups":[{"keyframe":0,"actionItems":[{"id":"a-14-n","actionTypeId":"STYLE_SIZE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".expand","selectorGuids":["41a30a19-b0cf-6403-9681-fc03d41ef4bd"]},"widthValue":90,"heightValue":82,"widthUnit":"vw","heightUnit":"vh","locked":false}}]},{"keyframe":50,"actionItems":[{"id":"a-14-n-3","actionTypeId":"STYLE_SIZE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".expand","selectorGuids":["41a30a19-b0cf-6403-9681-fc03d41ef4bd"]},"widthValue":106,"heightValue":100,"widthUnit":"vw","heightUnit":"vh","locked":false}}]},{"keyframe":100,"actionItems":[{"id":"a-14-n-5","actionTypeId":"STYLE_SIZE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".expand","selectorGuids":["41a30a19-b0cf-6403-9681-fc03d41ef4bd"]},"widthValue":106,"heightValue":100,"widthUnit":"vw","heightUnit":"vh","locked":false}}]}]}],"createdOn":1675575226502},"a-15":{"id":"a-15","title":"typing bubble","actionItemGroups":[{"actionItems":[{"id":"a-15-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","id":"63dae19244d4326cd3f5baa5|d6405171-e1d1-4a40-fcbf-e86775599a99"},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-15-n-2","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","id":"63dae19244d4326cd3f5baa5|d50d46ff-f48b-197f-579e-43775b27d5cf"},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-15-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","id":"63dae19244d4326cd3f5baa5|69797d02-12b4-5517-c52c-174d95c27057"},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]},{"actionItems":[{"id":"a-15-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"CHILDREN","id":"63dae19244d4326cd3f5baa5|d6405171-e1d1-4a40-fcbf-e86775599a99"},"yValue":-75,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-15-n-5","actionTypeId":"TRANSFORM_MOVE","config":{"delay":100,"easing":"ease","duration":300,"target":{"useEventTarget":"CHILDREN","id":"63dae19244d4326cd3f5baa5|d50d46ff-f48b-197f-579e-43775b27d5cf"},"yValue":-75,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-15-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":200,"easing":"ease","duration":300,"target":{"useEventTarget":"CHILDREN","id":"63dae19244d4326cd3f5baa5|69797d02-12b4-5517-c52c-174d95c27057"},"yValue":-75,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]},{"actionItems":[{"id":"a-15-n-7","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"CHILDREN","id":"63dae19244d4326cd3f5baa5|d6405171-e1d1-4a40-fcbf-e86775599a99"},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-15-n-8","actionTypeId":"TRANSFORM_MOVE","config":{"delay":100,"easing":"ease","duration":300,"target":{"useEventTarget":"CHILDREN","id":"63dae19244d4326cd3f5baa5|d50d46ff-f48b-197f-579e-43775b27d5cf"},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-15-n-9","actionTypeId":"TRANSFORM_MOVE","config":{"delay":200,"easing":"ease","duration":300,"target":{"useEventTarget":"CHILDREN","id":"63dae19244d4326cd3f5baa5|69797d02-12b4-5517-c52c-174d95c27057"},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1675633506844},"a-21":{"id":"a-21","title":"try again","continuousParameterGroups":[{"id":"a-21-p","type":"SCROLL_PROGRESS","parameterLabel":"Scroll","continuousActionGroups":[{"keyframe":0,"actionItems":[{"id":"a-21-n-2","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".logo-column.normal","selectorGuids":["d002f835-529a-61ff-e1a8-2e1d9d4cffb7","28d4704a-90b1-6ea3-5d85-8372fcf00fa0"]},"yValue":10,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-21-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".logo-column.reversed","selectorGuids":["d002f835-529a-61ff-e1a8-2e1d9d4cffb7","d9ef3a4a-588f-f5de-edbb-f2f2177999b4"]},"yValue":-10,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]},{"keyframe":100,"actionItems":[{"id":"a-21-n-5","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".logo-column.normal","selectorGuids":["d002f835-529a-61ff-e1a8-2e1d9d4cffb7","28d4704a-90b1-6ea3-5d85-8372fcf00fa0"]},"yValue":-10,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-21-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".logo-column.reversed","selectorGuids":["d002f835-529a-61ff-e1a8-2e1d9d4cffb7","d9ef3a4a-588f-f5de-edbb-f2f2177999b4"]},"yValue":10,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}]}],"createdOn":1675740356508},"a-19":{"id":"a-19","title":"hero video hover in","actionItemGroups":[{"actionItems":[{"id":"a-19-n","actionTypeId":"STYLE_SIZE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":true,"id":"63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6"},"widthValue":100,"widthUnit":"%","heightUnit":"PX","locked":false}},{"id":"a-19-n-5","actionTypeId":"STYLE_BACKGROUND_COLOR","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".home_hero-vid","selectorGuids":["438f9df9-3580-fa9e-c523-441a757ba98a"]},"globalSwatchId":"","rValue":5,"bValue":15,"gValue":7,"aValue":0.5}},{"id":"a-19-n-3","actionTypeId":"STYLE_BACKGROUND_COLOR","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".home_hero-play","selectorGuids":["8ec8fcae-cd09-6b74-a4ec-a16f4b822725"]},"globalSwatchId":"","rValue":255,"bValue":255,"gValue":255,"aValue":0.1}}]},{"actionItems":[{"id":"a-19-n-2","actionTypeId":"STYLE_SIZE","config":{"delay":0,"easing":"ease","duration":700,"target":{"useEventTarget":true,"id":"63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6"},"widthValue":92,"widthUnit":"%","heightUnit":"PX","locked":false}},{"id":"a-19-n-4","actionTypeId":"STYLE_BACKGROUND_COLOR","config":{"delay":0,"easing":"ease","duration":700,"target":{"useEventTarget":"CHILDREN","selector":".home_hero-play","selectorGuids":["8ec8fcae-cd09-6b74-a4ec-a16f4b822725"]},"globalSwatchId":"","rValue":255,"bValue":255,"gValue":255,"aValue":0.25}},{"id":"a-19-n-6","actionTypeId":"STYLE_BACKGROUND_COLOR","config":{"delay":0,"easing":"ease","duration":700,"target":{"useEventTarget":"CHILDREN","selector":".home_hero-vid","selectorGuids":["438f9df9-3580-fa9e-c523-441a757ba98a"]},"globalSwatchId":"","rValue":5,"bValue":15,"gValue":7,"aValue":0.75}}]}],"useFirstGroupAsInitialState":true,"createdOn":1675741518469},"a-20":{"id":"a-20","title":"hero vid hover out","actionItemGroups":[{"actionItems":[{"id":"a-20-n-3","actionTypeId":"STYLE_SIZE","config":{"delay":0,"easing":"swingFromTo","duration":400,"target":{"useEventTarget":true,"id":"63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6"},"widthValue":100,"widthUnit":"%","heightUnit":"PX","locked":false}},{"id":"a-20-n-4","actionTypeId":"STYLE_BACKGROUND_COLOR","config":{"delay":0,"easing":"ease","duration":400,"target":{"useEventTarget":"CHILDREN","selector":".home_hero-play","selectorGuids":["8ec8fcae-cd09-6b74-a4ec-a16f4b822725"]},"globalSwatchId":"","rValue":255,"bValue":255,"gValue":255,"aValue":0.1}},{"id":"a-20-n-5","actionTypeId":"STYLE_BACKGROUND_COLOR","config":{"delay":0,"easing":"ease","duration":400,"target":{"useEventTarget":"CHILDREN","selector":".home_hero-vid","selectorGuids":["438f9df9-3580-fa9e-c523-441a757ba98a"]},"globalSwatchId":"","rValue":5,"bValue":15,"gValue":7,"aValue":0.5}}]}],"useFirstGroupAsInitialState":false,"createdOn":1675741518469},"a-22":{"id":"a-22","title":"show video","actionItemGroups":[{"actionItems":[{"id":"a-22-n","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f"},"value":"none"}},{"id":"a-22-n-2","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"","duration":500,"target":{"id":"63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f"},"value":0,"unit":""}}]},{"actionItems":[{"id":"a-22-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f"},"value":"block"}}]},{"actionItems":[{"id":"a-22-n-4","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"ease","duration":300,"target":{"id":"63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f"},"value":1,"unit":""}}]}],"useFirstGroupAsInitialState":true,"createdOn":1675824363956},"a-23":{"id":"a-23","title":"hide video","actionItemGroups":[{"actionItems":[{"id":"a-23-n-4","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"ease","duration":200,"target":{"id":"63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f"},"value":0,"unit":""}}]},{"actionItems":[{"id":"a-23-n-3","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"id":"63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f"},"value":"none"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1675824363956},"a-26":{"id":"a-26","title":"x out hover in","actionItemGroups":[{"actionItems":[{"id":"a-26-n","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".icon-88","selectorGuids":["4b9395e6-ac15-05eb-d7d7-9159776fd6d2"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-26-n-3","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":true,"id":"63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794"},"globalSwatchId":"dd05ad2b","rValue":255,"bValue":255,"gValue":255,"aValue":1}}]},{"actionItems":[{"id":"a-26-n-2","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"swingTo","duration":400,"target":{"useEventTarget":"CHILDREN","selector":".icon-88","selectorGuids":["4b9395e6-ac15-05eb-d7d7-9159776fd6d2"]},"zValue":90,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-26-n-4","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"ease","duration":400,"target":{"useEventTarget":true,"id":"63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794"},"globalSwatchId":"0ead2d9d","rValue":246,"bValue":94,"gValue":250,"aValue":1}}]}],"useFirstGroupAsInitialState":true,"createdOn":1675879185314},"a-27":{"id":"a-27","title":"x out hover out","actionItemGroups":[{"actionItems":[{"id":"a-27-n-2","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"ease","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".icon-88","selectorGuids":["4b9395e6-ac15-05eb-d7d7-9159776fd6d2"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-27-n-3","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"ease","duration":200,"target":{"useEventTarget":true,"id":"63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794"},"globalSwatchId":"dd05ad2b","rValue":255,"bValue":255,"gValue":255,"aValue":1}}]}],"useFirstGroupAsInitialState":false,"createdOn":1675879185314},"a-30":{"id":"a-30","title":"contact footer hover in 2","actionItemGroups":[{"actionItems":[{"id":"a-30-n","actionTypeId":"TRANSFORM_SCALE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-expand","selectorGuids":["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"]},"xValue":1,"yValue":1,"locked":true}},{"id":"a-30-n-15","actionTypeId":"STYLE_BACKGROUND_COLOR","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-expand","selectorGuids":["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"]},"globalSwatchId":"0ead2d9d","rValue":246,"bValue":94,"gValue":250,"aValue":1}},{"id":"a-30-n-8","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-circle","selectorGuids":["ae16d9a6-f21d-20c7-1bbc-6efaf8d3053a"]},"value":"flex"}},{"id":"a-30-n-10","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-coffee","selectorGuids":["7523b8fe-4209-aa59-f72f-41c3f3450519"]},"value":"none"}},{"id":"a-30-n-11","actionTypeId":"TRANSFORM_SCALE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-coffee","selectorGuids":["7523b8fe-4209-aa59-f72f-41c3f3450519"]},"xValue":0.8,"yValue":0.8,"locked":true}}]},{"actionItems":[{"id":"a-30-n-12","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-coffee","selectorGuids":["7523b8fe-4209-aa59-f72f-41c3f3450519"]},"value":"block"}},{"id":"a-30-n-9","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-circle","selectorGuids":["ae16d9a6-f21d-20c7-1bbc-6efaf8d3053a"]},"value":"none"}}]},{"actionItems":[{"id":"a-30-n-7","actionTypeId":"TRANSFORM_SCALE","config":{"delay":0,"easing":"swingTo","duration":400,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-expand","selectorGuids":["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"]},"xValue":1.03,"yValue":1.03,"locked":true}},{"id":"a-30-n-13","actionTypeId":"TRANSFORM_SCALE","config":{"delay":0,"easing":"swingTo","duration":400,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-coffee","selectorGuids":["7523b8fe-4209-aa59-f72f-41c3f3450519"]},"xValue":1,"yValue":1,"locked":true}},{"id":"a-30-n-14","actionTypeId":"TRANSFORM_SCALE","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-circle","selectorGuids":["ae16d9a6-f21d-20c7-1bbc-6efaf8d3053a"]},"xValue":0.8,"yValue":0.8,"locked":true}},{"id":"a-30-n-16","actionTypeId":"STYLE_BACKGROUND_COLOR","config":{"delay":0,"easing":"ease","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-expand","selectorGuids":["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"]},"globalSwatchId":"d4cd7f62","rValue":49,"bValue":200,"gValue":247,"aValue":1}}]}],"useFirstGroupAsInitialState":true,"createdOn":1675879691625},"a-31":{"id":"a-31","title":"contact footer hover out 2","actionItemGroups":[{"actionItems":[{"id":"a-31-n-5","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-coffee","selectorGuids":["7523b8fe-4209-aa59-f72f-41c3f3450519"]},"value":"none"}},{"id":"a-31-n-6","actionTypeId":"GENERAL_DISPLAY","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-circle","selectorGuids":["ae16d9a6-f21d-20c7-1bbc-6efaf8d3053a"]},"value":"flex"}}]},{"actionItems":[{"id":"a-31-n-7","actionTypeId":"TRANSFORM_SCALE","config":{"delay":0,"easing":"swingTo","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-expand","selectorGuids":["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"]},"xValue":1,"yValue":1,"locked":true}},{"id":"a-31-n-10","actionTypeId":"STYLE_BACKGROUND_COLOR","config":{"delay":0,"easing":"ease","duration":100,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-expand","selectorGuids":["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"]},"globalSwatchId":"0ead2d9d","rValue":246,"bValue":94,"gValue":250,"aValue":1}},{"id":"a-31-n-8","actionTypeId":"TRANSFORM_SCALE","config":{"delay":0,"easing":"swingTo","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-circle","selectorGuids":["ae16d9a6-f21d-20c7-1bbc-6efaf8d3053a"]},"xValue":1,"yValue":1,"locked":true}},{"id":"a-31-n-9","actionTypeId":"TRANSFORM_SCALE","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".footer_contact-coffee","selectorGuids":["7523b8fe-4209-aa59-f72f-41c3f3450519"]},"xValue":0.8,"yValue":0.8,"locked":true}}]}],"useFirstGroupAsInitialState":false,"createdOn":1675879691625},"a-34":{"id":"a-34","title":"arrow link hover in","actionItemGroups":[{"actionItems":[{"id":"a-34-n-2","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":true,"id":"2744a9d0-5ca6-e329-6d5e-2d1778778de5"},"globalSwatchId":"dd05ad2b","rValue":255,"bValue":255,"gValue":255,"aValue":1}},{"id":"a-34-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".arrow-static","selectorGuids":["96ade7a4-250b-37ab-4f1a-04fa1055c4bc"]},"xValue":0,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-34-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".arrow-absolute","selectorGuids":["cf509f44-1b77-70c9-216e-bb506e4fb568"]},"xValue":-100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]},{"actionItems":[{"id":"a-34-n-5","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":true,"id":"2744a9d0-5ca6-e329-6d5e-2d1778778de5"},"globalSwatchId":"0ead2d9d","rValue":246,"bValue":94,"gValue":250,"aValue":1}},{"id":"a-34-n-7","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"swingTo","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".arrow-absolute","selectorGuids":["cf509f44-1b77-70c9-216e-bb506e4fb568"]},"xValue":0,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-34-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".arrow-static","selectorGuids":["96ade7a4-250b-37ab-4f1a-04fa1055c4bc"]},"xValue":100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1675957918598},"a-35":{"id":"a-35","title":"arrow link hover out","actionItemGroups":[{"actionItems":[{"id":"a-35-n-4","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":true,"id":"2744a9d0-5ca6-e329-6d5e-2d1778778de5"},"globalSwatchId":"dd05ad2b","rValue":255,"bValue":255,"gValue":255,"aValue":1}},{"id":"a-35-n-5","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".arrow-absolute","selectorGuids":["cf509f44-1b77-70c9-216e-bb506e4fb568"]},"xValue":-100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-35-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".arrow-static","selectorGuids":["96ade7a4-250b-37ab-4f1a-04fa1055c4bc"]},"xValue":0,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1675957918598},"a-36":{"id":"a-36","title":"Testimonial Scroll","continuousParameterGroups":[{"id":"a-36-p","type":"SCROLL_PROGRESS","parameterLabel":"Scroll","continuousActionGroups":[{"keyframe":0,"actionItems":[{"id":"a-36-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.wonder-dynamics","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","2553a279-1a46-bd4e-51df-fb7ad9cd4fef"]},"xValue":22,"yValue":23,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-3","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.wonder-dynamics","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","2553a279-1a46-bd4e-51df-fb7ad9cd4fef"]},"zValue":-40,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.scott","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","27cb93c3-707d-3b79-3ae0-43b0c7f9d05e"]},"xValue":3,"yValue":22,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-5","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.scott","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","27cb93c3-707d-3b79-3ae0-43b0c7f9d05e"]},"zValue":40,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.merck","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","06d08d13-7c38-63e0-f966-e6932db9fa0c"]},"xValue":-21,"yValue":22,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-7","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.merck","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","06d08d13-7c38-63e0-f966-e6932db9fa0c"]},"zValue":50,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-8","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.pencil","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","89670b03-2271-fdaf-6dd2-f854d1cd70ac"]},"xValue":-33,"yValue":8,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-9","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.pencil","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","89670b03-2271-fdaf-6dd2-f854d1cd70ac"]},"zValue":60,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-10","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.solana","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","cbb665df-f018-5eae-280f-f27b4820580f"]},"xValue":-30,"yValue":-8,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-11","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.solana","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","cbb665df-f018-5eae-280f-f27b4820580f"]},"zValue":-50,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-12","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.farley","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","74cf4476-a5e4-7fc8-ebbf-dccd4bb65bc1"]},"xValue":-23,"yValue":-25,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-13","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.farley","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","74cf4476-a5e4-7fc8-ebbf-dccd4bb65bc1"]},"zValue":-60,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-14","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.safepal","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","fa307d5b-073d-a994-b8a6-40f39c1b21e7"]},"xValue":-5,"yValue":-27,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-15","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.safepal","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","fa307d5b-073d-a994-b8a6-40f39c1b21e7"]},"zValue":20,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-16","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.shaq","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","5827960c-0b05-fb8b-88ff-7c171ecdcbd4"]},"xValue":-11,"yValue":-16,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-17","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.shaq","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","5827960c-0b05-fb8b-88ff-7c171ecdcbd4"]},"zValue":60,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-18","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.chat","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","e1239400-6325-98fc-52fe-7ebc2c8a755a"]},"xValue":23,"yValue":-27,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-19","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.chat","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","e1239400-6325-98fc-52fe-7ebc2c8a755a"]},"zValue":-50,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-20","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.cocoon","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","e582be0d-362f-e5f8-f0e2-d9ac43a8c756"]},"xValue":25,"yValue":-14,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-21","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.cocoon","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","e582be0d-362f-e5f8-f0e2-d9ac43a8c756"]},"zValue":-40,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-22","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.clutch","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","3d436a47-0479-6ae6-673c-b6b2b11a39e7"]},"xValue":19,"yValue":9,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-23","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.clutch","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","3d436a47-0479-6ae6-673c-b6b2b11a39e7"]},"zValue":-40,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}}]},{"keyframe":50,"actionItems":[{"id":"a-36-n-24","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.wonder-dynamics","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","2553a279-1a46-bd4e-51df-fb7ad9cd4fef"]},"xValue":0,"yValue":0,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-25","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.wonder-dynamics","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","2553a279-1a46-bd4e-51df-fb7ad9cd4fef"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-26","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.scott","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","27cb93c3-707d-3b79-3ae0-43b0c7f9d05e"]},"xValue":0,"yValue":0,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-27","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.scott","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","27cb93c3-707d-3b79-3ae0-43b0c7f9d05e"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-28","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.merck","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","06d08d13-7c38-63e0-f966-e6932db9fa0c"]},"xValue":0,"yValue":0,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-29","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.merck","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","06d08d13-7c38-63e0-f966-e6932db9fa0c"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-30","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.pencil","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","89670b03-2271-fdaf-6dd2-f854d1cd70ac"]},"xValue":0,"yValue":0,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-31","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.pencil","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","89670b03-2271-fdaf-6dd2-f854d1cd70ac"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-32","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.solana","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","cbb665df-f018-5eae-280f-f27b4820580f"]},"xValue":0,"yValue":0,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-33","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.solana","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","cbb665df-f018-5eae-280f-f27b4820580f"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-34","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.farley","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","74cf4476-a5e4-7fc8-ebbf-dccd4bb65bc1"]},"xValue":0,"yValue":0,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-35","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.farley","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","74cf4476-a5e4-7fc8-ebbf-dccd4bb65bc1"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-36","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.safepal","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","fa307d5b-073d-a994-b8a6-40f39c1b21e7"]},"xValue":0,"yValue":0,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-37","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.safepal","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","fa307d5b-073d-a994-b8a6-40f39c1b21e7"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-38","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.shaq","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","5827960c-0b05-fb8b-88ff-7c171ecdcbd4"]},"xValue":0,"yValue":0,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-39","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.shaq","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","5827960c-0b05-fb8b-88ff-7c171ecdcbd4"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-40","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.chat","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","e1239400-6325-98fc-52fe-7ebc2c8a755a"]},"xValue":0,"yValue":0,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-41","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.chat","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","e1239400-6325-98fc-52fe-7ebc2c8a755a"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-42","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.cocoon","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","e582be0d-362f-e5f8-f0e2-d9ac43a8c756"]},"xValue":0,"yValue":0,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-43","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.cocoon","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","e582be0d-362f-e5f8-f0e2-d9ac43a8c756"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-36-n-44","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.clutch","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","3d436a47-0479-6ae6-673c-b6b2b11a39e7"]},"xValue":0,"yValue":0,"xUnit":"em","yUnit":"em","zUnit":"PX"}},{"id":"a-36-n-45","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".card-container.clutch","selectorGuids":["5f330c88-42d9-f30d-c6e6-369d006db1d4","3d436a47-0479-6ae6-673c-b6b2b11a39e7"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}}]}]}],"createdOn":1675964331810},"a-38":{"id":"a-38","title":"intro scroll","continuousParameterGroups":[{"id":"a-38-p","type":"SCROLL_PROGRESS","parameterLabel":"Scroll","continuousActionGroups":[{"keyframe":0,"actionItems":[{"id":"a-38-n","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".icon-24","selectorGuids":["1204f33d-fd2b-cdcf-65e6-e84ef53da349"]},"zValue":0,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-38-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".squiggle_embed","selectorGuids":["70e22066-b254-85d0-d4f3-d6f251d4834a"]},"xValue":0,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]},{"keyframe":100,"actionItems":[{"id":"a-38-n-3","actionTypeId":"TRANSFORM_ROTATE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".icon-24","selectorGuids":["1204f33d-fd2b-cdcf-65e6-e84ef53da349"]},"zValue":520,"xUnit":"DEG","yUnit":"DEG","zUnit":"deg"}},{"id":"a-38-n-5","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".squiggle_embed","selectorGuids":["70e22066-b254-85d0-d4f3-d6f251d4834a"]},"xValue":-25,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]}]}],"createdOn":1675983528787},"a-41":{"id":"a-41","title":"Radio SET","actionItemGroups":[{"actionItems":[{"id":"a-41-n-4","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"PARENT","selector":".radio-pill","selectorGuids":["6510a2b7-580d-5291-fb25-6fb040a6ce4c"]},"globalSwatchId":"dd05ad2b","rValue":255,"bValue":255,"gValue":255,"aValue":1}},{"id":"a-41-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":300,"target":{},"yValue":-100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1676049955319},"a-42":{"id":"a-42","title":"Radio RESET","actionItemGroups":[{"actionItems":[{"id":"a-42-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":300,"target":{},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-42-n-2","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"ease","duration":200,"target":{"selector":".radio-pill","selectorGuids":["6510a2b7-580d-5291-fb25-6fb040a6ce4c"]},"globalSwatchId":"09b8bce2","rValue":5,"bValue":15,"gValue":7,"aValue":1}}]},{"actionItems":[{"id":"a-42-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":300,"target":{},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-42-n-4","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"ease","duration":200,"target":{"selector":".radio-pill","selectorGuids":["6510a2b7-580d-5291-fb25-6fb040a6ce4c"]},"globalSwatchId":"09b8bce2","rValue":5,"bValue":15,"gValue":7,"aValue":1}}]}],"useFirstGroupAsInitialState":true,"createdOn":1676049955319},"a-43":{"id":"a-43","title":"radio input RESET","actionItemGroups":[{"actionItems":[{"id":"a-43-n-11","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"","duration":500,"target":{"selector":".radio","selectorGuids":["68633be7-8e54-85fe-a32b-b648395c4529"]},"globalSwatchId":"09b8bce2","rValue":5,"bValue":15,"gValue":7,"aValue":1}},{"id":"a-43-n-13","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"selector":".radio_fill","selectorGuids":["68633be7-8e54-85fe-a32b-b648395c452e"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]},{"actionItems":[{"id":"a-43-n-12","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"ease","duration":200,"target":{"selector":".radio","selectorGuids":["68633be7-8e54-85fe-a32b-b648395c4529"]},"globalSwatchId":"09b8bce2","rValue":5,"bValue":15,"gValue":7,"aValue":1}},{"id":"a-43-n-14","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":200,"target":{"selector":".radio_fill","selectorGuids":["68633be7-8e54-85fe-a32b-b648395c452e"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1584887035681},"a-44":{"id":"a-44","title":"radio input SET","actionItemGroups":[{"actionItems":[{"id":"a-44-n-6","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"PARENT","selector":".radio","selectorGuids":["68633be7-8e54-85fe-a32b-b648395c4529"]},"globalSwatchId":"dd05ad2b","rValue":255,"bValue":255,"gValue":255,"aValue":1}},{"id":"a-44-n-7","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".radio_fill","selectorGuids":["68633be7-8e54-85fe-a32b-b648395c452e"]},"yValue":-100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1584887035681},"a-39":{"id":"a-39","title":"form pill 1st click","actionItemGroups":[{"actionItems":[{"id":"a-39-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"SIBLINGS","selector":".checkbox_fill","selectorGuids":["bd80dd1e-e08d-b5ff-abb4-f4038173a7e5"]},"yValue":100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-39-n-2","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"PARENT","selector":".checkbox","selectorGuids":["65d28396-18d8-86cf-2401-3399b69f893b"]},"globalSwatchId":"09b8bce2","rValue":5,"bValue":15,"gValue":7,"aValue":1}}]},{"actionItems":[{"id":"a-39-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"SIBLINGS","selector":".checkbox_fill","selectorGuids":["bd80dd1e-e08d-b5ff-abb4-f4038173a7e5"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-39-n-4","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"PARENT","selector":".checkbox","selectorGuids":["65d28396-18d8-86cf-2401-3399b69f893b"]},"globalSwatchId":"dd05ad2b","rValue":255,"bValue":255,"gValue":255,"aValue":1}}]}],"useFirstGroupAsInitialState":true,"createdOn":1676049955319},"a-40":{"id":"a-40","title":"form pill 2nd click","actionItemGroups":[{"actionItems":[{"id":"a-40-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"SIBLINGS","selector":".checkbox_fill","selectorGuids":["bd80dd1e-e08d-b5ff-abb4-f4038173a7e5"]},"yValue":100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-40-n-4","actionTypeId":"STYLE_TEXT_COLOR","config":{"delay":0,"easing":"ease","duration":200,"target":{"useEventTarget":"PARENT","selector":".checkbox","selectorGuids":["65d28396-18d8-86cf-2401-3399b69f893b"]},"globalSwatchId":"09b8bce2","rValue":5,"bValue":15,"gValue":7,"aValue":1}}]}],"useFirstGroupAsInitialState":false,"createdOn":1676049955319},"a-54":{"id":"a-54","title":"button_medium (hover in)","actionItemGroups":[{"actionItems":[{"id":"a-54-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".button_medium-arrow.start","selectorGuids":["8c2c2f04-6514-e1d0-8dff-1cb258ba5329","c7493980-1e39-21bd-cebb-36b4f90da62e"]},"xValue":0,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-54-n-2","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".button_medium-arrow.finish","selectorGuids":["8c2c2f04-6514-e1d0-8dff-1cb258ba5329","841f471d-19c1-084a-fd2b-33b6bce43e85"]},"xValue":-100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]},{"actionItems":[{"id":"a-54-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"outQuart","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".button_medium-arrow.start","selectorGuids":["8c2c2f04-6514-e1d0-8dff-1cb258ba5329","c7493980-1e39-21bd-cebb-36b4f90da62e"]},"xValue":100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-54-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":150,"easing":"outQuart","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".button_medium-arrow.finish","selectorGuids":["8c2c2f04-6514-e1d0-8dff-1cb258ba5329","841f471d-19c1-084a-fd2b-33b6bce43e85"]},"xValue":0,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1677619290453},"a-55":{"id":"a-55","title":"button_medium (hover out)","actionItemGroups":[{"actionItems":[{"id":"a-55-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".button_medium-arrow.start","selectorGuids":["8c2c2f04-6514-e1d0-8dff-1cb258ba5329","c7493980-1e39-21bd-cebb-36b4f90da62e"]},"xValue":-100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]},{"actionItems":[{"id":"a-55-n-2","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"outQuart","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".button_medium-arrow.finish","selectorGuids":["8c2c2f04-6514-e1d0-8dff-1cb258ba5329","841f471d-19c1-084a-fd2b-33b6bce43e85"]},"xValue":100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-55-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":100,"easing":"outQuart","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".button_medium-arrow.start","selectorGuids":["8c2c2f04-6514-e1d0-8dff-1cb258ba5329","c7493980-1e39-21bd-cebb-36b4f90da62e"]},"xValue":0,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]},{"actionItems":[{"id":"a-55-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".button_medium-arrow.finish","selectorGuids":["8c2c2f04-6514-e1d0-8dff-1cb258ba5329","841f471d-19c1-084a-fd2b-33b6bce43e85"]},"xValue":-100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1677619290453},"a-56":{"id":"a-56","title":"contact hover in 2","actionItemGroups":[{"actionItems":[{"id":"a-56-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow","selectorGuids":["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-56-n-2","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow-panel","selectorGuids":["a64e8ce6-695e-b344-1919-774793de1b0c"]},"value":1,"unit":""}},{"id":"a-56-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".connect_green-panel","selectorGuids":["635115ff-4261-8e5b-19d9-b4d399b2d042"]},"yValue":100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]},{"actionItems":[{"id":"a-56-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"outCubic","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow","selectorGuids":["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"]},"yValue":102,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-56-n-5","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"outCubic","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow-panel","selectorGuids":["a64e8ce6-695e-b344-1919-774793de1b0c"]},"value":0,"unit":""}},{"id":"a-56-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":150,"easing":"outCubic","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".connect_green-panel","selectorGuids":["635115ff-4261-8e5b-19d9-b4d399b2d042"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1675396884739},"a-57":{"id":"a-57","title":"contact hover out 2","actionItemGroups":[{"actionItems":[{"id":"a-57-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"outCubic","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow","selectorGuids":["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-57-n-2","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"outCubic","duration":100,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow-panel","selectorGuids":["a64e8ce6-695e-b344-1919-774793de1b0c"]},"value":1,"unit":""}}]},{"actionItems":[{"id":"a-57-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".connect_green-panel","selectorGuids":["635115ff-4261-8e5b-19d9-b4d399b2d042"]},"yValue":100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1675396884739},"a-9":{"id":"a-9","title":"contact hover in","actionItemGroups":[{"actionItems":[{"id":"a-9-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow","selectorGuids":["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-9-n-2","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow-panel","selectorGuids":["a64e8ce6-695e-b344-1919-774793de1b0c"]},"value":1,"unit":""}},{"id":"a-9-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".connect_green-panel","selectorGuids":["635115ff-4261-8e5b-19d9-b4d399b2d042"]},"yValue":100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]},{"actionItems":[{"id":"a-9-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"outQuart","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow","selectorGuids":["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"]},"yValue":102,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-9-n-5","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"outQuart","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow-panel","selectorGuids":["a64e8ce6-695e-b344-1919-774793de1b0c"]},"value":0,"unit":""}},{"id":"a-9-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":150,"easing":"outQuart","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".connect_green-panel","selectorGuids":["635115ff-4261-8e5b-19d9-b4d399b2d042"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1675396884739},"a-10":{"id":"a-10","title":"contact hover out","actionItemGroups":[{"actionItems":[{"id":"a-10-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"outQuart","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow","selectorGuids":["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"]},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-10-n-5","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"outQuart","duration":100,"target":{"useEventTarget":"CHILDREN","selector":".connect_yellow-panel","selectorGuids":["a64e8ce6-695e-b344-1919-774793de1b0c"]},"value":1,"unit":""}}]},{"actionItems":[{"id":"a-10-n-6","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":0,"target":{"useEventTarget":"CHILDREN","selector":".connect_green-panel","selectorGuids":["635115ff-4261-8e5b-19d9-b4d399b2d042"]},"yValue":100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1675396884739},"a-62":{"id":"a-62","title":"button_large-hover-in","actionItemGroups":[{"actionItems":[{"id":"a-62-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".button_large-arrow","selectorGuids":["69242660-d87d-8d8e-018c-cf126e40b7ea"]},"xValue":-100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-62-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".button_text-wrap","selectorGuids":["33ea38f6-b092-0451-ce49-197d036ed6ff"]},"xValue":0,"xUnit":"em","yUnit":"PX","zUnit":"PX"}}]},{"actionItems":[{"id":"a-62-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"swingTo","duration":600,"target":{"useEventTarget":"CHILDREN","selector":".button_large-arrow","selectorGuids":["69242660-d87d-8d8e-018c-cf126e40b7ea"]},"xValue":0,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-62-n-5","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"swingTo","duration":600,"target":{"useEventTarget":"CHILDREN","selector":".button_text-wrap","selectorGuids":["33ea38f6-b092-0451-ce49-197d036ed6ff"]},"xValue":-1.75,"xUnit":"em","yUnit":"PX","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1678121948962},"a-63":{"id":"a-63","title":"button_large-hover-out","actionItemGroups":[{"actionItems":[{"id":"a-63-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".button_large-arrow","selectorGuids":["69242660-d87d-8d8e-018c-cf126e40b7ea"]},"xValue":-100,"xUnit":"%","yUnit":"PX","zUnit":"PX"}},{"id":"a-63-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".button_text-wrap","selectorGuids":["33ea38f6-b092-0451-ce49-197d036ed6ff"]},"xValue":0,"xUnit":"em","yUnit":"PX","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1678121948962},"a-66":{"id":"a-66","title":"cs_hero-fade","continuousParameterGroups":[{"id":"a-66-p","type":"SCROLL_PROGRESS","parameterLabel":"Scroll","continuousActionGroups":[{"keyframe":50,"actionItems":[{"id":"a-66-n","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"id":"63f39261e65caf960d5fe302|93dad9ae-f9cc-08e0-2931-0f8dccb2166d"},"yValue":0,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-66-n-2","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"","duration":500,"target":{"id":"63f39261e65caf960d5fe302|93dad9ae-f9cc-08e0-2931-0f8dccb2166d"},"value":1,"unit":""}}]},{"keyframe":75,"actionItems":[{"id":"a-66-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"","duration":500,"target":{"id":"63f39261e65caf960d5fe302|93dad9ae-f9cc-08e0-2931-0f8dccb2166d"},"yValue":100,"xUnit":"PX","yUnit":"%","zUnit":"PX"}},{"id":"a-66-n-4","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"","duration":500,"target":{"id":"63f39261e65caf960d5fe302|93dad9ae-f9cc-08e0-2931-0f8dccb2166d"},"value":0,"unit":""}}]}]}],"createdOn":1678463402312},"a-67":{"id":"a-67","title":"project thumbnail (hover in)","actionItemGroups":[{"actionItems":[{"id":"a-67-n","actionTypeId":"TRANSFORM_SCALE","config":{"delay":0,"easing":"","duration":500,"target":{"useEventTarget":"CHILDREN","selector":".image-cover","selectorGuids":["82ff736e-1ba0-eda5-21f6-6ba1c83ad214"]},"xValue":1,"yValue":1,"locked":true}}]},{"actionItems":[{"id":"a-67-n-2","actionTypeId":"TRANSFORM_SCALE","config":{"delay":0,"easing":"ease","duration":300,"target":{"useEventTarget":"CHILDREN","selector":".image-cover","selectorGuids":["82ff736e-1ba0-eda5-21f6-6ba1c83ad214"]},"xValue":1.1,"yValue":1.1,"locked":true}}]}],"useFirstGroupAsInitialState":true,"createdOn":1684268746119},"a-68":{"id":"a-68","title":"project thumbnail (hover out)","actionItemGroups":[{"actionItems":[{"id":"a-68-n-2","actionTypeId":"TRANSFORM_SCALE","config":{"delay":0,"easing":"ease","duration":200,"target":{"useEventTarget":"CHILDREN","selector":".image-cover","selectorGuids":["82ff736e-1ba0-eda5-21f6-6ba1c83ad214"]},"xValue":1,"yValue":1,"locked":true}}]}],"useFirstGroupAsInitialState":false,"createdOn":1684268746119},"a-72":{"id":"a-72","title":"Team Hover - IN","actionItemGroups":[{"actionItems":[{"id":"a-72-n","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"ease","duration":250,"target":{"useEventTarget":true,"id":"63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412"},"value":0,"unit":""}},{"id":"a-72-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":500,"target":{"useEventTarget":"CHILDREN","boundaryMode":true,"id":"63f39261e65caf960d5fe302|9afc4ac8-dd8c-f81f-e66c-f9d29e50809a"},"yValue":40,"xUnit":"PX","yUnit":"px","zUnit":"PX"}}]},{"actionItems":[{"id":"a-72-n-2","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"ease","duration":250,"target":{"useEventTarget":true,"id":"63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412"},"value":1,"unit":""}},{"id":"a-72-n-4","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":500,"target":{"useEventTarget":"CHILDREN","boundaryMode":true,"id":"63f39261e65caf960d5fe302|9afc4ac8-dd8c-f81f-e66c-f9d29e50809a"},"yValue":0,"xUnit":"PX","yUnit":"px","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":true,"createdOn":1717122026299},"a-73":{"id":"a-73","title":"Team Hover - OUT","actionItemGroups":[{"actionItems":[{"id":"a-73-n-2","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":500,"target":{"useEventTarget":"CHILDREN","boundaryMode":true,"id":"63dd31e523449e896011cded|51c225df-2b63-47b2-af7f-8e90acff0d3b"},"yValue":-40,"xUnit":"PX","yUnit":"px","zUnit":"PX"}},{"id":"a-73-n","actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"ease","duration":500,"target":{"useEventTarget":true,"id":"63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412"},"value":0,"unit":""}}]},{"actionItems":[{"id":"a-73-n-3","actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"ease","duration":0,"target":{"useEventTarget":"CHILDREN","boundaryMode":true,"id":"63dd31e523449e896011cded|51c225df-2b63-47b2-af7f-8e90acff0d3b"},"yValue":40,"xUnit":"PX","yUnit":"px","zUnit":"PX"}}]}],"useFirstGroupAsInitialState":false,"createdOn":1717122026299}},"site":{"mediaQueries":[{"key":"main","min":992,"max":10000},{"key":"medium","min":768,"max":991},{"key":"small","min":480,"max":767},{"key":"tiny","min":0,"max":479}]}}
-);
+Webflow.require("ix2").init({
+  events: {
+    e: {
+      id: "e",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-2",
+        },
+      },
+      mediaQueries: ["main"],
+      target: {
+        selector: ".button-primary",
+        originalId:
+          "63dae69273397d4c9f22626f|b1d41114-1b66-0e03-c504-a630001ffb33",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".button-primary",
+          originalId:
+            "63dae69273397d4c9f22626f|b1d41114-1b66-0e03-c504-a630001ffb33",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675383852012,
+    },
+    "e-2": {
+      id: "e-2",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-2",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e",
+        },
+      },
+      mediaQueries: ["main"],
+      target: {
+        selector: ".button-primary",
+        originalId:
+          "63dae69273397d4c9f22626f|b1d41114-1b66-0e03-c504-a630001ffb33",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".button-primary",
+          originalId:
+            "63dae69273397d4c9f22626f|b1d41114-1b66-0e03-c504-a630001ffb33",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675383852016,
+    },
+    "e-7": {
+      id: "e-7",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-7",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-72",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "5d7f9305-1482-e663-3e87-f83c9038636c",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "5d7f9305-1482-e663-3e87-f83c9038636c",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675394799102,
+    },
+    "e-8": {
+      id: "e-8",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-8",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-71",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "5d7f9305-1482-e663-3e87-f83c9038636c",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "5d7f9305-1482-e663-3e87-f83c9038636c",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675394799102,
+    },
+    "e-13": {
+      id: "e-13",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-11",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-14",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "471fe825-a5db-be72-8c72-ed8344ba4a72",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "471fe825-a5db-be72-8c72-ed8344ba4a72",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675503851717,
+    },
+    "e-14": {
+      id: "e-14",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-12",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-13",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "471fe825-a5db-be72-8c72-ed8344ba4a72",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "471fe825-a5db-be72-8c72-ed8344ba4a72",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675503851717,
+    },
+    "e-16": {
+      id: "e-16",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "SCROLLING_IN_VIEW",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_CONTINUOUS_ACTION",
+        config: { actionListId: "a-14", affectedElements: {}, duration: 0 },
+      },
+      mediaQueries: ["main"],
+      target: {
+        id: "63df5d0b8b609634b1371f37|73754695-cf5e-f9e9-af08-d7b460af89d8",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63df5d0b8b609634b1371f37|73754695-cf5e-f9e9-af08-d7b460af89d8",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: [
+        {
+          continuousParameterGroupId: "a-14-p",
+          smoothing: 50,
+          startsEntering: true,
+          addStartOffset: false,
+          addOffsetValue: 50,
+          startsExiting: false,
+          addEndOffset: false,
+          endOffsetValue: 50,
+        },
+      ],
+      createdOn: 1675582755992,
+    },
+    "e-19": {
+      id: "e-19",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "SCROLL_INTO_VIEW",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-15",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-20",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae19244d4326cd3f5baa5|70d91fa5-3c65-1f79-de04-aecda6e31732",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae19244d4326cd3f5baa5|70d91fa5-3c65-1f79-de04-aecda6e31732",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: true,
+        playInReverse: false,
+        scrollOffsetValue: 0,
+        scrollOffsetUnit: "%",
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675633503870,
+    },
+    "e-22": {
+      id: "e-22",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "SCROLLING_IN_VIEW",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_CONTINUOUS_ACTION",
+        config: { actionListId: "a-21", affectedElements: {}, duration: 0 },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae19244d4326cd3f5baa5|0f300277-070a-b516-8846-4fba1095fe4e",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae19244d4326cd3f5baa5|0f300277-070a-b516-8846-4fba1095fe4e",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: [
+        {
+          continuousParameterGroupId: "a-21-p",
+          smoothing: 95,
+          startsEntering: true,
+          addStartOffset: false,
+          addOffsetValue: 50,
+          startsExiting: false,
+          addEndOffset: false,
+          endOffsetValue: 50,
+        },
+      ],
+      createdOn: 1675740352667,
+    },
+    "e-23": {
+      id: "e-23",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-19",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-24",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675741515602,
+    },
+    "e-24": {
+      id: "e-24",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-20",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-23",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675741515603,
+    },
+    "e-25": {
+      id: "e-25",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-22",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-26",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675824354789,
+    },
+    "e-27": {
+      id: "e-27",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-23",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-28",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675824565421,
+    },
+    "e-31": {
+      id: "e-31",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-26",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-32",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675879180764,
+    },
+    "e-32": {
+      id: "e-32",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-27",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-31",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675879180764,
+    },
+    "e-33": {
+      id: "e-33",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-30",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-34",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "c21ed082-0c38-409c-0c28-96439166e6f6",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "c21ed082-0c38-409c-0c28-96439166e6f6",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675879688755,
+    },
+    "e-34": {
+      id: "e-34",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-31",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-33",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "c21ed082-0c38-409c-0c28-96439166e6f6",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "c21ed082-0c38-409c-0c28-96439166e6f6",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675879688756,
+    },
+    "e-35": {
+      id: "e-35",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-34",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-36",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "2744a9d0-5ca6-e329-6d5e-2d1778778de5",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "2744a9d0-5ca6-e329-6d5e-2d1778778de5",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675957915847,
+    },
+    "e-36": {
+      id: "e-36",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-35",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-35",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "2744a9d0-5ca6-e329-6d5e-2d1778778de5",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "2744a9d0-5ca6-e329-6d5e-2d1778778de5",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1675957915847,
+    },
+    "e-37": {
+      id: "e-37",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "SCROLLING_IN_VIEW",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_CONTINUOUS_ACTION",
+        config: { actionListId: "a-36", affectedElements: {}, duration: 0 },
+      },
+      mediaQueries: ["main", "medium"],
+      target: {
+        id: "63dae19244d4326cd3f5baa5|7dbecf2c-55a0-2342-2a55-6b8392bc8dbe",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae19244d4326cd3f5baa5|7dbecf2c-55a0-2342-2a55-6b8392bc8dbe",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: [
+        {
+          continuousParameterGroupId: "a-36-p",
+          smoothing: 90,
+          startsEntering: true,
+          addStartOffset: false,
+          addOffsetValue: 50,
+          startsExiting: false,
+          addEndOffset: false,
+          endOffsetValue: 50,
+        },
+      ],
+      createdOn: 1675967121016,
+    },
+    "e-38": {
+      id: "e-38",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "SCROLLING_IN_VIEW",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_CONTINUOUS_ACTION",
+        config: { actionListId: "a-38", affectedElements: {}, duration: 0 },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae19244d4326cd3f5baa5|1d554892-f3ab-d1dc-bc0c-eec205724d7f",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae19244d4326cd3f5baa5|1d554892-f3ab-d1dc-bc0c-eec205724d7f",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: [
+        {
+          continuousParameterGroupId: "a-38-p",
+          smoothing: 93,
+          startsEntering: true,
+          addStartOffset: false,
+          addOffsetValue: 50,
+          startsExiting: false,
+          addEndOffset: false,
+          endOffsetValue: 50,
+        },
+      ],
+      createdOn: 1675983519164,
+    },
+    "e-65": {
+      id: "e-65",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-41",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-66",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        selector: ".radio-pill",
+        originalId:
+          "63dd7d5878a04717bd29ff9a|c0811938-30f5-f384-576b-964e29a869d4",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".radio-pill",
+          originalId:
+            "63dd7d5878a04717bd29ff9a|c0811938-30f5-f384-576b-964e29a869d4",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676323176697,
+    },
+    "e-67": {
+      id: "e-67",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-42",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-68",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        selector: ".radio-pill",
+        originalId:
+          "63dd7d5878a04717bd29ff9a|c0811938-30f5-f384-576b-964e29a869d4",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".radio-pill",
+          originalId:
+            "63dd7d5878a04717bd29ff9a|c0811938-30f5-f384-576b-964e29a869d4",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676323362844,
+    },
+    "e-69": {
+      id: "e-69",
+      animationType: "custom",
+      eventTypeId: "MOUSE_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-43",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-70",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        selector: ".radio",
+        originalId:
+          "63dae69273397d4c9f22626f|9eb952be-ec0f-5e65-9fbf-404962173ae6",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".radio",
+          originalId:
+            "63dae69273397d4c9f22626f|9eb952be-ec0f-5e65-9fbf-404962173ae6",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1584888432047,
+    },
+    "e-71": {
+      id: "e-71",
+      animationType: "custom",
+      eventTypeId: "MOUSE_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-44",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-72",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        selector: ".radio",
+        originalId:
+          "63dae69273397d4c9f22626f|9eb952be-ec0f-5e65-9fbf-404962173ae6",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".radio",
+          originalId:
+            "63dae69273397d4c9f22626f|9eb952be-ec0f-5e65-9fbf-404962173ae6",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1584888440221,
+    },
+    "e-73": {
+      id: "e-73",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-39",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-74",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83eb",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83eb",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676342883568,
+    },
+    "e-74": {
+      id: "e-74",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_SECOND_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-40",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-73",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83eb",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83eb",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676342883568,
+    },
+    "e-75": {
+      id: "e-75",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-39",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-76",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f0",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f0",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676342883568,
+    },
+    "e-76": {
+      id: "e-76",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_SECOND_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-40",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-75",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f0",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f0",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676342883568,
+    },
+    "e-77": {
+      id: "e-77",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-39",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-78",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f5",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f5",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676342883568,
+    },
+    "e-78": {
+      id: "e-78",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_SECOND_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-40",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-77",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f5",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83f5",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676342883568,
+    },
+    "e-79": {
+      id: "e-79",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-39",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-80",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83fa",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83fa",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676342883568,
+    },
+    "e-80": {
+      id: "e-80",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_SECOND_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-40",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-79",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83fa",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|bd3f953d-891e-bb4e-0fdd-a81adf4a83fa",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676342883568,
+    },
+    "e-99": {
+      id: "e-99",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-7",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-100",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|2dc850af-ab15-4bf2-d291-8884d1ae9ec5",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|2dc850af-ab15-4bf2-d291-8884d1ae9ec5",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676581263716,
+    },
+    "e-100": {
+      id: "e-100",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-8",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-99",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|2dc850af-ab15-4bf2-d291-8884d1ae9ec5",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|2dc850af-ab15-4bf2-d291-8884d1ae9ec5",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1676581263716,
+    },
+    "e-105": {
+      id: "e-105",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-54",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-106",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "156404c8-e490-2bf1-c617-e658209d75cd",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "156404c8-e490-2bf1-c617-e658209d75cd",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1677619274125,
+    },
+    "e-107": {
+      id: "e-107",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-54",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-108",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        selector: ".button_medium",
+        originalId:
+          "63dae69273397d4c9f22626f|30cac943-434f-4663-1969-53df579211ff",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".button_medium",
+          originalId:
+            "63dae69273397d4c9f22626f|30cac943-434f-4663-1969-53df579211ff",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1677619519454,
+    },
+    "e-108": {
+      id: "e-108",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-55",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-107",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        selector: ".button_medium",
+        originalId:
+          "63dae69273397d4c9f22626f|30cac943-434f-4663-1969-53df579211ff",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".button_medium",
+          originalId:
+            "63dae69273397d4c9f22626f|30cac943-434f-4663-1969-53df579211ff",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1677619519454,
+    },
+    "e-115": {
+      id: "e-115",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-56",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-116",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|0d0fd482-449f-be2a-ea34-30fb497a659d",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|0d0fd482-449f-be2a-ea34-30fb497a659d",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1677620142259,
+    },
+    "e-116": {
+      id: "e-116",
+      name: "",
+      animationType: "preset",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-57",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-115",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dae69273397d4c9f22626f|0d0fd482-449f-be2a-ea34-30fb497a659d",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dae69273397d4c9f22626f|0d0fd482-449f-be2a-ea34-30fb497a659d",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1677620142259,
+    },
+    "e-117": {
+      id: "e-117",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-9",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-118",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "21a171ba-87cf-c337-da53-1aa71201346e",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "21a171ba-87cf-c337-da53-1aa71201346e",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1677620343292,
+    },
+    "e-118": {
+      id: "e-118",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-10",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-117",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "21a171ba-87cf-c337-da53-1aa71201346e",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "21a171ba-87cf-c337-da53-1aa71201346e",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1677620343293,
+    },
+    "e-121": {
+      id: "e-121",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-62",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-122",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "8bec40d9-794e-f9c7-fdb7-6252708a3488",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "8bec40d9-794e-f9c7-fdb7-6252708a3488",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1678121946222,
+    },
+    "e-122": {
+      id: "e-122",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-63",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-121",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "8bec40d9-794e-f9c7-fdb7-6252708a3488",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "8bec40d9-794e-f9c7-fdb7-6252708a3488",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1678121946224,
+    },
+    "e-125": {
+      id: "e-125",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-39",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-126",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        selector: ".checkbox_trigger",
+        originalId:
+          "63dd7d5878a04717bd29ff9a|9297965a-f8f3-4384-62e2-374020b29427",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".checkbox_trigger",
+          originalId:
+            "63dd7d5878a04717bd29ff9a|9297965a-f8f3-4384-62e2-374020b29427",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1678139673118,
+    },
+    "e-126": {
+      id: "e-126",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_SECOND_CLICK",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-40",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-125",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        selector: ".checkbox_trigger",
+        originalId:
+          "63dd7d5878a04717bd29ff9a|9297965a-f8f3-4384-62e2-374020b29427",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".checkbox_trigger",
+          originalId:
+            "63dd7d5878a04717bd29ff9a|9297965a-f8f3-4384-62e2-374020b29427",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1678139673119,
+    },
+    "e-128": {
+      id: "e-128",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "SCROLLING_IN_VIEW",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_CONTINUOUS_ACTION",
+        config: { actionListId: "a-66", affectedElements: {}, duration: 0 },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63f39261e65caf960d5fe302|7b162bf9-a9e9-3bb0-c1e1-8eae3a5ca4dc",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63f39261e65caf960d5fe302|7b162bf9-a9e9-3bb0-c1e1-8eae3a5ca4dc",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: [
+        {
+          continuousParameterGroupId: "a-66-p",
+          smoothing: 90,
+          startsEntering: true,
+          addStartOffset: false,
+          addOffsetValue: 50,
+          startsExiting: false,
+          addEndOffset: false,
+          endOffsetValue: 50,
+        },
+      ],
+      createdOn: 1678485750278,
+    },
+    "e-129": {
+      id: "e-129",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-67",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-130",
+        },
+      },
+      mediaQueries: ["main"],
+      target: {
+        selector: ".cs_projects-link",
+        originalId:
+          "63f39261e65caf960d5fe302|28090dd5-bf1f-3b30-16e8-3e0e90170a21",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".cs_projects-link",
+          originalId:
+            "63f39261e65caf960d5fe302|28090dd5-bf1f-3b30-16e8-3e0e90170a21",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1684268738624,
+    },
+    "e-130": {
+      id: "e-130",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-68",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-129",
+        },
+      },
+      mediaQueries: ["main"],
+      target: {
+        selector: ".cs_projects-link",
+        originalId:
+          "63f39261e65caf960d5fe302|28090dd5-bf1f-3b30-16e8-3e0e90170a21",
+        appliesTo: "CLASS",
+      },
+      targets: [
+        {
+          selector: ".cs_projects-link",
+          originalId:
+            "63f39261e65caf960d5fe302|28090dd5-bf1f-3b30-16e8-3e0e90170a21",
+          appliesTo: "CLASS",
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1684268738625,
+    },
+    "e-133": {
+      id: "e-133",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OVER",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-72",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-134",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1717122122443,
+    },
+    "e-134": {
+      id: "e-134",
+      name: "",
+      animationType: "custom",
+      eventTypeId: "MOUSE_OUT",
+      action: {
+        id: "",
+        actionTypeId: "GENERAL_START_ACTION",
+        config: {
+          delay: 0,
+          easing: "",
+          duration: 0,
+          actionListId: "a-73",
+          affectedElements: {},
+          playInReverse: false,
+          autoStopEventId: "e-133",
+        },
+      },
+      mediaQueries: ["main", "medium", "small", "tiny"],
+      target: {
+        id: "63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412",
+        appliesTo: "ELEMENT",
+        styleBlockIds: [],
+      },
+      targets: [
+        {
+          id: "63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412",
+          appliesTo: "ELEMENT",
+          styleBlockIds: [],
+        },
+      ],
+      config: {
+        loop: false,
+        playInReverse: false,
+        scrollOffsetValue: null,
+        scrollOffsetUnit: null,
+        delay: null,
+        direction: null,
+        effectIn: null,
+      },
+      createdOn: 1717122122444,
+    },
+  },
+  actionLists: {
+    a: {
+      id: "a",
+      title: "primary btn (hover in)",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-n",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_panel-1",
+                  selectorGuids: ["ea75bbd9-0752-f1c8-8196-8e3841233cc5"],
+                },
+                value: 1,
+                unit: "",
+              },
+            },
+            {
+              id: "a-n-2",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_fill",
+                  selectorGuids: ["e9106d5f-f68c-40e5-9b23-95b9cc667c29"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_panel-2",
+                  selectorGuids: ["b1137cf6-16dc-3fd5-057f-4521b8f034dd"],
+                },
+                yValue: 100,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-n-4",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_panel-1",
+                  selectorGuids: ["ea75bbd9-0752-f1c8-8196-8e3841233cc5"],
+                },
+                value: 0,
+                unit: "",
+              },
+            },
+            {
+              id: "a-n-5",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_fill",
+                  selectorGuids: ["e9106d5f-f68c-40e5-9b23-95b9cc667c29"],
+                },
+                yValue: 105,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-n-6",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 100,
+                easing: "outCubic",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_panel-2",
+                  selectorGuids: ["b1137cf6-16dc-3fd5-057f-4521b8f034dd"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1675383866275,
+    },
+    "a-2": {
+      id: "a-2",
+      title: "primary btn (hover in) 2",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-2-n-4",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_panel-1",
+                  selectorGuids: ["ea75bbd9-0752-f1c8-8196-8e3841233cc5"],
+                },
+                value: 1,
+                unit: "",
+              },
+            },
+            {
+              id: "a-2-n-5",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_fill",
+                  selectorGuids: ["e9106d5f-f68c-40e5-9b23-95b9cc667c29"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-2-n-6",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_panel-2",
+                  selectorGuids: ["b1137cf6-16dc-3fd5-057f-4521b8f034dd"],
+                },
+                yValue: 100,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1675383866275,
+    },
+    "a-7": {
+      id: "a-7",
+      title: "new",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-7-n",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_fill",
+                  selectorGuids: ["e9106d5f-f68c-40e5-9b23-95b9cc667c29"],
+                },
+                xValue: 0,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-7-n-2",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_panel-1",
+                  selectorGuids: ["ea75bbd9-0752-f1c8-8196-8e3841233cc5"],
+                },
+                value: 1,
+                unit: "",
+              },
+            },
+            {
+              id: "a-7-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".html-embed",
+                  selectorGuids: ["15b5dd70-4e87-7b63-cbec-cadf84828771"],
+                },
+                xValue: -100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-7-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_fill",
+                  selectorGuids: ["e9106d5f-f68c-40e5-9b23-95b9cc667c29"],
+                },
+                xValue: 105,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-7-n-5",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_panel-1",
+                  selectorGuids: ["ea75bbd9-0752-f1c8-8196-8e3841233cc5"],
+                },
+                value: 0,
+                unit: "",
+              },
+            },
+            {
+              id: "a-7-n-6",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 200,
+                easing: "outCubic",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".html-embed",
+                  selectorGuids: ["15b5dd70-4e87-7b63-cbec-cadf84828771"],
+                },
+                xValue: 0,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1675384649857,
+    },
+    "a-8": {
+      id: "a-8",
+      title: "new 2",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-8-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_fill",
+                  selectorGuids: ["e9106d5f-f68c-40e5-9b23-95b9cc667c29"],
+                },
+                xValue: 0,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-8-n-5",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".primary_panel-1",
+                  selectorGuids: ["ea75bbd9-0752-f1c8-8196-8e3841233cc5"],
+                },
+                value: 1,
+                unit: "",
+              },
+            },
+            {
+              id: "a-8-n-6",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 200,
+                easing: "outCubic",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".html-embed",
+                  selectorGuids: ["15b5dd70-4e87-7b63-cbec-cadf84828771"],
+                },
+                xValue: -100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1675384649857,
+    },
+    "a-11": {
+      id: "a-11",
+      title: "nav logo hover in",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-11-n",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".nav-top_melonhead",
+                  selectorGuids: ["28cec278-4292-389a-3146-1b8152091f50"],
+                },
+                yValue: 75,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-11-n-2",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "swingTo",
+                duration: 400,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".nav-top_melonhead",
+                  selectorGuids: ["28cec278-4292-389a-3146-1b8152091f50"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1675503868322,
+    },
+    "a-12": {
+      id: "a-12",
+      title: "nav logo hover out",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-12-n-2",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "swingFrom",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".nav-top_melonhead",
+                  selectorGuids: ["28cec278-4292-389a-3146-1b8152091f50"],
+                },
+                yValue: 75,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1675503868322,
+    },
+    "a-14": {
+      id: "a-14",
+      title: "Slider in view",
+      continuousParameterGroups: [
+        {
+          id: "a-14-p",
+          type: "SCROLL_PROGRESS",
+          parameterLabel: "Scroll",
+          continuousActionGroups: [
+            {
+              keyframe: 0,
+              actionItems: [
+                {
+                  id: "a-14-n",
+                  actionTypeId: "STYLE_SIZE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".expand",
+                      selectorGuids: ["41a30a19-b0cf-6403-9681-fc03d41ef4bd"],
+                    },
+                    widthValue: 90,
+                    heightValue: 82,
+                    widthUnit: "vw",
+                    heightUnit: "vh",
+                    locked: false,
+                  },
+                },
+              ],
+            },
+            {
+              keyframe: 50,
+              actionItems: [
+                {
+                  id: "a-14-n-3",
+                  actionTypeId: "STYLE_SIZE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".expand",
+                      selectorGuids: ["41a30a19-b0cf-6403-9681-fc03d41ef4bd"],
+                    },
+                    widthValue: 106,
+                    heightValue: 100,
+                    widthUnit: "vw",
+                    heightUnit: "vh",
+                    locked: false,
+                  },
+                },
+              ],
+            },
+            {
+              keyframe: 100,
+              actionItems: [
+                {
+                  id: "a-14-n-5",
+                  actionTypeId: "STYLE_SIZE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".expand",
+                      selectorGuids: ["41a30a19-b0cf-6403-9681-fc03d41ef4bd"],
+                    },
+                    widthValue: 106,
+                    heightValue: 100,
+                    widthUnit: "vw",
+                    heightUnit: "vh",
+                    locked: false,
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      createdOn: 1675575226502,
+    },
+    "a-15": {
+      id: "a-15",
+      title: "typing bubble",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-15-n",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  id: "63dae19244d4326cd3f5baa5|d6405171-e1d1-4a40-fcbf-e86775599a99",
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-15-n-2",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  id: "63dae19244d4326cd3f5baa5|d50d46ff-f48b-197f-579e-43775b27d5cf",
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-15-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  id: "63dae19244d4326cd3f5baa5|69797d02-12b4-5517-c52c-174d95c27057",
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-15-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  id: "63dae19244d4326cd3f5baa5|d6405171-e1d1-4a40-fcbf-e86775599a99",
+                },
+                yValue: -75,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-15-n-5",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 100,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  id: "63dae19244d4326cd3f5baa5|d50d46ff-f48b-197f-579e-43775b27d5cf",
+                },
+                yValue: -75,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-15-n-6",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 200,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  id: "63dae19244d4326cd3f5baa5|69797d02-12b4-5517-c52c-174d95c27057",
+                },
+                yValue: -75,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-15-n-7",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  id: "63dae19244d4326cd3f5baa5|d6405171-e1d1-4a40-fcbf-e86775599a99",
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-15-n-8",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 100,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  id: "63dae19244d4326cd3f5baa5|d50d46ff-f48b-197f-579e-43775b27d5cf",
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-15-n-9",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 200,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  id: "63dae19244d4326cd3f5baa5|69797d02-12b4-5517-c52c-174d95c27057",
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1675633506844,
+    },
+    "a-21": {
+      id: "a-21",
+      title: "try again",
+      continuousParameterGroups: [
+        {
+          id: "a-21-p",
+          type: "SCROLL_PROGRESS",
+          parameterLabel: "Scroll",
+          continuousActionGroups: [
+            {
+              keyframe: 0,
+              actionItems: [
+                {
+                  id: "a-21-n-2",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".logo-column.normal",
+                      selectorGuids: [
+                        "d002f835-529a-61ff-e1a8-2e1d9d4cffb7",
+                        "28d4704a-90b1-6ea3-5d85-8372fcf00fa0",
+                      ],
+                    },
+                    yValue: 10,
+                    xUnit: "PX",
+                    yUnit: "%",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-21-n-3",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".logo-column.reversed",
+                      selectorGuids: [
+                        "d002f835-529a-61ff-e1a8-2e1d9d4cffb7",
+                        "d9ef3a4a-588f-f5de-edbb-f2f2177999b4",
+                      ],
+                    },
+                    yValue: -10,
+                    xUnit: "PX",
+                    yUnit: "%",
+                    zUnit: "PX",
+                  },
+                },
+              ],
+            },
+            {
+              keyframe: 100,
+              actionItems: [
+                {
+                  id: "a-21-n-5",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".logo-column.normal",
+                      selectorGuids: [
+                        "d002f835-529a-61ff-e1a8-2e1d9d4cffb7",
+                        "28d4704a-90b1-6ea3-5d85-8372fcf00fa0",
+                      ],
+                    },
+                    yValue: -10,
+                    xUnit: "PX",
+                    yUnit: "%",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-21-n-6",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".logo-column.reversed",
+                      selectorGuids: [
+                        "d002f835-529a-61ff-e1a8-2e1d9d4cffb7",
+                        "d9ef3a4a-588f-f5de-edbb-f2f2177999b4",
+                      ],
+                    },
+                    yValue: 10,
+                    xUnit: "PX",
+                    yUnit: "%",
+                    zUnit: "PX",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      createdOn: 1675740356508,
+    },
+    "a-19": {
+      id: "a-19",
+      title: "hero video hover in",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-19-n",
+              actionTypeId: "STYLE_SIZE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: true,
+                  id: "63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6",
+                },
+                widthValue: 100,
+                widthUnit: "%",
+                heightUnit: "PX",
+                locked: false,
+              },
+            },
+            {
+              id: "a-19-n-5",
+              actionTypeId: "STYLE_BACKGROUND_COLOR",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".home_hero-vid",
+                  selectorGuids: ["438f9df9-3580-fa9e-c523-441a757ba98a"],
+                },
+                globalSwatchId: "",
+                rValue: 5,
+                bValue: 15,
+                gValue: 7,
+                aValue: 0.5,
+              },
+            },
+            {
+              id: "a-19-n-3",
+              actionTypeId: "STYLE_BACKGROUND_COLOR",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".home_hero-play",
+                  selectorGuids: ["8ec8fcae-cd09-6b74-a4ec-a16f4b822725"],
+                },
+                globalSwatchId: "",
+                rValue: 255,
+                bValue: 255,
+                gValue: 255,
+                aValue: 0.1,
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-19-n-2",
+              actionTypeId: "STYLE_SIZE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 700,
+                target: {
+                  useEventTarget: true,
+                  id: "63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6",
+                },
+                widthValue: 92,
+                widthUnit: "%",
+                heightUnit: "PX",
+                locked: false,
+              },
+            },
+            {
+              id: "a-19-n-4",
+              actionTypeId: "STYLE_BACKGROUND_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 700,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".home_hero-play",
+                  selectorGuids: ["8ec8fcae-cd09-6b74-a4ec-a16f4b822725"],
+                },
+                globalSwatchId: "",
+                rValue: 255,
+                bValue: 255,
+                gValue: 255,
+                aValue: 0.25,
+              },
+            },
+            {
+              id: "a-19-n-6",
+              actionTypeId: "STYLE_BACKGROUND_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 700,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".home_hero-vid",
+                  selectorGuids: ["438f9df9-3580-fa9e-c523-441a757ba98a"],
+                },
+                globalSwatchId: "",
+                rValue: 5,
+                bValue: 15,
+                gValue: 7,
+                aValue: 0.75,
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1675741518469,
+    },
+    "a-20": {
+      id: "a-20",
+      title: "hero vid hover out",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-20-n-3",
+              actionTypeId: "STYLE_SIZE",
+              config: {
+                delay: 0,
+                easing: "swingFromTo",
+                duration: 400,
+                target: {
+                  useEventTarget: true,
+                  id: "63dae19244d4326cd3f5baa5|0de71448-2f69-9395-3a7b-c5305a070ce6",
+                },
+                widthValue: 100,
+                widthUnit: "%",
+                heightUnit: "PX",
+                locked: false,
+              },
+            },
+            {
+              id: "a-20-n-4",
+              actionTypeId: "STYLE_BACKGROUND_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 400,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".home_hero-play",
+                  selectorGuids: ["8ec8fcae-cd09-6b74-a4ec-a16f4b822725"],
+                },
+                globalSwatchId: "",
+                rValue: 255,
+                bValue: 255,
+                gValue: 255,
+                aValue: 0.1,
+              },
+            },
+            {
+              id: "a-20-n-5",
+              actionTypeId: "STYLE_BACKGROUND_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 400,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".home_hero-vid",
+                  selectorGuids: ["438f9df9-3580-fa9e-c523-441a757ba98a"],
+                },
+                globalSwatchId: "",
+                rValue: 5,
+                bValue: 15,
+                gValue: 7,
+                aValue: 0.5,
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1675741518469,
+    },
+    "a-22": {
+      id: "a-22",
+      title: "show video",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-22-n",
+              actionTypeId: "GENERAL_DISPLAY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  id: "63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f",
+                },
+                value: "none",
+              },
+            },
+            {
+              id: "a-22-n-2",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  id: "63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f",
+                },
+                value: 0,
+                unit: "",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-22-n-3",
+              actionTypeId: "GENERAL_DISPLAY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  id: "63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f",
+                },
+                value: "block",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-22-n-4",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  id: "63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f",
+                },
+                value: 1,
+                unit: "",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1675824363956,
+    },
+    "a-23": {
+      id: "a-23",
+      title: "hide video",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-23-n-4",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  id: "63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f",
+                },
+                value: 0,
+                unit: "",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-23-n-3",
+              actionTypeId: "GENERAL_DISPLAY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  id: "63dae19244d4326cd3f5baa5|19951594-5c4a-dae5-3e84-d4c7208ef86f",
+                },
+                value: "none",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1675824363956,
+    },
+    "a-26": {
+      id: "a-26",
+      title: "x out hover in",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-26-n",
+              actionTypeId: "TRANSFORM_ROTATE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".icon-88",
+                  selectorGuids: ["4b9395e6-ac15-05eb-d7d7-9159776fd6d2"],
+                },
+                zValue: 0,
+                xUnit: "DEG",
+                yUnit: "DEG",
+                zUnit: "deg",
+              },
+            },
+            {
+              id: "a-26-n-3",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: true,
+                  id: "63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794",
+                },
+                globalSwatchId: "dd05ad2b",
+                rValue: 255,
+                bValue: 255,
+                gValue: 255,
+                aValue: 1,
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-26-n-2",
+              actionTypeId: "TRANSFORM_ROTATE",
+              config: {
+                delay: 0,
+                easing: "swingTo",
+                duration: 400,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".icon-88",
+                  selectorGuids: ["4b9395e6-ac15-05eb-d7d7-9159776fd6d2"],
+                },
+                zValue: 90,
+                xUnit: "DEG",
+                yUnit: "DEG",
+                zUnit: "deg",
+              },
+            },
+            {
+              id: "a-26-n-4",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 400,
+                target: {
+                  useEventTarget: true,
+                  id: "63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794",
+                },
+                globalSwatchId: "0ead2d9d",
+                rValue: 246,
+                bValue: 94,
+                gValue: 250,
+                aValue: 1,
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1675879185314,
+    },
+    "a-27": {
+      id: "a-27",
+      title: "x out hover out",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-27-n-2",
+              actionTypeId: "TRANSFORM_ROTATE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".icon-88",
+                  selectorGuids: ["4b9395e6-ac15-05eb-d7d7-9159776fd6d2"],
+                },
+                zValue: 0,
+                xUnit: "DEG",
+                yUnit: "DEG",
+                zUnit: "deg",
+              },
+            },
+            {
+              id: "a-27-n-3",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  useEventTarget: true,
+                  id: "63dae19244d4326cd3f5baa5|4fd00fb7-e1ef-2976-df50-fe07471bb794",
+                },
+                globalSwatchId: "dd05ad2b",
+                rValue: 255,
+                bValue: 255,
+                gValue: 255,
+                aValue: 1,
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1675879185314,
+    },
+    "a-30": {
+      id: "a-30",
+      title: "contact footer hover in 2",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-30-n",
+              actionTypeId: "TRANSFORM_SCALE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-expand",
+                  selectorGuids: ["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"],
+                },
+                xValue: 1,
+                yValue: 1,
+                locked: true,
+              },
+            },
+            {
+              id: "a-30-n-15",
+              actionTypeId: "STYLE_BACKGROUND_COLOR",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-expand",
+                  selectorGuids: ["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"],
+                },
+                globalSwatchId: "0ead2d9d",
+                rValue: 246,
+                bValue: 94,
+                gValue: 250,
+                aValue: 1,
+              },
+            },
+            {
+              id: "a-30-n-8",
+              actionTypeId: "GENERAL_DISPLAY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-circle",
+                  selectorGuids: ["ae16d9a6-f21d-20c7-1bbc-6efaf8d3053a"],
+                },
+                value: "flex",
+              },
+            },
+            {
+              id: "a-30-n-10",
+              actionTypeId: "GENERAL_DISPLAY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-coffee",
+                  selectorGuids: ["7523b8fe-4209-aa59-f72f-41c3f3450519"],
+                },
+                value: "none",
+              },
+            },
+            {
+              id: "a-30-n-11",
+              actionTypeId: "TRANSFORM_SCALE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-coffee",
+                  selectorGuids: ["7523b8fe-4209-aa59-f72f-41c3f3450519"],
+                },
+                xValue: 0.8,
+                yValue: 0.8,
+                locked: true,
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-30-n-12",
+              actionTypeId: "GENERAL_DISPLAY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-coffee",
+                  selectorGuids: ["7523b8fe-4209-aa59-f72f-41c3f3450519"],
+                },
+                value: "block",
+              },
+            },
+            {
+              id: "a-30-n-9",
+              actionTypeId: "GENERAL_DISPLAY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-circle",
+                  selectorGuids: ["ae16d9a6-f21d-20c7-1bbc-6efaf8d3053a"],
+                },
+                value: "none",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-30-n-7",
+              actionTypeId: "TRANSFORM_SCALE",
+              config: {
+                delay: 0,
+                easing: "swingTo",
+                duration: 400,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-expand",
+                  selectorGuids: ["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"],
+                },
+                xValue: 1.03,
+                yValue: 1.03,
+                locked: true,
+              },
+            },
+            {
+              id: "a-30-n-13",
+              actionTypeId: "TRANSFORM_SCALE",
+              config: {
+                delay: 0,
+                easing: "swingTo",
+                duration: 400,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-coffee",
+                  selectorGuids: ["7523b8fe-4209-aa59-f72f-41c3f3450519"],
+                },
+                xValue: 1,
+                yValue: 1,
+                locked: true,
+              },
+            },
+            {
+              id: "a-30-n-14",
+              actionTypeId: "TRANSFORM_SCALE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-circle",
+                  selectorGuids: ["ae16d9a6-f21d-20c7-1bbc-6efaf8d3053a"],
+                },
+                xValue: 0.8,
+                yValue: 0.8,
+                locked: true,
+              },
+            },
+            {
+              id: "a-30-n-16",
+              actionTypeId: "STYLE_BACKGROUND_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-expand",
+                  selectorGuids: ["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"],
+                },
+                globalSwatchId: "d4cd7f62",
+                rValue: 49,
+                bValue: 200,
+                gValue: 247,
+                aValue: 1,
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1675879691625,
+    },
+    "a-31": {
+      id: "a-31",
+      title: "contact footer hover out 2",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-31-n-5",
+              actionTypeId: "GENERAL_DISPLAY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-coffee",
+                  selectorGuids: ["7523b8fe-4209-aa59-f72f-41c3f3450519"],
+                },
+                value: "none",
+              },
+            },
+            {
+              id: "a-31-n-6",
+              actionTypeId: "GENERAL_DISPLAY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-circle",
+                  selectorGuids: ["ae16d9a6-f21d-20c7-1bbc-6efaf8d3053a"],
+                },
+                value: "flex",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-31-n-7",
+              actionTypeId: "TRANSFORM_SCALE",
+              config: {
+                delay: 0,
+                easing: "swingTo",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-expand",
+                  selectorGuids: ["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"],
+                },
+                xValue: 1,
+                yValue: 1,
+                locked: true,
+              },
+            },
+            {
+              id: "a-31-n-10",
+              actionTypeId: "STYLE_BACKGROUND_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 100,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-expand",
+                  selectorGuids: ["7333a6a8-b3f3-2b67-4f00-c27d10be94fe"],
+                },
+                globalSwatchId: "0ead2d9d",
+                rValue: 246,
+                bValue: 94,
+                gValue: 250,
+                aValue: 1,
+              },
+            },
+            {
+              id: "a-31-n-8",
+              actionTypeId: "TRANSFORM_SCALE",
+              config: {
+                delay: 0,
+                easing: "swingTo",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-circle",
+                  selectorGuids: ["ae16d9a6-f21d-20c7-1bbc-6efaf8d3053a"],
+                },
+                xValue: 1,
+                yValue: 1,
+                locked: true,
+              },
+            },
+            {
+              id: "a-31-n-9",
+              actionTypeId: "TRANSFORM_SCALE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".footer_contact-coffee",
+                  selectorGuids: ["7523b8fe-4209-aa59-f72f-41c3f3450519"],
+                },
+                xValue: 0.8,
+                yValue: 0.8,
+                locked: true,
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1675879691625,
+    },
+    "a-34": {
+      id: "a-34",
+      title: "arrow link hover in",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-34-n-2",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: true,
+                  id: "2744a9d0-5ca6-e329-6d5e-2d1778778de5",
+                },
+                globalSwatchId: "dd05ad2b",
+                rValue: 255,
+                bValue: 255,
+                gValue: 255,
+                aValue: 1,
+              },
+            },
+            {
+              id: "a-34-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".arrow-static",
+                  selectorGuids: ["96ade7a4-250b-37ab-4f1a-04fa1055c4bc"],
+                },
+                xValue: 0,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-34-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".arrow-absolute",
+                  selectorGuids: ["cf509f44-1b77-70c9-216e-bb506e4fb568"],
+                },
+                xValue: -100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-34-n-5",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: true,
+                  id: "2744a9d0-5ca6-e329-6d5e-2d1778778de5",
+                },
+                globalSwatchId: "0ead2d9d",
+                rValue: 246,
+                bValue: 94,
+                gValue: 250,
+                aValue: 1,
+              },
+            },
+            {
+              id: "a-34-n-7",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "swingTo",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".arrow-absolute",
+                  selectorGuids: ["cf509f44-1b77-70c9-216e-bb506e4fb568"],
+                },
+                xValue: 0,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-34-n-6",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".arrow-static",
+                  selectorGuids: ["96ade7a4-250b-37ab-4f1a-04fa1055c4bc"],
+                },
+                xValue: 100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1675957918598,
+    },
+    "a-35": {
+      id: "a-35",
+      title: "arrow link hover out",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-35-n-4",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: true,
+                  id: "2744a9d0-5ca6-e329-6d5e-2d1778778de5",
+                },
+                globalSwatchId: "dd05ad2b",
+                rValue: 255,
+                bValue: 255,
+                gValue: 255,
+                aValue: 1,
+              },
+            },
+            {
+              id: "a-35-n-5",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".arrow-absolute",
+                  selectorGuids: ["cf509f44-1b77-70c9-216e-bb506e4fb568"],
+                },
+                xValue: -100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-35-n-6",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".arrow-static",
+                  selectorGuids: ["96ade7a4-250b-37ab-4f1a-04fa1055c4bc"],
+                },
+                xValue: 0,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1675957918598,
+    },
+    "a-36": {
+      id: "a-36",
+      title: "Testimonial Scroll",
+      continuousParameterGroups: [
+        {
+          id: "a-36-p",
+          type: "SCROLL_PROGRESS",
+          parameterLabel: "Scroll",
+          continuousActionGroups: [
+            {
+              keyframe: 0,
+              actionItems: [
+                {
+                  id: "a-36-n",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.wonder-dynamics",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "2553a279-1a46-bd4e-51df-fb7ad9cd4fef",
+                      ],
+                    },
+                    xValue: 22,
+                    yValue: 23,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-3",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.wonder-dynamics",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "2553a279-1a46-bd4e-51df-fb7ad9cd4fef",
+                      ],
+                    },
+                    zValue: -40,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-4",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.scott",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "27cb93c3-707d-3b79-3ae0-43b0c7f9d05e",
+                      ],
+                    },
+                    xValue: 3,
+                    yValue: 22,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-5",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.scott",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "27cb93c3-707d-3b79-3ae0-43b0c7f9d05e",
+                      ],
+                    },
+                    zValue: 40,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-6",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.merck",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "06d08d13-7c38-63e0-f966-e6932db9fa0c",
+                      ],
+                    },
+                    xValue: -21,
+                    yValue: 22,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-7",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.merck",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "06d08d13-7c38-63e0-f966-e6932db9fa0c",
+                      ],
+                    },
+                    zValue: 50,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-8",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.pencil",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "89670b03-2271-fdaf-6dd2-f854d1cd70ac",
+                      ],
+                    },
+                    xValue: -33,
+                    yValue: 8,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-9",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.pencil",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "89670b03-2271-fdaf-6dd2-f854d1cd70ac",
+                      ],
+                    },
+                    zValue: 60,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-10",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.solana",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "cbb665df-f018-5eae-280f-f27b4820580f",
+                      ],
+                    },
+                    xValue: -30,
+                    yValue: -8,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-11",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.solana",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "cbb665df-f018-5eae-280f-f27b4820580f",
+                      ],
+                    },
+                    zValue: -50,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-12",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.farley",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "74cf4476-a5e4-7fc8-ebbf-dccd4bb65bc1",
+                      ],
+                    },
+                    xValue: -23,
+                    yValue: -25,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-13",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.farley",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "74cf4476-a5e4-7fc8-ebbf-dccd4bb65bc1",
+                      ],
+                    },
+                    zValue: -60,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-14",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.safepal",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "fa307d5b-073d-a994-b8a6-40f39c1b21e7",
+                      ],
+                    },
+                    xValue: -5,
+                    yValue: -27,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-15",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.safepal",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "fa307d5b-073d-a994-b8a6-40f39c1b21e7",
+                      ],
+                    },
+                    zValue: 20,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-16",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.shaq",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "5827960c-0b05-fb8b-88ff-7c171ecdcbd4",
+                      ],
+                    },
+                    xValue: -11,
+                    yValue: -16,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-17",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.shaq",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "5827960c-0b05-fb8b-88ff-7c171ecdcbd4",
+                      ],
+                    },
+                    zValue: 60,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-18",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.chat",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "e1239400-6325-98fc-52fe-7ebc2c8a755a",
+                      ],
+                    },
+                    xValue: 23,
+                    yValue: -27,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-19",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.chat",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "e1239400-6325-98fc-52fe-7ebc2c8a755a",
+                      ],
+                    },
+                    zValue: -50,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-20",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.cocoon",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "e582be0d-362f-e5f8-f0e2-d9ac43a8c756",
+                      ],
+                    },
+                    xValue: 25,
+                    yValue: -14,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-21",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.cocoon",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "e582be0d-362f-e5f8-f0e2-d9ac43a8c756",
+                      ],
+                    },
+                    zValue: -40,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-22",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.clutch",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "3d436a47-0479-6ae6-673c-b6b2b11a39e7",
+                      ],
+                    },
+                    xValue: 19,
+                    yValue: 9,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-23",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.clutch",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "3d436a47-0479-6ae6-673c-b6b2b11a39e7",
+                      ],
+                    },
+                    zValue: -40,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+              ],
+            },
+            {
+              keyframe: 50,
+              actionItems: [
+                {
+                  id: "a-36-n-24",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.wonder-dynamics",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "2553a279-1a46-bd4e-51df-fb7ad9cd4fef",
+                      ],
+                    },
+                    xValue: 0,
+                    yValue: 0,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-25",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.wonder-dynamics",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "2553a279-1a46-bd4e-51df-fb7ad9cd4fef",
+                      ],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-26",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.scott",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "27cb93c3-707d-3b79-3ae0-43b0c7f9d05e",
+                      ],
+                    },
+                    xValue: 0,
+                    yValue: 0,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-27",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.scott",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "27cb93c3-707d-3b79-3ae0-43b0c7f9d05e",
+                      ],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-28",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.merck",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "06d08d13-7c38-63e0-f966-e6932db9fa0c",
+                      ],
+                    },
+                    xValue: 0,
+                    yValue: 0,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-29",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.merck",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "06d08d13-7c38-63e0-f966-e6932db9fa0c",
+                      ],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-30",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.pencil",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "89670b03-2271-fdaf-6dd2-f854d1cd70ac",
+                      ],
+                    },
+                    xValue: 0,
+                    yValue: 0,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-31",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.pencil",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "89670b03-2271-fdaf-6dd2-f854d1cd70ac",
+                      ],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-32",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.solana",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "cbb665df-f018-5eae-280f-f27b4820580f",
+                      ],
+                    },
+                    xValue: 0,
+                    yValue: 0,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-33",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.solana",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "cbb665df-f018-5eae-280f-f27b4820580f",
+                      ],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-34",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.farley",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "74cf4476-a5e4-7fc8-ebbf-dccd4bb65bc1",
+                      ],
+                    },
+                    xValue: 0,
+                    yValue: 0,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-35",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.farley",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "74cf4476-a5e4-7fc8-ebbf-dccd4bb65bc1",
+                      ],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-36",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.safepal",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "fa307d5b-073d-a994-b8a6-40f39c1b21e7",
+                      ],
+                    },
+                    xValue: 0,
+                    yValue: 0,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-37",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.safepal",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "fa307d5b-073d-a994-b8a6-40f39c1b21e7",
+                      ],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-38",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.shaq",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "5827960c-0b05-fb8b-88ff-7c171ecdcbd4",
+                      ],
+                    },
+                    xValue: 0,
+                    yValue: 0,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-39",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.shaq",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "5827960c-0b05-fb8b-88ff-7c171ecdcbd4",
+                      ],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-40",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.chat",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "e1239400-6325-98fc-52fe-7ebc2c8a755a",
+                      ],
+                    },
+                    xValue: 0,
+                    yValue: 0,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-41",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.chat",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "e1239400-6325-98fc-52fe-7ebc2c8a755a",
+                      ],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-42",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.cocoon",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "e582be0d-362f-e5f8-f0e2-d9ac43a8c756",
+                      ],
+                    },
+                    xValue: 0,
+                    yValue: 0,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-43",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.cocoon",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "e582be0d-362f-e5f8-f0e2-d9ac43a8c756",
+                      ],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-36-n-44",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.clutch",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "3d436a47-0479-6ae6-673c-b6b2b11a39e7",
+                      ],
+                    },
+                    xValue: 0,
+                    yValue: 0,
+                    xUnit: "em",
+                    yUnit: "em",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-36-n-45",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".card-container.clutch",
+                      selectorGuids: [
+                        "5f330c88-42d9-f30d-c6e6-369d006db1d4",
+                        "3d436a47-0479-6ae6-673c-b6b2b11a39e7",
+                      ],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      createdOn: 1675964331810,
+    },
+    "a-38": {
+      id: "a-38",
+      title: "intro scroll",
+      continuousParameterGroups: [
+        {
+          id: "a-38-p",
+          type: "SCROLL_PROGRESS",
+          parameterLabel: "Scroll",
+          continuousActionGroups: [
+            {
+              keyframe: 0,
+              actionItems: [
+                {
+                  id: "a-38-n",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".icon-24",
+                      selectorGuids: ["1204f33d-fd2b-cdcf-65e6-e84ef53da349"],
+                    },
+                    zValue: 0,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-38-n-4",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".squiggle_embed",
+                      selectorGuids: ["70e22066-b254-85d0-d4f3-d6f251d4834a"],
+                    },
+                    xValue: 0,
+                    xUnit: "%",
+                    yUnit: "PX",
+                    zUnit: "PX",
+                  },
+                },
+              ],
+            },
+            {
+              keyframe: 100,
+              actionItems: [
+                {
+                  id: "a-38-n-3",
+                  actionTypeId: "TRANSFORM_ROTATE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".icon-24",
+                      selectorGuids: ["1204f33d-fd2b-cdcf-65e6-e84ef53da349"],
+                    },
+                    zValue: 520,
+                    xUnit: "DEG",
+                    yUnit: "DEG",
+                    zUnit: "deg",
+                  },
+                },
+                {
+                  id: "a-38-n-5",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      useEventTarget: "CHILDREN",
+                      selector: ".squiggle_embed",
+                      selectorGuids: ["70e22066-b254-85d0-d4f3-d6f251d4834a"],
+                    },
+                    xValue: -25,
+                    xUnit: "%",
+                    yUnit: "PX",
+                    zUnit: "PX",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      createdOn: 1675983528787,
+    },
+    "a-41": {
+      id: "a-41",
+      title: "Radio SET",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-41-n-4",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "PARENT",
+                  selector: ".radio-pill",
+                  selectorGuids: ["6510a2b7-580d-5291-fb25-6fb040a6ce4c"],
+                },
+                globalSwatchId: "dd05ad2b",
+                rValue: 255,
+                bValue: 255,
+                gValue: 255,
+                aValue: 1,
+              },
+            },
+            {
+              id: "a-41-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {},
+                yValue: -100,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1676049955319,
+    },
+    "a-42": {
+      id: "a-42",
+      title: "Radio RESET",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-42-n",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {},
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-42-n-2",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  selector: ".radio-pill",
+                  selectorGuids: ["6510a2b7-580d-5291-fb25-6fb040a6ce4c"],
+                },
+                globalSwatchId: "09b8bce2",
+                rValue: 5,
+                bValue: 15,
+                gValue: 7,
+                aValue: 1,
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-42-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {},
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-42-n-4",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  selector: ".radio-pill",
+                  selectorGuids: ["6510a2b7-580d-5291-fb25-6fb040a6ce4c"],
+                },
+                globalSwatchId: "09b8bce2",
+                rValue: 5,
+                bValue: 15,
+                gValue: 7,
+                aValue: 1,
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1676049955319,
+    },
+    "a-43": {
+      id: "a-43",
+      title: "radio input RESET",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-43-n-11",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  selector: ".radio",
+                  selectorGuids: ["68633be7-8e54-85fe-a32b-b648395c4529"],
+                },
+                globalSwatchId: "09b8bce2",
+                rValue: 5,
+                bValue: 15,
+                gValue: 7,
+                aValue: 1,
+              },
+            },
+            {
+              id: "a-43-n-13",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  selector: ".radio_fill",
+                  selectorGuids: ["68633be7-8e54-85fe-a32b-b648395c452e"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-43-n-12",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  selector: ".radio",
+                  selectorGuids: ["68633be7-8e54-85fe-a32b-b648395c4529"],
+                },
+                globalSwatchId: "09b8bce2",
+                rValue: 5,
+                bValue: 15,
+                gValue: 7,
+                aValue: 1,
+              },
+            },
+            {
+              id: "a-43-n-14",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  selector: ".radio_fill",
+                  selectorGuids: ["68633be7-8e54-85fe-a32b-b648395c452e"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1584887035681,
+    },
+    "a-44": {
+      id: "a-44",
+      title: "radio input SET",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-44-n-6",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "PARENT",
+                  selector: ".radio",
+                  selectorGuids: ["68633be7-8e54-85fe-a32b-b648395c4529"],
+                },
+                globalSwatchId: "dd05ad2b",
+                rValue: 255,
+                bValue: 255,
+                gValue: 255,
+                aValue: 1,
+              },
+            },
+            {
+              id: "a-44-n-7",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".radio_fill",
+                  selectorGuids: ["68633be7-8e54-85fe-a32b-b648395c452e"],
+                },
+                yValue: -100,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1584887035681,
+    },
+    "a-39": {
+      id: "a-39",
+      title: "form pill 1st click",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-39-n",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "SIBLINGS",
+                  selector: ".checkbox_fill",
+                  selectorGuids: ["bd80dd1e-e08d-b5ff-abb4-f4038173a7e5"],
+                },
+                yValue: 100,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-39-n-2",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "PARENT",
+                  selector: ".checkbox",
+                  selectorGuids: ["65d28396-18d8-86cf-2401-3399b69f893b"],
+                },
+                globalSwatchId: "09b8bce2",
+                rValue: 5,
+                bValue: 15,
+                gValue: 7,
+                aValue: 1,
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-39-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "SIBLINGS",
+                  selector: ".checkbox_fill",
+                  selectorGuids: ["bd80dd1e-e08d-b5ff-abb4-f4038173a7e5"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-39-n-4",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "PARENT",
+                  selector: ".checkbox",
+                  selectorGuids: ["65d28396-18d8-86cf-2401-3399b69f893b"],
+                },
+                globalSwatchId: "dd05ad2b",
+                rValue: 255,
+                bValue: 255,
+                gValue: 255,
+                aValue: 1,
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1676049955319,
+    },
+    "a-40": {
+      id: "a-40",
+      title: "form pill 2nd click",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-40-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "SIBLINGS",
+                  selector: ".checkbox_fill",
+                  selectorGuids: ["bd80dd1e-e08d-b5ff-abb4-f4038173a7e5"],
+                },
+                yValue: 100,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-40-n-4",
+              actionTypeId: "STYLE_TEXT_COLOR",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  useEventTarget: "PARENT",
+                  selector: ".checkbox",
+                  selectorGuids: ["65d28396-18d8-86cf-2401-3399b69f893b"],
+                },
+                globalSwatchId: "09b8bce2",
+                rValue: 5,
+                bValue: 15,
+                gValue: 7,
+                aValue: 1,
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1676049955319,
+    },
+    "a-54": {
+      id: "a-54",
+      title: "button_medium (hover in)",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-54-n",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_medium-arrow.start",
+                  selectorGuids: [
+                    "8c2c2f04-6514-e1d0-8dff-1cb258ba5329",
+                    "c7493980-1e39-21bd-cebb-36b4f90da62e",
+                  ],
+                },
+                xValue: 0,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-54-n-2",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_medium-arrow.finish",
+                  selectorGuids: [
+                    "8c2c2f04-6514-e1d0-8dff-1cb258ba5329",
+                    "841f471d-19c1-084a-fd2b-33b6bce43e85",
+                  ],
+                },
+                xValue: -100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-54-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "outQuart",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_medium-arrow.start",
+                  selectorGuids: [
+                    "8c2c2f04-6514-e1d0-8dff-1cb258ba5329",
+                    "c7493980-1e39-21bd-cebb-36b4f90da62e",
+                  ],
+                },
+                xValue: 100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-54-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 150,
+                easing: "outQuart",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_medium-arrow.finish",
+                  selectorGuids: [
+                    "8c2c2f04-6514-e1d0-8dff-1cb258ba5329",
+                    "841f471d-19c1-084a-fd2b-33b6bce43e85",
+                  ],
+                },
+                xValue: 0,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1677619290453,
+    },
+    "a-55": {
+      id: "a-55",
+      title: "button_medium (hover out)",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-55-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_medium-arrow.start",
+                  selectorGuids: [
+                    "8c2c2f04-6514-e1d0-8dff-1cb258ba5329",
+                    "c7493980-1e39-21bd-cebb-36b4f90da62e",
+                  ],
+                },
+                xValue: -100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-55-n-2",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "outQuart",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_medium-arrow.finish",
+                  selectorGuids: [
+                    "8c2c2f04-6514-e1d0-8dff-1cb258ba5329",
+                    "841f471d-19c1-084a-fd2b-33b6bce43e85",
+                  ],
+                },
+                xValue: 100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-55-n",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 100,
+                easing: "outQuart",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_medium-arrow.start",
+                  selectorGuids: [
+                    "8c2c2f04-6514-e1d0-8dff-1cb258ba5329",
+                    "c7493980-1e39-21bd-cebb-36b4f90da62e",
+                  ],
+                },
+                xValue: 0,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-55-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_medium-arrow.finish",
+                  selectorGuids: [
+                    "8c2c2f04-6514-e1d0-8dff-1cb258ba5329",
+                    "841f471d-19c1-084a-fd2b-33b6bce43e85",
+                  ],
+                },
+                xValue: -100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1677619290453,
+    },
+    "a-56": {
+      id: "a-56",
+      title: "contact hover in 2",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-56-n",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow",
+                  selectorGuids: ["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-56-n-2",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow-panel",
+                  selectorGuids: ["a64e8ce6-695e-b344-1919-774793de1b0c"],
+                },
+                value: 1,
+                unit: "",
+              },
+            },
+            {
+              id: "a-56-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_green-panel",
+                  selectorGuids: ["635115ff-4261-8e5b-19d9-b4d399b2d042"],
+                },
+                yValue: 100,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-56-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow",
+                  selectorGuids: ["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"],
+                },
+                yValue: 102,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-56-n-5",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow-panel",
+                  selectorGuids: ["a64e8ce6-695e-b344-1919-774793de1b0c"],
+                },
+                value: 0,
+                unit: "",
+              },
+            },
+            {
+              id: "a-56-n-6",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 150,
+                easing: "outCubic",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_green-panel",
+                  selectorGuids: ["635115ff-4261-8e5b-19d9-b4d399b2d042"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1675396884739,
+    },
+    "a-57": {
+      id: "a-57",
+      title: "contact hover out 2",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-57-n",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow",
+                  selectorGuids: ["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-57-n-2",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "outCubic",
+                duration: 100,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow-panel",
+                  selectorGuids: ["a64e8ce6-695e-b344-1919-774793de1b0c"],
+                },
+                value: 1,
+                unit: "",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-57-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_green-panel",
+                  selectorGuids: ["635115ff-4261-8e5b-19d9-b4d399b2d042"],
+                },
+                yValue: 100,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1675396884739,
+    },
+    "a-9": {
+      id: "a-9",
+      title: "contact hover in",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-9-n",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow",
+                  selectorGuids: ["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-9-n-2",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow-panel",
+                  selectorGuids: ["a64e8ce6-695e-b344-1919-774793de1b0c"],
+                },
+                value: 1,
+                unit: "",
+              },
+            },
+            {
+              id: "a-9-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_green-panel",
+                  selectorGuids: ["635115ff-4261-8e5b-19d9-b4d399b2d042"],
+                },
+                yValue: 100,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-9-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "outQuart",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow",
+                  selectorGuids: ["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"],
+                },
+                yValue: 102,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-9-n-5",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "outQuart",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow-panel",
+                  selectorGuids: ["a64e8ce6-695e-b344-1919-774793de1b0c"],
+                },
+                value: 0,
+                unit: "",
+              },
+            },
+            {
+              id: "a-9-n-6",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 150,
+                easing: "outQuart",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_green-panel",
+                  selectorGuids: ["635115ff-4261-8e5b-19d9-b4d399b2d042"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1675396884739,
+    },
+    "a-10": {
+      id: "a-10",
+      title: "contact hover out",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-10-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "outQuart",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow",
+                  selectorGuids: ["ad49ca0e-69d5-8ff4-4e11-f6d1182b9ca9"],
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-10-n-5",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "outQuart",
+                duration: 100,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_yellow-panel",
+                  selectorGuids: ["a64e8ce6-695e-b344-1919-774793de1b0c"],
+                },
+                value: 1,
+                unit: "",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-10-n-6",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".connect_green-panel",
+                  selectorGuids: ["635115ff-4261-8e5b-19d9-b4d399b2d042"],
+                },
+                yValue: 100,
+                xUnit: "PX",
+                yUnit: "%",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1675396884739,
+    },
+    "a-62": {
+      id: "a-62",
+      title: "button_large-hover-in",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-62-n",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_large-arrow",
+                  selectorGuids: ["69242660-d87d-8d8e-018c-cf126e40b7ea"],
+                },
+                xValue: -100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-62-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_text-wrap",
+                  selectorGuids: ["33ea38f6-b092-0451-ce49-197d036ed6ff"],
+                },
+                xValue: 0,
+                xUnit: "em",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-62-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "swingTo",
+                duration: 600,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_large-arrow",
+                  selectorGuids: ["69242660-d87d-8d8e-018c-cf126e40b7ea"],
+                },
+                xValue: 0,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-62-n-5",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "swingTo",
+                duration: 600,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_text-wrap",
+                  selectorGuids: ["33ea38f6-b092-0451-ce49-197d036ed6ff"],
+                },
+                xValue: -1.75,
+                xUnit: "em",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1678121948962,
+    },
+    "a-63": {
+      id: "a-63",
+      title: "button_large-hover-out",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-63-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_large-arrow",
+                  selectorGuids: ["69242660-d87d-8d8e-018c-cf126e40b7ea"],
+                },
+                xValue: -100,
+                xUnit: "%",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-63-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".button_text-wrap",
+                  selectorGuids: ["33ea38f6-b092-0451-ce49-197d036ed6ff"],
+                },
+                xValue: 0,
+                xUnit: "em",
+                yUnit: "PX",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1678121948962,
+    },
+    "a-66": {
+      id: "a-66",
+      title: "cs_hero-fade",
+      continuousParameterGroups: [
+        {
+          id: "a-66-p",
+          type: "SCROLL_PROGRESS",
+          parameterLabel: "Scroll",
+          continuousActionGroups: [
+            {
+              keyframe: 50,
+              actionItems: [
+                {
+                  id: "a-66-n",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      id: "63f39261e65caf960d5fe302|93dad9ae-f9cc-08e0-2931-0f8dccb2166d",
+                    },
+                    yValue: 0,
+                    xUnit: "PX",
+                    yUnit: "%",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-66-n-2",
+                  actionTypeId: "STYLE_OPACITY",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      id: "63f39261e65caf960d5fe302|93dad9ae-f9cc-08e0-2931-0f8dccb2166d",
+                    },
+                    value: 1,
+                    unit: "",
+                  },
+                },
+              ],
+            },
+            {
+              keyframe: 75,
+              actionItems: [
+                {
+                  id: "a-66-n-3",
+                  actionTypeId: "TRANSFORM_MOVE",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      id: "63f39261e65caf960d5fe302|93dad9ae-f9cc-08e0-2931-0f8dccb2166d",
+                    },
+                    yValue: 100,
+                    xUnit: "PX",
+                    yUnit: "%",
+                    zUnit: "PX",
+                  },
+                },
+                {
+                  id: "a-66-n-4",
+                  actionTypeId: "STYLE_OPACITY",
+                  config: {
+                    delay: 0,
+                    easing: "",
+                    duration: 500,
+                    target: {
+                      id: "63f39261e65caf960d5fe302|93dad9ae-f9cc-08e0-2931-0f8dccb2166d",
+                    },
+                    value: 0,
+                    unit: "",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      createdOn: 1678463402312,
+    },
+    "a-67": {
+      id: "a-67",
+      title: "project thumbnail (hover in)",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-67-n",
+              actionTypeId: "TRANSFORM_SCALE",
+              config: {
+                delay: 0,
+                easing: "",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".image-cover",
+                  selectorGuids: ["82ff736e-1ba0-eda5-21f6-6ba1c83ad214"],
+                },
+                xValue: 1,
+                yValue: 1,
+                locked: true,
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-67-n-2",
+              actionTypeId: "TRANSFORM_SCALE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 300,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".image-cover",
+                  selectorGuids: ["82ff736e-1ba0-eda5-21f6-6ba1c83ad214"],
+                },
+                xValue: 1.1,
+                yValue: 1.1,
+                locked: true,
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1684268746119,
+    },
+    "a-68": {
+      id: "a-68",
+      title: "project thumbnail (hover out)",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-68-n-2",
+              actionTypeId: "TRANSFORM_SCALE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 200,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  selector: ".image-cover",
+                  selectorGuids: ["82ff736e-1ba0-eda5-21f6-6ba1c83ad214"],
+                },
+                xValue: 1,
+                yValue: 1,
+                locked: true,
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1684268746119,
+    },
+    "a-72": {
+      id: "a-72",
+      title: "Team Hover - IN",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-72-n",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 250,
+                target: {
+                  useEventTarget: true,
+                  id: "63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412",
+                },
+                value: 0,
+                unit: "",
+              },
+            },
+            {
+              id: "a-72-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  boundaryMode: true,
+                  id: "63f39261e65caf960d5fe302|9afc4ac8-dd8c-f81f-e66c-f9d29e50809a",
+                },
+                yValue: 40,
+                xUnit: "PX",
+                yUnit: "px",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-72-n-2",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 250,
+                target: {
+                  useEventTarget: true,
+                  id: "63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412",
+                },
+                value: 1,
+                unit: "",
+              },
+            },
+            {
+              id: "a-72-n-4",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  boundaryMode: true,
+                  id: "63f39261e65caf960d5fe302|9afc4ac8-dd8c-f81f-e66c-f9d29e50809a",
+                },
+                yValue: 0,
+                xUnit: "PX",
+                yUnit: "px",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: true,
+      createdOn: 1717122026299,
+    },
+    "a-73": {
+      id: "a-73",
+      title: "Team Hover - OUT",
+      actionItemGroups: [
+        {
+          actionItems: [
+            {
+              id: "a-73-n-2",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 500,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  boundaryMode: true,
+                  id: "63dd31e523449e896011cded|51c225df-2b63-47b2-af7f-8e90acff0d3b",
+                },
+                yValue: -40,
+                xUnit: "PX",
+                yUnit: "px",
+                zUnit: "PX",
+              },
+            },
+            {
+              id: "a-73-n",
+              actionTypeId: "STYLE_OPACITY",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 500,
+                target: {
+                  useEventTarget: true,
+                  id: "63dd31e523449e896011cded|b4068d7f-474e-108a-7d8c-4d2c94b87412",
+                },
+                value: 0,
+                unit: "",
+              },
+            },
+          ],
+        },
+        {
+          actionItems: [
+            {
+              id: "a-73-n-3",
+              actionTypeId: "TRANSFORM_MOVE",
+              config: {
+                delay: 0,
+                easing: "ease",
+                duration: 0,
+                target: {
+                  useEventTarget: "CHILDREN",
+                  boundaryMode: true,
+                  id: "63dd31e523449e896011cded|51c225df-2b63-47b2-af7f-8e90acff0d3b",
+                },
+                yValue: 40,
+                xUnit: "PX",
+                yUnit: "px",
+                zUnit: "PX",
+              },
+            },
+          ],
+        },
+      ],
+      useFirstGroupAsInitialState: false,
+      createdOn: 1717122026299,
+    },
+  },
+  site: {
+    mediaQueries: [
+      { key: "main", min: 992, max: 10000 },
+      { key: "medium", min: 768, max: 991 },
+      { key: "small", min: 480, max: 767 },
+      { key: "tiny", min: 0, max: 479 },
+    ],
+  },
+});

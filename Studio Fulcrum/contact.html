@@ -121,9 +121,9 @@
         <div class="container tright">
           <div class="top-nav_layout"><a data-w-id="471fe825-a5db-be72-8c72-ed8344ba4a72" href="index"
               class="nav-top_logo-link w-inline-block"><img
-                src="https://i.ibb.co/7dn6yJCQ/ddddfulcrum-black-text-logo-removebg-preview.png"
-                loading="lazy" alt="" class="nav-top_logo" />
-             <!-- <div class="nav-top_melonhead-wrap"><img
+                src="https://i.ibb.co/7dn6yJCQ/ddddfulcrum-black-text-logo-removebg-preview.png" loading="lazy" alt=""
+                class="nav-top_logo" />
+              <!-- <div class="nav-top_melonhead-wrap"><img
                   src="https://cdn.prod.website-files.com/63dae19244d432799bf5baa4/63de25352ae9b085b2bd03dc_melonhead.svg"
                   loading="lazy" alt="" class="nav-top_melonhead" /></div> -->
             </a></div>
@@ -142,10 +142,13 @@
                 loading="lazy" alt="" class="contact_graphic-small" /></div>
           </div>
           <div class="form_block w-form">
-            <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="get"
-              class="form" data-wf-page-id="63dd7d5878a04717bd29ff9a"
+            <!-- <form id="wf-form-Contact-Form" action="https://formspree.io/f/mkgqyoyo" name="wf-form-Contact-Form"
+              data-name="Contact Form" method="POST" class="form" data-wf-page-id="63dd7d5878a04717bd29ff9a"
+              id="StudioFulcrumContactForm" enctype="multipart/form-data"
               data-wf-element-id="af8f4500-8f78-4008-973c-7e02691b1998"
-              data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e">
+              data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e"> -->
+            <form id="StudioFulcrumContactForm" action="https://formspree.io/f/mkgqyoyo" method="POST" class="form"
+              enctype="multipart/form-data">
               <div class="form_pills-wrap">
                 <div class="form_header">
                   <p class="small">Project Type</p>
@@ -322,16 +325,73 @@
               </label> -->
               <input type="submit" data-wait="" class="button_large submit-form w-button" value="Submit" />
             </form>
-            <div class="success-message w-form-done">
+            <div class="success-message w-form-done" style="display:none;">
               <div class="div-block-82">
                 <div class="large">Thank you!</div>
                 <div class="small">Your submission has been received.</div>
               </div>
             </div>
-            <div class="w-form-fail">
+            <div class="w-form-fail" style="display:none;">
               <div>Oops! Something went wrong while submitting the form.</div>
             </div>
           </div>
+          <script>
+            document.querySelectorAll('input[name="Budget"]').forEach((radio) => {
+              radio.addEventListener("change", (e) => {
+                // Remove active state from all
+                document.querySelectorAll(".radio").forEach((el) => el.classList.remove("active"));
+                // Add active state to the parent of the selected one
+                e.target.closest(".radio").classList.add("active");
+              });
+            });
+          </script>
+          <script>
+            function initContactForm() {
+              const form = document.getElementById("StudioFulcrumContactForm");
+              if (!form) return;
+
+              const newForm = form.cloneNode(true);
+              form.parentNode.replaceChild(newForm, form);
+
+              const successMsg = document.querySelector(".w-form-done");
+              const errorMsg = document.querySelector(".w-form-fail");
+
+              newForm.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                const btn =
+                  newForm.querySelector("button[type=submit]") ||
+                  newForm.querySelector("input[type=submit]");
+                btn.disabled = true;
+                btn.value = "Sending...";
+
+                try {
+                  const res = await fetch(newForm.action, {
+                    method: "POST",
+                    body: new FormData(newForm),
+                    headers: { Accept: "application/json" },
+                  });
+
+                  if (res.ok) {
+                    newForm.style.display = "none";
+                    successMsg.style.display = "block";
+                    newForm.reset();
+                  } else {
+                    newForm.style.display = "none";
+                    errorMsg.style.display = "block";
+                  }
+                } catch (err) {
+                  newForm.style.display = "none";
+                  errorMsg.style.display = "block";
+                } finally {
+                  btn.disabled = false;
+                  btn.value = "Submit";
+                }
+              });
+            }
+
+            // run on first load
+            initContactForm();
+          </script>
         </div>
       </div>
       <div class="footer">
@@ -379,14 +439,19 @@
             <div class="footer_content-right">
               <div class="footer_links-wrap"><a href="https://wa.me/447848142514" target="_blank"
                   class="paragraph footer_link">WhatsApp</a><a href="https://www.instagram.com/studiofulcrum/"
-                  target="_blank" class="paragraph footer_link">Instagram</a><a href="https://www.facebook.com/studiofulcrum/"
-                  target="_blank" class="paragraph footer_link">Facebook</a><a
-                  href="https://www.linkedin.com/company/studio-fulcrum/" target="_blank"
-                  class="paragraph footer_link">LinkedIn</a></div>
-              <div class="footer_links-wrap"><a href="tel:+447848142514" class="paragraph footer_link">+44 7848 142514</a><a
-                  href="mailto:hello@studiofulcrum.co.uk" class="paragraph footer_link">hello@studiofulcrum.co.uk</a></div>
-              <div class="footer_address-wrap"><p class="paragraph">Fulcrum HQ</p><a href="https://www.google.com/search?q=2+Europa+View,+Tinsley,+Park,+Sheffield+S9+1XH,+United+Kingdom" target="_blank"
-                  class="paragraph footer_link">2 Europa View, Tinsley, Park, Sheffield S9 1XH, <br />United Kingdom</a></div>
+                  target="_blank" class="paragraph footer_link">Instagram</a><a
+                  href="https://www.facebook.com/studiofulcrum/" target="_blank"
+                  class="paragraph footer_link">Facebook</a><a href="https://www.linkedin.com/company/studio-fulcrum/"
+                  target="_blank" class="paragraph footer_link">LinkedIn</a></div>
+              <div class="footer_links-wrap"><a href="tel:+447848142514" class="paragraph footer_link">+44 7848
+                  142514</a><a href="mailto:hello@studiofulcrum.co.uk"
+                  class="paragraph footer_link">hello@studiofulcrum.co.uk</a></div>
+              <div class="footer_address-wrap">
+                <p class="paragraph">Fulcrum HQ</p><a
+                  href="https://www.google.com/search?q=2+Europa+View,+Tinsley,+Park,+Sheffield+S9+1XH,+United+Kingdom"
+                  target="_blank" class="paragraph footer_link">2 Europa View, Tinsley, Park, Sheffield S9 1XH,
+                  <br />United Kingdom</a>
+              </div>
             </div>
           </div>
         </div>
