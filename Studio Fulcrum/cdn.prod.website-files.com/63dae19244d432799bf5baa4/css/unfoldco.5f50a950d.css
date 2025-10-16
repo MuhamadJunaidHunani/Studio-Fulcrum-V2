@@ -2611,6 +2611,8 @@ blockquote {
   z-index: 2;
   width: 100%;
   position: relative;
+  padding-top: 4px;
+  margin-left: -4px;
 }
 
 .nav-top_melonhead-wrap {
@@ -3026,7 +3028,7 @@ blockquote {
 .home_services {
   background-color: var(--white);
   border-radius: 3em;
-  height: 24em !important;
+  height: 24em;
   margin-top: 6.5em;
   margin-bottom: 6.5em;
   display: flex;
